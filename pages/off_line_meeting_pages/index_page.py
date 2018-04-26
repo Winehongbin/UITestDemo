@@ -23,9 +23,11 @@ class IndexPage(BasePage):
     #点击会议列表菜单按钮
     def click_linelist(self):
         time.sleep(5)
-        print "进入第一场线下会：", self.deprint()
+        print "点击会议列表：", self.deprint()
         #点击“会议列表”
+        self.element_click('')
         self.driver.find_element_by_xpath("/html/body/div[2]/div[1]/ul/li[2]/h2/a").click()
+        print "点击第一场会议：", self.deprint()
         self.driver.implicitly_wait(30)
         time.sleep(3)
         #点击会议列表页的首个“会议名称”
