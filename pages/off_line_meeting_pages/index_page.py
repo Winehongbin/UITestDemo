@@ -15,28 +15,28 @@ class IndexPage(BasePage):
         # 点击创建会议
         # 获取下一个窗口句柄，跳转
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        self.driver.find_element_by_css_selector(
-            "#g-right > div > div.clearfix.ng-scope > div.contact-stats-box.w715 > div.event-stats-l > div > button").click()
+        self.element_click('css','#g-right > div > div.clearfix.ng-scope > div.contact-stats-box.w715 > div.event-stats-l > div > button')
         self.driver.implicitly_wait(30)
         print self.deprint(), ":点击创建会议完成"
 
-    #点击会议列表菜单按钮
+    #点击会议列表菜单
     def click_linelist(self):
         time.sleep(5)
         print "点击会议列表：", self.deprint()
+        self.driver.switch_to.window(self.driver.window_handles[-1])
         #点击“会议列表”
-        self.element_click('')
-        self.driver.find_element_by_xpath("/html/body/div[2]/div[1]/ul/li[2]/h2/a").click()
+        self.element_click('x','/html/body/div[2]/div[1]/ul/li[1]/h2/a')
         print "点击第一场会议：", self.deprint()
         self.driver.implicitly_wait(30)
         time.sleep(3)
         #点击会议列表页的首个“会议名称”
-        self.driver.find_element_by_css_selector("#g-right > div > div.m-grid.grid-default.grid-event.grid-over.ng-scope > table > tbody > tr:nth-child(1) > td:nth-child(2) > a").click()
+        self.element_click('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')
         self.driver.implicitly_wait(30)
-        #获取下一个窗口句柄，跳转
-        self.driver.switch_to.window(self.driver.window_handles[-1])
+
 
     #
+
+    #点击互动环节菜单
 
 if __name__ == '__main__':
     dr = brower()
