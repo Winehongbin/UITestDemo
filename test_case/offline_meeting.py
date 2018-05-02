@@ -26,25 +26,44 @@ from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
 from pages.off_line_meeting_pages.index_page import IndexPage
 from common.mail import email_oper
+from pages.off_line_meeting_pages.new_meeting_page import NewMeetingPage
 
 
 class Offline_Meeting_Test(BaseUnit):
 
     """线下会测试用例"""
 
-    # 登录，并创建线下会
-    def test_001_createoffline(self):
+    # 登录，并进入线下会页面测试用例
+    def test_001_loginoffline(self):
         #下面一句的文字，是通过Python的一种注释doc string，用于函数、类和方法的描述，HTMLTestRunner可以读取此类型注释
-        """ 测试创建会议 """
+        """ 测试进入线下会 """
 
-        print "开始执行登录，并创建线下会用例：", self.noww()
+        print "开始执行登录，并进入线下会用例：", self.noww()
+
         object = LoginPage(self.driver)
         object.login()
         object = ChoosePage(self.driver)
-        object.clickUnderLine()
+        object.click_menu_bt('9')
         object = IndexPage(self.driver)
-        object.ClickCreateUnderLine()
-        print "登录，并创建线下会用例执行完成：", self.noww()
+        object.click_linelist()
+        object.quit()
+        print "进入线下会页面用例执行完成：", self.noww()
+
+    def test_002_createoffline(self):
+        """ 测试创建线下会 """
+
+        print "开始执行登录，并进入线下会用例：", self.noww()
+
+        object = LoginPage(self.driver)
+        object.login()
+        object = ChoosePage(self.driver)
+        object.click_menu_bt('9')
+        object = NewMeetingPage(self.driver)
+        object.create_neww_offline()
+        print "进入线下会页面用例执行完成：", self.noww()
+
+
+
 
 
     """
@@ -71,7 +90,7 @@ if __name__ == "__main__":
     suite = unittest.TestSuite()
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
     suite.addTest(Offline_Meeting_Test("test_001_createoffline"))
-    """chuangjian xianxiahui"""
+
 
     #执行单元测试，生成报告
     AddSuite = report.AllReport()

@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import time
-
 from pages.common_pages.base import BasePage
-
 from pages.common_pages.driver import brower
 from pages.common_pages.login_page import LoginPage
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class ChoosePage(BasePage):
@@ -17,16 +19,13 @@ class ChoosePage(BasePage):
         # 获得当前窗口
         handleNow = self.driver.current_window_handle
         self.driver.switch_to_window(handleNow)
-        time.sleep(15)
-        # 点击线下会
-        #css_path = "#sortContainer > a:nth-child(" + button_pos + ")"
-        css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")"
-        self.driver.find_element_by_css_selector(css_path).click()
-
         self.driver.implicitly_wait(30)
-        time.sleep(8)
+        # 点击线下会
+        css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")"
+        self.wait_is_visible('css',css_path)
         # 获取下一个窗口句柄，跳转
         self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.refresh()
         print self.deprint(), u":正常进入线下会"
 
 if __name__ == '__main__':

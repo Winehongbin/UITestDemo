@@ -3,7 +3,7 @@
 
 import os
 from datetime import datetime
-
+from pages.common_pages.base import BasePage
 
 
 class SendEmailModel():
@@ -70,6 +70,8 @@ class SendEmailModel():
 
     #邮件内容的设置
     def PostReport_only(self,PerformTime,content):
+
+
         import smtplib
         content_str=str(content)
         # from email.MIMEMultipart import MIMEMultipart
@@ -103,6 +105,31 @@ class SendEmailModel():
         msgRoot.attach(text_msg)
         # 附件
         fileHTML = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\Smarket3.0_TestReport.html"
+        """
+        定义文件目录,os.listdir(path):返回指定路径下的文件和文件夹列表;
+        程序中 \ 是转义符，所以关于路径的写法要用/;
+        字符串引号外加r可以不转义
+        """
+        result_dir = 'D:\\SmarketAutoTest\\common\\report/reportlog'
+        # result_dir = 'D:\\SmarketAutoTest\\common\\report\reportlog'
+
+
+        print result_dir
+        lists = os.listdir(result_dir)
+
+        """
+        重新按时间对目录下的文件进行排序,
+        list.sort([func]):该方法没有返回值，但会对列表的对象进行排序,func 可选参数, 如果指定该参数会使用该参数的方法进行排序。
+        sort按key的关键字进行升序排序，lambda的入参fn为lists列表的元素，获取文件的最后修改时间，所以最终以文件时间从小到大排序
+        最后对lists元素，按文件修改时间大小从小到大排序。
+        获取最新文件的绝对路径，列表中最后一个值,文件夹+文件名
+        但是lambda fn这些的用法 不会，有熟练经验的大神可以补充，以便分享
+        """
+        lists.sort(key=lambda fn: os.path.getmtime(result_dir+"\\"+fn))
+        print(('最新的文件为： ' + lists[-1]))
+        fileHTML = os.path.join(result_dir, lists[-1])
+        print (file)
+
         print fileHTML
         #fileHTML = r"..\ReportAndEmail\Smarket3.0_TestReport.html"
         att = MIMEText(open(fileHTML, 'rb').read(), 'base64', 'utf-8')
@@ -125,8 +152,8 @@ class SendEmailModel():
 if __name__ == '__main__':
     P = SendEmailModel()
     # content = "test_001_createoffline;test_002_manageoffline"
-    content = "test_001_createoffline"
-    """创建线下会"""
+    content = "test_001_loginoffline;test_002_createoffline"
+
     # content = "test_003_offline"
 
 
