@@ -19,7 +19,7 @@ print os.path.dirname(__file__)
 print curPath
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
-from pages.off_line_meeting_pages.interaction_link_page import Interaction_Line
+from pages.off_line_meeting_pages.interaction_link_page import InteractionAndCancle
 import time
 from datetime import datetime
 import unittest
@@ -39,20 +39,6 @@ class Offline_Meeting_Test(BaseUnit):
     # 登录，并进入线下会页面测试用例
     def test_001_loginoffline(self):
         #下面一句的文字，是通过Python的一种注释doc string，用于函数、类和方法的描述，HTMLTestRunner可以读取此类型注释
-        """ 测试进入线下会 """
-
-        print "开始执行登录，并进入线下会用例：", self.noww()
-        dr = brower()
-        object = LoginPage(dr)
-        object.login()
-        object = ChoosePage(dr)
-        object.click_menu_bt('9')
-        object = IndexPage(dr)
-        object.click_linelist()
-        object.quit()
-        print "进入线下会页面用例执行完成：", self.noww()
-
-    def test_002_createoffline(self):
         """ 测试创建线下会 """
 
         print "开始执行登录，并进入线下会用例：", self.noww()
@@ -67,6 +53,22 @@ class Offline_Meeting_Test(BaseUnit):
         object.create_neww_offline()
         print "进入线下会页面用例执行完成：", self.noww()
 
+    def test_002_createoffline(self):
+        """ 测试删除线下会 """
+
+        print "开始执行登录，并进入线下会用例：", self.noww()
+        dr = brower()
+        o = LoginPage(dr)
+        o.login()
+        o = ChoosePage(dr)
+        o.click_menu_bt('9')
+        o = IndexPage(dr)
+        o.click_linelist('2')
+        object = InteractionAndCancle(dr)
+        object.interaction_and_cancle('2')
+
+        print "进入线下会页面用例执行完成：", self.noww()
+
 
     def test_003_interaction(self):
         """ 添加互动环节"""
@@ -78,26 +80,12 @@ class Offline_Meeting_Test(BaseUnit):
         o = ChoosePage(dr)
         o.click_menu_bt('9')
         o = IndexPage(dr)
-        o.click_linelist()
-        o = Interaction_Line(dr)
-        o.interaction_link()
+        o.click_linelist('2')
+        o = InteractionAndCancle(dr)
+        o.interaction_and_cancle('1')
         print "进入线下会页面用例执行完成：", self.noww()
 
 
-
-
-
-    """
-     # 管理线下会
-    def test_002_manageoffline(self):
-         print "开始执行添加线下会问卷用例"
-
-         print "添加线下会问卷用例执行完毕"
-    def test_003_offline(self):
-        print self.noww(),":开始执行添加线下会问卷用例"
-
-        print self.noww(),":添加线下会问卷用例执行完毕"
-    """
     #获取当前时间
     def noww(self):
         owww=datetime.now()

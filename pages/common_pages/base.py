@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
 #页面操作基础类
 class BasePage(object):
-    base_url="https://uat-tenant.smarket.net.cn"
+    base_url="https://tenant.smarket.net.cn"
     #__init__()方法对参数进行初始化  五一
     def __init__(self,selenium_driver,base_url=base_url,parent=None):
         self.base_url = base_url
@@ -134,7 +134,7 @@ class BasePage(object):
     #发现元素，并输入值
     def find_element_input(self,method,location,value):
         if method =="x":
-            self.driver.find_element_by_xpath(location).clear()
+            # self.driver.find_element_by_xpath(location).clear()
             self.driver.find_element_by_xpath(location).send_keys(value)
         if method =="class":
             self.driver.find_element_by_class_name(location).send_keys(value)
@@ -149,7 +149,7 @@ class BasePage(object):
         if method == "Plink":
             self.driver.find_element_by_partial_link_text(location).send_keys(value)
         if method == "css":
-            self.driver.find_element_by_css_selector(location).clear()
+            # self.driver.find_element_by_css_selector(location).clear()
             self.driver.find_element_by_css_selector(location).send_keys(value)
     #显性等待
     """
