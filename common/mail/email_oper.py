@@ -80,7 +80,7 @@ class SendEmailModel():
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'cara_gao@sinobasedm.com'  # 发件人
-        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com'] # 收件人'gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com'
+        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com']#,'gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'cara_gao@sinobasedm.com'  # 进入邮箱的账户名
@@ -110,10 +110,8 @@ class SendEmailModel():
         程序中 \ 是转义符，所以关于路径的写法要用/;
         字符串引号外加r可以不转义
         """
-        result_dir = 'D:\\SmarketAutoTest\\common\\report/reportlog'
-        # result_dir = 'D:\\SmarketAutoTest\\common\\report\reportlog'
 
-
+        result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog"
         print result_dir
         lists = os.listdir(result_dir)
 
@@ -130,13 +128,27 @@ class SendEmailModel():
         fileHTML = os.path.join(result_dir, lists[-1])
         print (file)
 
+        f = open(fileHTML, 'rb')
+        mail_body = f.read()
+        f.close()
+
+        msg = MIMEText(mail_body, 'html', 'utf-8')
+        msgRoot = MIMEMultipart()
+        msgRoot['Subject'] = Header(subject, 'utf-8')  # Subject为邮件主题
+        msgRoot.attach(msg)
+        msgRoot['From'] = sender
+        att = MIMEApplication(open(fileHTML, 'rb').read())
+        att.add_header('Content-Disposition', 'attachment', filename=lists[-1])
+        msgRoot.attach(att)
+
+        """
         print fileHTML
         #fileHTML = r"..\ReportAndEmail\Smarket3.0_TestReport.html"
         att = MIMEText(open(fileHTML, 'rb').read(), 'base64', 'utf-8')
         att["Content-Type"] = 'application/octet-stream'
         att["Content-Disposition"] = 'attachment; filename="Smarket3.0_TestReport.html"'
         msgRoot.attach(att)
-
+        """
         try:
             smtp = smtplib.SMTP()  #创建一个SMTP对象
             smtp.connect(smtpserver)   #/通过connect方法链接到smtp主机

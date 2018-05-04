@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
-import time
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 from pages.off_line_meeting_pages.index_page import IndexPage
-from pages.off_line_meeting_pages.interaction_manage_page import InteractionPage_Manage
+from pages.off_line_meeting_pages.interaction_manage_page import InteractionPageManage
+from pages.off_line_meeting_pages.interaction_link_page import Interaction_Line
 
-
-class Index_DetailsOfMeeting(BasePage):
+class IndexDetailsOfMeeting(BasePage):
 
 
     # 点击互动环节菜单
@@ -31,8 +30,10 @@ if __name__ == '__main__':
     o.click_menu_bt('9')
     o = IndexPage(dr)
     o.click_linelist()
-    o = InteractionPage_Manage(dr)
+    o = Interaction_Line(dr)
+    o.interaction_link()
+    o = InteractionPageManage(dr)
     o.creat_questionnaire()
-    o = Index_DetailsOfMeeting(dr)
+    o = IndexDetailsOfMeeting(dr)
     o.click_interaction()
 
