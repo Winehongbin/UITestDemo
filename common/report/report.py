@@ -7,6 +7,7 @@ HTMLTestRunner： 是 基于 unittest 单元测试的 HTML报告 的一个第三
 
 '''
 import HTMLTestRunner
+from pages.common_pages.base import BasePage
 import os.path
 import sys
 import os
@@ -15,7 +16,12 @@ rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
 
-class AllReport(object):    
+class AllReport(BasePage):
+
+    #继承，同时覆盖基类的构造函数 20180427
+    def __init__(self):
+       pass
+
     def LoginShow_report(self,caselist_Login,caselist_File,suitname,CaseClassName1,CaseClassName2):
         '''目前Name1为Login，Name2为FileManagement'''
         for tmp in caselist_Login:
@@ -44,9 +50,15 @@ class AllReport(object):
         runner=HTMLTestRunner.HTMLTestRunner(title=u"自动化筹备小组模型展示，前来报告",stream=myresult,
                                              description=u"此报告目前为测试阶段状态，谢谢观赏,自动化测试小组敬上")
         runner.run(suitname)
+
     def OnlyNeed_Suite(self,suitname):
 
-        myfile=os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\report\Smarket3.0_TestReport.html"
+        # myfile=os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\report\Smarket3.0_TestReport.html"
+        # myfile_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\report\\reportlog\ "
+        myfile_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog\ "
+        now = self.printime()
+        print myfile_path
+        myfile = myfile_path + now + " Smarket3.0_TestReport.html"
         print myfile
         #myfile="..\ReportAndEmail\Smarket3.0_TestReport.html"
 
@@ -62,7 +74,7 @@ class AllReport(object):
         使用HTMLTestRunner配置参数，输出报告路径、报告标题、描述；
         stream：指定测试报告文件；description：定义测试报告的副标题。
         """
-        runner=HTMLTestRunner.HTMLTestRunner(title=u"Smarket3.0自动化测试报告，前来报告",stream=myresult,
+        runner=HTMLTestRunner.HTMLTestRunner(title=u"Smarket3.0自动化测试报告",stream=myresult,
                                              description=u"此报告目前为自动化测试平台提供："
                                                          u"1、各模块负责人手工校验失败用例；"
                                                          u"2、确认为bug,请联系开发人员修复bug"
@@ -77,3 +89,5 @@ if __name__ == "__main__":
     """
     pass
 
+    # o = AllReport()
+    # o.OnlyNeed_Suite(suitname=test001)

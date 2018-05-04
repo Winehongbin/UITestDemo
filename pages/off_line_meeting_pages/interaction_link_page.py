@@ -11,13 +11,15 @@ from pages.common_pages.choose_page import ChoosePage
 class Interaction_Line(BasePage):
 
 
-    #互动环节操作
+    #互动环节添加操作
     def interaction_link(self):
-        time.sleep(5)
+        time.sleep(15)
+        #获取下一个窗口句柄，跳转
+        self.driver.switch_to.window(self.driver.window_handles[-1])
         # 点选“互动环节”
         print self.deprint(),":开始添加互动环节"
         self.driver.implicitly_wait(30)
-        self.element_click("css","body > div.g-container > div.g-left.s-left > a.icon-o-setmodule.ng-scope")
+        self.element_click("x","/html/body/div[2]/div[2]/a[1]")
         self.driver.implicitly_wait(30)
         time.sleep(3)
         # 点击确定
@@ -33,6 +35,7 @@ class Interaction_Line(BasePage):
             time.sleep(5)
             self.element_click('css','#setFiled > div > div > div.modal-footer > input')
         print self.deprint(),"：添加互动环节成功"
+        self.close()
 
 if __name__ == "__main__":
     dr = brower()

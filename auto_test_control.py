@@ -16,7 +16,7 @@ from common.report import report
 from common.mail import email_oper
 from test_case.offline_meeting import Offline_Meeting_Test
 import time
-from common.mail import email_oper   #20180423
+from common.mail import email_oper
 
 class ConrollerShow():
     def Def_List(self,class_name):
@@ -45,12 +45,10 @@ class ConrollerShow():
         EndTime = time.time()
         PerformTime = EndTime - StartTime
         # content = "autoTest"
-        content = "test_001_createoffline"  """：创建线下会"""
+        content =["test_001_loginoffline","test_002_createoffline","test_003_interaction"]
 
-
-        # SendEmail = email_oper.SendEmailModel()   20180423
-        SendEmail = email_oper.SendEmailModel()  #20180423
-        SendEmail.PostReport_only(PerformTime,content)
+        SendEmail = email_oper.SendEmailModel()
+        SendEmail.PostReport_only(PerformTime,str(content))
 
 if __name__ == '__main__':
     A = ConrollerShow()
