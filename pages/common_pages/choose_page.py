@@ -10,8 +10,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class ChoosePage(BasePage):
-
-
     #点击首页菜单中的线下会按钮
     def click_menu_bt(self, button_pos):
 

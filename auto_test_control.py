@@ -36,7 +36,6 @@ class ConrollerShow():
         offline_test = self.Def_List(Offline_Meeting_Test)
         for offline_tmp in offline_test:
             suite.addTest(Offline_Meeting_Test(offline_tmp))
-
         #创建测试报告
         AddSuite = report.AllReport()
         AddSuite.OnlyNeed_Suite(suite)
@@ -46,7 +45,6 @@ class ConrollerShow():
         PerformTime = EndTime - StartTime
         # content = "autoTest"
         content =["test_001_loginoffline"  """：进入线下会""","test_002_createoffline"]
-
         SendEmail = email_oper.SendEmailModel()
         SendEmail.PostReport_only(PerformTime,str(content))
 
