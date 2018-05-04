@@ -31,7 +31,8 @@ class IndexPage(BasePage):
         print "点击第一场会议：", self.deprint()
         self.driver.implicitly_wait(30)
         #点击会议列表页的首个“会议名称”
-        self.element_click('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')
+        #self.element_click('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')
+        self.wait_is_visible('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')
         self.driver.implicitly_wait(30)
 
 
@@ -44,6 +45,6 @@ if __name__ == '__main__':
     o.click_menu_bt('9')
 
     o = IndexPage(dr)
-    o.click_linelist()
-    #o.click_createunderline()
-    # o.quit()
+    #o.click_linelist()
+    o.click_createunderline()
+    o.quit()

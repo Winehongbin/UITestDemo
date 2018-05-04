@@ -4,10 +4,9 @@ from pages.common_pages.login_page import LoginPage
 import time
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
-from pages.off_line_meeting_pages.index_details_meeting import Index_DetailsOfMeeting
+from pages.off_line_meeting_pages.index_details_meeting import IndexDetailsOfMeeting
 from pages.off_line_meeting_pages.interaction_manage_page import InteractionPage_Manage
 from pages.off_line_meeting_pages.index_page import IndexPage
-
 
 
 class  NewQuestionnairePage(BasePage):
@@ -53,7 +52,7 @@ if __name__ == '__main__':
     o.click_menu_bt('9')
     o = IndexPage(dr)
     o.click_linelist()
-    o = Index_DetailsOfMeeting(dr)
+    o = IndexDetailsOfMeeting(dr)
     o.click_interaction()
     o = InteractionPage_Manage(dr)
     o.creat_questionnaire()

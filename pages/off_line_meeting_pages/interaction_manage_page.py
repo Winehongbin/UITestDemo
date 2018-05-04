@@ -5,12 +5,11 @@ from pages.common_pages.driver import brower
 import time
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
-from pages.off_line_meeting_pages.index_details_meeting import Index_DetailsOfMeeting
-from pages.off_line_meeting_pages.index_details_meeting import InteractionPage_Manage
 from pages.off_line_meeting_pages.index_page import IndexPage
 
 
-class InteractionPage_Manage(BasePage):
+
+class InteractionPageManage(BasePage):
 
     # 创建问卷
     def creat_questionnaire(self):
@@ -39,9 +38,7 @@ if __name__ == '__main__':
     o.click_menu_bt('9')
     o = IndexPage(dr)
     o.click_linelist()
-    o = Index_DetailsOfMeeting(dr)
-    o.click_interaction()
-    o = InteractionPage_Manage(dr)
+    o = InteractionPageManage(dr)
     o.creat_questionnaire()
 
 
