@@ -26,7 +26,7 @@ class BasePage(object):
 
     def open(self):
         self._open(self.url)
-
+        self.driver.implicitly_wait(self.timeout)
     #退出浏览器
     def quit(self):
         self.driver.quit()
@@ -145,7 +145,7 @@ class BasePage(object):
             element.click()
         if method == "css":
             element = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, location)))
-
+            element.click()
     # 一直等待某元素可见，默认超时10秒，ui需要import selenium.webdriver.support.ui as ui
     def wait_is_visible(self,method,locator, timeout=20):
 

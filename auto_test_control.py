@@ -45,7 +45,7 @@ class ConrollerShow():
         EndTime = time.time()
         PerformTime = EndTime - StartTime
         # content = "autoTest"
-        content =["test_001_loginoffline"  """：进入线下会""","test_002_createoffline"]
+        content =["test_001_loginoffline","test_002_createoffline","test_003_interaction"]
 
         SendEmail = email_oper.SendEmailModel()
         SendEmail.PostReport_only(PerformTime,str(content))

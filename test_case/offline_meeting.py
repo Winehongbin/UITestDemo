@@ -8,6 +8,9 @@ sys模块提供了一系列有关Python运行环境的变量和函数,例如：
   sys.setdefaultencoding('utf8')
 """
 import sys
+
+from pages.common_pages.driver import brower
+
 reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
 sys.setdefaultencoding('utf8')
 import os
@@ -16,7 +19,7 @@ print os.path.dirname(__file__)
 print curPath
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
-
+from pages.off_line_meeting_pages.interaction_link_page import Interaction_Line
 import time
 from datetime import datetime
 import unittest
@@ -39,12 +42,12 @@ class Offline_Meeting_Test(BaseUnit):
         """ 测试进入线下会 """
 
         print "开始执行登录，并进入线下会用例：", self.noww()
-
-        object = LoginPage(self.driver)
+        dr = brower()
+        object = LoginPage(dr)
         object.login()
-        object = ChoosePage(self.driver)
+        object = ChoosePage(dr)
         object.click_menu_bt('9')
-        object = IndexPage(self.driver)
+        object = IndexPage(dr)
         object.click_linelist()
         object.quit()
         print "进入线下会页面用例执行完成：", self.noww()
@@ -53,13 +56,31 @@ class Offline_Meeting_Test(BaseUnit):
         """ 测试创建线下会 """
 
         print "开始执行登录，并进入线下会用例：", self.noww()
-
-        object = LoginPage(self.driver)
+        dr = brower()
+        object = LoginPage(dr)
         object.login()
-        object = ChoosePage(self.driver)
+        object = ChoosePage(dr)
         object.click_menu_bt('9')
-        object = NewMeetingPage(self.driver)
+        object = IndexPage(dr)
+        object.click_createunderline()
+        object = NewMeetingPage(dr)
         object.create_neww_offline()
+        print "进入线下会页面用例执行完成：", self.noww()
+
+
+    def test_003_interaction(self):
+        """ 添加互动环节"""
+
+        print "开始执行登录，并进入线下会用例：", self.noww()
+        dr = brower()
+        o = LoginPage(dr)
+        o.login()
+        o = ChoosePage(dr)
+        o.click_menu_bt('9')
+        o = IndexPage(dr)
+        o.click_linelist()
+        o = Interaction_Line(dr)
+        o.interaction_link()
         print "进入线下会页面用例执行完成：", self.noww()
 
 
