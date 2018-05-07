@@ -11,19 +11,20 @@ from pages.common_pages.driver import brower
 from pages.wechat.create_material import Creat_media
 
 class Wechat_Test(unittest.TestCase):
+
     def setUp(self):
-        driver= brower()
-        login = LoginPage(driver)
+        self.driver= brower()
+        login = LoginPage(self.driver)
         login.login()
-        choose = ChoosePage(driver)
+        choose = ChoosePage(self.driver)
         choose.click_menu_bt("1")
 
     def tearDown(self):
-        self.driver.quit()
+        pass
     # 创建图文素材用例
     def test_001_createMedia(self):
 
-        test=Creat_media(driver)
+        test=Creat_media(self.driver)
         title=test.creat_media()
         # self.assertEqual()
 if __name__ == "__main__":

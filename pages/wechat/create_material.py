@@ -20,7 +20,7 @@ class Creat_media(BasePage):
         self.find_element_input('x','//*[@id="exampleInputText1"]',u'自动化创建'+self.deprint())
         self.find_element_click('x','//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[4]/div[3]/div')
         pic=os.getcwd()
-        # print pic
+        print pic
         os.system(pic +  "/upload.exe")
         time.sleep(3)
         self.find_element_input('x','//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[6]/textarea',u'尤梅枝的摘要'+self.deprint())
