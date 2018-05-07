@@ -18,6 +18,8 @@ class Wechat_Test(unittest.TestCase):
         choose = ChoosePage(driver)
         choose.click_menu_bt("1")
 
+
+
     def tearDown(self):
         self.driver.quit()
     # 创建图文素材用例

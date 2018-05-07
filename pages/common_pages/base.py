@@ -7,10 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.support.select import Select
+
 #页面操作基础类
 class BasePage(object):
     base_url="https://tenant.smarket.net.cn"
-    #__init__()方法对参数进行初始化  五一
+    #__init__()方法对参数进行初始化
     def __init__(self,selenium_driver,base_url=base_url,parent=None):
         self.base_url = base_url
         self.driver = selenium_driver
@@ -23,13 +24,26 @@ class BasePage(object):
         self.driver.implicitly_wait(self.timeout)
     def open(self):
         self._open(self.url)
+
     #退出浏览器
     def quit(self):
         self.driver.quit()
+
     #关闭当前页
     def close(self):
         self.driver.close()
+
+
+    """
     #定位元素并单击,对单击操作做扩展
+    driver.implicitly_wait() :隐形等待，设定时间是秒
+    find_element_by_xpath():按xpath定位元素
+    find_element_by_class_name():按name定位元素
+    find_element_by_id():按id定位元素
+    find_element_by_link_text（）:按文本链接定位
+    find_element_by_tag_name():html 本质就是tag来定义实现不同的功能，每一个元素都是一个tag。
+
+    """
     def element_click(self,method,location):
 
         if method =="x":
