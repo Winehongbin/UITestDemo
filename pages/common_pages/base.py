@@ -135,7 +135,7 @@ class BasePage(object):
     #发现元素，并输入值
     def find_element_input(self,method,location,value):
         if method =="x":
-            self.driver.find_element_by_xpath(location).clear()
+            # self.driver.find_element_by_xpath(location).clear()
             self.driver.find_element_by_xpath(location).send_keys(value)
         if method =="class":
             self.driver.find_element_by_class_name(location).send_keys(value)
@@ -150,7 +150,7 @@ class BasePage(object):
         if method == "Plink":
             self.driver.find_element_by_partial_link_text(location).send_keys(value)
         if method == "css":
-            self.driver.find_element_by_css_selector(location).clear()
+            # self.driver.find_element_by_css_selector(location).clear()
             self.driver.find_element_by_css_selector(location).send_keys(value)
     #显性等待
     """

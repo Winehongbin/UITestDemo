@@ -21,17 +21,16 @@ class IndexPage(BasePage):
         print self.deprint(), ":点击创建会议完成"
 
     #点击会议列表菜单
-    def click_linelist(self):
+    def click_linelist(self,list_pos):
         print "点击会议列表：", self.deprint()
         self.driver.implicitly_wait(10)
         #点击“会议列表”
-        # self.element_click('x','/html/body/div[2]/div[1]/ul/li[1]/h2/a')
-        self.wait_is_visible('x','/html/body/div[2]/div[1]/ul/li[1]/h2/a')
+        css_path = "/html/body/div[2]/div[1]/ul/li[" + str(list_pos) + "]/h2/a"
+        self.wait_is_visible('x', css_path)
         self.driver.refresh()
         print "点击第一场会议：", self.deprint()
         self.driver.implicitly_wait(30)
         #点击会议列表页的首个“会议名称”
-        #self.element_click('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')
         self.wait_is_visible('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')
         self.driver.implicitly_wait(30)
 
@@ -42,9 +41,10 @@ if __name__ == '__main__':
     o.login()
 
     o = ChoosePage(dr)
+    time.sleep(3)
     o.click_menu_bt('9')
 
     o = IndexPage(dr)
     #o.click_linelist()
-    o.click_createunderline()
+    o.click_linelist('2')
     o.quit()
