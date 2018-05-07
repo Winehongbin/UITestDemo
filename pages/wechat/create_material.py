@@ -49,4 +49,6 @@ if __name__ == '__main__':
     chooseP.click_menu_bt("1")
     test=Creat_media(driver)
     title=test.creat_media()
+    test = Creat_media(driver)
+    title = test.creat_media()
     # test.delete_media()

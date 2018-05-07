@@ -13,16 +13,13 @@ class ChoosePage(BasePage):
     #点击首页菜单中的线下会按钮
     def click_menu_bt(self, button_pos):
         time.sleep(3)
-        print self.deprint(), u":开始进入线下会"
-        # 获得当前窗口
-        handleNow = self.driver.current_window_handle
+        handleNow = self.driver.current_window_handle # 获得当前窗口
         self.driver.switch_to_window(handleNow)
         self.driver.implicitly_wait(30)
-        # 点击线下会
+        print self.deprint(), u":开始进入线下会"
         css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")"
         self.wait_is_visible('css',css_path)
-        # 获取下一个窗口句柄，跳转
-        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.switch_to.window(self.driver.window_handles[-1]) # 获取下一个窗口句柄，跳转
         print self.deprint(), u":正常进入线下会"
 
 if __name__ == '__main__':

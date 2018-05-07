@@ -28,13 +28,11 @@ class FieldAction(BasePage):
         self.element_value_input("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[2]/div/input",u"zidingyiList")#输入字段英文名称
         self.element_click("x", "//*[@id='setFieldModal']/div/div/div[2]/form/div[3]/div/div/button")#选择字段类型
         self.element_click("x", "//*[@id='setFieldModal']/div/div/div[2]/form/div[3]/div/div/ul/li[3]/a")#选择列表字段
-        self.element_click("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[5]/div[2]/div[1]/div/button")#选择点击字段表
+        self.element_click("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[5]/div[2]/div[1]/div/button")#选择点击字典表
         try:
-            for num in range(1,10000):#循环获取字段名称
-                text = self.element_click("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[5]/div[2]/div[1]/div/ul/li["+ str(num) +"]/a")#选取字典表对应的字段
-                print(text)
-                
-                if text == DicName:#中文名称相同时，删除该字段
+            for num in range(1,10000):#循环获取字典表名称
+                text = self.find_element_text("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[5]/div[2]/div[1]/div/ul/li["+ str(num) +"]/a")#选取字典表对应的字段
+                if text == DicName:#找到对应字典表，选择该字典表
                     self.element_click("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[5]/div[2]/div[1]/div/ul/li["+ str(num) +"]/a")
                     time.sleep(1)
                     break#跳出循环
@@ -44,6 +42,7 @@ class FieldAction(BasePage):
         time.sleep(1)
         self.element_click("x","//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")#点击确认保存
     def DelField(self,FieldName):
+        #变量定义为基本字段的中文名称，传入中文名称即可删除对应字段
         time.sleep(1)
         self.element_click("id", "_settingFelid")  # 点击属性/字段设置
         try:
@@ -57,6 +56,22 @@ class FieldAction(BasePage):
                     break#跳出循环
         except:
             print u"未找到需要删除的字段"
+    def EditForm(self,EditForm):
+            self.element_click("x","/html/body/div[2]/div[1]/div/a[4]")#点击注册表单管理
+            time.sleep(1)
+            FormNum = self.find_element_text("x","/html/body/div[2]/div[2]/div[1]/p/span[1]")#抓取表单数
+            for num in range(2,int(FormNum)):
+                formName = self.find_element_text("x","/html/body/div[2]/div[2]/div[2]/div["+ str(num) +"]/p")#获取表单名称
+                print formName
+                if formName == EditForm:#判断对应表单的名称，点击编辑按钮
+                    self.element_click("x","/html/body/div[2]/div[2]/div[2]/div["+ str(num) +"]/div[2]/a[2]/i")
+                    time.sleep(10)
+                    FieldName = self.find_element_text("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div[1]/div/div[1]/div/input")
+                    print FieldName
+                    break
+
+
+
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
@@ -65,7 +80,4 @@ if __name__ == '__main__':
     time.sleep(3)
     o.click_menu_bt('16')
     o = FieldAction(dr)
-#    o.NewCustomEmailField()
-    o.NewCustomListField(u"省市")
-    o.DelField(u"自定义邮箱身份标识")
-    o.DelField(u"自定义列表字段")
+    o.EditForm(u"自动化测试专用")

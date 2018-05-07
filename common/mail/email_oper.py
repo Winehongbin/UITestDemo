@@ -70,17 +70,16 @@ class SendEmailModel():
 
     #邮件内容的设置
     def PostReport_only(self,PerformTime,content):
-
+    # def PostReport_only(self):
 
         import smtplib
-        content_str=str(content)
-        # from email.MIMEMultipart import MIMEMultipart
+        content_str=str(content) #20180507
         from email.mime.multipart import MIMEMultipart
         from email.mime.text import MIMEText
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'cara_gao@sinobasedm.com'  # 发件人
-        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']
+        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com']#,'gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'cara_gao@sinobasedm.com'  # 进入邮箱的账户名
@@ -94,7 +93,7 @@ class SendEmailModel():
         msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
         注意到构造MIMEText对象时，第一个参数就是邮件正文，第二个参数是MIME的subtype，传入'plain'，
         最终的MIME就是'text/plain'，最后一定要用utf-8编码保证多语言兼容性。
-        """
+
         text_msg = MIMEText(
             "<html><body><p><span style='color: black;'>&nbsp;&nbsp; hello every Receiver:</span></p>"
             "<p>&nbsp;&nbsp;&nbsp;&nbsp; 本次测试总耗时："+ str(PerformTime) +"秒<br/></p>"
@@ -102,7 +101,9 @@ class SendEmailModel():
             "<p>&nbsp;&nbsp;&nbsp;&nbsp; 本次回归测试执行用例范围："+ content +"<br/></p>"
             "<p/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 自动化测试小组敬上</p></body></html>",
             'html', _charset="utf-8")
+
         msgRoot.attach(text_msg)
+        """
         # 附件
         fileHTML = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\Smarket3.0_TestReport.html"
         """
@@ -110,11 +111,9 @@ class SendEmailModel():
         程序中 \ 是转义符，所以关于路径的写法要用/;
         字符串引号外加r可以不转义
         """
-
         result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog"
         print result_dir
         lists = os.listdir(result_dir)
-
         """
         重新按时间对目录下的文件进行排序,
         list.sort([func]):该方法没有返回值，但会对列表的对象进行排序,func 可选参数, 如果指定该参数会使用该参数的方法进行排序。
@@ -127,11 +126,9 @@ class SendEmailModel():
         print(('最新的文件为： ' + lists[-1]))
         fileHTML = os.path.join(result_dir, lists[-1])
         print (file)
-
         f = open(fileHTML, 'rb')
         mail_body = f.read()
         f.close()
-
         msg = MIMEText(mail_body, 'html', 'utf-8')
         msgRoot = MIMEMultipart()
         msgRoot['Subject'] = Header(subject, 'utf-8')  # Subject为邮件主题
@@ -152,7 +149,7 @@ class SendEmailModel():
         try:
             smtp = smtplib.SMTP()  #创建一个SMTP对象
             smtp.connect(smtpserver)   #/通过connect方法链接到smtp主机
-            smtp.login(username, password)  #
+            smtp.login(username, password)
             #sendmail()方法就是发邮件，由于可以一次发给多个人，所以传入一个list，邮件正文是一个str，as_string()把MIMEText对象变成str。
             smtp.sendmail(sender, receiver, msgRoot.as_string())
             smtp.quit()

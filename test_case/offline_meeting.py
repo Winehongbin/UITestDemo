@@ -8,9 +8,7 @@ sys模块提供了一系列有关Python运行环境的变量和函数,例如：
   sys.setdefaultencoding('utf8')
 """
 import sys
-
 from pages.common_pages.driver import brower
-
 reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
 sys.setdefaultencoding('utf8')
 import os
@@ -23,6 +21,7 @@ from pages.off_line_meeting_pages.interaction_link_page import InteractionAndCan
 import time
 from datetime import datetime
 import unittest
+from pages.common_pages.base import BasePage
 from test_case.base_unit import BaseUnit
 from common.report import report
 from pages.common_pages.login_page import LoginPage
@@ -31,17 +30,20 @@ from pages.off_line_meeting_pages.index_page import IndexPage
 from common.mail import email_oper
 from pages.off_line_meeting_pages.new_meeting_page import NewMeetingPage
 
+time = BasePage(object)
+
+
 
 class Offline_Meeting_Test(BaseUnit):
 
     """线下会测试用例"""
 
-    # 登录，并进入线下会页面测试用例
+
     def test_001_loginoffline(self):
         #下面一句的文字，是通过Python的一种注释doc string，用于函数、类和方法的描述，HTMLTestRunner可以读取此类型注释
         """ 测试创建线下会 """
 
-        print "开始执行登录，并进入线下会用例：", self.noww()
+        print time.deprint(), ":开始执行登录，并进入线下会用例"
         dr = brower()
         object = LoginPage(dr)
         object.login()
@@ -51,12 +53,13 @@ class Offline_Meeting_Test(BaseUnit):
         object.click_createunderline()
         object = NewMeetingPage(dr)
         object.create_neww_offline()
-        print "进入线下会页面用例执行完成：", self.noww()
+        print time.deprint(), ":创建线下会页面用例执行完成"
 
     def test_002_createoffline(self):
+
         """ 测试删除线下会 """
 
-        print "开始执行登录，并进入线下会用例：", self.noww()
+        print time.deprint(), ":开始执行登录，并进入删除线下会用例"
         dr = brower()
         o = LoginPage(dr)
         o.login()
@@ -67,13 +70,12 @@ class Offline_Meeting_Test(BaseUnit):
         object = InteractionAndCancle(dr)
         object.interaction_and_cancle('2')
 
-        print "进入线下会页面用例执行完成：", self.noww()
-
+        print time.deprint(), ":删除线下会用例完成"
 
     def test_003_interaction(self):
         """ 添加互动环节"""
 
-        print "开始执行登录，并进入线下会用例：", self.noww()
+        print time.deprint(), ":开始执行登录，并进入添加线下会互动环节用例"
         dr = brower()
         o = LoginPage(dr)
         o.login()
@@ -83,14 +85,9 @@ class Offline_Meeting_Test(BaseUnit):
         o.click_linelist('2')
         o = InteractionAndCancle(dr)
         o.interaction_and_cancle('1')
-        print "进入线下会页面用例执行完成：", self.noww()
+        print time.deprint(), ":添加线下会互动环节添加用例完成"
 
 
-    #获取当前时间
-    def noww(self):
-        owww=datetime.now()
-        strnoww = datetime.strftime(owww, '%Y-%m-%d %H:%M:%S')
-        return strnoww
 
 if __name__ == "__main__":
     #全部用例按照数字顺序测试
