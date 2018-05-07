@@ -3,7 +3,6 @@ from pages.common_pages.base import BasePage
 from pages.common_pages.driver import brower
 from selenium.webdriver.common.by import By
 
-
 class LoginPage(BasePage):
     def login(self):
         self.open()

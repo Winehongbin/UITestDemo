@@ -6,11 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
-
+from selenium.webdriver.support.select import Select
 #页面操作基础类
 class BasePage(object):
-    base_url="https://uat-tenant.smarket.net.cn"
-
+    base_url="https://tenant.smarket.net.cn"
     #__init__()方法对参数进行初始化  五一
     def __init__(self,selenium_driver,base_url=base_url,parent=None):
         self.base_url = base_url
@@ -18,24 +17,18 @@ class BasePage(object):
         self.timeout=30
         self.parent = parent
         self.url=""
-
     def _open(self,url):
         self.url = self.base_url + url
         self.driver.get(self.url)
         self.driver.implicitly_wait(self.timeout)
-
     def open(self):
         self._open(self.url)
-        self.driver.implicitly_wait(self.timeout)
     #退出浏览器
     def quit(self):
         self.driver.quit()
-
     #关闭当前页
     def close(self):
         self.driver.close()
-
-
     #定位元素并单击,对单击操作做扩展
     def element_click(self,method,location):
 
@@ -62,7 +55,6 @@ class BasePage(object):
         if method == "css":
             self.driver.implicitly_wait(3)
             self.driver.find_element_by_css_selector(location).click()
-
     #定位元素并输入值，输入操作做扩展
     def element_value_input(self,method,location,value):
         global driver
@@ -82,7 +74,6 @@ class BasePage(object):
             self.driver.find_element_by_partial_link_text(location).send_keys(value)
         if method == "css":
             self.driver.find_element_by_css_selector(location).send_keys(value)
-
     #发现元素并单击
     def find_element_click(self,method,location):
         if method =="x":
@@ -108,11 +99,43 @@ class BasePage(object):
         if method == "css":
             self.driver.implicitly_wait(3)
             self.driver.find_element_by_css_selector(location).click()
-
+    # 发现元素，返回文本值
+    def find_element_text(self,method,location):
+        if method =="x":
+            self.driver.implicitly_wait(3)
+            text = self.driver.find_element_by_xpath(location).text
+            return text
+        if method =="class":
+            self.driver.implicitly_wait(3)
+            text = self.driver.find_element_by_class_name(location).text
+            return text
+        if method == "id":
+            text = self.driver.find_element_by_id(location).text
+            return text
+        if method == "name":
+            self.driver.implicitly_wait(3)
+            text = self.driver.find_element_by_name(location).text
+            return text
+        if method == "link":
+            self.driver.implicitly_wait(3)
+            text = self.driver.find_element_by_link_text(location).text
+            return text
+        if method == "tag":
+            self.driver.implicitly_wait(3)
+            text = self.driver.find_element_by_tag_name(location).text
+            return text
+        if method == "Plink":
+            self.driver.implicitly_wait(3)
+            text = self.driver.find_element_by_partial_link_text(location).text
+            return text
+        if method == "css":
+            self.driver.implicitly_wait(3)
+            text = self.driver.find_element_by_css_selector(location).text
+            return text
     #发现元素，并输入值
     def find_element_input(self,method,location,value):
         if method =="x":
-            self.driver.find_element_by_xpath(location).clear()
+            # self.driver.find_element_by_xpath(location).clear()
             self.driver.find_element_by_xpath(location).send_keys(value)
         if method =="class":
             self.driver.find_element_by_class_name(location).send_keys(value)
@@ -127,10 +150,8 @@ class BasePage(object):
         if method == "Plink":
             self.driver.find_element_by_partial_link_text(location).send_keys(value)
         if method == "css":
-            self.driver.find_element_by_css_selector(location).clear()
+            # self.driver.find_element_by_css_selector(location).clear()
             self.driver.find_element_by_css_selector(location).send_keys(value)
-
-
     #显性等待
     """
     显性等待，
@@ -163,7 +184,6 @@ class BasePage(object):
         #TimeoutException 需要from selenium.common.exceptions import TimeoutException
         except TimeoutException:
              return False
-
     # 一直等待某个元素消失，默认超时10秒
     def is_not_visible(locator, timeout=10):
         try:
@@ -171,7 +191,6 @@ class BasePage(object):
             return True
         except TimeoutException:
             return False
-
     #句柄的获得
     def switch_handle(self,value):
         try:
@@ -187,15 +206,16 @@ class BasePage(object):
                 driver.switch_to_window(qwe[-2])
         except IOError:
                 print "handle值有误！"
-
     #按一定格式获取当前时间，需要from datetime import datetime
     def deprint(self):
         dt = datetime.now()
         strnow = datetime.strftime(dt, '%Y-%m-%d %H:%M:%S')
         return strnow
-
     #按一定格式获取当前时间，需要from datetime import datetime
     def printime(self):
         dt = datetime.now()
         strnow = datetime.strftime(dt, '%Y-%m-%d %H_%M_%S')
         return strnow
+    def Select_Value(self,location,value):
+        sel = self.driver.find_element_by_xpath(location)
+        Select(sel).select_by_value(value)

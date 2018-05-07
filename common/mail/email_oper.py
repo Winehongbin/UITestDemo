@@ -80,7 +80,7 @@ class SendEmailModel():
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'cara_gao@sinobasedm.com'  # 发件人
-        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com']#,'gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']
+        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'cara_gao@sinobasedm.com'  # 进入邮箱的账户名
@@ -165,8 +165,5 @@ if __name__ == '__main__':
     P = SendEmailModel()
     # content = "test_001_createoffline;test_002_manageoffline"
     content = "test_001_loginoffline;test_002_createoffline"
-
     # content = "test_003_offline"
-
-
     P.PostReport_only("总时间",content)
