@@ -35,6 +35,7 @@ class BasePage(object):
     def close(self):
         self.driver.close()
 
+
     #定位元素并单击,对单击操作做扩展
     def element_click(self,method,location):
 
@@ -128,6 +129,7 @@ class BasePage(object):
         if method == "css":
             self.driver.find_element_by_css_selector(location).clear()
             self.driver.find_element_by_css_selector(location).send_keys(value)
+
 
     #显性等待
     """
