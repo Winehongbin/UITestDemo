@@ -6,9 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
+from selenium.webdriver.support.select import Select
 #页面操作基础类
 class BasePage(object):
-    base_url="https://uat-tenant.smarket.net.cn"
+    base_url="https://tenant.smarket.net.cn"
     #__init__()方法对参数进行初始化  五一
     def __init__(self,selenium_driver,base_url=base_url,parent=None):
         self.base_url = base_url
@@ -215,3 +216,6 @@ class BasePage(object):
         dt = datetime.now()
         strnow = datetime.strftime(dt, '%Y-%m-%d %H_%M_%S')
         return strnow
+    def Select_Value(self,location,value):
+        sel = self.driver.find_element_by_xpath(location)
+        Select(sel).select_by_value(value)

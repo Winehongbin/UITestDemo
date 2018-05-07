@@ -9,10 +9,7 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 
 class creat_media(BasePage):
-
-
     def creat_media(self):
-
         self.dominant_wait('x', '//*[@id="ul-nav-2"]/li[1]/a')
         time.sleep(3)
         self.dominant_wait('x','//*[@id="con-graphic"]/div[1]/div[2]/div/a[2]')
