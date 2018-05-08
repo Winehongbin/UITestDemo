@@ -48,6 +48,5 @@ if __name__ == "__main__":
     o.click_menu_bt('9')
     o = IndexPage(dr)
     o.click_linelist('2')
-
     o = InteractionAndCancle(dr)
     o.interaction_and_cancle('2')
