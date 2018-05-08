@@ -65,8 +65,7 @@ class FieldAction(BasePage):
                 print formName
                 if formName == EditForm:#判断对应表单的名称，点击编辑按钮
                     self.element_click("x","/html/body/div[2]/div[2]/div[2]/div["+ str(num) +"]/div[2]/a[2]/i")
-                    time.sleep(10)
-                    FieldName = self.find_element_text("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div[1]/div/div[1]/div/input")
+                    FieldName = self.driver.find_element_by_xpath("/html/body/div[2]/div[1]/div[2]/div[2]/div/div[1]/div/div[1]/div/input").get_attribute("placeholder")
                     print FieldName
                     break
 
