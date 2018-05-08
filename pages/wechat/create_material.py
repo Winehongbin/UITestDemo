@@ -20,15 +20,16 @@ class Creat_media(BasePage):
         print self.printime(),u'点击新建图文按钮成功'
         self.find_element_input('x','//*[@id="exampleInputText1"]',u'自动化创建'+self.deprint())
         self.find_element_click('x','//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[4]/div[3]/div')
-        pic=os.getcwd()
-        # print pic
-        os.system(pic +  "/upload.exe")
+        cur_path = os.path.abspath(os.path.dirname(__file__))
+        root_path = os.path.split(cur_path)[0]
+        # print root_path
+        os.system(root_path +  "/upload.exe")
         time.sleep(3)
         self.find_element_input('x','//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[6]/textarea',u'尤梅枝的摘要'+self.deprint())
         # self.find_element_click('x','.//*[@id="con-local"]/section/section[1]/div[2]/form/div[1]/div[9]/div[2]')
         self.find_element_input('x','//*[@id="exampleInputText2"]','http://www.baidu.com')
         self.find_element_click('x','//*[@id="con-local"]/section/section/div[2]/form/div[2]/button[1]')
-        time.sleep(5)
+        time.sleep(3)
         title=self.driver.find_element_by_xpath('//*[@id="dialogBox"]/div/div/div[2]/div/div').text
         self.find_element_click('x','//*[@id="dialogBox"]/div/div/div[3]/button[1]')
         # print title
@@ -44,19 +45,14 @@ class Creat_media(BasePage):
         time.sleep(3)
         text=self.find_element_text('x','//*[@id="con-graphic"]/div[7]/div')
         print text
-        #判断是否存在标题包含“自动化”的图文素材，如果查询结果返回暂无数据则跳过，否则删除第一条素材
+        #判断是否存在标题包含“自动化”的图文素材，如果查询结果返回暂无数据则跳过，否则删除第一条自动化素材
         if text==u'暂无数据':
             pass
         else:
             self.dominant_wait('x', '//*[@id="con-graphic"]/div[2]/div[1]/div/div[3]/span/a[4]')
             time.sleep(3)
             self.dominant_wait('x', '//*[@id="dialogBox"]/div/div/div[3]/button[1]')
-
         print self.printime(), u'图文素材删除用例执行完毕'
-
-
-
-
 
 
 if __name__ == '__main__':
@@ -66,8 +62,8 @@ if __name__ == '__main__':
     chooseP = ChoosePage(driver)
     chooseP.click_menu_bt("1")
     test=Creat_media(driver)
-    # title=test.creat_media()
-    # time.sleep(3)
+    title=test.creat_media()
+    time.sleep(3)
     # test = Creat_media(driver)
     # title = test.creat_media()
-    test.delete_media()
+    # test.delete_media()
