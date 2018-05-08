@@ -146,6 +146,32 @@ class BasePage(object):
             self.driver.implicitly_wait(3)
             text = self.driver.find_element_by_css_selector(location).text
             return text
+    #通过输入框的属性获取属性值
+    def find_element_AttributeText(self,method,location,attributeName):
+        if method == "x":
+            attributeValue = self.driver.find_element_by_xpath(location).get_attribute(attributeName)
+            return attributeValue
+        if method =="class":
+            attributeValue = self.driver.find_element_by_class_name(location).get_attribute(attributeName)
+            return attributeValue
+        if method == "id":
+            attributeValue = self.driver.find_element_by_id(location).get_attribute(attributeName)
+            return attributeValue
+        if method == "name":
+            attributeValue = self.driver.find_element_by_name(location).get_attribute(attributeName)
+            return attributeValue
+        if method == "link":
+            attributeValue = self.driver.find_element_by_link_text(location).get_attribute(attributeName)
+            return attributeValue
+        if method == "tag":
+            attributeValue = self.driver.find_element_by_tag_name(location).get_attribute(attributeName)
+            return attributeValue
+        if method == "Plink":
+            attributeValue = self.driver.find_element_by_partial_link_text(location).get_attribute(attributeName)
+            return attributeValue
+        if method == "css":
+            attributeValue = self.driver.find_element_by_css_selector(location).get_attribute(attributeName)
+            return attributeValue
     #发现元素，并输入值
     def find_element_input(self,method,location,value):
         if method =="x":
