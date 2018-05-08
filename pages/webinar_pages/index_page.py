@@ -9,7 +9,7 @@ class Webinar_IndexPage(BasePage):
 
     # 打开线上会的首页
     def Index_Webinar(self):
-        print "创建线上会",self.deprint()
+        print self.deprint(),"创建线上会"
 
 if __name__ == '__main__':
     dr = brower()
