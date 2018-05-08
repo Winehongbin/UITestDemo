@@ -24,16 +24,12 @@ class BasePage(object):
         self.driver.implicitly_wait(self.timeout)
     def open(self):
         self._open(self.url)
-
     #退出浏览器
     def quit(self):
         self.driver.quit()
-
     #关闭当前页
     def close(self):
         self.driver.close()
-
-
     """
     #定位元素并单击,对单击操作做扩展
     driver.implicitly_wait() :隐形等待，设定时间是秒

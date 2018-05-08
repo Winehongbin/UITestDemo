@@ -56,20 +56,45 @@ class FieldAction(BasePage):
                     break#跳出循环
         except:
             print u"未找到需要删除的字段"
-    def EditForm(self,EditForm):
+    def EditForm(self,EditForm,ChooseFieldName1,ChooseFieldName2):
+    #通过表单名称，找到表单，编辑表单，添加所有字段，删除所有字段，添加两个字段，设置为必填，然后保存
             self.element_click("x","/html/body/div[2]/div[1]/div/a[4]")#点击注册表单管理
-            time.sleep(1)
+            time.sleep(2)
             FormNum = self.find_element_text("x","/html/body/div[2]/div[2]/div[1]/p/span[1]")#抓取表单数
             for num in range(2,int(FormNum)):
                 formName = self.find_element_text("x","/html/body/div[2]/div[2]/div[2]/div["+ str(num) +"]/p")#获取表单名称
-                print formName
                 if formName == EditForm:#判断对应表单的名称，点击编辑按钮
                     self.element_click("x","/html/body/div[2]/div[2]/div[2]/div["+ str(num) +"]/div[2]/a[2]/i")
-                    FieldName = self.driver.find_element_by_xpath("/html/body/div[2]/div[1]/div[2]/div[2]/div/div[1]/div/div[1]/div/input").get_attribute("placeholder")
-                    print FieldName
                     break
-
-
+            time.sleep(2)#编辑表单后，等待字段加载出来
+            try:#尝试添加所有字段，直报报错，利用错误机制跳出循环
+                for signUpNum in range(1,100):
+                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[1]/ul/li/ul/li["+ str(signUpNum) +"]/a")
+            except:
+                 print u"所有字段添加完毕"
+            delList = []#列一个需要删除字段数组的位置
+            for AllFiledNum in range(1,signUpNum):
+                FieldName = self.find_element_AttributeText("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(AllFiledNum) +"]/div/div[1]/div/input","placeholder")
+                if FieldName != u"密码":#排除密码字段序号
+                    delList.append(AllFiledNum)
+            delList.reverse()#将数组顺序反转
+            for delFiledNum in delList:#循环删除所有字段
+                try:
+                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div[2]/a[1]")
+                except:#路径有两种，利用错误机制，先尝试第一种路径，然后第二种
+                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div/a[1]")
+            for ChooseNum in range(1,signUpNum-1):#循环获取字段名称
+                ChooseFieldName  = self.find_element_text("x","/html/body/div[2]/div[1]/div[2]/div[1]/ul/li/ul/li["+ str(ChooseNum) +"]/a")
+                if ChooseFieldName == ChooseFieldName1 or ChooseFieldName == ChooseFieldName2:#判断字段名，添加相应的字段
+                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[1]/ul/li/ul/li["+ str(ChooseNum) +"]/a")
+            for i in [2,3]:#选择第二个和第三个字段必填
+                try:
+                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div[1]/label")
+                except:
+                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div/label")
+            self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/p/a[2]")#点击保存按钮
+            time.sleep(1)
+            self.element_click("x","//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")#点击确认按钮
 
 if __name__ == '__main__':
     dr = brower()
@@ -79,4 +104,4 @@ if __name__ == '__main__':
     time.sleep(3)
     o.click_menu_bt('16')
     o = FieldAction(dr)
-    o.EditForm(u"自动化测试专用")
+    o.EditForm(u"自动化测试专用",u"手机",u"姓名")
