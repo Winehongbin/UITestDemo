@@ -15,8 +15,10 @@ class Webinar_Create(BasePage):
     def Create_Meeting(self):
         print self.deprint(),"开始创建线上会"
         wrtitle = u'测试会议1'
+        #点击首页的创建会议按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
         self.driver.implicitly_wait(20)
+        #填写会议信息
         self.element_value_input('x','//*[@id="title"]',wrtitle)
         self.element_value_input('x', '//*[@id="sponser"]', u'校')
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[5]/div[1]/div/div/div/button')
@@ -43,10 +45,11 @@ class Webinar_Create(BasePage):
 
     #发布会议
     def Publish_Meeting(self):
+        #点击发布按钮
         self.wait_is_visible('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]')
-        time.sleep(3)
+        time.sleep(5)
         self.wait_is_visible('x','//*[@id="systemDialog"]/div/div/div[3]/button[1]')
-        time.sleep(3)
+        time.sleep(5)
         vstatus = u'进入会场'
         vvstatus = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/a[3]')
         if vstatus == vvstatus :
@@ -57,8 +60,16 @@ class Webinar_Create(BasePage):
 
     #取消会议
     def Cancle_Meeting(self):
+        #获取会议标题
         wbrtitle = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
+        #点击取消按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[1]/div/button')
+        #判断是否为未发布状态，只有未发布状态的会议，取消时，没有确认信息
+        wbrstatus = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/span[1]')
+        if wbrstatus != u'未发布':
+            time.sleep(2)
+            self.wait_is_visible('x','//*[@id="alertModal"]/div/div/div[3]/button[1]')
+        #点击直播回收站，查看是否存在取消的直播会议
         time.sleep(5)
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[2]/a')
         vwbrtitle = self.find_element_text('x','/html/body/div[1]/div[2]/div/div[1]/section/ul/li[1]/div/div[2]/p[1]/span[1]')
