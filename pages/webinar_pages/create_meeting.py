@@ -26,7 +26,7 @@ class Webinar_Create(BasePage):
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/ul/li[2]/a')
         self.element_click('x','//*[@id="save"]')
 
-        #保存会议后，加载时间太长
+        #保存会议后，加载时间太长,需要优化
         time.sleep(10)
         self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
 
@@ -41,6 +41,20 @@ class Webinar_Create(BasePage):
         else:
             print("创建会议失败")
 
+    #发布会议
+    def Publish_Meeting(self):
+        self.wait_is_visible('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]')
+        time.sleep(3)
+        self.wait_is_visible('x','//*[@id="systemDialog"]/div/div/div[3]/button[1]')
+        time.sleep(3)
+        vstatus = u'进入会场'
+        vvstatus = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/a[3]')
+        if vstatus == vvstatus :
+            print self.deprint(),'会议发布成功'
+        else:
+            print self.deprint(),'会议发布失败'
+
+
     #取消会议
     def Cancle_Meeting(self):
         wbrtitle = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
@@ -48,7 +62,10 @@ class Webinar_Create(BasePage):
         time.sleep(5)
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[2]/a')
         vwbrtitle = self.find_element_text('x','/html/body/div[1]/div[2]/div/div[1]/section/ul/li[1]/div/div[2]/p[1]/span[1]')
-        if wbrtitle == vwbrtitle :
+        wbrstatus = self.find_element_text('x','/html/body/div[1]/div[2]/div/div[1]/section/ul/li[1]/div/div[2]/p[1]/span[2]')
+        vwbrstatus = u'已取消'
+        if wbrtitle == vwbrtitle and wbrstatus == vwbrstatus :
+        #if wbrtitle == vwbrtitle :
             print self.deprint(),"成功取消会议"
         else:
             print self.deprint(),"取消会议失败"
@@ -65,6 +82,7 @@ if __name__ == '__main__':
     o.Index_Webinar()
     wbr = Webinar_Create(dr)
     wbr.Create_Meeting()
+    wbr.Publish_Meeting()
     wbr.Cancle_Meeting()
 
 
