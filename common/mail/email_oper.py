@@ -70,21 +70,20 @@ class SendEmailModel():
 
     #邮件内容的设置
     def PostReport_only(self,PerformTime,content):
-
+    # def PostReport_only(self):
 
         import smtplib
         content_str=str(content)
-        # from email.MIMEMultipart import MIMEMultipart
         from email.mime.multipart import MIMEMultipart
         from email.mime.text import MIMEText
         from email.mime.application import MIMEApplication
         from email.header import Header
-        sender = 'cara_gao@sinobasedm.com'  # 发件人
-        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']
+        sender = 'abc@sinobasedm.com'  # 发件人
+        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com']#,'gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
-        username = 'cara_gao@sinobasedm.com'  # 进入邮箱的账户名
-        password = 'Sino@123'  # 进入邮箱的密码
+        username = 'abc@sinobasedm.com'  # 进入邮箱的账户名
+        password = 'Abc@123'  # 进入邮箱的密码
         msgRoot = MIMEMultipart()
         msgRoot['From'] = Header("自动化测试平台", 'utf-8')
         msgRoot['To'] = Header("每一位项目相关人员", 'utf-8')
@@ -94,7 +93,7 @@ class SendEmailModel():
         msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
         注意到构造MIMEText对象时，第一个参数就是邮件正文，第二个参数是MIME的subtype，传入'plain'，
         最终的MIME就是'text/plain'，最后一定要用utf-8编码保证多语言兼容性。
-        """
+
         text_msg = MIMEText(
             "<html><body><p><span style='color: black;'>&nbsp;&nbsp; hello every Receiver:</span></p>"
             "<p>&nbsp;&nbsp;&nbsp;&nbsp; 本次测试总耗时："+ str(PerformTime) +"秒<br/></p>"
@@ -102,38 +101,44 @@ class SendEmailModel():
             "<p>&nbsp;&nbsp;&nbsp;&nbsp; 本次回归测试执行用例范围："+ content +"<br/></p>"
             "<p/>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 自动化测试小组敬上</p></body></html>",
             'html', _charset="utf-8")
+
         msgRoot.attach(text_msg)
+        """
         # 附件
         fileHTML = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\Smarket3.0_TestReport.html"
         """
-        定义文件目录,os.listdir(path):返回指定路径下的文件和文件夹列表;
+        定义文件目录,
         程序中 \ 是转义符，所以关于路径的写法要用/;
         字符串引号外加r可以不转义
         """
-
-        result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog"
+        result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog" #report存放文件夹的路径
         print result_dir
-        lists = os.listdir(result_dir)
-
+        lists = os.listdir(result_dir)  #os.listdir(path):返回指定路径下的文件和文件夹列表;
         """
         重新按时间对目录下的文件进行排序,
-        list.sort([func]):该方法没有返回值，但会对列表的对象进行排序,func 可选参数, 如果指定该参数会使用该参数的方法进行排序。
-        sort按key的关键字进行升序排序，lambda的入参fn为lists列表的元素，获取文件的最后修改时间，所以最终以文件时间从小到大排序
+        #list.sort([func]):该方法没有返回值，但会对列表的对象进行排序,func 可选参数, 如果指定该参数会使用该参数的方法进行排序。
+        #sort按key的关键字进行升序排序，lambda的入参fn为lists列表的元素，获取文件的最后修改时间，所以最终以文件时间从小到大排序
         最后对lists元素，按文件修改时间大小从小到大排序。
         获取最新文件的绝对路径，列表中最后一个值,文件夹+文件名
         但是lambda fn这些的用法 不会，有熟练经验的大神可以补充，以便分享
         """
         lists.sort(key=lambda fn: os.path.getmtime(result_dir+"\\"+fn))
+        #list.sort([func]):该方法没有返回值，但会对列表的对象进行排序,func 可选参数, 如果指定该参数会使用该参数的方法进行排序。
+        #sort按key的关键字进行升序排序，lambda的入参fn为lists列表的元素，获取文件的最后修改时间，所以最终以文件时间从小到大排序
         print(('最新的文件为： ' + lists[-1]))
-        fileHTML = os.path.join(result_dir, lists[-1])
+        fileHTML = os.path.join(result_dir, lists[-1]) #os.path.join()函数：返回值：将多个路径组合后返回
         print (file)
+        """
+        r:以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式
+        rb:以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式
+        wb:以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件
+        """
+        f = open(fileHTML, 'rb') #python open() 函数用于打开一个文件，创建一个 file 对象。
 
-        f = open(fileHTML, 'rb')
-        mail_body = f.read()
-        f.close()
-
-        msg = MIMEText(mail_body, 'html', 'utf-8')
-        msgRoot = MIMEMultipart()
+        mail_body = f.read()  #f.read()读到文件尾时返回""(空字串)
+        f.close()   #f.close() 关闭文件
+        msg = MIMEText(mail_body, 'html', 'utf-8')  #MIMEText()发送文本内容 需要引入from email.mime.text import MIMEText
+        msgRoot = MIMEMultipart()  #MIMEMultipart() 生成包括多个部分的邮件体
         msgRoot['Subject'] = Header(subject, 'utf-8')  # Subject为邮件主题
         msgRoot.attach(msg)
         msgRoot['From'] = sender
@@ -141,18 +146,10 @@ class SendEmailModel():
         att.add_header('Content-Disposition', 'attachment', filename=lists[-1])
         msgRoot.attach(att)
 
-        """
-        print fileHTML
-        #fileHTML = r"..\ReportAndEmail\Smarket3.0_TestReport.html"
-        att = MIMEText(open(fileHTML, 'rb').read(), 'base64', 'utf-8')
-        att["Content-Type"] = 'application/octet-stream'
-        att["Content-Disposition"] = 'attachment; filename="Smarket3.0_TestReport.html"'
-        msgRoot.attach(att)
-        """
         try:
             smtp = smtplib.SMTP()  #创建一个SMTP对象
             smtp.connect(smtpserver)   #/通过connect方法链接到smtp主机
-            smtp.login(username, password)  #
+            smtp.login(username, password)
             #sendmail()方法就是发邮件，由于可以一次发给多个人，所以传入一个list，邮件正文是一个str，as_string()把MIMEText对象变成str。
             smtp.sendmail(sender, receiver, msgRoot.as_string())
             smtp.quit()

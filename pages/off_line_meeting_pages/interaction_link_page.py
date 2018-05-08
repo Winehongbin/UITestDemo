@@ -14,22 +14,18 @@ class InteractionAndCancle(BasePage):
     #互动环节添加操作
     def interaction_and_cancle(self,but_pos):
         time.sleep(15)
-        #获取下一个窗口句柄，跳转
-        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.switch_to.window(self.driver.window_handles[-1])    #获取下一个窗口句柄，跳转
         # 点选“互动环节”
         print self.deprint(),":开始添加互动环节"
         self.driver.implicitly_wait(30)
-        # self.element_click("x","/html/body/div[2]/div[2]/a[1]")
-        css_path = "/html/body/div[2]/div[2]/a[" + str(but_pos) + "]"
+        css_path = "/html/body/div[2]/div[2]/a[" + str(but_pos) + "]"  #按着元素位置对互动环节和取消会议两个元素进行判断
         self.wait_is_visible('x', css_path)
         if but_pos == '1':
-            # self.driver.implicitly_wait(30)
-            time.sleep(3)
-            # 点击确定
-            if self.driver.find_element_by_css_selector("#modulecheckbox6").is_selected():
+            time.sleep(5)
+            if self.driver.find_element_by_css_selector("#modulecheckbox6").is_selected():  #如果“互动环节”已经被选择
                 self.driver.implicitly_wait(30)
                 time.sleep(2)
-                self.element_click('css','#setFiled > div > div > div.modal-footer > input')
+                self.element_click('css','#setFiled > div > div > div.modal-footer > input')  #已经被选择，点击确定按钮
                 self.driver.implicitly_wait(30)
                 time.sleep(5)
                 print self.deprint(), "：已添加互动环节"
@@ -40,10 +36,8 @@ class InteractionAndCancle(BasePage):
                 self.element_click('css','#setFiled > div > div > div.modal-footer > input')
                 print self.deprint(),"：添加互动环节成功"
         if but_pos == '2':
-            #self.element_click('x',css_path)
-            #time.sleep(2)
             self.wait_is_visible('x','//*[@id="commonAlertWindow"]/div/div/div[3]/button')
-            print self.deprint(), "：取消会议"
+            print self.deprint(), "：点击取消会议按钮"
         # self.close()
         print but_pos
 if __name__ == "__main__":
