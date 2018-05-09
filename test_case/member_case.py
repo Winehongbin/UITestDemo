@@ -9,7 +9,9 @@ import time
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 from pages.member.member_management import FieldAction
+
 class Member_Test(unittest.TestCase):
+
     def setUp(self):
         self.driver= brower()
         login = LoginPage(self.driver)
