@@ -15,6 +15,7 @@ class Get_Guestnum(BasePage):
 
         strguestnum = self.find_element_text('x','/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
         s = strguestnum[3:-4]
+        print s
         return s
 
 if __name__ == '__main__':
