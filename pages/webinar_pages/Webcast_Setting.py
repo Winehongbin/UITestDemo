@@ -15,44 +15,49 @@ class Webcast_Setting(BasePage):
 
         #从嘉宾库添加嘉宾信息
         print self.deprint(),":从嘉宾库添加嘉宾信息"
-        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]')
+        AddFromGuestsBtn='/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]'
+        self.wait_is_visible('x',AddFromGuestsBtn)
         time.sleep(3)
 
         #从嘉宾库选择弹窗中，点选3个嘉宾后保存
-        self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/label')
-        self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/label')
-        self.wait_is_visible('x', '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/label')
-        self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[3]/a[1]')
+        # self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/label')
+        # self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/label')
+        # self.wait_is_visible('x', '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/label')
+        # self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[3]/a[1]')
 
         # 判断嘉宾是否大于3个，若大于，则直接点选3个嘉宾，若小于3个，则取消弹出的嘉宾选择窗口，再进行新增嘉宾的操作
 
         # num = 0
         # i = 1
-        # while guestnum < '3':
+        # while guestnum < 3:
         #     print guestnum
         #     if num > 3 :
         #         break
         #     else:
-        #         if guestnum > 3 :
-                      #大于3个，则直接点选3个嘉宾
-        #             time.sleep(3)
-        #             self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/label')
-        #             self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/label')
-        #             self.wait_is_visible('x', '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/label')
-        #             self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[3]/a[1]')
-        #             break
-        #         else:
+        if guestnum >= 3 :
+            #大于3个，则直接点选3个嘉宾
+            time.sleep(3)
+            GuestBtn1='//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/div[2]/div[3]/ul/li[2]/span[2]'
+            GuestBtn2='//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/div[2]/div[3]/ul/li[2]/span[2]'
+            GuestBtn3='//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/div[2]/div[3]/ul/li[2]/span[2]'
+            GuestBtn4='//*[@id="guestDb"]/div/div/div[3]/a[1]'
+            self.wait_is_visible('x',GuestBtn1)
+            self.wait_is_visible('x',GuestBtn2)
+            self.wait_is_visible('x',GuestBtn3)
+            self.wait_is_visible('x',GuestBtn4)
+            #break
+        else:
 
-        #             # 若小于3个嘉宾，则点击取消按钮后，新增嘉宾
-        #             self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[3]/a[2]')
-        #             # 点击新增嘉宾按钮
-        #             self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[2]')
-        #             time.sleep(2)
-        #             self.element_value_input('x','//*[@id="createGuest"]/div/div/div[2]/div/form/div[1]/div/input',u'校校')
-        #             self.wait_is_visible('x','//*[@id="createGuest"]/div/div/div[3]/a[1]')
-        #             num = num + 1
-        #             guestnum = guestnum +1
-
+            # 若小于3个嘉宾，则点击取消按钮后，新增嘉宾
+            self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[3]/a[2]')
+            # 点击新增嘉宾按钮
+            self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[2]')
+            time.sleep(2)
+            self.element_value_input('x','//*[@id="createGuest"]/div/div/div[2]/div/form/div[1]/div/input',u'校校')
+            self.wait_is_visible('x','//*[@id="createGuest"]/div/div/div[3]/a[1]')
+            #num = num + 1
+            #guestnum = guestnum +1
+#
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
@@ -64,9 +69,8 @@ if __name__ == '__main__':
     time.sleep(3)
     wbr = Webinar_Create(dr)
     wbr.Create_Meeting()
-    # gguestnum = Get_Guestnum(dr)
-    # guestnum = gguestnum.get_num()
+    gguestnum = Get_Guestnum(dr)
+    guestnum = gguestnum.get_num()
     Guest_Add = Webcast_Setting(dr)
-    Guest_Add.Add_Guest()
-    # Guest_Add.Add_Guest(guestnum)
+    Guest_Add.Add_Guest(guestnum)
 
