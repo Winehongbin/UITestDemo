@@ -35,7 +35,7 @@ class ConrollerShow():
         for offline_tmp in offline_test:
 
             suite.addTest(Offline_Meeting_Test(offline_tmp))   #addTest()的方法，测试套件中添加测试用例,可以加载不同类里面的不同测试函数
-        wechat_test = self.Def_List(wechat_test)  # Def_List 获取指定单元测试中，测试函数列表
+        wechat_test = self.Def_List(Wechat_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for wechat_tmp in wechat_test:
             suite.addTest(Wechat_Test(wechat_tmp))
 
