@@ -32,18 +32,5 @@ class  NewQuestionnairePage(BasePage):
         self.driver.find_element_click('css','body > div.g-container-box > div.m-container.ng-scope > div.m-form-btn.form-btn-border.ng-scope > a')  # 点击结束时间
 
 
-
 if __name__ == '__main__':
     dr = brower()
-    o = LoginPage(dr)
-    o.login()
-    o = ChoosePage(dr)
-    o.click_menu_bt('9')
-    o = IndexPage(dr)
-    o.click_linelist()
-    o = IndexDetailsOfMeeting(dr)
-    o.click_interaction()
-    # o = InteractionPage_Manage(dr)
-    # o.creat_questionnaire()
-    # o = NewQuestionnairePage(dr)
-    # o.creat_new_questionnaire()

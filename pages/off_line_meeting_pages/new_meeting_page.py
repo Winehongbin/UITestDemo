@@ -22,8 +22,8 @@ class NewMeetingPage(BasePage):
         self.driver.find_element_by_id("seminarTime").click()         # “会议时间”字段
         handleNow = self.driver.current_window_handle
         self.driver.switch_to_window(handleNow)
-        self.driver.find_element_by_name('daterangepicker_start').send_keys('2016-08-24')
-        self.driver.find_element_by_name('daterangepicker_end').send_keys('2016-08-24')
+        self.driver.find_element_by_name('daterangepicker_start').send_keys('2016-08-24')   #“会议时间”开始时间
+        self.driver.find_element_by_name('daterangepicker_end').send_keys('2016-08-24')  #“会议时间”结束时间
         self.element_click('id','seminarTime')
         self.element_click('x','/html/body/div[4]/div[3]/div/button[1]')
         self.element_click('css','#createSeminarScroller > form > div:nth-child(5) > div > div > div:nth-child(1) > button')  # “地区”字段,点击

@@ -2,7 +2,8 @@
 
 import os
 import sys
-curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；os.path.dirname(__file__):返回脚本的路径
+curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；
+# #os.path.dirname(__file__):返回脚本的路径
 rootPath = os.path.split(curPath)[0]  #os.path.split(curPath)[0]:path分割成目录
 sys.path.append(rootPath)
 import unittest
