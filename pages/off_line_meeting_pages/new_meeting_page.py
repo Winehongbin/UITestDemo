@@ -15,41 +15,27 @@ class NewMeetingPage(BasePage):
     # 创建一场会议
     def create_neww_offline(self):
         print self.deprint(), ":开始创建线下会"
-        ##创建新的会议页面
-        # “会议名称”字段
-        # 获取当前时间
-        time_now = int(time.time())
-        # 转换成localtime
-        time_local = time.localtime(time_now)
-        # 转换成新的时间格式(2016-05-09 18:59:20)
-        dt = time.strftime("%Y-%m-%d %H:%M:%S", time_local)
+        time_now = int(time.time()) # 获取当前时间
+        time_local = time.localtime(time_now) # 转换成localtime
+        dt = time.strftime("%Y-%m-%d %H:%M:%S", time_local)   #strftime：转换成新的时间格式(2016-05-09 18:59:20)
         self.driver.find_element_by_id("seminarName").send_keys(u"自动化测试" + dt)
-        # “会议时间”字段
-        self.driver.find_element_by_id("seminarTime").click()
+        self.driver.find_element_by_id("seminarTime").click()         # “会议时间”字段
         handleNow = self.driver.current_window_handle
         self.driver.switch_to_window(handleNow)
-        self.driver.find_element_by_name('daterangepicker_start').send_keys('2016-08-24')
-        self.driver.find_element_by_name('daterangepicker_end').send_keys('2016-08-24')
+        self.driver.find_element_by_name('daterangepicker_start').send_keys('2016-08-24')   #“会议时间”开始时间
+        self.driver.find_element_by_name('daterangepicker_end').send_keys('2016-08-24')  #“会议时间”结束时间
         self.element_click('id','seminarTime')
         self.element_click('x','/html/body/div[4]/div[3]/div/button[1]')
-        # “地区”字段,点击
-        self.element_click('css','#createSeminarScroller > form > div:nth-child(5) > div > div > div:nth-child(1) > button')
+        self.element_click('css','#createSeminarScroller > form > div:nth-child(5) > div > div > div:nth-child(1) > button')  # “地区”字段,点击
         self.element_click('css','#createSeminarScroller > form > div:nth-child(5) > div > div > div.dropdown.r-select.select-ssmd.open > ul > li.ng-scope > a')
         self.driver.implicitly_wait(30)
-        # "会议地点" 字段
-        self.element_value_input('css','#createSeminarScroller > form > div:nth-child(6) > div > input',u'北京')
-        # self.driver.find_element_by_css_selector("#createSeminarScroller > form > div:nth-child(6) > div > input").send_keys(
-        #     u"北京")
+        self.element_value_input('css','#createSeminarScroller > form > div:nth-child(6) > div > input',u'北京')  # "会议地点" 字段
         self.driver.implicitly_wait(30)
-
-        # 选择不启用启用微信公众号
-        self.element_click('css','#createSeminarScroller > form > div:nth-child(10) > div.col-md-2 > div > button > span')
+        self.element_click('css','#createSeminarScroller > form > div:nth-child(10) > div.col-md-2 > div > button > span') # 选择不启用启用微信公众号
         self.driver.implicitly_wait(10)
         self.element_click('css','#createSeminarScroller > form > div:nth-child(10) > div.col-md-2 > div > ul > li:nth-child(1) > a')
         self.driver.implicitly_wait(10)
-
-        # 点击“创建”按钮
-        self.element_click('css','#createSeminar > div > div > div.modal-footer > button')
+        self.element_click('css','#createSeminar > div > div > div.modal-footer > button')         # 点击“创建”按钮
         self.driver.implicitly_wait(30)
         # 201804166
         print self.deprint(), "：线下会创建成功"

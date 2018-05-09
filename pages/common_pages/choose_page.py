@@ -10,17 +10,29 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class ChoosePage(BasePage):
-    #点击首页菜单中的线下会按钮
+
+
     def click_menu_bt(self, button_pos):
+
         time.sleep(3)
         handleNow = self.driver.current_window_handle # 获得当前窗口
         self.driver.switch_to_window(handleNow)
         self.driver.implicitly_wait(30)
-        print self.deprint(), u":开始进入线下会"
-        css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")"
+        # print self.deprint(), u":开始进入线下会"
+        css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")" #把按钮位置设为参数获取
+        if button_pos =='8':
+            print self.deprint(), u":开始进入线上会"
+        if button_pos == '9':
+            print self.deprint(), u":开始进入线下会"
+        if button_pos == '11':
+            print self.deprint(), u":开始进入问卷"
+        if button_pos == '16':
+            print self.deprint(), u":开始进入客户管理"
+
         self.wait_is_visible('css',css_path)
+        time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1]) # 获取下一个窗口句柄，跳转
-        print self.deprint(), u":正常进入线下会"
+        # print self.deprint(), u":正常进入线下会"
 
 if __name__ == '__main__':
     dr = brower()
@@ -28,5 +40,5 @@ if __name__ == '__main__':
     o.login()
     o = ChoosePage(dr)
     time.sleep(3)
-    o.click_menu_bt('9')
+    o.click_menu_bt('8')
     # o.quit()

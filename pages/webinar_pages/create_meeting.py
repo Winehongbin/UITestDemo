@@ -38,6 +38,7 @@ class Webinar_Create(BasePage):
         self.find_element_text('x', '/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
         time.sleep(5)
         vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
+        #判断会议标题是否一致
         if wrtitle == vwrtitle:
             print self.deprint(), ":创建会议成功"
         else:
@@ -59,7 +60,7 @@ class Webinar_Create(BasePage):
 
 
     #取消会议
-    def Cancle_Meeting(self):
+    def Cancel_Meeting(self):
         #获取会议标题
         wbrtitle = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
         #点击取消按钮
@@ -77,7 +78,7 @@ class Webinar_Create(BasePage):
         vwbrstatus = u'已取消'
         if wbrtitle == vwbrtitle and wbrstatus == vwbrstatus :
         #if wbrtitle == vwbrtitle :
-            print self.deprint(),"成功取消会议"
+            print self.deprint(),"取消会议成功"
         else:
             print self.deprint(),"取消会议失败"
 
@@ -94,7 +95,7 @@ if __name__ == '__main__':
     wbr = Webinar_Create(dr)
     wbr.Create_Meeting()
     wbr.Publish_Meeting()
-    wbr.Cancle_Meeting()
+    wbr.Cancel_Meeting()
 
 
 

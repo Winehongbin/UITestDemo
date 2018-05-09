@@ -23,12 +23,10 @@ class InteractionPageManage(BasePage):
         time.sleep(3)
 
         """
-        # 点击“创建互动”按钮
-        self.driver.find_element_by_css_selector("#g-right > div > div.event-title.ng-scope > div > div > a").click()
+        self.driver.find_element_by_css_selector("#g-right > div > div.event-title.ng-scope > div > div > a").click()  # 点击“创建互动”按钮
         self.driver.implicitly_wait(30)
-        # 点击下拉列表“创建问卷”选项
         self.driver.find_element_by_css_selector(
-            "#g-right > div > div.event-title.ng-scope > div > div > ul > li:nth-child(1) > a").click()
+            "#g-right > div > div.event-title.ng-scope > div > div > ul > li:nth-child(1) > a").click() # 点击下拉列表“创建问卷”选项
 
 if __name__ == '__main__':
     dr = brower()

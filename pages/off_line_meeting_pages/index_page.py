@@ -11,23 +11,24 @@ class IndexPage(BasePage):
 
     # 点击创建会议
     def click_createunderline(self):
+
         self.dominant_wait('css','body > div.g-container.ng-scope > div.g-left.s-left > ul > li.ng-scope.has-page.active > h2 > a')
         print self.deprint(), ":点击创建会议"
         self.driver.switch_to.window(self.driver.window_handles[-1])   # 获取下一个窗口句柄，跳转
-        self.wait_is_visible('css','#g-right > div > div.clearfix.ng-scope > div.contact-stats-box.w715 > div.event-stats-l > div > button')
+        self.wait_is_visible('css','#g-right > div > div.clearfix.ng-scope > div.contact-stats-box.w715 > div.event-stats-l > div > button') #点击创建会议
         self.driver.implicitly_wait(30)
         print self.deprint(), ":点击创建会议完成"
 
     #点击会议列表菜单
     def click_linelist(self,list_pos):
-        print self.deprint()," :点击会议列表"
+        print self.deprint(),":点击会议列表"
         self.driver.implicitly_wait(10)
-        css_path = "/html/body/div[2]/div[1]/ul/li[" + str(list_pos) + "]/h2/a"
+        css_path = "/html/body/div[2]/div[1]/ul/li[" + str(list_pos) + "]/h2/a"   #点击会议列表
         self.wait_is_visible('x', css_path)
         self.driver.refresh()
-        print self.deprint()," :点击第一场会议"
+        print self.deprint(),":点击第一场会议"
         self.driver.implicitly_wait(30)
-        self.wait_is_visible('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')
+        self.wait_is_visible('x','//*[@id="g-right"]/div/div[3]/table/tbody/tr[1]/td[2]/a')  #点击第一场会议
         self.driver.implicitly_wait(30)
 
 

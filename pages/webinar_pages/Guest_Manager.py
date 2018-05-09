@@ -1,4 +1,4 @@
-# -*- utf-8 -*-
+# -*- coding:utf-8 -*-
 from pages.common_pages.driver import brower
 from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
@@ -6,7 +6,7 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.webinar_pages.index_page import Webinar_IndexPage
 import time
 
-class get_guestnum(BasePage):
+class Get_Guestnum(BasePage):
 
     def get_num(self):
 

@@ -12,8 +12,8 @@ from pages.common_pages.driver import brower
 reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
 sys.setdefaultencoding('utf8')
 import os
-curPath = os.path.abspath(os.path.dirname(__file__))
-print os.path.dirname(__file__)
+curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；
+print os.path.dirname(__file__)  # #os.path.dirname(__file__):返回脚本的路径
 print curPath
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)

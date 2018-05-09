@@ -160,7 +160,6 @@ class SendEmailModel():
 
 if __name__ == '__main__':
     P = SendEmailModel()
-    # content = "test_001_createoffline;test_002_manageoffline"
     content = "test_001_loginoffline;test_002_createoffline"
     # content = "test_003_offline"
     P.PostReport_only("总时间",content)

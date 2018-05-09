@@ -13,10 +13,7 @@ class IndexDetailsOfMeeting(BasePage):
     # 点击互动环节菜单
     def click_interaction(self):
         print self.deprint(), ":点击互动环节菜单"
-        # 点击创建会议
-        # 获取下一个窗口句柄，跳转
-        self.driver.switch_to.window(self.driver.window_handles[-1])
-        # self.element_click('link', '互动环节')
+        self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
         self.wait_is_visible('x','/html/body/div[2]/div[2]/ul[2]/li[6]')
         self.driver.implicitly_wait(30)
         print self.deprint(), "：进入互动环节页面"
