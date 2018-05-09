@@ -44,7 +44,7 @@ class Offline_Meeting_Test(BaseUnit):
         """ 测试创建线下会 """
 
         print time.deprint(), ":开始执行登录，并进入线下会用例"
-        dr = brower()
+        dr = self.driver
         object = LoginPage(dr)
         object.login()
         object = ChoosePage(dr)
@@ -60,7 +60,7 @@ class Offline_Meeting_Test(BaseUnit):
         """ 测试删除线下会 """
 
         print time.deprint(), ":开始执行登录，并进入删除线下会用例"
-        dr = brower()
+        dr = self.driver
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
@@ -76,7 +76,7 @@ class Offline_Meeting_Test(BaseUnit):
         """ 添加互动环节"""
 
         print time.deprint(), ":开始执行登录，并进入添加线下会互动环节用例"
-        dr = brower()
+        dr = self.driver
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
