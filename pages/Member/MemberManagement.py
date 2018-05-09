@@ -41,6 +41,7 @@ class FieldAction(BasePage):
         self.element_click("x","//*[@id='setFieldModal']/div/div/div[3]/button")#点击保存，保存创建的字段
         time.sleep(1)
         self.element_click("x","//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")#点击确认保存
+        return
     def DelField(self,FieldName):
         #变量定义为基本字段的中文名称，传入中文名称即可删除对应字段
         time.sleep(1)
@@ -95,7 +96,21 @@ class FieldAction(BasePage):
             self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/p/a[2]")#点击保存按钮
             time.sleep(1)
             self.element_click("x","//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")#点击确认按钮
-
+    def getUrlSignUp(self):
+        # !/usr/bin/python3.4
+        # -*- coding: utf-8 -*-
+        # 我的教程：http://www.cnblogs.com/TTyb/p/6046082.html
+        from selenium import webdriver
+        # 打开谷歌浏览器
+        browser = webdriver.Chrome()
+        # 打开窗口
+        browser.get("https://www.baidu.com/")
+        # 打开新窗口
+        newwindow = 'window.open("https://www.baidu.com");'
+        browser.execute_script(newwindow)
+        # 切换到新的窗口
+        handles = browser.window_handles
+        browser.switch_to_window(handles[-1])
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
