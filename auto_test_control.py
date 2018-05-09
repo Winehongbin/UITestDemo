@@ -23,7 +23,7 @@ class ConrollerShow():
         def_name = dir(class_name)    #dir():返回当前范围内的变量、方法和定义的类型列表
         for tmp in def_name:
             def_four = str(tmp)[:4]   # str(tmp)[:4] :索引和切片，从下标为0的元素选择到下标为3的元素，不包括下标4的元素
-            if def_four == "test":
+            if def_four == "test":    #取方法前四个字母为test的
                 list.append(tmp)     #append() 方法向列表的尾部添加一个新的元素。只接受一个参数
         return list
 
@@ -58,7 +58,6 @@ class ConrollerShow():
 
 if __name__ == '__main__':
     A = ConrollerShow()
-
     A.SupportTool_Control()
 
 
