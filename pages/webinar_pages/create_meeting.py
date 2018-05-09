@@ -38,6 +38,7 @@ class Webinar_Create(BasePage):
         self.find_element_text('x', '/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
         time.sleep(5)
         vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
+        #判断会议标题是否一致
         if wrtitle == vwrtitle:
             print self.deprint(), ":创建会议成功"
         else:
