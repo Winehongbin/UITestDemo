@@ -32,7 +32,7 @@ class Webinar_Case(BaseUnit):
         o.Index_Webinar()
         wbr = Webinar_Create(dr)
         wbr.Create_Meeting()
-        wbr.Cancle_Meeting()
+        wbr.Cancel_Meeting()
         print t.deprint(), ":创建并取消线上会用例执行完成"
 
     def test_002_webinar_publish_cancle(self):
@@ -50,7 +50,7 @@ class Webinar_Case(BaseUnit):
         wbr = Webinar_Create(dr)
         wbr.Create_Meeting()
         wbr.Publish_Meeting()
-        wbr.Cancle_Meeting()
+        wbr.Cancel_Meeting()
         print t.deprint(), ":创建，发布并取消线上会用例执行完成"
 
 

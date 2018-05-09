@@ -18,7 +18,7 @@ class Webcast_Setting(BasePage):
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]')
         time.sleep(3)
 
-        #从嘉宾库选择弹窗中，点选3个嘉宾                                                                                               q
+        #从嘉宾库选择弹窗中，点选3个嘉宾
         self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/label')
         self.wait_is_visible('x','//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/label')
         self.wait_is_visible('x', '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/label')
