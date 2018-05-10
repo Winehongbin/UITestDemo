@@ -23,15 +23,19 @@ class Member_Test(unittest.TestCase):
         self.driver.quit()
     # 创建图文素材用例
     def test_001_new_custom_mail_field(self):
+        """ 新建自定义身份标识字段"""
         test=FieldAction(self.driver)
         test.new_custom_mail_field()
     def test_002_new_custom_list_field(self):
+        """ 新建自定义列表字段 """
         test=FieldAction(self.driver)
         test.new_custom_list_field(u"省市")
     def test_003_edit_form(self):
+        """ 编辑注册表单删除添加指定字段"""
         test = FieldAction(self.driver)
         test.edit_form(u"自动化测试专用", u"手机", u"姓名")
     def test_004_del_field(self):
+        """ 删除新创建的两个自定义字段 """
         test = FieldAction(self.driver)
         test.del_field(u"自定义邮箱身份标识")
         test.del_field(u"自定义列表字段")
