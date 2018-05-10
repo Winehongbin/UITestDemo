@@ -51,7 +51,7 @@ class AllReport(BasePage):
                                              description=u"此报告目前为测试阶段状态，谢谢观赏,自动化测试小组敬上")
         runner.run(suitname)
 
-    def OnlyNeed_Suite(self,suitname):
+    def onlyneed_suite(self,suitname):
 
         # myfile=os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\report\Smarket3.0_TestReport.html"
         # myfile_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\report\\reportlog\ "
@@ -88,4 +88,4 @@ if __name__ == "__main__":
     pass
 
     # o = AllReport()
-    # o.OnlyNeed_Suite(suitname=test001)
+    # o.onlyneed_suite(suitname=test001)
