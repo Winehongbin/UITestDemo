@@ -28,5 +28,5 @@ if __name__ == '__main__':
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
     o.Index_Webinar()
-    guestnum = get_guestnum(dr)
+    guestnum = Get_Guestnum(dr)
     guestnum.get_num()

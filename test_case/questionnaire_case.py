@@ -29,8 +29,9 @@ class Questionnaire(unittest.TestCase):
         object.open_questionBank()
         object = QuestionBankManagement(self.driver)
         actual_result=object.create_question()
-        expect_result="What's your favorite sport?"
+        expect_result="What is your favorite sport?"
         self.assertEqual(actual_result,expect_result,u"试题没有创建成功")
+        object.delete_question()
 
 if __name__ == '__main__':
     suit = unittest.TestSuite()

@@ -62,14 +62,14 @@ class ConrollerShow():
 
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
-        AddSuite.OnlyNeed_Suite(suite)    #OnlyNeed_Suite(suite) ：指定suit的report
+        AddSuite.onlyneed_suite(suite)    #onlyneed_suite(suite) ：指定suit的report
 
         # 发送邮件
         EndTime = time.time()
         PerformTime = EndTime - StartTime
         content = "autoTest"
         SendEmail = email_oper.SendEmailModel()  #实例化SendEmailModel类
-        SendEmail.PostReport_only(PerformTime,str(content)) #调用SendEmailModel类中PostReport_only方法
+        SendEmail.postreport_only(PerformTime,str(content)) #调用SendEmailModel类中postreport_only方法
 
 
 if __name__ == '__main__':

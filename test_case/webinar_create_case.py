@@ -29,15 +29,15 @@ class Webinar_Case(BaseUnit):
         o.click_menu_bt('8')
         o = Webinar_IndexPage(dr)
         time.sleep(3)
-        o.Index_Webinar()
+        o.index_webinar()
         wbr = Webinar_Create(dr)
-        wbr.Create_Meeting()
-        wbr.Cancel_Meeting()
-        print t.deprint(), ":创建并取消线上会用例执行完成"
+        wbr.create_meeting()
+        wbr.cancel_meeting()
+        print t.deprint("创建并取消线上会用例执行完成")
 
     def test_002_webinar_publish_cancle(self):
         # 创建线上会，发布并取消会议
-        print t.deprint(), ":开始执行线上会创建后发布并取消的用例"
+        print t.deprint("开始执行线上会创建后发布并取消的用例")
         dr = brower()
         o = LoginPage(dr)
         o.login()
@@ -46,12 +46,12 @@ class Webinar_Case(BaseUnit):
         o.click_menu_bt('8')
         o = Webinar_IndexPage(dr)
         time.sleep(3)
-        o.Index_Webinar()
+        o.index_webinar()
         wbr = Webinar_Create(dr)
-        wbr.Create_Meeting()
-        wbr.Publish_Meeting()
-        wbr.Cancel_Meeting()
-        print t.deprint(), ":创建，发布并取消线上会用例执行完成"
+        wbr.create_meeting()
+        wbr.publish_meeting()
+        wbr.cancel_meeting()
+        print t.deprint("创建，发布并取消线上会用例执行完成")
 
 
 

@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
     #执行单元测试，生成报告
     AddSuite = report.AllReport()
-    AddSuite.OnlyNeed_Suite(suite)
+    AddSuite.onlyneed_suite(suite)
 
     #发送邮件
     EndTime = time.time()
@@ -109,4 +109,4 @@ if __name__ == "__main__":
 
     # SendEmail = email.SendEmailModel()
     SendEmail = email_oper.SendEmailModel()
-    SendEmail.PostReport_only(PerformTime,content)
+    SendEmail.postreport_only(PerformTime,content)
