@@ -98,6 +98,7 @@ class FieldAction(BasePage):
                 try:
                     self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div[2]/a[1]")
                 except:#路径有两种，利用错误机制，先尝试第一种路径，然后第二种
+                    time.sleep(1)
                     self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div/a[1]")
             for choose_num in range(1,sign_up_num-1):#循环获取字段名称
                 ChooseFieldName  = self.find_element_text("x","/html/body/div[2]/div[1]/div[2]/div[1]/ul/li/ul/li["+ str(choose_num) +"]/a")
