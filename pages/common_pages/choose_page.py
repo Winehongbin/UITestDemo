@@ -21,13 +21,13 @@ class ChoosePage(BasePage):
         # print self.deprint(), u":开始进入线下会"
         css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")" #把按钮位置设为参数获取
         if button_pos =='8':
-            print self.deprint(), u":开始进入线上会"
+            self.deprint(u"开始进入线上会")
         if button_pos == '9':
-            print self.deprint(), u":开始进入线下会"
+            self.deprint(u"开始进入线下会")
         if button_pos == '11':
-            print self.deprint(), u":开始进入问卷"
+            self.deprint(u"开始进入问卷")
         if button_pos == '16':
-            print self.deprint(), u":开始进入客户管理"
+            self.deprint(u"开始进入客户管理")
 
         self.wait_is_visible('css',css_path)
         time.sleep(3)

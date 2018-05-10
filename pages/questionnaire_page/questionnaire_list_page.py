@@ -9,7 +9,7 @@ class QuestionnaireListPage(BasePage):
     #打开管理题库
     def open_questionBank(self):
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
-        print self.deprint(), ":点击管理题库"
+        self.deprint("点击管理题库")
         self.dominant_wait('css','body > div.g-container-box > div.m-container.ng-scope > div.m-bar.ng-scope > div.pull-right > a.u-mr10')#点击管理题库的按钮
 
 

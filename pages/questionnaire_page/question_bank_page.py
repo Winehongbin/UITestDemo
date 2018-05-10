@@ -9,9 +9,9 @@ from pages.questionnaire_page.questionnaire_list_page import QuestionnaireListPa
 
 class QuestionBankManagement(BasePage):
 
-# 创建试题
+    # 创建试题
     def create_question(self):
-        print self.deprint(),':开始创建试题'
+        self.deprint('开始创建试题')
         self.dominant_wait('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a') #点击默认题库
         self.dominant_wait('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/button') #点击创建试题
         time.sleep(1)
@@ -31,7 +31,7 @@ class QuestionBankManagement(BasePage):
         self.driver.execute_script(js)
         time.sleep(1)
         self.find_element_click('x','//*[@id="examDialog"]/div/div/div[3]/button[1]') #点击确定按钮
-        print self.deprint(), ':创建试题完成'
+        self.deprint('创建试题完成')
         return  self.find_element_text('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')
 
 
