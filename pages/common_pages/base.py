@@ -246,6 +246,12 @@ class BasePage(object):
     def deprint(self,content):
         dt = datetime.now()
         print datetime.strftime(dt, '%Y-%m-%d %H:%M:%S')+": "+content
+    #按YYYY-MM-DD HH:MM:SS格式获取当前时间，并返回
+    def nowtime(self):
+        dt = datetime.now()
+        time=datetime.strftime(dt,'%Y-%m-%d %H:%M:%S')
+        return time
+        print time
     #按一定格式获取当前时间，需要from datetime import datetime
     def printime(self):
         dt = datetime.now()
@@ -257,3 +263,5 @@ class BasePage(object):
 if __name__ == '__main__':
     A = BasePage(1)
     A.deprint("需要打印的内容")
+    time=A.nowtime()
+    print time
