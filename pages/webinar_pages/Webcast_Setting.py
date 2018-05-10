@@ -15,8 +15,8 @@ class Webcast_Setting(BasePage):
 
         #从嘉宾库添加嘉宾信息
         print self.deprint("从嘉宾库添加嘉宾信息")
-        AddFromGuestsBtn = '/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]'
-        self.wait_is_visible('x',AddFromGuestsBtn)
+        addfromguestsbtn = '/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]'
+        self.wait_is_visible('x',addfromguestsbtn)
         time.sleep(3)
 
         #从嘉宾库选择弹窗中，点选3个嘉宾后保存
@@ -37,14 +37,14 @@ class Webcast_Setting(BasePage):
         if guestnum >= 3 :
             #大于3个，则直接点选3个嘉宾
             time.sleep(3)
-            GuestBtn1='//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/div[2]/div[3]/ul/li[2]/span[2]'
-            GuestBtn2='//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/div[2]/div[3]/ul/li[2]/span[2]'
-            GuestBtn3='//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/div[2]/div[3]/ul/li[2]/span[2]'
-            GuestBtn4='//*[@id="guestDb"]/div/div/div[3]/a[1]'
-            self.wait_is_visible('x',GuestBtn1)
-            self.wait_is_visible('x',GuestBtn2)
-            self.wait_is_visible('x',GuestBtn3)
-            self.wait_is_visible('x',GuestBtn4)
+            guestbtn1='//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/div[2]/div[3]/ul/li[2]/span[2]'
+            guestbtn2='//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/div[2]/div[3]/ul/li[2]/span[2]'
+            guestbtn3='//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/div[2]/div[3]/ul/li[2]/span[2]'
+            guestbtn4='//*[@id="guestDb"]/div/div/div[3]/a[1]'
+            self.wait_is_visible('x',guestbtn1)
+            self.wait_is_visible('x',guestbtn2)
+            self.wait_is_visible('x',guestbtn3)
+            self.wait_is_visible('x',guestbtn4)
             #break
         else:
 
@@ -71,6 +71,6 @@ if __name__ == '__main__':
     wbr.create_meeting()
     gguestnum = Get_Guestnum(dr)
     guestnum = gguestnum.get_num()
-    Guest_Add = Webcast_Setting(dr)
-    Guest_Add.add_guest(guestnum)
+    guest_add = Webcast_Setting(dr)
+    guest_add.add_guest(guestnum)
 

@@ -27,6 +27,6 @@ if __name__ == '__main__':
     o.click_menu_bt('8')
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
-    o.Index_Webinar()
+    o.index_webinar()
     guestnum = Get_Guestnum(dr)
     guestnum.get_num()
