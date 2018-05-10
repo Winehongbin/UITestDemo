@@ -12,6 +12,8 @@ from pages.wechat.create_material import Creat_media
 
 class Wechat_Test(unittest.TestCase):
 
+    """微信测试用例"""
+
     def setUp(self):
         self.driver= brower()
         login = LoginPage(self.driver)
@@ -24,11 +26,15 @@ class Wechat_Test(unittest.TestCase):
     # 创建图文素材用例
     def test_001_createMedia(self):
 
+        """测试创建图文素材"""
+
         test=Creat_media(self.driver)
         actual_result=test.creat_media()
         expected_result=u'素材创建成功'
         self.assertEqual(actual_result,expected_result,msg="failed")
+
     def test_002_deleteMedia(self):
+        """测试删除图文素材"""
         test=Creat_media(self.driver)
         test.delete_media()
 if __name__ == "__main__":
