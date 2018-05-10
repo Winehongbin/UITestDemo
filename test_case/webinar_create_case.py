@@ -7,6 +7,7 @@ from pages.common_pages.driver import brower
 from pages.common_pages.choose_page import ChoosePage
 import time
 from pages.webinar_pages.create_meeting import Webinar_Create
+from pages.webinar_pages.webcast_setting import Webcast_Setting
 
 
 import unittest
