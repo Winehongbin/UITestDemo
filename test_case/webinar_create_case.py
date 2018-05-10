@@ -7,7 +7,7 @@ from pages.common_pages.driver import brower
 from pages.common_pages.choose_page import ChoosePage
 import time
 from pages.webinar_pages.create_meeting import Webinar_Create
-from pages.webinar_pages.Webcast_Setting import Webcast_Setting
+from pages.webinar_pages.webcast_setting import Webcast_Setting
 
 
 import unittest
@@ -20,7 +20,7 @@ class Webinar_Case(BaseUnit):
 
     def test_001_webinar_create_cancle(self):
         # 创建线上会并取消会议
-        print t.deprint(), ":开始执行线上会创建后取消的用例"
+        print t.deprint("开始执行线上会创建后取消的用例")
         dr = brower()
         o = LoginPage(dr)
         o.login()
