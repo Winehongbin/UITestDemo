@@ -14,7 +14,7 @@ class Webcast_Setting(BasePage):
     def add_guest(self,guestnum):
 
         #从嘉宾库添加嘉宾信息
-        print self.deprint("从嘉宾库添加嘉宾信息")
+        self.deprint("从嘉宾库添加嘉宾信息")
         addfromguestsbtn = '/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]'
         self.wait_is_visible('x',addfromguestsbtn)
         time.sleep(3)
