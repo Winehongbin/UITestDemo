@@ -69,8 +69,8 @@ class SendEmailModel():
             print "Error: 无法发送邮件"
 
     #邮件内容的设置
-    def PostReport_only(self,PerformTime,content):
-    # def PostReport_only(self):
+    def postreport_only(self,PerformTime,content):
+    # def postreport_only(self):
 
         import smtplib
         content_str=str(content)
@@ -162,4 +162,4 @@ if __name__ == '__main__':
     P = SendEmailModel()
     content = "test_001_loginoffline;test_002_createoffline"
     # content = "test_003_offline"
-    P.PostReport_only("总时间",content)
+    P.postreport_only("总时间",content)
