@@ -8,8 +8,8 @@ from pages.common_pages.driver import brower
 class Webinar_IndexPage(BasePage):
 
     # 打开线上会的首页
-    def Index_Webinar(self):
-        print self.deprint(),"进入线上会首页"
+    def index_webinar(self):
+        print self.deprint("进入线上会首页")
 
 if __name__ == '__main__':
     dr = brower()
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     o.click_menu_bt('8')
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
-    o.Index_Webinar()
+    o.index_webinar()
 
 
 
