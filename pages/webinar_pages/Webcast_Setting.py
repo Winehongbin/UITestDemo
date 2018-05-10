@@ -5,17 +5,17 @@ from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
 from pages.webinar_pages.create_meeting import Webinar_Create
 from pages.webinar_pages.index_page import Webinar_IndexPage
-from pages.webinar_pages.Guest_Manager import Get_Guestnum
+from pages.webinar_pages.guest_manager import Get_Guestnum
 import time
 
 class Webcast_Setting(BasePage):
 
 
-    def Add_Guest(self,guestnum):
+    def add_guest(self,guestnum):
 
         #从嘉宾库添加嘉宾信息
-        print self.deprint(),":从嘉宾库添加嘉宾信息"
-        AddFromGuestsBtn='/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]'
+        print self.deprint("从嘉宾库添加嘉宾信息")
+        AddFromGuestsBtn = '/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[1]'
         self.wait_is_visible('x',AddFromGuestsBtn)
         time.sleep(3)
 
@@ -31,7 +31,7 @@ class Webcast_Setting(BasePage):
         # i = 1
         # while guestnum < 3:
         #     print guestnum
-        #     if num > 3 :
+        #     if num >= 3 :
         #         break
         #     else:
         if guestnum >= 3 :
@@ -68,9 +68,9 @@ if __name__ == '__main__':
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
     wbr = Webinar_Create(dr)
-    wbr.Create_Meeting()
+    wbr.create_meeting()
     gguestnum = Get_Guestnum(dr)
     guestnum = gguestnum.get_num()
     Guest_Add = Webcast_Setting(dr)
-    Guest_Add.Add_Guest(guestnum)
+    Guest_Add.add_guest(guestnum)
 

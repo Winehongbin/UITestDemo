@@ -12,8 +12,8 @@ import time
 class Webinar_Create(BasePage):
 
     "创建线上会"
-    def Create_Meeting(self):
-        print self.deprint(),"开始创建线上会"
+    def create_meeting(self):
+        print self.deprint("开始创建线上会")
         wrtitle = u'测试会议1'
         #点击首页的创建会议按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
@@ -40,12 +40,12 @@ class Webinar_Create(BasePage):
         vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
         #判断会议标题是否一致
         if wrtitle == vwrtitle:
-            print self.deprint(), ":创建会议成功"
+            print self.deprint("创建会议成功"),
         else:
             print("创建会议失败")
 
     #发布会议
-    def Publish_Meeting(self):
+    def publish_meeting(self):
         #点击发布按钮
         self.wait_is_visible('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/button[1]')
         time.sleep(5)
@@ -54,13 +54,13 @@ class Webinar_Create(BasePage):
         vstatus = u'进入会场'
         vvstatus = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/a[3]')
         if vstatus == vvstatus :
-            print self.deprint(),'会议发布成功'
+            print self.deprint("会议发布成功")
         else:
-            print self.deprint(),'会议发布失败'
+            print self.deprint("会议发布失败")
 
 
     #取消会议
-    def Cancel_Meeting(self):
+    def cancel_meeting(self):
         #获取会议标题
         wbrtitle = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
         #点击取消按钮
@@ -78,9 +78,9 @@ class Webinar_Create(BasePage):
         vwbrstatus = u'已取消'
         if wbrtitle == vwbrtitle and wbrstatus == vwbrstatus :
         #if wbrtitle == vwbrtitle :
-            print self.deprint(),"取消会议成功"
+            print self.deprint("取消会议成功")
         else:
-            print self.deprint(),"取消会议失败"
+            print self.deprint("取消会议失败")
 
 if __name__ == '__main__':
     dr = brower()
@@ -93,9 +93,9 @@ if __name__ == '__main__':
     time.sleep(3)
     o.Index_Webinar()
     wbr = Webinar_Create(dr)
-    wbr.Create_Meeting()
-    wbr.Publish_Meeting()
-    wbr.Cancel_Meeting()
+    wbr.create_meeting()
+    wbr.publish_meeting()
+    wbr.cancel_meeting()
 
 
 
