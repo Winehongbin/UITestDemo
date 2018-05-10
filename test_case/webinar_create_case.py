@@ -18,7 +18,7 @@ class Webinar_Case(BaseUnit):
 
     """线上会测试用例"""
 
-    def test_001_webinar_create_cancle(self):
+    def test_001_webinar_create_cancel(self):
         # 创建线上会并取消会议
         print t.deprint("开始执行线上会创建后取消的用例")
         dr = brower()
@@ -35,7 +35,7 @@ class Webinar_Case(BaseUnit):
         wbr.cancel_meeting()
         print t.deprint("创建并取消线上会用例执行完成")
 
-    def test_002_webinar_publish_cancle(self):
+    def test_002_webinar_publish_cancel(self):
         # 创建线上会，发布并取消会议
         print t.deprint("开始执行线上会创建后发布并取消的用例")
         dr = brower()
@@ -59,5 +59,5 @@ if __name__ == '__main__':
     start = time.time()
     suite = unittest.TestSuite()
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
-    suite.addTest(Webinar_Case("test_001_webinar_create_cancle"))
-    suite.addTest(Webinar_Case("test_002_webinar_publish_cancle"))
+    suite.addTest(Webinar_Case("test_001_webinar_create_cancel"))
+    suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
