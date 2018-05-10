@@ -22,24 +22,24 @@ class Member_Test(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
     # 创建图文素材用例
-    def test_001_NewCustomEmailField(self):
+    def test_001_new_custom_mail_field(self):
         test=FieldAction(self.driver)
-        test.NewCustomEmailField()
-    def test_002_NewCustomListField(self):
+        test.new_custom_mail_field()
+    def test_002_new_custom_list_field(self):
         test=FieldAction(self.driver)
-        test.NewCustomListField(u"省市")
-    def test_003_NewCustomListField(self):
+        test.new_custom_list_field(u"省市")
+    def test_003_edit_form(self):
         test = FieldAction(self.driver)
-        test.EditForm(u"自动化测试专用", u"手机", u"姓名")
-    def test_004_DelField(self):
+        test.edit_form(u"自动化测试专用", u"手机", u"姓名")
+    def test_004_del_field(self):
         test = FieldAction(self.driver)
-        test.DelField(u"自定义邮箱身份标识")
-        test.DelField(u"自定义列表字段")
+        test.del_field(u"自定义邮箱身份标识")
+        test.del_field(u"自定义列表字段")
 if __name__ == "__main__":
     suit=unittest.TestSuite()
-    suit.addTest(Member_Test("test_001_NewCustomEmailField"))
-    suit.addTest(Member_Test("test_002_NewCustomListField"))
-    suit.addTest(Member_Test("test_003_NewCustomListField"))
-    suit.addTest(Member_Test("test_004_DelField"))
+    suit.addTest(Member_Test("test_001_new_custom_mail_field"))
+    suit.addTest(Member_Test("test_002_new_custom_list_field"))
+    suit.addTest(Member_Test("test_003_edit_form"))
+    suit.addTest(Member_Test("test_004_del_field"))
     runner = unittest.TextTestRunner()
     runner.run(suit)
