@@ -7,6 +7,7 @@ from pages.webinar_pages.create_meeting import Webinar_Create
 from pages.webinar_pages.index_page import Webinar_IndexPage
 from pages.webinar_pages.guest_manager import Get_Guestnum
 import time
+from common.common_function.scrollbar import Scrollbar_Move
 
 class Webcast_Setting(BasePage):
 
@@ -42,17 +43,19 @@ class Webcast_Setting(BasePage):
             time.sleep(3)
             guestbtn1 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/div[2]/div[3]/ul/li[2]/span[2]'
             guestbtn2 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/div[2]/div[3]/ul/li[2]/span[2]'
-            guestbtn3 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/div[2]/div[3]/ul/li[2]/span[2]'
+            #guestbtn3 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/div[2]/div[3]/ul/li[2]/span[2]'
             guestbtn4 = '//*[@id="guestDb"]/div/div/div[3]/a[1]'
             self.wait_is_visible('x', guestbtn1)
             self.wait_is_visible('x', guestbtn2)
-            self.wait_is_visible('x', guestbtn3)
+            #self.wait_is_visible('x', guestbtn3)
             self.wait_is_visible('x', guestbtn4)
-            print self.deprint("从嘉宾库添加3个嘉宾信息成功")
+            print self.deprint("从嘉宾库添加2个嘉宾信息成功")
 
     # 添加会议日程
     def add_agenda(self):
 
+        self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[4]/div')
+        self.scrollbarmovedown()
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/h2/div/a')
         self.element_value_input('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[1]/div/text-box/div/input',u'会议日程1')
         # 添加第一个嘉宾
@@ -67,6 +70,9 @@ class Webcast_Setting(BasePage):
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/ul/li[2]/a')
         # 点击确定
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a')
+
+
+
         print "添加2个会议日程成功"
 
 if __name__ == '__main__':
@@ -76,6 +82,7 @@ if __name__ == '__main__':
     o = ChoosePage(dr)
     time.sleep(3)
     o.click_menu_bt('8')
+    time.sleep(2)
     gguestnum = Get_Guestnum(dr)
     guestnum = int(gguestnum.get_num())
     o =  Webinar_IndexPage(dr)
@@ -84,8 +91,14 @@ if __name__ == '__main__':
     wbr = Webinar_Create(dr)
     wbr.create_meeting()
     wbr_seting = Webcast_Setting(dr)
-    wbr_seting.add_guest(guestnum)
+    # wbr_seting.add_guest(guestnum)
     time.sleep(3)
+    # scollbarmove = Scrollbar_Move(dr)
+    # scollbarmove.scrollbarmovedown()
+    # time.sleep(1)
     wbr_seting.add_agenda()
-    o.quit()
+    # time.sleep(2)
+    # scollbarmove.scrollbarmoveup()
+    # time.sleep(2)
+    # o.quit()
 

@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.support.select import Select
 import time
-
+from selenium.webdriver.common.keys import Keys
 #页面操作基础类
 class BasePage(object):
     base_url="https://tenant.smarket.net.cn"
@@ -324,6 +324,13 @@ class BasePage(object):
                 break
         if isFind != True:
             print "没找到元素"
+
+    def scrollbarmovedown(self):
+        # driver = webdriver.Chrome()
+        # 通过按向下键将页面滚动条拖到底部
+        # self.f.find_element_by_xpath("//*[@id='page']/a[10]").send_keys(Keys.DOWN)
+        self.element_value_input('x', "//*[@id='page']/a[10]", Keys.DOWN)
+        print '将滚动条拉到底端'
 
 if __name__ == '__main__':
     A = BasePage(1)
