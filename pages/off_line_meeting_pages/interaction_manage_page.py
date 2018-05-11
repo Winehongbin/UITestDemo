@@ -14,7 +14,7 @@ class InteractionPageManage(BasePage):
     # 创建问卷
     def creat_questionnaire(self):
         time.sleep(5)
-        print self.deprint(), ":开始创建问卷"
+        self.deprint("开始创建问卷")
         """
         # 点击左侧的“互动环节”按钮
         self.driver.find_element_by_css_selector(

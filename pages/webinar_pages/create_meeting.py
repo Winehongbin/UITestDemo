@@ -13,8 +13,9 @@ class Webinar_Create(BasePage):
 
     "创建线上会"
     def create_meeting(self):
-        print self.deprint("开始创建线上会")
-        wrtitle = u'测试会议1'
+        self.deprint("开始创建线上会")
+        titlet = self.nowtime()
+        wrtitle = u'自动化创建测试会议' + str(titlet)
         #点击首页的创建会议按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
         self.driver.implicitly_wait(20)
@@ -40,7 +41,7 @@ class Webinar_Create(BasePage):
         vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
         #判断会议标题是否一致
         if wrtitle == vwrtitle:
-            print self.deprint("创建会议成功"),
+            self.deprint("创建会议成功"),
         else:
             print("创建会议失败")
 
@@ -54,9 +55,9 @@ class Webinar_Create(BasePage):
         vstatus = u'进入会场'
         vvstatus = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/a[3]')
         if vstatus == vvstatus :
-            print self.deprint("会议发布成功")
+            self.deprint("会议发布成功")
         else:
-            print self.deprint("会议发布失败")
+            self.deprint("会议发布失败")
 
 
     #取消会议
@@ -78,9 +79,9 @@ class Webinar_Create(BasePage):
         vwbrstatus = u'已取消'
         if wbrtitle == vwbrtitle and wbrstatus == vwbrstatus :
         #if wbrtitle == vwbrtitle :
-            print self.deprint("取消会议成功")
+            self.deprint("取消会议成功")
         else:
-            print self.deprint("取消会议失败")
+            self.deprint("取消会议失败")
 
 if __name__ == '__main__':
     dr = brower()
@@ -91,7 +92,7 @@ if __name__ == '__main__':
     o.click_menu_bt('8')
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
-    o.Index_Webinar()
+    o.index_webinar()
     wbr = Webinar_Create(dr)
     wbr.create_meeting()
     wbr.publish_meeting()

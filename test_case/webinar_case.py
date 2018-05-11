@@ -7,7 +7,8 @@ from pages.common_pages.driver import brower
 from pages.common_pages.choose_page import ChoosePage
 import time
 from pages.webinar_pages.create_meeting import Webinar_Create
-from pages.webinar_pages.Webcast_Setting import Webcast_Setting
+from pages.webinar_pages.webcast_setting import Webcast_Setting
+from pages.webinar_pages.guest_manager import Get_Guestnum
 
 
 import unittest
@@ -18,46 +19,58 @@ class Webinar_Case(BaseUnit):
 
     """线上会测试用例"""
 
-    def test_001_webinar_create_cancle(self):
+    def test_001_webinar_create_cancel(self):
         # 创建线上会并取消会议
-        print t.deprint(), ":开始执行线上会创建后取消的用例"
+        print t.deprint("开始执行线上会创建后取消的用例")
         dr = brower()
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
         time.sleep(3)
         o.click_menu_bt('8')
+        gguestnum = Get_Guestnum(dr)
+        guestnum = int(gguestnum.get_num())
         o = Webinar_IndexPage(dr)
         time.sleep(3)
         o.index_webinar()
         wbr = Webinar_Create(dr)
         wbr.create_meeting()
+        guest_add = Webcast_Setting(dr)
+        guest_add.add_guest(guestnum)
+        time.sleep(2)
         wbr.cancel_meeting()
+        o.quit()
         print t.deprint("创建并取消线上会用例执行完成")
 
-    def test_002_webinar_publish_cancle(self):
+    def test_002_webinar_publish_cancel(self):
         # 创建线上会，发布并取消会议
-        print t.deprint("开始执行线上会创建后发布并取消的用例")
+        t.deprint("开始执行线上会创建后发布并取消的用例")
         dr = brower()
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
         time.sleep(3)
         o.click_menu_bt('8')
+        gguestnum = Get_Guestnum(dr)
+        guestnum = int(gguestnum.get_num())
         o = Webinar_IndexPage(dr)
         time.sleep(3)
         o.index_webinar()
         wbr = Webinar_Create(dr)
         wbr.create_meeting()
+        guest_add = Webcast_Setting(dr)
+        guest_add.add_guest(guestnum)
+        time.sleep(2)
         wbr.publish_meeting()
         wbr.cancel_meeting()
-        print t.deprint("创建，发布并取消线上会用例执行完成")
-
-
+        o.quit()
+        t.deprint("创建，发布并取消线上会用例执行完成")
 
 if __name__ == '__main__':
     start = time.time()
     suite = unittest.TestSuite()
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
-    suite.addTest(Webinar_Case("test_001_webinar_create_cancle"))
-    suite.addTest(Webinar_Case("test_002_webinar_publish_cancle"))
+    suite.addTest(Webinar_Case("test_001_webinar_create_cancel"))
+    suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
+    runner = unittest.TextTestRunner()
+    runner.run(suite)
