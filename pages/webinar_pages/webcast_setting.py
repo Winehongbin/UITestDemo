@@ -19,9 +19,17 @@ class Webcast_Setting(BasePage):
                 addguestbtn = '/html/body/div[1]/div[2]/div[2]/div/div[3]/h2/div/a[2]'
                 self.wait_is_visible('x',addguestbtn)
                 time.sleep(2)
+                # 填写嘉宾信息
                 gname = u'校校'+ str(i)
                 inputguestinfobtn='//*[@id="createGuest"]/div/div/div[2]/div/form/div[1]/div/input'
                 self.element_value_input('x',inputguestinfobtn, gname)
+                self.element_value_input('x', '//*[@id="createGuest"]/div/div/div[2]/div/form/div[3]/div/input',"sinobase")
+
+                gmobile = '1990000112' + str(i)
+                self.element_value_input('x','//*[@id="createGuest"]/div/div/div[2]/div/form/div[7]/div/input',gmobile)
+                gemail = '123@qq.com' + str(i)
+                self.element_value_input('x', '//*[@id="createGuest"]/div/div/div[2]/div/form/div[8]/div/input',gemail)
+                # 点击保存按钮
                 savebtn= '//*[@id="createGuest"]/div/div/div[3]/a[1]'
                 self.wait_is_visible('x',savebtn)
                 print self.deprint('嘉宾新增成功')

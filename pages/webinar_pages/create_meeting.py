@@ -14,7 +14,8 @@ class Webinar_Create(BasePage):
     "创建线上会"
     def create_meeting(self):
         self.deprint("开始创建线上会")
-        wrtitle = u'测试会议1'
+        titlet = self.nowtime()
+        wrtitle = u'自动化创建测试会议' + str(titlet)
         #点击首页的创建会议按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
         self.driver.implicitly_wait(20)
