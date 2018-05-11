@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.support.select import Select
+import time
 
 #页面操作基础类
 class BasePage(object):
@@ -260,6 +261,45 @@ class BasePage(object):
     def Select_Value(self,location,value):
         sel = self.driver.find_element_by_xpath(location)
         Select(sel).select_by_value(value)
+
+    #20秒内每间隔0.5秒寻找一次元素
+    def wait_time_element(self, method, location):
+        isFind = False
+        for n in range(0, 20):
+            time.sleep(0.5)
+            # 如果找个元素，打印内容，同时break跳出循环
+            element = None
+            if method == "x":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_xpath(location)
+            if method == "class":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_class_name(location)
+            if method == "id":
+                element = self.driver.find_element_by_id(location)
+            if method == "name":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_name(location)
+            if method == "link":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_link_text(location)
+            if method == "tag":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_tag_name(location)
+            if method == "Plink":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_partial_link_text(location)
+            if method == "css":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_css_selector(location)
+
+            if element:
+                # print "找到了"
+                element.click()
+                isFind = True
+                break
+        if isFind != True:
+            print "没找到元素"
 if __name__ == '__main__':
     A = BasePage(1)
     A.deprint("需要打印的内容")

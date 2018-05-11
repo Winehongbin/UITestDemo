@@ -20,15 +20,15 @@ class ChoosePage(BasePage):
         self.driver.implicitly_wait(30)
         css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")" #把按钮位置设为参数获取
         if button_pos =='1':
-            self.deprint(u"开始进入微信")
+            self.deprint("开始进入微信")
         if button_pos =='8':
-            self.deprint(u"开始进入线上会")
+            self.deprint("开始进入线上会")
         if button_pos == '9':
-            self.deprint(u"开始进入线下会")
+            self.deprint("开始进入线下会")
         if button_pos == '11':
-            self.deprint(u"开始进入问卷")
+            self.deprint("开始进入问卷")
         if button_pos == '16':
-            self.deprint(u"开始进入客户管理")
+            self.deprint("开始进入客户管理")
         self.wait_is_visible('css',css_path)
         time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1]) # 获取下一个窗口句柄，跳转
