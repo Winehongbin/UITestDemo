@@ -66,25 +66,25 @@ class BasePage(object):
         if method == "css":
             self.driver.implicitly_wait(3)
             self.driver.find_element_by_css_selector(location).click()
-    #定位元素并输入值，输入操作做扩展
-    def element_value_input(self,method,location,value):
-        global driver
-        if method =="x":
-            self.driver.find_element_by_xpath(location).send_keys(value)
-        if method =="class":
-            self.driver.find_element_by_class_name(location).send_keys(value)
-        if method == "id":
-            self.driver.find_element_by_id(location).send_keys(value)
-        if method == "name":
-            self.driver.find_element_by_name(location).send_keys(value)
-        if method == "link":
-            self.driver.find_element_by_link_text(location).send_keys(value)
-        if method == "tag":
-            self.driver.find_element_by_tag_name(location).send_keys(value)
-        if method == "Plink":
-            self.driver.find_element_by_partial_link_text(location).send_keys(value)
-        if method == "css":
-            self.driver.find_element_by_css_selector(location).send_keys(value)
+    # #定位元素并输入值，输入操作做扩展
+    # def element_value_input(self,method,location,value):
+    #     global driver
+    #     if method =="x":
+    #         self.driver.find_element_by_xpath(location).send_keys(value)
+    #     if method =="class":
+    #         self.driver.find_element_by_class_name(location).send_keys(value)
+    #     if method == "id":
+    #         self.driver.find_element_by_id(location).send_keys(value)
+    #     if method == "name":
+    #         self.driver.find_element_by_name(location).send_keys(value)
+    #     if method == "link":
+    #         self.driver.find_element_by_link_text(location).send_keys(value)
+    #     if method == "tag":
+    #         self.driver.find_element_by_tag_name(location).send_keys(value)
+    #     if method == "Plink":
+    #         self.driver.find_element_by_partial_link_text(location).send_keys(value)
+    #     if method == "css":
+    #         self.driver.find_element_by_css_selector(location).send_keys(value)
     #发现元素并单击
     def find_element_click(self,method,location):
         if method =="x":
@@ -286,7 +286,7 @@ class BasePage(object):
         sel = self.driver.find_element_by_xpath(location)
         Select(sel).select_by_value(value)
 
-    #20秒内每间隔0.5秒寻找一次元素
+    #20秒内每间隔0.5秒寻找一次元素，并click
     def wait_is_visible(self, method, location):
         isFind = False
         for n in range(0, 20):
@@ -324,6 +324,46 @@ class BasePage(object):
                 break
         if isFind != True:
             print "没找到元素"
+
+    # 20秒内每间隔0.5秒寻找一次元素,并输入value
+    def element_value_input(self,method,location,value):
+        isFind = False
+        for n in range(0, 20):
+            time.sleep(0.5)
+            # 如果找个元素，打印内容，同时break跳出循环
+            element = None
+            if method == "x":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_xpath(location)
+            if method == "class":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_class_name(location)
+            if method == "id":
+                element = self.driver.find_element_by_id(location)
+            if method == "name":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_name(location)
+            if method == "link":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_link_text(location)
+            if method == "tag":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_tag_name(location)
+            if method == "Plink":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_partial_link_text(location)
+            if method == "css":
+                self.driver.implicitly_wait(3)
+                element = self.driver.find_element_by_css_selector(location)
+
+            if element:
+                # print "找到了"
+                element.send_keys(value)
+                isFind = True
+                break
+        if isFind != True:
+            print "没找到元素"
+
 
 if __name__ == '__main__':
     A = BasePage(1)

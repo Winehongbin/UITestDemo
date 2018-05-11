@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 import time
+import sys
+from pages.common_pages.driver import brower
+reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
+sys.setdefaultencoding('utf8')
 from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
@@ -107,9 +111,9 @@ class FieldAction(BasePage):
             self.deprint(u"添加两个字段："+choose_field1 + choose_field2)
             for i in [2,3]:#选择第二个和第三个字段必填
                 try:
-                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div[1]/label")
+                    self.wait_is_visible("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div[1]/label")
                 except:
-                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div/label")
+                    self.wait_is_visible("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div/label")
             self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/p/a[2]")#点击保存按钮
             time.sleep(1)
             self.element_click("x","//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")#点击确认按钮
