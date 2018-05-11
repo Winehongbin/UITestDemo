@@ -18,7 +18,7 @@ class InteractionAndCancle(BasePage):
         self.driver.implicitly_wait(30)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
         css_path = "/html/body/div[2]/div[2]/a[" + str(but_pos) + "]"  #按着元素位置对配置会议模块和取消会议两个元素进行判断
-        self.wait_is_visible('x', css_path)
+        self.wait_time_element('x', css_path)
         if but_pos == '1':
             time.sleep(5)
             if self.driver.find_element_by_css_selector("#modulecheckbox6").is_selected():  #如果“互动环节”已经被选择
