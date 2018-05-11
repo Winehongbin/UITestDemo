@@ -11,7 +11,7 @@ from pages.common_pages.driver import brower
 from pages.member.member_management import FieldAction
 
 class Member_Test(unittest.TestCase):
-
+    """ 客户管理测试用例 """
     def setUp(self):
         self.driver= brower()
         login = LoginPage(self.driver)
