@@ -14,7 +14,7 @@ class NewMeetingPage(BasePage):
 
     # 创建一场会议
     def create_neww_offline(self):
-        print self.deprint(), ":开始创建线下会"
+        self.deprint("开始创建线下会")
         time_now = int(time.time()) # 获取当前时间
         time_local = time.localtime(time_now) # 转换成localtime
         dt = time.strftime("%Y-%m-%d %H:%M:%S", time_local)   #strftime：转换成新的时间格式(2016-05-09 18:59:20)
@@ -37,8 +37,7 @@ class NewMeetingPage(BasePage):
         self.driver.implicitly_wait(10)
         self.element_click('css','#createSeminar > div > div > div.modal-footer > button')         # 点击“创建”按钮
         self.driver.implicitly_wait(30)
-        # 201804166
-        print self.deprint(), "：线下会创建成功"
+        self.deprint( "线下会创建成功"),
 
 if __name__ == '__main__':
     dr = brower()

@@ -43,7 +43,7 @@ class Offline_Meeting_Test(BaseUnit):
         #下面一句的文字，是通过Python的一种注释doc string，用于函数、类和方法的描述，HTMLTestRunner可以读取此类型注释
         """ 测试创建线下会 """
 
-        print time.deprint(), ":开始执行登录，并进入线下会用例"
+        time.deprint("开始执行登录，并进入线下会用例")
         dr = self.driver
         object = LoginPage(dr)
         object.login()
@@ -53,13 +53,13 @@ class Offline_Meeting_Test(BaseUnit):
         object.click_createunderline()
         object = NewMeetingPage(dr)
         object.create_neww_offline()
-        print time.deprint(), ":创建线下会页面用例执行完成"
+        time.deprint("创建线下会页面用例执行完成")
 
     def test_002_createoffline(self):
 
         """ 测试删除线下会 """
 
-        print time.deprint(), ":开始执行登录，并进入删除线下会用例"
+        time.deprint("开始执行登录，并进入删除线下会用例")
         dr = self.driver
         o = LoginPage(dr)
         o.login()
@@ -70,12 +70,12 @@ class Offline_Meeting_Test(BaseUnit):
         object = InteractionAndCancle(dr)
         object.interaction_and_cancle('2')
 
-        print time.deprint(), ":删除线下会用例完成"
+        time.deprint("删除线下会用例完成")
 
     def test_003_interaction(self):
         """ 添加互动环节"""
 
-        print time.deprint(), ":开始执行登录，并进入添加线下会互动环节用例"
+        time.deprint("开始执行登录，并进入添加线下会互动环节用例")
         dr = self.driver
         o = LoginPage(dr)
         o.login()
@@ -85,7 +85,7 @@ class Offline_Meeting_Test(BaseUnit):
         o.click_linelist('2')
         o = InteractionAndCancle(dr)
         o.interaction_and_cancle('1')
-        print time.deprint(), ":添加线下会互动环节添加用例完成"
+        time.deprint( "添加线下会互动环节添加用例完成")
 
 
 

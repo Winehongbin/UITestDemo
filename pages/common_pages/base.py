@@ -245,7 +245,7 @@ class BasePage(object):
     #按一定格式获取当前时间，需要from datetime import datetime
     def deprint(self,content):
         dt = datetime.now()
-        print datetime.strftime(dt, '%Y-%m-%d %H:%M:%S')+": "+content
+        print datetime.strftime(dt, '%Y-%m-%d %H:%M:%S')+"："+content
     #按YYYY-MM-DD HH:MM:SS格式获取当前时间，并返回
     def nowtime(self):
         dt = datetime.now()
