@@ -207,20 +207,44 @@ class BasePage(object):
             element = WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, location)))
             element.click()
     # 一直等待某元素可见，默认超时10秒，ui需要import selenium.webdriver.support.ui as ui
-    def wait_is_visible(self,method,locator, timeout=20):
-
-        try:
-            if method == 'x':
-                element = ui.WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.XPATH, locator)))
-                element.click()
-            if method == 'css':
-                element = ui.WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located((By.CSS_SELECTOR, locator)))
-                element.click()
-            return True
-
-        #TimeoutException 需要from selenium.common.exceptions import TimeoutException
-        except TimeoutException:
-             return False
+    # def wait_is_visible(self,method,location):
+    #
+    #     isFind = False
+    #     for n in range(0, 20):
+    #         time.sleep(0.5)
+    #         # 如果找个元素，打印内容，同时break跳出循环
+    #         element = None
+    #         if method == "x":
+    #             self.driver.implicitly_wait(3)
+    #             element = self.driver.find_element_by_xpath(location)
+    #         if method == "class":
+    #             self.driver.implicitly_wait(3)
+    #             element = self.driver.find_element_by_class_name(location)
+    #         if method == "id":
+    #             element = self.driver.find_element_by_id(location)
+    #         if method == "name":
+    #             self.driver.implicitly_wait(3)
+    #             element = self.driver.find_element_by_name(location)
+    #         if method == "link":
+    #             self.driver.implicitly_wait(3)
+    #             element = self.driver.find_element_by_link_text(location)
+    #         if method == "tag":
+    #             self.driver.implicitly_wait(3)
+    #             element = self.driver.find_element_by_tag_name(location)
+    #         if method == "Plink":
+    #             self.driver.implicitly_wait(3)
+    #             element = self.driver.find_element_by_partial_link_text(location)
+    #         if method == "css":
+    #             self.driver.implicitly_wait(3)
+    #             element = self.driver.find_element_by_css_selector(location)
+    #
+    #         if element:
+    #             # print "找到了"
+    #             element.click()
+    #             isFind = True
+    #             break
+    #     if isFind != True:
+    #         print "没找到元素"
     # 一直等待某个元素消失，默认超时10秒
     def is_not_visible(locator, timeout=10):
         try:
@@ -263,7 +287,7 @@ class BasePage(object):
         Select(sel).select_by_value(value)
 
     #20秒内每间隔0.5秒寻找一次元素
-    def wait_time_element(self, method, location):
+    def wait_is_visible(self, method, location):
         isFind = False
         for n in range(0, 20):
             time.sleep(0.5)
@@ -300,6 +324,7 @@ class BasePage(object):
                 break
         if isFind != True:
             print "没找到元素"
+
 if __name__ == '__main__':
     A = BasePage(1)
     A.deprint("需要打印的内容")

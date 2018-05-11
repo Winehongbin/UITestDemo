@@ -30,7 +30,6 @@ class ChoosePage(BasePage):
         if button_pos == '16':
             self.deprint("开始进入客户管理")
         self.wait_is_visible('css',css_path)
-        time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1]) # 获取下一个窗口句柄，跳转
 
 if __name__ == '__main__':

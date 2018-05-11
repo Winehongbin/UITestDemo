@@ -13,7 +13,8 @@ import time
 from common.mail import email_oper
 from test_case.wechat_case import Wechat_Test
 from test_case.questionnaire_case import Questionnaire
-from test_case.webinar_create_case import Webinar_Case
+# from test_case.webinar_create_case import Webinar_Case
+from test_case.webinar_case import Webinar_Case
 from test_case.member_case import Member_Test
 
 class ConrollerShow():
