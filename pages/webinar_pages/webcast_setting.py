@@ -40,9 +40,9 @@ class Webcast_Setting(BasePage):
             self.wait_is_visible('x', guestbtn2)
             self.wait_is_visible('x', guestbtn3)
             self.wait_is_visible('x', guestbtn4)
-            time.sleep(2)
             print self.deprint("从嘉宾库添加3个嘉宾信息成功")
-#
+
+
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
@@ -52,7 +52,6 @@ if __name__ == '__main__':
     o.click_menu_bt('8')
     gguestnum = Get_Guestnum(dr)
     guestnum = int(gguestnum.get_num())
-    time.sleep(3)
     o =  Webinar_IndexPage(dr)
     o.index_webinar()
     time.sleep(3)
