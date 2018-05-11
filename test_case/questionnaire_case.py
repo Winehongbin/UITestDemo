@@ -10,7 +10,7 @@ from pages.questionnaire_page.questionnaire_list_page import QuestionnaireListPa
 from pages.questionnaire_page.question_bank_page import QuestionBankManagement
 
 class Questionnaire(unittest.TestCase):
-
+    """ 问卷测试用例 """
     def setUp(self):
         self.driver = brower()
         object = LoginPage(self.driver)
@@ -23,8 +23,6 @@ class Questionnaire(unittest.TestCase):
         self.driver.quit()
 
     def test_001_create_question(self):
-        """ 创建题库试题 """
-
         object = QuestionnaireListPage(self.driver)
         object.open_questionBank()
         object = QuestionBankManagement(self.driver)
