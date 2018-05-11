@@ -34,11 +34,11 @@ class ConrollerShow():
         StartTime = time.time()       #time()：返回当前时间的时间戳（1970纪元后经过的浮点秒数），需要import time
         suite = unittest.TestSuite()     #创建一个测试集合
 
-        # #线下会
-        # offline_test = self.Def_List(Offline_Meeting_Test)   #Def_List 获取指定单元测试中，测试函数列表
-        # for offline_tmp in offline_test:
-        #     suite.addTest(Offline_Meeting_Test(offline_tmp))   #addTest()的方法，测试套件中添加测试用例,可以加载不同类里面的不同测试函数
-        #
+        #线下会
+        offline_test = self.Def_List(Offline_Meeting_Test)   #Def_List 获取指定单元测试中，测试函数列表
+        for offline_tmp in offline_test:
+            suite.addTest(Offline_Meeting_Test(offline_tmp))   #addTest()的方法，测试套件中添加测试用例,可以加载不同类里面的不同测试函数
+
         # #微信
         # wechat_test = self.Def_List(Wechat_Test)  # Def_List 获取指定单元测试中，测试函数列表
         # for wechat_tmp in wechat_test:
@@ -53,11 +53,11 @@ class ConrollerShow():
         # webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
         # for webinar_tmp in webinar_test:
         #     suite.addTest(Webinar_Case(webinar_tmp))
-
-        #客户管理
-        member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
-        for member_tmp in member_test:
-            suite.addTest(Member_Test(member_tmp))
+        #
+        # #客户管理
+        # member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
+        # for member_tmp in member_test:
+        #     suite.addTest(Member_Test(member_tmp))
 
 
 
