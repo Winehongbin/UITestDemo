@@ -5,7 +5,7 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 from pages.off_line_meeting_pages.index_page import IndexPage
 from pages.off_line_meeting_pages.interaction_manage_page import InteractionPageManage
-from pages.off_line_meeting_pages.interaction_link_page import Interaction_Line
+# from pages.off_line_meeting_pages.interaction_link_page import Interaction_Line
 
 class IndexDetailsOfMeeting(BasePage):
 
