@@ -50,6 +50,24 @@ class Webcast_Setting(BasePage):
             self.wait_is_visible('x', guestbtn4)
             print self.deprint("从嘉宾库添加3个嘉宾信息成功")
 
+    # 添加会议日程
+    def add_agenda(self):
+
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/h2/div/a')
+        self.element_value_input('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[1]/div/text-box/div/input',u'会议日程1')
+        # 添加第一个嘉宾
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/div/a')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html/div[1]/div/button')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html/div[1]/div/ul/li[2]/a')
+        # 添加第二个嘉宾
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/div/a/i')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[1]/div/button')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[1]/div/ul/li[2]/a')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/button')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/ul/li[2]/a')
+        # 点击确定
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a')
+        print "添加2个会议日程成功"
 
 if __name__ == '__main__':
     dr = brower()
@@ -65,6 +83,9 @@ if __name__ == '__main__':
     time.sleep(3)
     wbr = Webinar_Create(dr)
     wbr.create_meeting()
-    guest_add = Webcast_Setting(dr)
-    guest_add.add_guest(guestnum)
+    wbr_seting = Webcast_Setting(dr)
+    wbr_seting.add_guest(guestnum)
+    time.sleep(3)
+    wbr_seting.add_agenda()
+    o.quit()
 
