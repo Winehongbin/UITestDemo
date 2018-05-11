@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+'''
+Created on 2018-05-10
+@author: 尤梅枝
+'''
 import os
 
 from selenium import webdriver
@@ -14,9 +18,9 @@ class Creat_media(BasePage):
     #创建图文素材用例
     def creat_media(self):
         self.deprint(u'开始执行图文素材创建用例')
-        self.dominant_wait('x', '//*[@id="ul-nav-2"]/li[1]/a')  #点击素材管理菜单
+        self.wait_is_visible('x', '//*[@id="ul-nav-2"]/li[1]/a')  #点击素材管理菜单
         time.sleep(3)
-        self.dominant_wait('x','//*[@id="con-graphic"]/div[1]/div[2]/div/a[2]') #点击新建图文按钮
+        self.wait_is_visible('x','//*[@id="con-graphic"]/div[1]/div[2]/div/a[2]') #点击新建图文按钮
         self.deprint(u'点击新建图文按钮成功')
         self.find_element_input('x','//*[@id="exampleInputText1"]',u'自动化创建'+self.nowtime())
         self.find_element_click('x','//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[4]/div[3]/div')
@@ -40,7 +44,7 @@ class Creat_media(BasePage):
     #删除第一条图文素材用例
     def delete_media(self):
         self.deprint(u'开始执行图文素材删除用例')
-        self.dominant_wait('x', '//*[@id="ul-nav-2"]/li[1]/a')  # 点击素材管理菜单
+        self.wait_is_visible('x', '//*[@id="ul-nav-2"]/li[1]/a')  # 点击素材管理菜单
         time.sleep(3)
         self.find_element_input('x','//*[@id="txtSearchGraphics"]/input',u'自动化')
         self.find_element_click('x','//*[@id="con-graphic"]/div[1]/div[1]/div/a')
@@ -53,9 +57,9 @@ class Creat_media(BasePage):
             pass
         else:
             self.deprint(u'开始执行删除操作')
-            self.dominant_wait('x', '//*[@id="con-graphic"]/div[2]/div[1]/div/div[3]/span/a[4]')
+            self.wait_is_visible('x', '//*[@id="con-graphic"]/div[2]/div[1]/div/div[3]/span/a[4]')
             time.sleep(3)
-            self.dominant_wait('x', '//*[@id="dialogBox"]/div/div/div[3]/button[1]')
+            self.wait_is_visible('x', '//*[@id="dialogBox"]/div/div/div[3]/button[1]')
         self.deprint(u'图文素材删除用例执行完毕')
 
 
