@@ -8,6 +8,7 @@ from pages.common_pages.choose_page import ChoosePage
 import time
 from pages.webinar_pages.create_meeting import Webinar_Create
 from pages.webinar_pages.webcast_setting import Webcast_Setting
+from pages.webinar_pages.guest_manager import Get_Guestnum
 
 
 import unittest
@@ -27,12 +28,18 @@ class Webinar_Case(BaseUnit):
         o = ChoosePage(dr)
         time.sleep(3)
         o.click_menu_bt('8')
+        gguestnum = Get_Guestnum(dr)
+        guestnum = int(gguestnum.get_num())
         o = Webinar_IndexPage(dr)
         time.sleep(3)
         o.index_webinar()
         wbr = Webinar_Create(dr)
         wbr.create_meeting()
+        guest_add = Webcast_Setting(dr)
+        guest_add.add_guest(guestnum)
+        time.sleep(2)
         wbr.cancel_meeting()
+        o.quit()
         print t.deprint("创建并取消线上会用例执行完成")
 
     def test_002_webinar_publish_cancel(self):
@@ -44,16 +51,20 @@ class Webinar_Case(BaseUnit):
         o = ChoosePage(dr)
         time.sleep(3)
         o.click_menu_bt('8')
+        gguestnum = Get_Guestnum(dr)
+        guestnum = int(gguestnum.get_num())
         o = Webinar_IndexPage(dr)
         time.sleep(3)
         o.index_webinar()
         wbr = Webinar_Create(dr)
         wbr.create_meeting()
+        guest_add = Webcast_Setting(dr)
+        guest_add.add_guest(guestnum)
+        time.sleep(2)
         wbr.publish_meeting()
         wbr.cancel_meeting()
+        o.quit()
         t.deprint("创建，发布并取消线上会用例执行完成")
-
-
 
 if __name__ == '__main__':
     start = time.time()
