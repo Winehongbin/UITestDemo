@@ -288,40 +288,44 @@ class BasePage(object):
 
     #20秒内每间隔0.5秒寻找一次元素，并click
     def wait_is_visible(self, method, location):
-        isFind = False
-        for n in range(0, 20):
-            time.sleep(0.5)
+        #print  "wait_is_visible"
+        isFind = False  #布尔类型
+        for n in range(0, 20):  #rang（）数组，从0开始遍历
             # 如果找个元素，打印内容，同时break跳出循环
-            element = None
-            if method == "x":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_xpath(location)
-            if method == "class":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_class_name(location)
-            if method == "id":
-                element = self.driver.find_element_by_id(location)
-            if method == "name":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_name(location)
-            if method == "link":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_link_text(location)
-            if method == "tag":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_tag_name(location)
-            if method == "Plink":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_partial_link_text(location)
-            if method == "css":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_css_selector(location)
-
+            element = None #定义变量，默认的为空
+            try:
+                if method == "x":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_xpath(location)
+                if method == "class":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_class_name(location)
+                if method == "id":
+                    element = self.driver.find_element_by_id(location)
+                if method == "name":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_name(location)
+                if method == "link":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_link_text(location)
+                if method == "tag":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_tag_name(location)
+                if method == "Plink":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_partial_link_text(location)
+                if method == "css":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_css_selector(location)
+            except:
+                time.sleep(0.5)  # 遍历一次就休息0.5秒
+                continue
             if element:
                 # print "找到了"
                 element.click()
                 isFind = True
                 break
+
         if isFind != True:
             print "没找到元素"
 
@@ -329,33 +333,35 @@ class BasePage(object):
     def element_value_input(self,method,location,value):
         isFind = False
         for n in range(0, 20):
-            time.sleep(0.5)
             # 如果找个元素，打印内容，同时break跳出循环
             element = None
-            if method == "x":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_xpath(location)
-            if method == "class":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_class_name(location)
-            if method == "id":
-                element = self.driver.find_element_by_id(location)
-            if method == "name":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_name(location)
-            if method == "link":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_link_text(location)
-            if method == "tag":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_tag_name(location)
-            if method == "Plink":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_partial_link_text(location)
-            if method == "css":
-                self.driver.implicitly_wait(3)
-                element = self.driver.find_element_by_css_selector(location)
-
+            try:
+                if method == "x":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_xpath(location)
+                if method == "class":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_class_name(location)
+                if method == "id":
+                    element = self.driver.find_element_by_id(location)
+                if method == "name":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_name(location)
+                if method == "link":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_link_text(location)
+                if method == "tag":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_tag_name(location)
+                if method == "Plink":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_partial_link_text(location)
+                if method == "css":
+                    self.driver.implicitly_wait(3)
+                    element = self.driver.find_element_by_css_selector(location)
+            except:
+                time.sleep(0.5)  # 遍历一次就休息0.5秒
+                continue
             if element:
                 # print "找到了"
                 element.send_keys(value)

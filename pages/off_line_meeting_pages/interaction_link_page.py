@@ -13,7 +13,11 @@ class InteractionAndCancle(BasePage):
 
     #互动环节添加操作
     def interaction_and_cancle(self,but_pos):
+
         self.deprint("点击并添加互动环节")
+        # 将页面滚动条拖到底部
+        js = "var q=document.documentElement.scrollTop=100000"
+        self.driver.execute_script(js)
         time.sleep(5)
         self.driver.implicitly_wait(30)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
@@ -34,9 +38,12 @@ class InteractionAndCancle(BasePage):
                 self.driver.implicitly_wait(30)
                 time.sleep(5)
                 self.element_click('css','#setFiled > div > div > div.modal-footer > input') #点击确定按钮
-                self.deprint("添加互动环节成功"),
-        if but_pos == '2':
-            self.wait_is_visible('x','//*[@id="commonAlertWindow"]/div/div/div[3]/button')  #点击取消会议按钮
+                self.deprint("添加互动环节成功")
+        if but_pos == '2':   #如果是2，就是点击取消会议
+            handleNow = self.driver.current_window_handle  # 获得当前窗口
+            self.driver.switch_to_window(handleNow)
+            time.sleep(3)
+            self.wait_is_visible('x','//*[@id="commonAlertWindow"]/div/div/div[3]/button')  #点击取消会议页面确定按钮
             self.deprint("点击取消会议按钮")
         # self.close()
 if __name__ == "__main__":
