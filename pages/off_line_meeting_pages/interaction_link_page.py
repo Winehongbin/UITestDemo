@@ -29,7 +29,8 @@ class InteractionAndCancle(BasePage):
                 time.sleep(5)
                 self.deprint("已添加互动环节")
             else:
-                self.wait_is_visible('css','#setFiled > div > div > div.modal-body.ng-isolate-scope > div:nth-child(4) > div:nth-child(7) > label') #选择互动环节
+                self.wait_is_visible('x','//*[@id="setFiled"]/div/div/div[2]/div[4]/div[7]/label') #选择互动环节
+                # setFiled > div > div > div.modal-body.ng-isolate-scope > div:nth-child(4) > div:nth-child(7) > label
                 self.driver.implicitly_wait(30)
                 time.sleep(5)
                 self.element_click('css','#setFiled > div > div > div.modal-footer > input') #点击确定按钮

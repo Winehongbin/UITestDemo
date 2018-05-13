@@ -16,7 +16,7 @@ from pages.common_pages.driver import brower
 class NewMeetingPage(BasePage):
 
     # 创建一场会议
-    def create_neww_offline(self,form_name):
+    def create_neww_offline(self):
         self.deprint("开始创建线下会")
         time_now = int(time.time()) # 获取当前时间
         time_local = time.localtime(time_now) # 转换成localtime

@@ -20,7 +20,7 @@ class Webinar_Case(BaseUnit):
     """线上会测试用例"""
 
     def test_001_webinar_create_cancel(self):
-        # 创建线上会并取消会议
+        """创建线上会并取消会议"""
         print t.deprint("开始执行线上会创建后取消的用例")
         dr = brower()
         o = LoginPage(dr)
@@ -45,7 +45,7 @@ class Webinar_Case(BaseUnit):
         print t.deprint("创建并取消线上会用例执行完成")
 
     def test_002_webinar_publish_cancel(self):
-        # 创建线上会，发布并取消会议
+        """创建线上会，发布并取消会议"""
         t.deprint("开始执行线上会创建后发布并取消的用例")
         dr = brower()
         o = LoginPage(dr)

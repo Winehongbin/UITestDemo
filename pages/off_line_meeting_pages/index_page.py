@@ -12,7 +12,7 @@ class IndexPage(BasePage):
     # 点击创建会议
     def click_createunderline(self):
 
-        self.dominant_wait('css','body > div.g-container.ng-scope > div.g-left.s-left > ul > li.ng-scope.has-page.active > h2 > a')
+        self.wait_is_visible('css','body > div.g-container.ng-scope > div.g-left.s-left > ul > li.ng-scope.has-page.active > h2 > a')
         self.deprint("点击创建会议")
         self.driver.switch_to.window(self.driver.window_handles[-1])   # 获取下一个窗口句柄，跳转
         self.wait_is_visible('css','#g-right > div > div.clearfix.ng-scope > div.contact-stats-box.w715 > div.event-stats-l > div > button') #点击创建会议

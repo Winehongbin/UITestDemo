@@ -23,6 +23,7 @@ class Questionnaire(unittest.TestCase):
         self.driver.quit()
 
     def test_001_create_question(self):
+        """创建问卷"""
         object = QuestionnaireListPage(self.driver)
         object.open_questionBank()
         object = QuestionBankManagement(self.driver)
