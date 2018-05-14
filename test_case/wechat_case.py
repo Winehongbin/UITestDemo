@@ -40,6 +40,6 @@ class Wechat_Test(unittest.TestCase):
 if __name__ == "__main__":
     suit=unittest.TestSuite()
     suit.addTest(Wechat_Test("test_001_createMedia"))
-    suit.addTest(Wechat_Test("test_001_createMedia"))
+    # suit.addTest(Wechat_Test("test_001_createMedia"))
     runner = unittest.TextTestRunner()
     runner.run(suit)

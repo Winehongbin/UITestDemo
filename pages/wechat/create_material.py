@@ -37,7 +37,8 @@ class Creat_media(BasePage):
         self.find_element_click('x','//*[@id="con-local"]/section/section/div[2]/form/div[2]/button[1]')
         time.sleep(5)
         title=self.driver.find_element_by_xpath('//*[@id="dialogBox"]/div/div/div[2]/div/div').text
-        self.find_element_click('x','//*[@id="dialogBox"]/div/div/div[3]/button[1]')
+        # self.find_element_click('x','//*[@id="dialogBox"]/div/div/div[3]/button[1]')
+        self.wait_is_visible('x','//*[@id="dialogBox"]/div/div/div[3]/button[1]')
         # print title
         self.deprint(u'图文素材创建用例执行完毕')
         return title
