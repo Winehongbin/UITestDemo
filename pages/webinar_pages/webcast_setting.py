@@ -5,7 +5,6 @@ from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
 from pages.webinar_pages.create_meeting import Webinar_Create
 from pages.webinar_pages.index_page import Webinar_IndexPage
-from pages.webinar_pages.guest_manager import Get_Guestnum
 import time
 from common.common_function.scrollbar import Scrollbar_Move
 
@@ -33,7 +32,7 @@ class Webcast_Setting(BasePage):
                 # 点击保存按钮
                 savebtn= '//*[@id="createGuest"]/div/div/div[3]/a[1]'
                 self.wait_is_visible('x',savebtn)
-                print self.deprint('嘉宾新增成功')
+                self.deprint('嘉宾新增成功')
                 time.sleep(3)
         else:
 
@@ -43,19 +42,22 @@ class Webcast_Setting(BasePage):
             time.sleep(3)
             guestbtn1 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[1]/div[2]/div[3]/ul/li[2]/span[2]'
             guestbtn2 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[2]/div[2]/div[3]/ul/li[2]/span[2]'
-            #guestbtn3 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/div[2]/div[3]/ul/li[2]/span[2]'
+            guestbtn3 = '//*[@id="guestDb"]/div/div/div[2]/ul/li[3]/div[2]/div[3]/ul/li[2]/span[2]'
             guestbtn4 = '//*[@id="guestDb"]/div/div/div[3]/a[1]'
             self.wait_is_visible('x', guestbtn1)
             self.wait_is_visible('x', guestbtn2)
-            #self.wait_is_visible('x', guestbtn3)
+            self.wait_is_visible('x', guestbtn3)
             self.wait_is_visible('x', guestbtn4)
-            print self.deprint("从嘉宾库添加2个嘉宾信息成功")
+            self.deprint("从嘉宾库添加2个嘉宾信息成功")
 
     # 添加会议日程
     def add_agenda(self):
 
         # self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[4]/div')
         # self.scrollbarmovedown()
+        # 将页面滚动条拖到底部
+        js = "var q=document.documentElement.scrollTop=100000"
+        self.driver.execute_script(js)
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/h2/div/a')
         self.element_value_input('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[1]/div/text-box/div/input',u'会议日程1')
         # 添加第一个嘉宾
@@ -88,13 +90,14 @@ if __name__ == '__main__':
     wbr = Webinar_Create(dr)
     wbr.create_meeting()
     wbr_seting = Webcast_Setting(dr)
-    # wbr_seting.add_guest(guestnum)
+    wbr_seting.add_guest(3)
     time.sleep(3)
+    wbr_seting.add_agenda()
+
     # scollbarmove = Scrollbar_Move(dr)
     # scollbarmove.scrollbarmovedown()
     # time.sleep(1)
-    wbr_seting.add_agenda()
-    # time.sleep(2)
+#    # time.sleep(2)
     # scollbarmove.scrollbarmoveup()
     # time.sleep(2)
     # o.quit()

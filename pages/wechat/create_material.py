@@ -47,7 +47,6 @@ class Creat_media(BasePage):
         # print title
         # self.deprint(u'图文素材创建用例执行完毕')
         self.deprint("图文素材创建用例执行完毕")
-
         return title
     #删除第一条图文素材用例
     def delete_media(self):
