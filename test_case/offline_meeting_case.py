@@ -65,7 +65,6 @@ class Offline_Meeting_Test(BaseUnit):
         o.click_linelist('2')
         object = InteractionAndCancle(dr)
         object.interaction_and_cancle('2')
-
         base.deprint("删除线下会用例完成")
 
     def test_003_interaction(self):

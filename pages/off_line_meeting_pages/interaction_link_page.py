@@ -16,8 +16,9 @@ class InteractionAndCancle(BasePage):
 
         self.deprint("点击并添加互动环节")
         # 将页面滚动条拖到底部
-        js = "var q=document.documentElement.scrollTop=100000"
-        self.driver.execute_script(js)
+        # js = "var q=document.documentElement.scrollTop=100000"
+        # self.driver.execute_script(js)
+        self.scrollbar("1000000")
         time.sleep(5)
         self.driver.implicitly_wait(30)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
