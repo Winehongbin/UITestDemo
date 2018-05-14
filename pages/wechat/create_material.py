@@ -17,18 +17,23 @@ class Creat_media(BasePage):
 
     #创建图文素材用例
     def creat_media(self):
-        self.deprint(u'开始执行图文素材创建用例')
+        # self.deprint(u'开始执行图文素材创建用例')
+        self.deprint("开始执行图文素材创建用例")
+
         self.wait_is_visible('x', '//*[@id="ul-nav-2"]/li[1]/a')  #点击素材管理菜单
         time.sleep(3)
         self.wait_is_visible('x','//*[@id="con-graphic"]/div[1]/div[2]/div/a[2]') #点击新建图文按钮
-        self.deprint(u'点击新建图文按钮成功')
+        # self.deprint(u'点击新建图文按钮成功')
+        self.deprint("点击新建图文按钮成功")
         self.find_element_input('x','//*[@id="exampleInputText1"]',u'自动化创建'+self.nowtime())
         self.find_element_click('x','//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[4]/div[3]/div')
         cur_path = os.path.abspath(os.path.dirname(__file__))
         root_path = os.path.split(cur_path)[0]
         # print root_path
         os.system(root_path +  "/upload.exe")
-        self.deprint(u'上传封面图成功')
+        # self.deprint(u'上传封面图成功')
+        self.deprint("上传封面图成功")
+
         time.sleep(3)
         self.find_element_input('x','//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[6]/textarea',u'尤梅枝的摘要'+self.nowtime())
         self.find_element_click('x','.//*[@id="con-local"]/section/section[1]/div[2]/form/div[1]/div[9]/div[2]')
@@ -40,11 +45,15 @@ class Creat_media(BasePage):
         # self.find_element_click('x','//*[@id="dialogBox"]/div/div/div[3]/button[1]')
         self.wait_is_visible('x','//*[@id="dialogBox"]/div/div/div[3]/button[1]')
         # print title
-        self.deprint(u'图文素材创建用例执行完毕')
+        # self.deprint(u'图文素材创建用例执行完毕')
+        self.deprint("图文素材创建用例执行完毕")
+
         return title
     #删除第一条图文素材用例
     def delete_media(self):
-        self.deprint(u'开始执行图文素材删除用例')
+        # self.deprint(u'开始执行图文素材删除用例')
+        self.deprint("开始执行图文素材删除用例")
+
         self.wait_is_visible('x', '//*[@id="ul-nav-2"]/li[1]/a')  # 点击素材管理菜单
         time.sleep(3)
         self.find_element_input('x','//*[@id="txtSearchGraphics"]/input',u'自动化')
@@ -57,11 +66,15 @@ class Creat_media(BasePage):
             self.deprint(u'暂无数据，不进行删除')
             pass
         else:
-            self.deprint(u'开始执行删除操作')
+            # self.deprint(u'开始执行删除操作')
+            self.deprint("开始执行删除操作")
+
             self.wait_is_visible('x', '//*[@id="con-graphic"]/div[2]/div[1]/div/div[3]/span/a[4]')
             time.sleep(3)
             self.wait_is_visible('x', '//*[@id="dialogBox"]/div/div/div[3]/button[1]')
-        self.deprint(u'图文素材删除用例执行完毕')
+        # self.deprint(u'图文素材删除用例执行完毕')
+        self.deprint("图文素材删除用例执行完毕")
+
 
 
 if __name__ == '__main__':
