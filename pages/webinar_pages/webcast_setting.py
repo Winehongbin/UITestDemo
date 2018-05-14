@@ -56,8 +56,9 @@ class Webcast_Setting(BasePage):
         # self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[4]/div')
         # self.scrollbarmovedown()
         # 将页面滚动条拖到底部
-        js = "var q=document.documentElement.scrollTop=100000"
-        self.driver.execute_script(js)
+        # js = "var q=document.documentElement.scrollTop=100000"
+        # self.driver.execute_script(js)
+        self.scrollbar("bottom")
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/h2/div/a')
         self.element_value_input('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[1]/div/text-box/div/input',u'会议日程1')
         # 添加第一个嘉宾
@@ -72,7 +73,7 @@ class Webcast_Setting(BasePage):
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/ul/li[2]/a')
         # 点击确定
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a')
-        print "添加2个会议日程成功"
+        self.deprint("添加2个会议日程成功")
 
 if __name__ == '__main__':
     dr = brower()

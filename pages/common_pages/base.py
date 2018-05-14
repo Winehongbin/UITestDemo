@@ -7,6 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.support.select import Select
+import sys
+print sys.getdefaultencoding()#sys.getdefaultencoding(): 获取系统当前编码，一般默认为ascii。
+from random import randint   #random:随机的意思
+type=sys.getfilesystemencoding()
+print type
 import time
 
 #页面操作基础类
@@ -369,6 +374,40 @@ class BasePage(object):
                 break
         if isFind != True:
             print "没找到元素"
+
+    #滚动条
+    def scrollbar(self,value):
+        self.deprint("开始执行滚动条，请等待")
+        time.sleep(1)
+        if value == "top":
+            js = "var q=document.documentElement.scrollTop=0"
+            self.driver.execute_script(js)
+        elif value == "bottom":
+            js = "var q=document.documentElement.scrollTop=1000000"
+            self.driver.execute_script(js)
+        else:
+            js = "var q=document.documentElement.scrollTop=" + value + ""
+            self.driver.execute_script(js)
+    # print "滚动条执行完毕"
+
+    #万能验证码
+    def verirynumber(self):
+
+        veriry = randint(1000, 9999)  # random.randint(a,b)用于生成一个指定范围内的整数。其中参数a是下限，参数b是上限，生成的随机数n: a <= n <= b
+        print(u"生成的随机数：%d" % veriry)  # %d,整数;%s,表示格化式一个对象为字符
+
+        number = repr(input("请输入随机数：")).decode('utf-8').encode(type)  # repr(): Python 内置函数,函数将对象转化为供解释器读取的形式。
+        # Python decode() 方法以 encoding 指定的编码格式解码字符串。默认编码为字符串编码
+        # Python encode() 方法以 encoding 指定的编码格式编码字符串。
+
+        number = int(number)
+
+        if number == veriry:
+            print ("登录成功！").decode('utf-8').encode(type)
+        elif number == 132741:
+            print("登录成功！").decode('utf-8').encode(type)
+        else:
+            print("验证码输入有误！")
 
 
 if __name__ == '__main__':
