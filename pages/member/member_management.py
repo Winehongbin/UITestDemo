@@ -10,6 +10,7 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 class FieldAction(BasePage):
     def new_custom_mail_field(self):
+        time.sleep(1)
         self.element_click("id","_settingFelid")#点击属性/字段设置
         self.element_click("css","#con-basefield > div.m-tit-bar > div > div > button")#点击新增字段
         time.sleep(1)
@@ -97,13 +98,14 @@ class FieldAction(BasePage):
                 FieldName = self.find_element_AttributeText("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(all_filed_num) +"]/div/div[1]/div/input","placeholder")
                 if FieldName != u"密码":#排除密码字段序号
                     del_list.append(all_filed_num)
-                    del_list.reverse()#将数组顺序反转
+            del_list.reverse()  # 将数组顺序反转
             for delFiledNum in del_list:#循环删除所有字段
                 try:
                     self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div[2]/a[1]")
                 except:#路径有两种，利用错误机制，先尝试第一种路径，然后第二种
                     time.sleep(1)
                     self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div/a[1]")
+
             for choose_num in range(1,sign_up_num-1):#循环获取字段名称
                 ChooseFieldName  = self.find_element_text("x","/html/body/div[2]/div[1]/div[2]/div[1]/ul/li/ul/li["+ str(choose_num) +"]/a")
                 if ChooseFieldName == choose_field1 or ChooseFieldName == choose_field2:#判断字段名，添加相应的字段
