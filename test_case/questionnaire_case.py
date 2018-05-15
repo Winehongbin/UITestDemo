@@ -26,17 +26,24 @@ class Questionnaire(unittest.TestCase):
         self.driver.quit()
 
     def test_001_create_question(self):
-        """创建问卷"""
+        """创建试题"""
         object = QuestionnaireListPage(self.driver)
         object.open_questionBank()
         object = QuestionBankManagement(self.driver)
         actual_result=object.create_question()
         expect_result="What is your favorite sport?"
         self.assertEqual(actual_result,expect_result,u"试题没有创建成功")
+
+    def test_002_delete_question(self):
+        """删除试题"""
+        object = QuestionnaireListPage(self.driver)
+        object.open_questionBank()
+        object = QuestionBankManagement(self.driver)
         object.delete_question()
 
 if __name__ == '__main__':
     suit = unittest.TestSuite()
     suit.addTest(Questionnaire("test_001_create_question"))
+    suit.addTest(Questionnaire("test_002_delete_question"))
     runner = unittest.TextTestRunner()
     runner.run(suit)
