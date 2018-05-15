@@ -403,11 +403,11 @@ class BasePage(object):
         number = int(number)
 
         if number == veriry:
-            print ("登录成功！").decode('utf-8').encode(type)
+            print (u"登录成功！").decode('utf-8').encode(type)
         elif number == 132741:
-            print("登录成功！").decode('utf-8').encode(type)
+            print(u"登录成功！").decode('utf-8').encode(type)
         else:
-            print("验证码输入有误！")
+            print(u"验证码输入有误！")
 
 
 if __name__ == '__main__':

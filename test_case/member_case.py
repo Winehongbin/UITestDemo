@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 import time
 from datetime import datetime
+import sys
+reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
+sys.setdefaultencoding('utf8')
+import os
+curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
 import unittest
-from test_case.base_unit import BaseUnit
-from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
 import time
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 from pages.member.member_management import FieldAction
-
 class Member_Test(unittest.TestCase):
     """ 客户管理测试用例 """
     def setUp(self):
