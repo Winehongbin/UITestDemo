@@ -4,6 +4,7 @@ import sys
 from pages.common_pages.driver import brower
 reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
 sys.setdefaultencoding('utf8')
+
 from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
@@ -143,4 +144,5 @@ if __name__ == '__main__':
     time.sleep(3)
     o.click_menu_bt('16')
     o = FieldAction(dr)
-    o.edit_form(u"自动化测试专用",u"手机",u"姓名")
+    # o.edit_form(u"自动化测试专用",u"手机",u"姓名")
+    o.new_custom_list_field(u"省市")

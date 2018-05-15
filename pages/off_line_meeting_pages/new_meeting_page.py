@@ -43,7 +43,7 @@ class NewMeetingPage(BasePage):
         self.driver.implicitly_wait(10)
         self.element_click('css','#createSeminar > div > div > div.modal-footer > button')         # 点击“创建”按钮
         self.driver.implicitly_wait(30)
-        self.deprint( "线下会创建成功"),
+        self.deprint( "线下会创建成功")
 
     def nameofform(self, form_name):
 

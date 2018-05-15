@@ -2,8 +2,11 @@
 import time
 from datetime import datetime
 import unittest
-from test_case.base_unit import BaseUnit
-from pages.common_pages.base import BasePage
+import os
+import sys
+curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
 from pages.common_pages.login_page import LoginPage
 import time
 from pages.common_pages.choose_page import ChoosePage
@@ -19,7 +22,7 @@ class Wechat_Test(unittest.TestCase):
         login = LoginPage(self.driver)
         login.login()
         choose = ChoosePage(self.driver)
-        choose.click_menu_bt("1")
+        choose.click_menu_bt('1')
 
     def tearDown(self):
         self.driver.quit()

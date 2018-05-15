@@ -16,8 +16,6 @@ class InteractionAndCancle(BasePage):
 
         self.deprint("点击并添加互动环节")
         # 将页面滚动条拖到底部
-        # js = "var q=document.documentElement.scrollTop=100000"
-        # self.driver.execute_script(js)
         self.scrollbar("1000000")
         time.sleep(5)
         self.driver.implicitly_wait(30)
@@ -35,7 +33,6 @@ class InteractionAndCancle(BasePage):
                 self.deprint("已添加互动环节")
             else:
                 self.wait_is_visible('x','//*[@id="setFiled"]/div/div/div[2]/div[4]/div[7]/label') #选择互动环节
-                # setFiled > div > div > div.modal-body.ng-isolate-scope > div:nth-child(4) > div:nth-child(7) > label
                 self.driver.implicitly_wait(30)
                 time.sleep(5)
                 self.element_click('css','#setFiled > div > div > div.modal-footer > input') #点击确定按钮
