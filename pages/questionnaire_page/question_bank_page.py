@@ -42,19 +42,16 @@ class QuestionBankManagement(BasePage):
         firstQuestion=self.find_element_text('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]') #获取第一个试题的标题
         totalNum=self.find_element_text('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div/span[2]')
 
-        if (firstQuestion == 'What is your favorite sport?'):
-            self.find_element_click('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/a') #点击试题后面的“更多”按钮
-            self.find_element_click('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/ul/li[2]/a') #点击删除按钮
-            time.sleep(1)
-            self.find_element_click('x','/html/body/div[1]/div[2]/div[4]/div/div/div[3]/button[1]') #点击确定按钮
-            time.sleep(1)
+        self.find_element_click('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/a') #点击试题后面的“更多”按钮
+        self.find_element_click('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/ul/li[2]/a') #点击删除按钮
+        time.sleep(1)
+        self.find_element_click('x','/html/body/div[1]/div[2]/div[4]/div/div/div[3]/button[1]') #点击确定按钮
+        time.sleep(1)
 
-            if int(totalNum)==(int(self.find_element_text('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div/span[2]'))+1):
-                self.deprint('试题删除成功')
-            else:
-                self.deprint('试题删除失败')
-
-
+        if int(totalNum)==(int(self.find_element_text('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div/span[2]'))+1):
+            self.deprint('试题删除成功')
+        else:
+            self.deprint('试题删除失败')
 
 if __name__ == '__main__':
     dr = brower()

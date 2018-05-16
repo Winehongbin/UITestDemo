@@ -19,7 +19,7 @@ class QuestionnaireListPage(BasePage):
         self.deprint("点击管理题库")
         time.sleep(2)
         # self.find_element_click('css','body > div.g-container-box > div.m-container.ng-scope > div.m-bar.ng-scope > div.pull-right > a.u-mr10')#点击管理题库的按钮
-        self.wait_is_visible('css','body > div.g-container-box > div.m-container.ng-scope > div.m-bar.ng-scope > div.pull-right > a.u-mr10')#点击管理题库的按钮
+        self.find_element_click('x','/html/body/div[1]/div[2]/div[2]/div[4]/a[1]')#点击管理题库的按钮
 
 
 if __name__ == '__main__':
