@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from selenium.common.exceptions import NoAlertPresentException
 
 from pages.common_pages.base import BasePage
 from pages.webinar_pages.index_page import Webinar_IndexPage

@@ -22,10 +22,10 @@ class Member_Test(unittest.TestCase):
         login.login()
         choose = ChoosePage(self.driver)
         time.sleep(2)
-        choose.click_menu_bt("16")
+        choose.click_menu_bt('16')
     def tearDown(self):
         self.driver.quit()
-    # 创建图文素材用例
+    #创建图文素材用例
     def test_001_new_custom_mail_field(self):
         """ 新建自定义身份标识字段"""
         test=FieldAction(self.driver)
@@ -45,9 +45,9 @@ class Member_Test(unittest.TestCase):
         test.del_field(u"自定义列表字段")
 if __name__ == "__main__":
     suit=unittest.TestSuite()
-    suit.addTest(Member_Test("test_001_new_custom_mail_field"))
+    # suit.addTest(Member_Test("test_001_new_custom_mail_field"))
     suit.addTest(Member_Test("test_002_new_custom_list_field"))
-    suit.addTest(Member_Test("test_003_edit_form"))
-    suit.addTest(Member_Test("test_004_del_field"))
+    # suit.addTest(Member_Test("test_003_edit_form"))
+    # suit.addTest(Member_Test("test_004_del_field"))
     runner = unittest.TextTestRunner()
     runner.run(suit)
