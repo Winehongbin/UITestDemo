@@ -6,11 +6,9 @@ Created on 2018-05-10
 
 import os
 import sys
-
 from selenium.common.exceptions import NoAlertPresentException
-
 reload(sys)
-print sys.getdefaultencoding()
+#print sys.getdefaultencoding()
 # curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；
 # rootPath = os.path.split(curPath)[0]
 # sys.path.append(rootPath)

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import time
 import sys
-from pages.common_pages.driver import brower
 reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
 sys.setdefaultencoding('utf8')
-
+import os
 from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
+
 class FieldAction(BasePage):
     def new_custom_mail_field(self):
         time.sleep(1)
@@ -36,8 +36,10 @@ class FieldAction(BasePage):
         self.deprint(u"点击保存，保存字段")
     def new_custom_list_field(self,dic_name):
         time.sleep(1)
-        self.element_click("id","_settingFelid")#点击属性/字段设置
-        self.element_click("css","#con-basefield > div.m-tit-bar > div > div > button")#点击新增字段
+        # self.element_click("id","_settingFelid")#点击属性/字段设置
+        self.wait_is_visible("id","_settingFelid")#点击属性/字段设置
+        # self.element_click("css","#con-basefield > div.m-tit-bar > div > div > button")#点击新增字段
+        self.wait_is_visible("css","#con-basefield > div.m-tit-bar > div > div > button")#点击新增字段
         self.deprint(u"点击新增字段")
         self.element_value_input("x",'//*[@id="setFieldModal"]/div/div/div[2]/form/div[1]/div/input',u"自定义列表字段")#输入字段中文名称
         self.deprint(u"输入字段中文名称：自定义列表字段")
@@ -78,10 +80,13 @@ class FieldAction(BasePage):
             self.deprint(u"未找到需要删除的字段")
     def edit_form(self,form_name,choose_field1,choose_field2):
     #通过表单名称，找到表单，编辑表单，添加所有字段，删除所有字段，添加两个字段，设置为必填，然后保存
-            self.element_click("x","/html/body/div[2]/div[1]/div/a[4]")#点击注册表单管理
+            # self.element_click("x","/html/body/div[2]/div[1]/div/a[4]")#点击注册表单管理
+            self.wait_is_visible("x","/html/body/div[2]/div[1]/div/a[4]")#点击注册表单管理
             time.sleep(2)
             form_num = self.find_element_text("x","/html/body/div[2]/div[2]/div[1]/p/span[1]")#抓取表单数
             self.deprint(u"获得表单的总个数")
+            if form_name == '':
+                form_name = '0'
             for num in range(2,int(form_num)):
                 all_form_name = self.find_element_text("x","/html/body/div[2]/div[2]/div[2]/div["+ str(num) +"]/p")#获取表单名称
                 if all_form_name == form_name:#判断对应表单的名称，点击编辑按钮
@@ -99,13 +104,20 @@ class FieldAction(BasePage):
                 FieldName = self.find_element_AttributeText("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(all_filed_num) +"]/div/div[1]/div/input","placeholder")
                 if FieldName != u"密码":#排除密码字段序号
                     del_list.append(all_filed_num)
-            del_list.reverse()  # 将数组顺序反转
+            # del_list.reverse()  # 将数组顺序反转
+            # print del_list
+            self.scrollbar("top")
             for delFiledNum in del_list:#循环删除所有字段
+                time.sleep(1)
                 try:
-                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div[2]/a[1]")
+                    isFind =self.wait_is_visible("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div[2]/a[1]")
+                    if isFind!= True:
+                        break
                 except:#路径有两种，利用错误机制，先尝试第一种路径，然后第二种
-                    time.sleep(1)
-                    self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div/a[1]")
+
+                    isFind =self.wait_is_visible("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+ str(delFiledNum) +"]/div/div[2]/div/a[1]")
+                    if isFind!= True:
+                        break
 
             for choose_num in range(1,sign_up_num-1):#循环获取字段名称
                 ChooseFieldName  = self.find_element_text("x","/html/body/div[2]/div[1]/div[2]/div[1]/ul/li/ul/li["+ str(choose_num) +"]/a")
@@ -117,9 +129,11 @@ class FieldAction(BasePage):
                     self.wait_is_visible("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div[1]/label")
                 except:
                     self.wait_is_visible("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/div["+str(i)+"]/div/div[2]/div[2]/div/label")
-            self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/p/a[2]")#点击保存按钮
+            self.scrollbar("bottom")
+            # self.element_click("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/p/a[2]")#点击保存按钮
+            self.wait_is_visible("x","/html/body/div[2]/div[1]/div[2]/div[2]/div/p/a[2]")#点击保存按钮
             time.sleep(1)
-            self.element_click("x","//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")#点击确认按钮
+            # self.element_click("x","//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")#点击确认按钮
             self.deprint(u"字段添加成功")
     def get_url_sign_up(self):
         # !/usr/bin/python3.4
@@ -144,5 +158,5 @@ if __name__ == '__main__':
     time.sleep(3)
     o.click_menu_bt('16')
     o = FieldAction(dr)
-    # o.edit_form(u"自动化测试专用",u"手机",u"姓名")
-    o.new_custom_list_field(u"省市")
+    o.edit_form(u"自动化测试专用",u"手机",u"姓名")
+    # o.new_custom_list_field(u"省市")

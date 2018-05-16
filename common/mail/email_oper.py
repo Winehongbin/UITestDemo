@@ -79,7 +79,7 @@ class SendEmailModel():
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'abc@sinobasedm.com'  # 发件人
-        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com']#,'gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
+        receiver = ['394522655@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','vivian_shi@sinobasedm.com','merry_you@sinobasedm.com']#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'abc@sinobasedm.com'  # 进入邮箱的账户名
@@ -112,7 +112,7 @@ class SendEmailModel():
         字符串引号外加r可以不转义
         """
         result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog" #report存放文件夹的路径
-        print result_dir
+        # print result_dir
         lists = os.listdir(result_dir)  #os.listdir(path):返回指定路径下的文件和文件夹列表;
         """
         重新按时间对目录下的文件进行排序,
@@ -151,7 +151,7 @@ class SendEmailModel():
             smtp.connect(smtpserver)   #/通过connect方法链接到smtp主机
             smtp.login(username, password)
             #sendmail()方法就是发邮件，由于可以一次发给多个人，所以传入一个list，邮件正文是一个str，as_string()把MIMEText对象变成str。
-            smtp.sendmail(sender, receiver, msgRoot.as_string())
+            smtp.sendmail(sender, receiver, msgRoot.as_string())  #sendmail中的那个To是list，不是string，否则只能发给第一个人
             smtp.quit()
             print "邮件发送成功"
         except smtplib.SMTPException:

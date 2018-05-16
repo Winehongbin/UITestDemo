@@ -16,7 +16,7 @@ class InteractionAndCancle(BasePage):
 
         self.deprint("点击并添加互动环节")
         # 将页面滚动条拖到底部
-        self.scrollbar("1000000")
+        self.scrollbar("100")
         time.sleep(5)
         self.driver.implicitly_wait(30)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转

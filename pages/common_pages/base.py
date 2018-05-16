@@ -8,10 +8,10 @@ from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.support.select import Select
 import sys
-print sys.getdefaultencoding()#sys.getdefaultencoding(): 获取系统当前编码，一般默认为ascii。
+#print sys.getdefaultencoding()#sys.getdefaultencoding(): 获取系统当前编码，一般默认为ascii。
 from random import randint   #random:随机的意思
 type=sys.getfilesystemencoding()
-print type
+#print type
 import time
 
 #页面操作基础类
@@ -287,7 +287,7 @@ class BasePage(object):
         dt = datetime.now()
         strnow = datetime.strftime(dt, '%Y-%m-%d %H_%M_%S')
         return strnow
-    def Select_Value(self,location,value):
+    def select_value(self,location,value):
         sel = self.driver.find_element_by_xpath(location)
         Select(sel).select_by_value(value)
 
@@ -298,28 +298,29 @@ class BasePage(object):
         for n in range(0, 20):  #rang（）数组，从0开始遍历
             # 如果找个元素，打印内容，同时break跳出循环
             element = None #定义变量，默认的为空
+            time.sleep(0.5)  # 遍历一次就休息0.5秒
             try:
                 if method == "x":
                     self.driver.implicitly_wait(3)
                     element = self.driver.find_element_by_xpath(location)
-                if method == "class":
+                elif method == "class":
                     self.driver.implicitly_wait(3)
                     element = self.driver.find_element_by_class_name(location)
-                if method == "id":
+                elif method == "id":
                     element = self.driver.find_element_by_id(location)
-                if method == "name":
+                elif method == "name":
                     self.driver.implicitly_wait(3)
                     element = self.driver.find_element_by_name(location)
-                if method == "link":
+                elif method == "link":
                     self.driver.implicitly_wait(3)
                     element = self.driver.find_element_by_link_text(location)
-                if method == "tag":
+                elif method == "tag":
                     self.driver.implicitly_wait(3)
                     element = self.driver.find_element_by_tag_name(location)
-                if method == "Plink":
+                elif method == "Plink":
                     self.driver.implicitly_wait(3)
                     element = self.driver.find_element_by_partial_link_text(location)
-                if method == "css":
+                elif method == "css":
                     self.driver.implicitly_wait(3)
                     element = self.driver.find_element_by_css_selector(location)
             except:
@@ -327,18 +328,22 @@ class BasePage(object):
                 continue
             if element:
                 # print "找到了"
+                # print element.get_attribute('ng-hide')
+                # if element.get_attribute('ng-hide')==True:
                 element.click()
                 isFind = True
                 break
 
         if isFind != True:
-            print "没找到元素"
+            print "没找到元素:"+location
+        return isFind
 
     # 20秒内每间隔0.5秒寻找一次元素,并输入value
     def element_value_input(self,method,location,value):
         isFind = False
         for n in range(0, 20):
             # 如果找个元素，打印内容，同时break跳出循环
+            time.sleep(1)  # 遍历一次就休息0.5秒
             element = None
             try:
                 if method == "x":

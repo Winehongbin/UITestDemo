@@ -58,7 +58,7 @@ class Webcast_Setting(BasePage):
         # 将页面滚动条拖到底部
         # js = "var q=document.documentElement.scrollTop=100000"
         # self.driver.execute_script(js)
-        self.scrollbar("bottom")
+        self.scrollbar("100")
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/h2/div/a')
         self.element_value_input('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[1]/div/text-box/div/input',u'会议日程1')
         # 添加第一个嘉宾
