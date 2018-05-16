@@ -325,7 +325,7 @@ class BasePage(object):
             except:
                 time.sleep(0.5)  # 遍历一次就休息0.5秒
                 continue
-            if element:
+            if element != None :
                 # print "找到了"
                 element.click()
                 isFind = True
@@ -412,6 +412,4 @@ class BasePage(object):
 
 if __name__ == '__main__':
     A = BasePage(1)
-    A.deprint("需要打印的内容")
-    time=A.nowtime()
-    print time
+    A.verirynumber()
