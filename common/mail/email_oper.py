@@ -4,6 +4,7 @@
 import os
 from datetime import datetime
 from pages.common_pages.base import BasePage
+import smtplib
 
 
 class SendEmailModel():
@@ -79,7 +80,9 @@ class SendEmailModel():
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'abc@sinobasedm.com'  # 发件人
-        receiver = ['394522655@qq.com','vivian_shi@sinobasedm.com','cara_gao@sinobasedm.com']#,'gavin_li@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com']#,'lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com']#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
+        receiver = ('394522655@qq.com','cara_gao@sinobasedm.com')#,'gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','gavin_li@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com','jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
+
+        areceiver = ('394522655@qq.com', 'cara_gao@sinobasedm.com')
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'abc@sinobasedm.com'  # 进入邮箱的账户名
@@ -87,7 +90,10 @@ class SendEmailModel():
         msgRoot = MIMEMultipart()
         msgRoot['From'] = Header("自动化测试平台", 'utf-8')
         msgRoot['To'] = Header("每一位项目相关人员", 'utf-8')
+
+        msgRoot['Cc'] = areceiver
         msgRoot['Subject'] = Header(subject, 'utf-8') #Subject为邮件主题
+
         """
         主要内容，参考例子：
         msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
@@ -142,6 +148,9 @@ class SendEmailModel():
         msgRoot['Subject'] = Header(subject, 'utf-8')  # Subject为邮件主题
         msgRoot.attach(msg)
         msgRoot['From'] = sender
+
+        msgRoot['To'] = ','.join(receiver)#实现抄送
+        # msgRoot['Cc'] = areceiver
         att = MIMEApplication(open(fileHTML, 'rb').read())
         att.add_header('Content-Disposition', 'attachment', filename=lists[-1])
         msgRoot.attach(att)
@@ -151,7 +160,10 @@ class SendEmailModel():
             smtp.connect(smtpserver)   #/通过connect方法链接到smtp主机
             smtp.login(username, password)
             #sendmail()方法就是发邮件，由于可以一次发给多个人，所以传入一个list，邮件正文是一个str，as_string()把MIMEText对象变成str。
-            smtp.sendmail(sender, receiver, msgRoot.as_string())  #sendmail中的那个To是list，不是string，否则只能发给第一个人
+            # smtp.sendmail(sender, receiver, msgRoot.as_string())  #sendmail中的那个To是list，不是string，否则只能发给第一个人
+
+            # 发送给多人、同时抄送给多人，发送人和抄送人放在同一个列表中
+            smtp.sendmail(sender, receiver, msgRoot.as_string())
             smtp.quit()
             print "邮件发送成功"
         except smtplib.SMTPException:
