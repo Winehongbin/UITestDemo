@@ -42,13 +42,13 @@ class Questionnaire(unittest.TestCase):
         object = QuestionBankManagement(self.driver)
         object.delete_question()
 
-    def test_003_create_questionnaire(self):
-        """创建常规问卷"""
-        object=QuestionnaireListPage(self.driver)
-        object.open_create_questionnaire()
-        object=NewQuestionnairePage(self.driver)
-        object.creat_new_questionnaire()
-        object.edit_questionnaire_subject()
+    # def test_003_create_questionnaire(self):
+    #     """创建常规问卷"""
+    #     object=QuestionnaireListPage(self.driver)
+    #     object.open_create_questionnaire()
+    #     object=NewQuestionnairePage(self.driver)
+    #     object.creat_new_questionnaire()
+    #     object.edit_questionnaire_subject()
 
 if __name__ == '__main__':
     suit = unittest.TestSuite()

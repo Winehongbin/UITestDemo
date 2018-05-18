@@ -34,10 +34,10 @@ class Member_Test(unittest.TestCase):
         """ 新建自定义列表字段 """
         test=FieldAction(self.driver)
         test.new_custom_list_field(u"省市")
-    def test_003_edit_form(self):
-        """ 编辑注册表单删除添加指定字段"""
-        test = FieldAction(self.driver)
-        test.edit_form(u"自动化测试专用", u"手机", u"姓名")
+    # def test_003_edit_form(self):
+    #     """ 编辑注册表单删除添加指定字段"""
+    #     test = FieldAction(self.driver)
+    #     test.edit_form(u"自动化测试专用", u"手机", u"姓名")
     def test_004_del_field(self):
         """ 删除新创建的两个自定义字段 """
         test = FieldAction(self.driver)
