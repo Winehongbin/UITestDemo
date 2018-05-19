@@ -31,8 +31,10 @@ class QuestionBankManagement(BasePage):
         self.driver.execute_script(js)
         time.sleep(1)
         self.find_element_click('x','//*[@id="examDialog"]/div/div/div[3]/button[1]') #点击确定按钮
-        self.deprint('创建试题完成')
-        return  self.find_element_text('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')
+        time.sleep(1)
+        actual_result=self.find_element_text('x','/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')
+        self.deprint('创建试题"'+actual_result.encode("utf-8")+ '"完成')
+        return  actual_result
 
     #删除试题
     def delete_question(self):

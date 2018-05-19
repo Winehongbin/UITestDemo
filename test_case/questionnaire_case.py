@@ -11,6 +11,7 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 from pages.questionnaire_page.questionnaire_list_page import QuestionnaireListPage
 from pages.questionnaire_page.question_bank_page import QuestionBankManagement
+from pages.questionnaire_page.new_questionnaire_page import NewQuestionnairePage
 
 class Questionnaire(unittest.TestCase):
     """ 问卷测试用例 """
@@ -41,9 +42,18 @@ class Questionnaire(unittest.TestCase):
         object = QuestionBankManagement(self.driver)
         object.delete_question()
 
+    # def test_003_create_questionnaire(self):
+    #     """创建常规问卷"""
+    #     object=QuestionnaireListPage(self.driver)
+    #     object.open_create_questionnaire()
+    #     object=NewQuestionnairePage(self.driver)
+    #     object.creat_new_questionnaire()
+    #     object.edit_questionnaire_subject()
+
 if __name__ == '__main__':
     suit = unittest.TestSuite()
     suit.addTest(Questionnaire("test_001_create_question"))
     suit.addTest(Questionnaire("test_002_delete_question"))
+    suit.addTest(Questionnaire("test_003_create_questionnaire"))
     runner = unittest.TextTestRunner()
     runner.run(suit)

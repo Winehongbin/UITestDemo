@@ -48,7 +48,10 @@ class Offline_Meeting_Test(BaseUnit):
         object = IndexPage(dr)
         object.click_createunderline()
         object = NewMeetingPage(dr)
-        object.create_neww_offline()
+        actual_result = object.create_neww_offline()
+        expected_result = u'线下会创建成功'
+        self.assertEqual(actual_result, expected_result, msg="failed")
+        object.quit()
         base.deprint("创建线下会页面用例执行完成")
 
     def test_002_createoffline(self):
@@ -64,7 +67,10 @@ class Offline_Meeting_Test(BaseUnit):
         o = IndexPage(dr)
         o.click_linelist('2')
         object = InteractionAndCancle(dr)
-        object.interaction_and_cancle('2')
+        actual_result = object.interaction_and_cancle('2')
+        expected_result = u'取消会议成功'
+        self.assertEqual(actual_result, expected_result, msg="failed")
+        o.quit()
         base.deprint("删除线下会用例完成")
 
     def test_003_interaction(self):
@@ -80,6 +86,7 @@ class Offline_Meeting_Test(BaseUnit):
         o.click_linelist('2')
         o = InteractionAndCancle(dr)
         o.interaction_and_cancle('1')
+        o.quit()
         base.deprint( "添加线下会互动环节添加用例完成")
 
 

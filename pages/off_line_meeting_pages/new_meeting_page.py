@@ -43,6 +43,7 @@ class NewMeetingPage(BasePage):
         self.driver.implicitly_wait(10)
         self.element_click('css','#createSeminar > div > div > div.modal-footer > button')         # 点击“创建”按钮
         self.driver.implicitly_wait(30)
+        return u'线下会创建成功'
         self.deprint( "线下会创建成功")
 
     def nameofform(self, form_name):
@@ -54,7 +55,7 @@ class NewMeetingPage(BasePage):
             ele = '//*[@id="createSeminarScroller"]/form/div[8]/div[2]/div/ul/li[' + str(num) + ']/a'
             #print ele
             all_form_name = self.find_element_text("x", ele)  # 获各个注册单名称
-            print all_form_name
+            # print all_form_name
             if all_form_name == form_name:  # 判断对应注册单的名称，点击选择
                 self.element_click("x", ele)
                 break

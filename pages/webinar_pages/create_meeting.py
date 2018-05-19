@@ -7,7 +7,9 @@ from pages.common_pages.login_page import LoginPage
 from pages.common_pages.driver import brower
 from pages.common_pages.choose_page import ChoosePage
 import time
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Webinar_Create(BasePage):
@@ -33,16 +35,29 @@ class Webinar_Create(BasePage):
         #保存会议后，加载时间太长,需要优化
         time.sleep(10)
         self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
+        # js="$('.btn-primary')"
+        # self.driver.execute_script(js)
 
         #获取下一个窗口句柄，跳转到会议详情页面
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.driver.implicitly_wait(10)
-        self.find_element_text('x', '/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
-        time.sleep(5)
-        vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
+        # self.find_element_text('x', '/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
+        # self.driver.switch_to.window(self.driver.window_handles[0])
+        time.sleep(10)
+        vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[1]/span')
+        # print vwrtitle
+        # print wrtitle
+        # try:
+        #     vwrtitle = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[1]/span")))
+        #     #
+        #     self.driver.
+        #
+        # finally:
+        #     self.driver.quit()
         #判断会议标题是否一致
         if wrtitle == vwrtitle:
-            self.deprint("创建会议成功"),
+
+            self.deprint("创建会议成功")
         else:
             print("创建会议失败")
 

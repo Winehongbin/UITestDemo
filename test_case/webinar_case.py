@@ -9,13 +9,12 @@ import time
 from pages.webinar_pages.create_meeting import Webinar_Create
 from pages.webinar_pages.webcast_setting import Webcast_Setting
 from pages.webinar_pages.guest_manager import Get_Guestnum
-
-
 import unittest
 from test_case.base_unit import BaseUnit
 t = BasePage(object)
 
 class Webinar_Case(BaseUnit):
+# class Webinar_Case(BaseUnit):
 
     """线上会测试用例"""
 
