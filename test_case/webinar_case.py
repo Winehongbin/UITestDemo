@@ -64,6 +64,7 @@ class Webinar_Case(BaseUnit):
         time.sleep(2)
         wbr_seting.add_agenda()
         time.sleep(2)
+        o.scrollbar("top")
         wbr.publish_meeting()
         wbr.cancel_meeting()
         o.quit()

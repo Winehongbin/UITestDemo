@@ -94,6 +94,7 @@ if __name__ == '__main__':
     wbr_seting.add_guest(3)
     time.sleep(3)
     wbr_seting.add_agenda()
+    o.scrollbar("top")
 
     # scollbarmove = Scrollbar_Move(dr)
     # scollbarmove.scrollbarmovedown()
