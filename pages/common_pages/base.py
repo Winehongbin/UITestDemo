@@ -16,7 +16,7 @@ import time
 
 #页面操作基础类
 class BasePage(object):
-    base_url="https://tenant.smarket.net.cn"
+    base_url="https://s2-tenant.smarket.net.cn"
     #__init__()方法对参数进行初始化
     def __init__(self,selenium_driver,base_url=base_url,parent=None):
         self.base_url = base_url
@@ -295,10 +295,12 @@ class BasePage(object):
     def wait_is_visible(self, method, location):
         #print  "wait_is_visible"
         isFind = False  #布尔类型
-        for n in range(0, 20):  #rang（）数组，从0开始遍历
+        for n in range(0, 40):  #rang（）数组，从0开始遍历
             # 如果找个元素，打印内容，同时break跳出循环
+            text = '开始执行循环第:' + str(n)
+            self.deprint(text)
             element = None #定义变量，默认的为空
-            time.sleep(0.5)  # 遍历一次就休息0.5秒
+            time.sleep(1)  # 遍历一次就休息0.5秒
             try:
                 if method == "x":
                     self.driver.implicitly_wait(3)
@@ -341,8 +343,10 @@ class BasePage(object):
     # 20秒内每间隔0.5秒寻找一次元素,并输入value
     def element_value_input(self,method,location,value):
         isFind = False
-        for n in range(0, 20):
+        for n in range(0, 40):
             # 如果找个元素，打印内容，同时break跳出循环
+            text='开始执行循环第:'+str(n)
+            self.deprint(text)
             time.sleep(1)  # 遍历一次就休息0.5秒
             element = None
             try:
