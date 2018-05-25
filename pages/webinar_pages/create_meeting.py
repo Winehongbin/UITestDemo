@@ -33,10 +33,15 @@ class Webinar_Create(BasePage):
         self.element_click('x','//*[@id="save"]')
 
         #保存会议后，加载时间太长,需要优化
-        time.sleep(10)
-        self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
-        # js="$('.btn-primary')"
-        # self.driver.execute_script(js)
+        # time.sleep(10)
+        # self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
+
+        element = WebDriverWait(self.driver,10,0.5).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="webinarModal"]/div[1]/div/div[3]/a')))
+        if element == 1 :
+            self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
+        else:
+            time.sleep(10)
+            self.wait_is_visible('x', '//*[@id="webinarModal"]/div[1]/div/div[3]/a')
 
         #获取下一个窗口句柄，跳转到会议详情页面
         self.driver.switch_to.window(self.driver.window_handles[-1])
@@ -56,10 +61,9 @@ class Webinar_Create(BasePage):
         #     self.driver.quit()
         #判断会议标题是否一致
         if wrtitle == vwrtitle:
-
-            self.deprint("创建会议成功")
+            self.deprint("创建会议成功"),
         else:
-            print("创建会议失败")
+            self.deprint("创建会议失败")
 
     #发布会议
     def publish_meeting(self):
@@ -111,7 +115,7 @@ if __name__ == '__main__':
     o.index_webinar()
     wbr = Webinar_Create(dr)
     wbr.create_meeting()
-    wbr.publish_meeting()
+    # wbr.publish_meeting()
     wbr.cancel_meeting()
 
 
