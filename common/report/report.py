@@ -7,6 +7,7 @@ HTMLTestRunner： 是 基于 unittest 单元测试的 HTML报告 的一个第三
 
 '''
 import HTMLTestRunnerCN
+import HTMLTestRunner_jpg
 from pages.common_pages.base import BasePage
 import os.path
 import sys
@@ -75,8 +76,13 @@ class AllReport(BasePage):
         stream：指定测试报告文件；description：定义测试报告的副标题。
         HTMLTestRunnerCN 需要在python安装目录的Lib下增加HTMLTestRunnerEN.py 和HTMLTestRunnerCN.py
         """
-        runner=HTMLTestRunnerCN.HTMLTestRunner(title=u"Smarket3.0自动化测试报告",stream=myresult,
-                                             description=u"")
+        # runner=HTMLTestRunnerCN.HTMLTestRunner(title=u"Smarket3.0自动化测试报告",stream=myresult,
+        #                                      description=u"")
+
+        runner = HTMLTestRunner_jpg.HTMLTestRunner(title=u"Smarket3.0自动化测试报告",
+                                                description="测试用例参考",
+                                                stream=myresult,
+                                                retry=1)
         """
         HTMLTestRunner的run()方法来运行测试套件中所组件的测试用例。
         """
