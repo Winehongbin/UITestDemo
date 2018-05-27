@@ -76,5 +76,14 @@ class ConrollerShow():
 if __name__ == '__main__':
     A = ConrollerShow()
     A.SupportTool_Control()
+"""
 
+    for host, browserType in config.getconfig().items():
+        print(host)
+        print(browserType)
+        driver.setRomteDriver(host, browserType)
+        driver.choose_brower()
+        A = ConrollerShow()
+        A.SupportTool_Control()
+"""
 
