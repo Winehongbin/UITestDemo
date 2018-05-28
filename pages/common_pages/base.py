@@ -11,12 +11,14 @@ import sys
 #print sys.getdefaultencoding()#sys.getdefaultencoding(): 获取系统当前编码，一般默认为ascii。
 from random import randint   #random:随机的意思
 type=sys.getfilesystemencoding()
+reload(sys)
+sys.setdefaultencoding('utf8')
 #print type
 import time
 
 #页面操作基础类
 class BasePage(object):
-    base_url="https://tenant.smarket.net.cn"
+    base_url="https://s2-tenant.smarket.net.cn"
     #__init__()方法对参数进行初始化
     def __init__(self,selenium_driver,base_url=base_url,parent=None):
         self.base_url = base_url
@@ -295,10 +297,13 @@ class BasePage(object):
     def wait_is_visible(self, method, location):
         #print  "wait_is_visible"
         isFind = False  #布尔类型
-        for n in range(0, 20):  #rang（）数组，从0开始遍历
+        for n in range(0, 2):  #rang（）数组，从0开始遍历
             # 如果找个元素，打印内容，同时break跳出循环
+            # text = '开始执行循环第:' + str((n + 1) * 0.5)
+            text = str((n + 1) * 0.5) +u'秒'
+            # self.deprint(text)
             element = None #定义变量，默认的为空
-            time.sleep(0.5)  # 遍历一次就休息0.5秒
+            time.sleep(1)  # 遍历一次就休息0.5秒
             try:
                 if method == "x":
                     self.driver.implicitly_wait(3)
@@ -335,14 +340,19 @@ class BasePage(object):
                 break
 
         if isFind != True:
-            print "没找到元素:"+location
+            # print "没找到元素:"+location
+            val =u'查找元素:' + location +u'超时:' +text
+
+            self.deprint(val)
         return isFind
 
     # 20秒内每间隔0.5秒寻找一次元素,并输入value
     def element_value_input(self,method,location,value):
         isFind = False
-        for n in range(0, 20):
+        for n in range(0, 40):
             # 如果找个元素，打印内容，同时break跳出循环
+            text='开始执行循环第:'+str(n)
+            self.deprint(text)
             time.sleep(1)  # 遍历一次就休息0.5秒
             element = None
             try:

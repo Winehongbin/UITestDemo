@@ -45,8 +45,8 @@ class Member_Test(unittest.TestCase):
         test.del_field(u"自定义列表字段")
 if __name__ == "__main__":
     suit=unittest.TestSuite()
-    # suit.addTest(Member_Test("test_001_new_custom_mail_field"))
-    suit.addTest(Member_Test("test_002_new_custom_list_field"))
+    suit.addTest(Member_Test("test_001_new_custom_mail_field"))
+    #uit.addTest(Member_Test("test_002_new_custom_list_field"))
     # suit.addTest(Member_Test("test_003_edit_form"))
     # suit.addTest(Member_Test("test_004_del_field"))
     runner = unittest.TextTestRunner()
