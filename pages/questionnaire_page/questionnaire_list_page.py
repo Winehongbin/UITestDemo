@@ -14,10 +14,14 @@ class QuestionnaireListPage(BasePage):
 
     #打开管理题库
     def open_questionBank(self):
-        self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
-        self.deprint("点击管理题库")
-        time.sleep(3)
-        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div[4]/a[1]')#点击管理题库的按钮
+        try:
+            self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
+            self.deprint("点击管理题库")
+            time.sleep(3)
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[1]')  # 点击管理题库的按钮
+        except:
+            self.deprint("用例执行失败")
+
 
     #打开新建问卷
     def open_create_questionnaire(self):

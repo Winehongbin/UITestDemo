@@ -14,10 +14,17 @@ class  NewQuestionnairePage(BasePage):
 
     # 创建常规问卷
     def creat_new_questionnaire(self):
-        self.deprint('开始创建问卷')
-        self.element_value_input('css','#questionaireTitle',u"问题一")  # 填写问卷标题
-        self.driver.implicitly_wait(30)
-
+        try:
+            self.deprint('开始创建问卷')
+            self.element_value_input('css', '#questionaireTitle', u"问题一")  # 填写问卷标题
+            self.driver.implicitly_wait(30)
+        except:
+            try:
+                self.deprint('开始创建问卷')
+                self.element_value_input('css', '#questionaireTitle', u"问题一")  # 填写问卷标题
+                self.driver.implicitly_wait(30)
+            except:
+                self.deprint("用例执行失败")
         # self.find_element_click('css','#startTime') # 点击开始时间
         # # 下拉小时列表，给20点的固定值
         # sel = self.driver.find_element_click('css','body > div:nth-child(6) > div.calendar.second.right.single > div.calendar-time > select.hourselect') #点击开始时间
@@ -35,13 +42,28 @@ class  NewQuestionnairePage(BasePage):
 
     #编辑问卷题目
     def edit_questionnaire_subject(self):
-        self.deprint('编辑问卷题目')
-        self.find_element_click('x','/html/body/div[1]/div[2]/div[1]/div[1]/ul/li[1]/ul/li[1]/a')   #点击用户信息一 中的姓名
-        self.find_element_click('x','/html/body/div[1]/div[2]/div[1]/div[2]/ng-form/p/input')    #点击保存问卷
-        self.driver.implicitly_wait(30)
-        self.find_element_click('x','/html/body/div[1]/div[2]/div[1]/div[2]/input')    #点击完成按钮
-        self.driver.implicitly_wait(60)
-        self.deprint('创建常规问卷完成')
+        try:
+            self.deprint('编辑问卷题目')
+            self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[1]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
+            self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/ng-form/p/input')  # 点击保存问卷
+            self.driver.implicitly_wait(30)
+            self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/input')  # 点击完成按钮
+            self.driver.implicitly_wait(60)
+            self.deprint('创建常规问卷完成')
+        except:
+            try:
+                self.deprint('编辑问卷题目')
+                self.find_element_click('x',
+                                        '/html/body/div[1]/div[2]/div[1]/div[1]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
+                self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/ng-form/p/input')  # 点击保存问卷
+                self.driver.implicitly_wait(30)
+                self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/input')  # 点击完成按钮
+                self.driver.implicitly_wait(60)
+                self.deprint('创建常规问卷完成')
+            except:
+                self.deprint("用例执行失败")
+
+
 
 
 if __name__ == '__main__':
