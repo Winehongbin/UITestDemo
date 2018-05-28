@@ -28,8 +28,16 @@ class Member_Test(unittest.TestCase):
     #创建图文素材用例
     def test_001_new_custom_mail_field(self):
         """ 新建自定义身份标识字段"""
-        test=FieldAction(self.driver)
-        test.new_custom_mail_field()
+        try:
+            test=FieldAction(self.driver)
+            test.new_custom_mail_field()
+        except:
+            try:
+                test = FieldAction(self.driver)
+                test.new_custom_mail_field()
+            except:
+                test.deprint(u"新增自定义邮箱身份标识用例失败")
+
     def test_002_new_custom_list_field(self):
         """ 新建自定义列表字段 """
         test=FieldAction(self.driver)
