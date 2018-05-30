@@ -9,13 +9,17 @@ import time
 class Get_Guestnum(BasePage):
 
     def get_num(self):
-
         self.wait_is_visible('x','/html/body/div[1]/div[1]/ul/li[3]/h2/a')
         time.sleep(3)
         strguestnum = self.find_element_text('x','/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
-        s = strguestnum[3:-4]
-        #print s
-        return s
+        # 判断嘉宾的统计数字是否显示
+        s = len(strguestnum[3:-4])
+        print s
+        if s == 0 :
+            time.sleep(3)
+            strguestnum = self.find_element_text('x', '/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
+        num = strguestnum[3:-4]
+        return num
 
 if __name__ == '__main__':
     dr = brower()
