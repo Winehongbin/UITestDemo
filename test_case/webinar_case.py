@@ -11,6 +11,8 @@ from pages.webinar_pages.webcast_setting import Webcast_Setting
 from pages.webinar_pages.guest_manager import Get_Guestnum
 import unittest
 from test_case.base_unit import BaseUnit
+from pages.webinar_pages.interaction_setting_page import InteractionSetting
+from pages.questionnaire_page.new_questionnaire_page import NewQuestionnairePage
 t = BasePage(object)
 
 class Webinar_Case(BaseUnit):
@@ -39,6 +41,14 @@ class Webinar_Case(BaseUnit):
         time.sleep(2)
         wbr_seting.add_agenda()
         time.sleep(2)
+        question = InteractionSetting(dr)
+        question.interaction_setting()
+        time.sleep(2)
+        question.create_questionnar()
+        newquestion = NewQuestionnairePage(dr)
+        newquestion.creat_new_questionnaire()
+        newquestion.edit_questionnaire_subject()
+        question.click_refresh()
         wbr.cancel_meeting()
         o.quit()
         t.deprint("创建并取消线上会用例执行完成")
@@ -52,19 +62,11 @@ class Webinar_Case(BaseUnit):
         o = ChoosePage(dr)
         o.click_menu_bt('8')
         time.sleep(5)
-        gguestnum = Get_Guestnum(dr)
-        guestnum = int(gguestnum.get_num())
         o = Webinar_IndexPage(dr)
         time.sleep(3)
         o.index_webinar()
         wbr = Webinar_Create(dr)
         wbr.create_meeting()
-        wbr_seting = Webcast_Setting(dr)
-        wbr_seting.add_guest(guestnum)
-        time.sleep(2)
-        wbr_seting.add_agenda()
-        time.sleep(2)
-        o.scrollbar("top")
         wbr.publish_meeting()
         wbr.cancel_meeting()
         o.quit()

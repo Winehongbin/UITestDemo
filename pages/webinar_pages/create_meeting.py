@@ -32,10 +32,7 @@ class Webinar_Create(BasePage):
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/ul/li[2]/a')
         self.element_click('x','//*[@id="save"]')
 
-        #保存会议后，加载时间太长,需要优化
-        # time.sleep(10)
-        # self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
-
+        #保存会议后，判断去设置按钮是否显示，显示后，点击去设置
         element = WebDriverWait(self.driver,10,0.5).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="webinarModal"]/div[1]/div/div[3]/a')))
         if element == 1 :
             self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
@@ -46,9 +43,7 @@ class Webinar_Create(BasePage):
         #获取下一个窗口句柄，跳转到会议详情页面
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.driver.implicitly_wait(10)
-        # self.find_element_text('x', '/html/body/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/strong[1]')
-        # self.driver.switch_to.window(self.driver.window_handles[0])
-        time.sleep(10)
+        time.sleep(5)
         vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[1]/span')
         # print vwrtitle
         # print wrtitle
