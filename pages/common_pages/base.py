@@ -351,8 +351,9 @@ class BasePage(object):
         isFind = False
         for n in range(0, 40):
             # 如果找个元素，打印内容，同时break跳出循环
-            text='开始执行循环第:'+str(n)
-            self.deprint(text)
+            # text = '开始执行循环第:' + str((n + 1) * 0.5)
+            text = str((n + 1) * 0.5) + u'秒'
+            #self.deprint(text)
             time.sleep(1)  # 遍历一次就休息0.5秒
             element = None
             try:
