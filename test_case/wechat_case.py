@@ -36,7 +36,7 @@ class Wechat_Test(unittest.TestCase):
 
         """测试创建图文素材"""
         startTime=BasePage(self.driver).nowtime() #记录用例开始执行的时间
-        print "用例开始执行时间："+startTime
+        # print "用例开始执行时间："+startTime
         test=Creat_media(self.driver)
         actual_result=test.creat_media()
         expected_result=u'素材创建成功'
@@ -46,19 +46,32 @@ class Wechat_Test(unittest.TestCase):
             result='failed'
         # self.assertEqual(actual_result,expected_result,msg="failed")
         endTime=BasePage(self.driver).nowtime() #记录用例执行完成时间
-        print "用例开始完成时间：" + endTime
+        # print "用例开始完成时间：" + endTime
         insertSql = "INSERT into caselog VALUES ('创建图文素材','微信','%s','%s','%s')"  % (startTime,endTime,result)
-        print insertSql
+        # print insertSql
         self.cur.execute(insertSql)
         self.conn.commit()
 
     def test_002_deleteMedia(self):
         """测试删除图文素材"""
+        startTime = BasePage(self.driver).nowtime()  # 记录用例开始执行的时间
+        # print "用例开始执行时间：" + startTime
         test=Creat_media(self.driver)
-        test.delete_media()
+        try:
+            test.delete_media()
+            endTime = BasePage(self.driver).nowtime()  # 记录用例执行完成时间
+            # print "用例开始完成时间：" + endTime
+            result='success' #设置用例执行结果为success
+        except:
+            result='failed' #设置用例执行结果为failed
+        insertSql = "INSERT into caselog VALUES ('删除图文素材','微信','%s','%s','%s')" % (startTime, endTime, result) #将用例执行结果插入数据库
+        # print insertSql
+        self.cur.execute(insertSql)
+        self.conn.commit()
+
 if __name__ == "__main__":
     suit=unittest.TestSuite()
     suit.addTest(Wechat_Test("test_001_createMedia"))
-    # suit.addTest(Wechat_Test("test_002_deleteMedia"))
+    suit.addTest(Wechat_Test("test_002_deleteMedia"))
     runner = unittest.TextTestRunner()
     runner.run(suit)
