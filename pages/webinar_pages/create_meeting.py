@@ -43,7 +43,7 @@ class Webinar_Create(BasePage):
         if element == 1 :
             self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
         else:
-            time.sleep(5)
+            time.sleep(15)
             self.wait_is_visible('x', '//*[@id="webinarModal"]/div[1]/div/div[3]/a')
 
         #获取下一个窗口句柄，跳转到会议详情页面
