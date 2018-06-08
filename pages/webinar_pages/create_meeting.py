@@ -20,7 +20,13 @@ class Webinar_Create(BasePage):
         titlet = self.nowtime()
         wrtitle = u'自动化创建测试会议' + str(titlet)
         #点击首页的创建会议按钮
-        self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
+        # self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
+        elementnew = WebDriverWait(self.driver,10,0.5).until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div[1]/div[2]/div/button')))
+        if elementnew == 1 :
+            self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
+        else:
+            time.sleep(3)
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div/button')
         self.driver.implicitly_wait(20)
         #填写会议信息
         self.element_value_input('x','//*[@id="title"]',wrtitle)
@@ -37,7 +43,7 @@ class Webinar_Create(BasePage):
         if element == 1 :
             self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
         else:
-            time.sleep(10)
+            time.sleep(5)
             self.wait_is_visible('x', '//*[@id="webinarModal"]/div[1]/div/div[3]/a')
 
         #获取下一个窗口句柄，跳转到会议详情页面
