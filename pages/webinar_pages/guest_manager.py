@@ -9,6 +9,7 @@ import time
 class Get_Guestnum(BasePage):
 
     def get_num(self):
+        time.sleep(5)
         self.wait_is_visible('x','/html/body/div[1]/div[1]/ul/li[3]/h2/a')
         time.sleep(3)
         strguestnum = self.find_element_text('x','/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
