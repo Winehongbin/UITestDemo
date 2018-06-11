@@ -25,7 +25,7 @@ class Webinar_Create(BasePage):
         if elementnew == 1 :
             self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
         else:
-            time.sleep(3)
+            time.sleep(20)
             self.wait_is_visible('x', '/html/body/div[1]/div[2]/div/button')
         self.driver.implicitly_wait(20)
         #填写会议信息
@@ -43,7 +43,7 @@ class Webinar_Create(BasePage):
         if element == 1 :
             self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[3]/a')
         else:
-            time.sleep(15)
+            time.sleep(20)
             self.wait_is_visible('x', '//*[@id="webinarModal"]/div[1]/div/div[3]/a')
 
         #获取下一个窗口句柄，跳转到会议详情页面
