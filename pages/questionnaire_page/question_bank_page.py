@@ -16,6 +16,7 @@ class QuestionBankManagement(BasePage):
             self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
             self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/button')  # 点击创建试题
             time.sleep(1)
+            self.deprint('点击创建试题成功')
             self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div[3]/div/input',
                                     "What is your favorite sport?")  # 输入试题内容
             self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
@@ -45,6 +46,7 @@ class QuestionBankManagement(BasePage):
                 self.wait_is_visible('x',
                                      '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/button')  # 点击创建试题
                 time.sleep(1)
+                self.deprint('点击创建试题成功')
                 self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div[3]/div/input',
                                         "What is your favorite sport?")  # 输入试题内容
                 self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
@@ -136,4 +138,4 @@ if __name__ == '__main__':
     object = QuestionBankManagement(dr)
     object.create_question()
     object.delete_question()
-    # object.quit()
+    object.quit()

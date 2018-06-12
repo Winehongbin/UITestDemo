@@ -15,21 +15,46 @@ class QuestionnaireListPage(BasePage):
     #打开管理题库
     def open_questionBank(self):
         try:
-            self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
-            self.deprint("点击管理题库")
+            # self.driver.switch_to.window(self.driver.window_handles[-1])  不要加这句话，在进入问卷的时候一句切换过句柄，再次切换回导致按钮点击不了，应该是句柄不对了
+            self.deprint("开始点击管理题库")
             time.sleep(3)
             self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[1]')  # 点击管理题库的按钮
+            self.deprint("点击管理题库按钮成功")
         except:
-            self.deprint("用例执行失败")
+            try:
+                # self.driver.switch_to.window(self.driver.window_handles[-1])  不要加这句话，在进入问卷的时候一句切换过句柄，再次切换回导致按钮点击不了，应该是句柄不对了
+                self.deprint("开始点击管理题库")
+                time.sleep(3)
+                self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[1]')  # 点击管理题库的按钮
+                self.deprint("点击管理题库按钮成功")
+            except:
+                self.deprint("点击管理题库按钮失败")
+
 
 
     #打开新建问卷
     def open_create_questionnaire(self):
-        self.driver.switch_to.window(self.driver.window_handles[-1]) #获取下一个窗口句柄，跳转
-        self.deprint("点击新建问卷")
-        time.sleep(2)
-        self.find_element_click('css','body > div.g-container-box > div.m-container.ng-scope > div.m-bar.ng-scope > div.pull-right > a.btn.r-btn.ng-scope') #点击新建问卷的按钮
+        # self.driver.switch_to.window(self.driver.window_handles[-1]) #不要加这句话，在进入问卷的时候一句切换过句柄，再次切换回导致按钮点击不了，应该是句柄不对了
+        try:
+            self.deprint("开始点击新建问卷")
+            time.sleep(2)
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[2]') #点击新建问卷的按钮
+            self.deprint("点击新建问卷按钮成功")
+        except:
+            try:
+                self.deprint("开始点击新建问卷")
+                time.sleep(2)
+                self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[2]') #点击新建问卷的按钮
+                self.deprint("点击新建问卷按钮成功")
+            except:
+                self.deprint("点击新建问卷按钮失败")
+
+
 
 
 if __name__ == '__main__':
-    pass
+        self.driver = brower()
+        object = LoginPage(self.driver)
+        object.login()
+        object = ChoosePage(self.driver)
+        object.click_menu_bt('11')
