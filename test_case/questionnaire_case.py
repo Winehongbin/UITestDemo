@@ -12,6 +12,7 @@ from pages.common_pages.driver import brower
 from pages.questionnaire_page.questionnaire_list_page import QuestionnaireListPage
 from pages.questionnaire_page.question_bank_page import QuestionBankManagement
 from pages.questionnaire_page.new_questionnaire_page import NewQuestionnairePage
+import time
 
 class Questionnaire(unittest.TestCase):
     """ 问卷测试用例 """
@@ -28,6 +29,7 @@ class Questionnaire(unittest.TestCase):
 
     def test_001_create_question(self):
         """创建试题"""
+        time.sleep(10)
         object = QuestionnaireListPage(self.driver)
         object.open_questionBank()
         object = QuestionBankManagement(self.driver)
@@ -37,6 +39,7 @@ class Questionnaire(unittest.TestCase):
 
     def test_002_delete_question(self):
         """删除试题"""
+        time.sleep(10)
         object = QuestionnaireListPage(self.driver)
         object.open_questionBank()
         object = QuestionBankManagement(self.driver)
@@ -44,6 +47,7 @@ class Questionnaire(unittest.TestCase):
 
     def test_003_create_questionnaire(self):
          """创建常规问卷"""
+         time.sleep(10)
          object=QuestionnaireListPage(self.driver)
          object.open_create_questionnaire()
          object=NewQuestionnairePage(self.driver)
