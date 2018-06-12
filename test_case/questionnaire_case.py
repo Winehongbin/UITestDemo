@@ -52,6 +52,7 @@ class Questionnaire(unittest.TestCase):
          object.open_create_questionnaire()
          object=NewQuestionnairePage(self.driver)
          object.creat_new_questionnaire()
+         time.sleep(5)
          object.edit_questionnaire_subject()
 
 if __name__ == '__main__':
