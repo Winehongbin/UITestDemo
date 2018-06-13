@@ -28,14 +28,18 @@ class Webinar_Create(BasePage):
             time.sleep(20)
             self.wait_is_visible('x', '/html/body/div[1]/div[2]/div/button')
         self.driver.implicitly_wait(20)
-        #填写会议信息
+        #填写会议信息：会议标题
         self.element_value_input('x','//*[@id="title"]',wrtitle)
+        # 主办方
         self.element_value_input('x', '//*[@id="sponser"]', u'校')
+        #选择注册表单
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[5]/div[1]/div/div/div/button')
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[5]/div[1]/div/div/div/ul/li[2]/a')
         #self.element_value_input('x','/html/body/p',u'会议简介信息')
+        #选择数据权限（下拉类型的字段）
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/button')
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/ul/li[2]/a')
+        #点击保存按钮
         self.element_click('x','//*[@id="save"]')
 
         #保存会议后，判断去设置按钮是否显示，显示后，点击去设置
