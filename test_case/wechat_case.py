@@ -31,6 +31,7 @@ class Wechat_Test(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
+        self.conn.close()
     # 创建图文素材用例
     def test_001_createMedia(self):
 
@@ -64,6 +65,7 @@ class Wechat_Test(unittest.TestCase):
             result='success' #设置用例执行结果为success
         except:
             result='failed' #设置用例执行结果为failed
+            endTime = BasePage(self.driver).nowtime()  # 记录用例执行完成时间
         insertSql = "INSERT into caselog VALUES ('删除图文素材','微信','%s','%s','%s')" % (startTime, endTime, result) #将用例执行结果插入数据库
         # print insertSql
         self.cur.execute(insertSql)
