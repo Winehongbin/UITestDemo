@@ -16,6 +16,7 @@ from test_case.questionnaire_case import Questionnaire
 # from test_case.webinar_create_case import Webinar_Case
 from test_case.webinar_case import Webinar_Case
 from test_case.member_case import Member_Test
+from test_case.edm_case import Edm_Test
 
 class ConrollerShow():
 
@@ -58,6 +59,12 @@ class ConrollerShow():
         member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for member_tmp in member_test:
             suite.addTest(Member_Test(member_tmp))
+
+        # 邮件管理
+        edm_test = self.Def_List(Edm_Test)  # Def_List 获取指定单元测试中，测试函数列表
+        for edm_tmp in edm_test:
+            suite.addTest(Edm_Test(edm_tmp))
+            print suite
 
 
 
