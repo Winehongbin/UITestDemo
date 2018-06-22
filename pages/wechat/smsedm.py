@@ -8,7 +8,6 @@ from pages.common_pages.login_page import LoginPage
 import time
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
-import SendKeys
 import os
 
 class Edm_Sms(BasePage):
