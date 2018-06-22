@@ -19,8 +19,9 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 
 
-class Creat_media(BasePage):
 
+
+class Creat_media(BasePage):
     #创建图文素材用例
     def creat_media(self):
         try:
@@ -33,6 +34,7 @@ class Creat_media(BasePage):
             self.find_element_click('x', '//*[@id="con-local"]/section/section/div[2]/form/div[1]/div[4]/div[3]/div')
             cur_path = os.path.abspath(os.path.dirname(__file__))
             root_path = os.path.split(cur_path)[0]
+            # print root_path
             os.system(root_path + "/upload.exe")
             self.deprint("上传封面图成功")
             time.sleep(3)
@@ -124,6 +126,7 @@ class Creat_media(BasePage):
 
 
 
+
 if __name__ == '__main__':
     driver = brower()
     login= LoginPage(driver)
@@ -131,7 +134,7 @@ if __name__ == '__main__':
     chooseP = ChoosePage(driver)
     chooseP.click_menu_bt("1")
     test=Creat_media(driver)
-    title=test.creat_media()
+    # title=test.test()
     # test = Creat_media(driver)
-    # title = test.creat_media()
+    title = test.creat_media()
     # test.delete_media()
