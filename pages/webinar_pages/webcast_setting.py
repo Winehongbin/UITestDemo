@@ -10,6 +10,60 @@ from common.common_function.scrollbar import Scrollbar_Move
 
 class Webcast_Setting(BasePage):
 
+    # 进入基础设置页面
+    def into_baseinfo(self):
+        self.deprint('进入基础设置页面')
+        time.sleep(2)
+        self.wait_is_visible('x','//*[@id="collapse2"]/li[1]/a')
+        time.sleep(3)
+
+    # 设置会议标签，观看限制为审核后观看
+    def edit_baseinfo(self):
+
+        # 点击基本信息的编辑按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/h2/a')
+        self.scrollbar('700')
+        # 设置会议为审核后观看
+        time.sleep(2)
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[10]/div[1]/div[2]/label')
+        # 添加会议标签
+        self.scrollbar('1300')
+        # x = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[2]')
+        # print x
+        time.sleep(2)
+        self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[2]')
+        # y = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[3]/div[1]/span[3]')
+        # print y
+        time.sleep(2)
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[3]/div[1]/span[3]')
+        # 获取标签名称
+        tagname = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[1]/span')
+        self.scrollbar('bottom')
+        time.sleep(2)
+        # 点击保存按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[21]/button')
+        time.sleep(3)
+        self.scrollbar('top')
+        # 获取选中以后标签的名称，并验证是否一致
+        vtagname = self.find_element_text('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div/div/span')
+        if tagname == vtagname:
+            self.deprint('标签添加成功')
+        else:
+            self.deprint('标签添加失败')
+
+        # 验证观看限制
+        vwatch = self.find_element_text('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[7]/span[2]')
+        if vwatch == u"审核后观看":
+            self.deprint("观看限制为审核后观看设置成功")
+        else:
+            self.deprint("观看限制为审核后观看设置失败")
+
+    # # 添加抽奖信息
+    # def create_luckydraw(self):
+    #     self.deprint('添加抽奖信息')
+    #     # 点击添加抽奖按钮
+    #     self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[1]/div/a[1]')
+
 
     def add_guest(self,guestnum):
 
@@ -86,15 +140,20 @@ if __name__ == '__main__':
     # gguestnum = Get_Guestnum(dr)
     # guestnum = int(gguestnum.get_num())
     o =  Webinar_IndexPage(dr)
-    o.index_webinar()
+    # o.index_webinar()
+    o.webinar_list()
     time.sleep(3)
-    wbr = Webinar_Create(dr)
-    wbr.create_meeting()
+    o.choose_meeting()
+    # wbr = Webinar_Create(dr)
+    # wbr.create_meeting()
     wbr_seting = Webcast_Setting(dr)
-    wbr_seting.add_guest(3)
-    time.sleep(3)
-    wbr_seting.add_agenda()
-    o.scrollbar("top")
+    wbr_seting.into_baseinfo()
+    wbr_seting.edit_baseinfo()
+
+    # wbr_seting.add_guest(3)
+    # time.sleep(3)
+    # wbr_seting.add_agenda()
+    # o.scrollbar("top")
 
     # scollbarmove = Scrollbar_Move(dr)
     # scollbarmove.scrollbarmovedown()

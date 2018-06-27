@@ -22,6 +22,20 @@ class Webinar_IndexPage(BasePage):
             time.sleep(2)
             self.wait_is_visible('x', '/html/body/div[1]/div[1]/ul/li[1]/h2/a')
 
+    # 进入直播会议列表页面
+    def webinar_list(self):
+        self.deprint("进入直播会议列表页面")
+        # 点击直播菜单
+        self.wait_is_visible('x','//*[@id="collapse2"]/li[1]/a')
+
+    # 选择直播会议
+    def choose_meeting(self):
+        self.deprint('选择第一场直播会议')
+        time.sleep(3)
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div/section/ul/li[1]/div/a')
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.implicitly_wait(10)
+
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
