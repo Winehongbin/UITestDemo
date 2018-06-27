@@ -7,7 +7,7 @@ HTMLTestRunner： 是 基于 unittest 单元测试的 HTML报告 的一个第三
 
 '''
 import HTMLTestRunnerCN
-import HTMLTestRunner_jpg
+# import HTMLTestRunner_jpg
 from pages.common_pages.base import BasePage
 import os.path
 import sys
