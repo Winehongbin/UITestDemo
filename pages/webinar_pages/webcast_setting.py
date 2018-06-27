@@ -58,13 +58,6 @@ class Webcast_Setting(BasePage):
         else:
             self.deprint("观看限制为审核后观看设置失败")
 
-    # # 添加抽奖信息
-    # def create_luckydraw(self):
-    #     self.deprint('添加抽奖信息')
-    #     # 点击添加抽奖按钮
-    #     self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[1]/div/a[1]')
-
-
     def add_guest(self,guestnum):
 
         # 判断嘉宾是否小于3个，小于3个则进行新增嘉宾的操作
