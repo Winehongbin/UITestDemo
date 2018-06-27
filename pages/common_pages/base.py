@@ -8,6 +8,7 @@ from selenium.common.exceptions import TimeoutException
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.support.select import Select
 import sys
+from pages.common_pages.ConfigUrl import ConfigUrl
 #print sys.getdefaultencoding()#sys.getdefaultencoding(): 获取系统当前编码，一般默认为ascii。
 from random import randint   #random:随机的意思
 type=sys.getfilesystemencoding()
@@ -18,7 +19,7 @@ import time
 
 #页面操作基础类
 class BasePage(object):
-    base_url="https://s2-tenant.smarket.net.cn"
+    base_url=ConfigUrl().BaseUrl()
     #__init__()方法对参数进行初始化
     def __init__(self,selenium_driver,base_url=base_url,parent=None):
         self.base_url = base_url
