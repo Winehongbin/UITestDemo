@@ -56,39 +56,39 @@ class Offline_Meeting_Test(BaseUnit):
 
 
 
-    def test_002_interaction(self):
-        """ 添加互动环节"""
-
-        base.deprint("开始执行登录，并进入添加线下会互动环节用例")
-        dr = self.driver
-        o = LoginPage(dr)
-        o.login()
-        o = ChoosePage(dr)
-        o.click_menu_bt('9')
-        o = IndexPage(dr)
-        o.click_linelist('2')
-        o = InteractionAndCancle(dr)
-        o.interaction_and_cancle('1')
-        o.quit()
-        base.deprint( "添加线下会互动环节添加用例完成")
-
-    def test_003_createoffline(self):
-        """ 测试删除线下会 """
-
-        base.deprint("开始执行登录，并进入删除线下会用例")
-        dr = self.driver
-        o = LoginPage(dr)
-        o.login()
-        o = ChoosePage(dr)
-        o.click_menu_bt('9')
-        o = IndexPage(dr)
-        o.click_linelist('2')
-        object = InteractionAndCancle(dr)
-        actual_result = object.interaction_and_cancle('2')
-        expected_result = u'取消会议成功'
-        self.assertEqual(actual_result, expected_result, msg="failed")
-        o.quit()
-        base.deprint("删除线下会用例完成")
+    # def test_002_interaction(self):
+    #     """ 添加互动环节"""
+    #
+    #     base.deprint("开始执行登录，并进入添加线下会互动环节用例")
+    #     dr = self.driver
+    #     o = LoginPage(dr)
+    #     o.login()
+    #     o = ChoosePage(dr)
+    #     o.click_menu_bt('9')
+    #     o = IndexPage(dr)
+    #     o.click_linelist('2')
+    #     o = InteractionAndCancle(dr)
+    #     o.interaction_and_cancle('1')
+    #     o.quit()
+    #     base.deprint( "添加线下会互动环节添加用例完成")
+    #
+    # def test_003_createoffline(self):
+    #     """ 测试删除线下会 """
+    #
+    #     base.deprint("开始执行登录，并进入删除线下会用例")
+    #     dr = self.driver
+    #     o = LoginPage(dr)
+    #     o.login()
+    #     o = ChoosePage(dr)
+    #     o.click_menu_bt('9')
+    #     o = IndexPage(dr)
+    #     o.click_linelist('2')
+    #     object = InteractionAndCancle(dr)
+    #     actual_result = object.interaction_and_cancle('2')
+    #     expected_result = u'取消会议成功'
+    #     self.assertEqual(actual_result, expected_result, msg="failed")
+    #     o.quit()
+    #     base.deprint("删除线下会用例完成")
 
 
 

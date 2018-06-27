@@ -7,5 +7,5 @@ def getconfig():
     return d
 
     """
-    d = {"http://192.168.99.100:4444/wd/hub": "chrome"}
+    d = {"http://110.249.213.74:5901/wd/hub": "chrome"}
     return d

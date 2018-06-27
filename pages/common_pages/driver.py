@@ -44,12 +44,11 @@ def choose_brower():
                                   desired_capabilities=DesiredCapabilities.FIREFOX)
     return g_driver
 if __name__ == '__main__':
-    driver = brower()
-    """
+    # driver = brower()
+
     for host, browserType in config.getconfig().items():
         print(host)
         print(browserType)
-        setRomteDriver(host, browserType)
+        setromtedriver(host, browserType)
         choose_brower()
         driver = brower()
-    """
