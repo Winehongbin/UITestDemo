@@ -15,7 +15,7 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 from pages.member.member_management import FieldAction
 class Member_Test(unittest.TestCase):
-    """ 客户管理测试用例 """
+    """ 客户管理测试用例（创建图文素材用例、新建自定义列表字段、删除新创建的两个自定义字段） """
     def setUp(self):
         self.driver= brower()
         login = LoginPage(self.driver)
