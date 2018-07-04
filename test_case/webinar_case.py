@@ -83,9 +83,10 @@ class Webinar_Case(BaseUnit):
         time.sleep(5)
         gguestnum = Get_Guestnum(dr)
         guestnum = int(gguestnum.get_num())
+        o = Webinar_IndexPage(dr)
+        o.webinar_list()
         wbr = Webinar_Create(dr)
         wbr.return_meeting()
-        o = Webinar_IndexPage(dr)
         o.webinar_list()
         time.sleep(3)
         o.choose_meeting()
@@ -108,6 +109,9 @@ class Webinar_Case(BaseUnit):
         luckydraw = InteractionSetting(dr)
         luckydraw.interaction_setting()
         luckydraw.create_luckydraw()
+        wbr.cancel_meeting()
+        wbr.quit()
+        t.deprint("添加全套配置的直播会议的用例执行完成")
 
 
 if __name__ == '__main__':

@@ -110,8 +110,12 @@ class Webinar_Create(BasePage):
 
     # 还原会议
     def return_meeting(self):
+        # 进入直播会议回收站
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[2]/a')
+        time.sleep(3)
         # 点击还原按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[1]/section/ul/li[1]/div/button')
+        time.sleep(5)
 
 if __name__ == '__main__':
     dr = brower()
