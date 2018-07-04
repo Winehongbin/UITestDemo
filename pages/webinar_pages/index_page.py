@@ -28,6 +28,18 @@ class Webinar_IndexPage(BasePage):
         # 点击直播菜单
         self.wait_is_visible('x','//*[@id="collapse2"]/li[1]/a')
 
+    # 点击直播列表页面的创建会议按钮
+    def list_create(self):
+        self.deprint("点击直播列表创建会议按钮")
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[2]/button')
+        time.sleep(5)
+
+    # 点击首页的创建会议按钮
+    def index_create(self):
+        self.deprint("点击首页创建会议按钮")
+        self.wait_is_visible('x', '/html/body/div[1]/div[2]/div/button')
+        time.sleep(5)
+
     # 选择直播会议
     def choose_meeting(self):
         self.deprint('选择第一场直播会议')
