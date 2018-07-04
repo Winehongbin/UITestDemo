@@ -32,7 +32,7 @@ base = BasePage(object)
 
 class Offline_Meeting_Test(BaseUnit):
 
-    """线下会测试用例"""
+    """线下会测试用例（创建线下会、添加互动环节、删除线下会）"""
 
 
     def test_001_loginoffline(self):

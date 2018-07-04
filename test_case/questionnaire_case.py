@@ -15,7 +15,7 @@ from pages.questionnaire_page.new_questionnaire_page import NewQuestionnairePage
 import time
 
 class Questionnaire(unittest.TestCase):
-    """ 问卷测试用例 """
+    """ 问卷测试用例（创建试题、删除试题、创建常规问卷） """
     def setUp(self):
         self.driver = brower()
         object = LoginPage(self.driver)

@@ -19,7 +19,7 @@ from pages.common_pages.base import BasePage
 
 class Wechat_Test(unittest.TestCase):
 
-    """微信测试用例"""
+    """微信测试用例（创建图文素材、删除图文素材）"""
 
     def setUp(self):
         self.driver= brower()

@@ -18,7 +18,7 @@ t = BasePage(object)
 class Webinar_Case(BaseUnit):
 # class Webinar_Case(BaseUnit):
 
-    """线上会测试用例"""
+    """线上会测试用例（创建线上会并取消会议、创建线上会，发布并取消会议、）"""
 
     def test_001_webinar_create_cancel(self):
         """创建线上会并取消会议"""
