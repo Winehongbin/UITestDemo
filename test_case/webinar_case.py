@@ -21,7 +21,7 @@ class Webinar_Case(BaseUnit):
     """线上会测试用例（创建线上会并取消会议、创建线上会，发布并取消会议、）"""
 
     def test_001_webinar_create_cancel(self):
-        """创建线上会并取消会议"""
+        """创建并取消会议"""
         t.deprint("开始执行线上会创建后取消的用例")
         dr = brower()
         o = LoginPage(dr)
@@ -55,7 +55,7 @@ class Webinar_Case(BaseUnit):
         t.deprint("创建并取消线上会用例执行完成")
 
     def test_002_webinar_publish_cancel(self):
-        """创建线上会，发布并取消会议"""
+        """创建发布并取消会议"""
         t.deprint("开始执行线上会创建后发布并取消的用例")
         dr = brower()
         o = LoginPage(dr)
@@ -72,11 +72,11 @@ class Webinar_Case(BaseUnit):
         wbr.publish_meeting()
         wbr.cancel_meeting()
         o.quit()
-        t.deprint("创建，发布并取消线上会用例执行完成")
+        t.deprint("创建，发布并发布线上会用例执行完成")
 
     def test_003_webinar_watch_meeting(self):
-        """增加问卷抽奖标签的直播会议"""
-        t.deprint("开始执行添加全套配置的直播会议的用例")
+        """选择会议并添加嘉宾和日程及会议标签"""
+        t.deprint("开始执行添加嘉宾和日程及会议标签的直播会议的用例")
         dr = brower()
         o = LoginPage(dr)
         o.login()
@@ -98,7 +98,23 @@ class Webinar_Case(BaseUnit):
         wbr_seting.add_guest(guestnum)
         time.sleep(2)
         wbr_seting.add_agenda()
-        time.sleep(2)
+        wbr_seting.quit()
+        t.deprint("用例3执行完成")
+
+    def test_004_webinar_watch_meeting(self):
+        """增加问卷和抽奖"""
+        t.deprint("开始执行添加问卷和抽奖的直播会议的用例")
+        dr = brower()
+        o = LoginPage(dr)
+        o.login()
+        o = ChoosePage(dr)
+        o.click_menu_bt('8')
+        time.sleep(5)
+        o = Webinar_IndexPage(dr)
+        o.webinar_list()
+        wbr = Webinar_Create(dr)
+        time.sleep(3)
+        o.choose_meeting()
         question = InteractionSetting(dr)
         question.interaction_setting()
         time.sleep(2)
@@ -113,7 +129,7 @@ class Webinar_Case(BaseUnit):
         luckydraw.create_luckydraw()
         wbr.cancel_meeting()
         wbr.quit()
-        t.deprint("添加全套配置的直播会议的用例执行完成")
+        t.deprint("用例4执行完成")
 
 
 if __name__ == '__main__':
