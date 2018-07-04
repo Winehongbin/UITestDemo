@@ -14,20 +14,14 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class Webinar_Create(BasePage):
 
-    "创建线上会"
+    # 直播列表创建线上会
+
+
+    # 首页创建线上会
     def create_meeting(self):
         self.deprint("开始创建线上会")
         titlet = self.nowtime()
         wrtitle = u'自动化创建测试会议' + str(titlet)
-        #点击首页的创建会议按钮
-        # self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
-        elementnew = WebDriverWait(self.driver,10,0.5).until(EC.presence_of_all_elements_located((By.XPATH,'/html/body/div[1]/div[2]/div/button')))
-        if elementnew == 1 :
-            self.wait_is_visible('x','/html/body/div[1]/div[2]/div/button')
-        else:
-            time.sleep(20)
-            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div/button')
-        self.driver.implicitly_wait(20)
         #填写会议信息：会议标题
         self.element_value_input('x','//*[@id="title"]',wrtitle)
         # 主办方
@@ -55,15 +49,7 @@ class Webinar_Create(BasePage):
         self.driver.implicitly_wait(10)
         time.sleep(5)
         vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[1]/span')
-        # print vwrtitle
-        # print wrtitle
-        # try:
-        #     vwrtitle = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[1]/span")))
-        #     #
-        #     self.driver.
-        #
-        # finally:
-        #     self.driver.quit()
+
         #判断会议标题是否一致
         if wrtitle == vwrtitle:
             self.deprint("创建会议成功"),
@@ -110,8 +96,12 @@ class Webinar_Create(BasePage):
 
     # 还原会议
     def return_meeting(self):
+        # 进入直播会议回收站
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[2]/a')
+        time.sleep(3)
         # 点击还原按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[1]/section/ul/li[1]/div/button')
+        time.sleep(5)
 
 if __name__ == '__main__':
     dr = brower()

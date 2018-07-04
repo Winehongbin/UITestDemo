@@ -10,27 +10,27 @@ class Get_Guestnum(BasePage):
 
     def get_num(self):
         try:
-            time.sleep(5)
+            # time.sleep(5)
             self.wait_is_visible('x', '/html/body/div[1]/div[1]/ul/li[3]/h2/a')
             time.sleep(3)
             strguestnum = self.find_element_text('x', '/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
             # 判断嘉宾的统计数字是否显示
             s = len(strguestnum[3:-4])
             if s == 0:
-                time.sleep(3)
+                time.sleep(2)
                 strguestnum = self.find_element_text('x', '/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
             num = strguestnum[3:-4]
             return num
         except:
             try:
-                time.sleep(5)
+                # time.sleep(5)
                 self.wait_is_visible('x', '/html/body/div[1]/div[1]/ul/li[3]/h2/a')
                 time.sleep(3)
                 strguestnum = self.find_element_text('x', '/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
                 # 判断嘉宾的统计数字是否显示
                 s = len(strguestnum[3:-4])
                 if s == 0:
-                    time.sleep(3)
+                    time.sleep(2)
                     strguestnum = self.find_element_text('x', '/html/body/div[1]/div[2]/div/div[1]/div[1]/div[1]/span')
                 num = strguestnum[3:-4]
                 return num
