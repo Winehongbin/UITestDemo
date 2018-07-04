@@ -108,6 +108,11 @@ class Webinar_Create(BasePage):
         else:
             self.deprint("取消会议失败")
 
+    # 还原会议
+    def return_meeting(self):
+        # 点击还原按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[1]/section/ul/li[1]/div/button')
+
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
