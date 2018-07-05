@@ -14,8 +14,20 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class Webinar_Create(BasePage):
 
-    # 直播列表创建线上会
+    # 遍历注册表单
+    def nameofform(self, form_name):
 
+        #点击选择
+        self.element_click('x', '//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[5]/div[1]/div/div/div/button')
+
+        for num in range(1, 100):  #遍历选项，选中form_name 因为遍历100遍，及100个下表元素。如果没有正确选中，很有可能找不到元素，报错。
+            ele = '//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[5]/div[1]/div/div/div/ul/li[' + str(num) + ']/a'
+            #print ele
+            all_form_name = self.find_element_text("x", ele)  # 获各个注册单名称
+            # print all_form_name
+            if all_form_name == form_name:  # 判断对应注册单的名称，点击选择
+                self.element_click("x", ele)
+                break
 
     # 首页创建线上会
     def create_meeting(self):
@@ -27,8 +39,7 @@ class Webinar_Create(BasePage):
         # 主办方
         self.element_value_input('x', '//*[@id="sponser"]', u'校')
         #选择注册表单
-        self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[5]/div[1]/div/div/div/button')
-        self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[5]/div[1]/div/div/div/ul/li[2]/a')
+        self.nameofform(u"新建注册表单(9)")
         #self.element_value_input('x','/html/body/p',u'会议简介信息')
         #选择数据权限（下拉类型的字段）
         self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/button')
@@ -113,6 +124,7 @@ if __name__ == '__main__':
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
     o.index_webinar()
+    o.index_create()
     wbr = Webinar_Create(dr)
     wbr.create_meeting()
     # wbr.publish_meeting()
