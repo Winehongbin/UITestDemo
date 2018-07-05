@@ -19,7 +19,7 @@ class Webinar_IndexPage(BasePage):
         if element == 1 :
             self.wait_is_visible('x','/html/body/div[1]/div[1]/ul/li[1]/h2/a')
         else:
-            time.sleep(2)
+            time.sleep(3)
             self.wait_is_visible('x', '/html/body/div[1]/div[1]/ul/li[1]/h2/a')
 
     # 进入直播会议列表页面
@@ -38,7 +38,7 @@ class Webinar_IndexPage(BasePage):
     def index_create(self):
         self.deprint("点击首页创建会议按钮")
         self.wait_is_visible('x', '/html/body/div[1]/div[2]/div/button')
-        time.sleep(5)
+        time.sleep(3)
 
     # 选择直播会议
     def choose_meeting(self):
