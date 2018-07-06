@@ -7,7 +7,8 @@ class LoginPage(BasePage):
 
     def login(self):
         self.open()
-        time.sleep(3)
+        time.sleep(6)
+        self.driver.implicitly_wait(30)
         self.deprint("输入账号密码")
         self.find_element_input('x','/html/body/div[2]/div/div/div[1]/form/div[1]/input','18210127910')
         time.sleep(3)
