@@ -45,6 +45,8 @@ class NewMeetingPage(BasePage):
         self.openOrClose(9)  # 开启互动环节
         self.openOrClose(10)  # 开启大屏管理
         self.openOrClose(11)  # 开启权限管理
+
+
         try:
             target = self.driver.find_element_by_xpath('//*[@id="createSeminar"]/div/div/div[2]/div[2]/ul/li[15]')
             self.driver.execute_script("arguments[0].scrollIntoView();", target)  # 拖动到可见的元素去
