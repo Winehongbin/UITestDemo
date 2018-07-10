@@ -23,7 +23,7 @@ class InteractionSetting(BasePage):
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.deprint("跳转到问卷创建页面")
 
-    # 点击刷新按钮
+    # 点击问卷的刷新按钮
     def click_refresh(self):
         self.driver.switch_to.window(self.driver.window_handles[2])
         try:
@@ -40,6 +40,35 @@ class InteractionSetting(BasePage):
             except:
                 self.deprint('问卷创建失败')
 
+    # 添加抽奖信息
+    def create_luckydraw(self):
+        self.deprint('添加抽奖信息')
+        # 点击添加抽奖按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[1]/div/a[1]')
+        time.sleep(3)
+        # 填写抽奖信息：增加第一个奖项
+        self.find_element_input('x','//*[@id="myModa45"]/div/div/div[2]/form/div[1]/div[1]/input',u'一等奖')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/form/div[1]/div[2]/div/button')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/form/div[1]/div[2]/div/ul/li/a[1]')
+        self.find_element_input('x','//*[@id="myModa45"]/div/div/div[2]/form/div[1]/div[3]/input',u'苹果8')
+        # 增加第二个奖项
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/form/div[3]/div/span')
+        self.find_element_input('x','//*[@id="myModa45"]/div/div/div[2]/form/div[2]/div[1]/input',u'二等奖')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/form/div[2]/div[2]/div/button')
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/form/div[2]/div[2]/div/ul/li/a[2]')
+        self.find_element_input('x','//*[@id="myModa45"]/div/div/div[2]/form/div[2]/div[3]/input',u'蓝牙耳机')
+        # 点击确定按钮
+        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a[1]')
+        time.sleep(5)
+        vluckydrawname1 = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[2]/div/table/tbody/tr[1]/td[1]')
+        vluckydrawname2 = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[2]/div/table/tbody/tr[2]/td[1]')
+        if vluckydrawname1 == u'一等奖'and vluckydrawname2 == u'二等奖':
+            self.deprint('抽奖添加成功')
+        else:
+            self.deprint('抽奖添加失败')
+
+
+
 if __name__ == '__main__':
 
     dr = brower()
@@ -48,18 +77,26 @@ if __name__ == '__main__':
     o = ChoosePage(dr)
     time.sleep(3)
     o.click_menu_bt('8')
-    o = Webinar_IndexPage(dr)
-    time.sleep(3)
-    o.index_webinar()
-    wbr = Webinar_Create(dr)
-    wbr.create_meeting()
-    question = InteractionSetting(dr)
-    question.interaction_setting()
     time.sleep(2)
-    question.create_questionnar()
-    newquestion = NewQuestionnairePage(dr)
-    newquestion.creat_new_questionnaire()
-    newquestion.edit_questionnaire_subject()
-    question.click_refresh()
+    o =  Webinar_IndexPage(dr)
+    # o.index_webinar()
+    o.webinar_list()
+    time.sleep(3)
+    o.choose_meeting()
+    # time.sleep(3)
+    # o.index_webinar()
+    # wbr = Webinar_Create(dr)
+    # wbr.create_meeting()
+    time.sleep(2)
+    luckydraw = InteractionSetting(dr)
+    luckydraw.interaction_setting()
+    luckydraw.create_luckydraw()
+    # question.interaction_setting()
+    # time.sleep(2)
+    # question.create_questionnar()
+    # newquestion = NewQuestionnairePage(dr)
+    # newquestion.creat_new_questionnaire()
+    # newquestion.edit_questionnaire_subject()
+    # question.click_refresh()
 
 

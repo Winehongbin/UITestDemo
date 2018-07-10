@@ -13,6 +13,7 @@ import time
 from common.mail import email_oper
 from test_case.wechat_case import Wechat_Test
 from test_case.questionnaire_case import Questionnaire
+from test_case.article_case import Article
 # from test_case.webinar_create_case import Webinar_Case
 from test_case.webinar_case import Webinar_Case
 from test_case.member_case import Member_Test
@@ -49,6 +50,11 @@ class ConrollerShow():
         questtionnaire_test = self.Def_List(Questionnaire)  # Def_List 获取指定单元测试中，测试函数列表
         for questtionnaire_tmp in questtionnaire_test:
             suite.addTest(Questionnaire(questtionnaire_tmp))
+
+        # 文章管理
+        article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
+        for article_tmp in article_test:
+            suite.addTest(Article(article_tmp))
 
         #线上会
         webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
