@@ -14,19 +14,27 @@ class QuestionBankManagement(BasePage):
         try:
             self.deprint('开始创建试题')
             self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
+            time.sleep(3)
             self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/button')  # 点击创建试题
             time.sleep(1)
             self.deprint('点击创建试题成功')
             self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div[3]/div/input',
                                     "What is your favorite sport?")  # 输入试题内容
+            time.sleep(1)
             self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+            time.sleep(1)
             self.find_element_input("x", '//*[@id="input_Radio0"]', 'badminton')  # 输入第一个选项
+            time.sleep(1)
             self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+            time.sleep(1)
             self.find_element_input("x", '//*[@id="input_Radio1"]', 'table tennis')  # 输入第二个选项
-
+            time.sleep(1)
             self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+            time.sleep(1)
             self.find_element_input("x", '//*[@id="input_Radio2"]', 'rope skipping')  # 输入第三个选项
+            time.sleep(1)
             self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+            time.sleep(1)
             self.find_element_input('x', '//*[@id="input_Radio3"]', 'basketball')  # 输入第四个选项
             time.sleep(1)
 
@@ -37,26 +45,35 @@ class QuestionBankManagement(BasePage):
             time.sleep(1)
             actual_result = self.find_element_text('x',
                                                    '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')
+            time.sleep(1)
             self.deprint('创建试题"' + actual_result.encode("utf-8") + '"完成')
             return actual_result
         except:
             try:
                 self.deprint('开始创建试题')
                 self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
+                time.sleep(1)
                 self.wait_is_visible('x',
                                      '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/button')  # 点击创建试题
                 time.sleep(1)
                 self.deprint('点击创建试题成功')
                 self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div[3]/div/input',
                                         "What is your favorite sport?")  # 输入试题内容
+                time.sleep(1)
                 self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+                time.sleep(1)
                 self.find_element_input("x", '//*[@id="input_Radio0"]', 'badminton')  # 输入第一个选项
+                time.sleep(1)
                 self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+                time.sleep(1)
                 self.find_element_input("x", '//*[@id="input_Radio1"]', 'table tennis')  # 输入第二个选项
-
+                time.sleep(1)
                 self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+                time.sleep(1)
                 self.find_element_input("x", '//*[@id="input_Radio2"]', 'rope skipping')  # 输入第三个选项
+                time.sleep(1)
                 self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+                time.sleep(1)
                 self.find_element_input('x', '//*[@id="input_Radio3"]', 'basketball')  # 输入第四个选项
                 time.sleep(1)
 

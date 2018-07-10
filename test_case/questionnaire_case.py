@@ -45,7 +45,7 @@ class Questionnaire(unittest.TestCase):
         object = QuestionBankManagement(self.driver)
         object.delete_question()
 
-    def test_003_create_questionnaire(self):
+    '''def test_003_create_questionnaire(self):
          """创建常规问卷"""
          time.sleep(10)
          object=QuestionnaireListPage(self.driver)
@@ -53,12 +53,12 @@ class Questionnaire(unittest.TestCase):
          object=NewQuestionnairePage(self.driver)
          object.creat_new_questionnaire()
          time.sleep(5)
-         object.edit_questionnaire_subject()
+         object.edit_questionnaire_subject()'''
 
 if __name__ == '__main__':
     suit = unittest.TestSuite()
     suit.addTest(Questionnaire("test_001_create_question"))
     suit.addTest(Questionnaire("test_002_delete_question"))
-    suit.addTest(Questionnaire("test_003_create_questionnaire"))
+    # suit.addTest(Questionnaire("test_003_create_questionnaire"))
     runner = unittest.TextTestRunner()
     runner.run(suit)

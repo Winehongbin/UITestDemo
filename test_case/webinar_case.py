@@ -101,7 +101,7 @@ class Webinar_Case(BaseUnit):
         wbr_seting.quit()
         t.deprint("用例3执行完成")
 
-    def test_004_meeting_addquesluckydraw(self):
+    '''def test_004_meeting_addquesluckydraw(self):
         """增加问卷和抽奖"""
         t.deprint("开始执行添加问卷和抽奖的直播会议的用例4")
         dr = brower()
@@ -129,7 +129,7 @@ class Webinar_Case(BaseUnit):
         luckydraw.create_luckydraw()
         wbr.cancel_meeting()
         wbr.quit()
-        t.deprint("用例4执行完成")
+        t.deprint("用例4执行完成")'''
 
 
 if __name__ == '__main__':
@@ -141,6 +141,6 @@ if __name__ == '__main__':
     # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
     # time.sleep(3)
     suite.addTest(Webinar_Case("test_003_meeting_addtag"))
-    suite.addTest(Webinar_Case("test_004_meeting_addquesluckydraw"))
+    # suite.addTest(Webinar_Case("test_004_meeting_addquesluckydraw"))
     runner = unittest.TextTestRunner()
     runner.run(suite)

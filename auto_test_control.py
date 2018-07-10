@@ -47,9 +47,9 @@ class ConrollerShow():
             suite.addTest(Wechat_Test(wechat_tmp))
 
         #问卷
-        questtionnaire_test = self.Def_List(Questionnaire)  # Def_List 获取指定单元测试中，测试函数列表
+        '''questtionnaire_test = self.Def_List(Questionnaire)  # Def_List 获取指定单元测试中，测试函数列表
         for questtionnaire_tmp in questtionnaire_test:
-            suite.addTest(Questionnaire(questtionnaire_tmp))
+            suite.addTest(Questionnaire(questtionnaire_tmp))'''
 
         # 文章管理
         article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
