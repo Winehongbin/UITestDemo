@@ -13,7 +13,7 @@ from pages.common_pages.login_page import LoginPage
 import time
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
-from pages.member.member_management import FieldAction
+from pages.member.member_management import MemberAction
 class Member_Test(unittest.TestCase):
     """ 客户管理测试用例（创建图文素材用例、新建自定义列表字段、删除新创建的两个自定义字段） """
     def setUp(self):
@@ -29,18 +29,18 @@ class Member_Test(unittest.TestCase):
     def test_001_new_custom_mail_field(self):
         """ 新建自定义身份标识字段"""
         try:
-            test=FieldAction(self.driver)
+            test=MemberAction(self.driver)
             test.new_custom_mail_field()
         except:
             try:
-                test = FieldAction(self.driver)
+                test = MemberAction(self.driver)
                 test.new_custom_mail_field()
             except:
                 test.deprint(u"新增自定义邮箱身份标识用例失败")
 
     def test_002_new_custom_list_field(self):
         """ 新建自定义列表字段 """
-        test=FieldAction(self.driver)
+        test=MemberAction(self.driver)
         test.new_custom_list_field(u"省市")
     # def test_003_edit_form(self):
     #     """ 编辑注册表单删除添加指定字段"""
@@ -48,7 +48,7 @@ class Member_Test(unittest.TestCase):
     #     test.edit_form(u"自动化测试专用", u"手机", u"姓名")
     def test_004_del_field(self):
         """ 删除新创建的两个自定义字段 """
-        test = FieldAction(self.driver)
+        test = MemberAction(self.driver)
         test.del_field(u"自定义邮箱身份标识")
         test.del_field(u"自定义列表字段")
 if __name__ == "__main__":
