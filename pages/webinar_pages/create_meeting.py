@@ -34,8 +34,11 @@ class Webinar_Create(BasePage):
         self.deprint("开始创建线上会")
         titlet = self.nowtime()
         wrtitle = u'自动化创建测试会议' + str(titlet)
+        time.sleep(5)
         #填写会议信息：会议标题
         self.element_value_input('x','//*[@id="title"]',wrtitle)
+        time.sleep(1)
+        # self.element_value_input('id','title',wrtitle)
         # 主办方
         self.element_value_input('x', '//*[@id="sponser"]', u'校')
         #选择注册表单

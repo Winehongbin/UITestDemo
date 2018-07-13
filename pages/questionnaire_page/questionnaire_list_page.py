@@ -18,14 +18,14 @@ class QuestionnaireListPage(BasePage):
             # self.driver.switch_to.window(self.driver.window_handles[-1])  不要加这句话，在进入问卷的时候一句切换过句柄，再次切换回导致按钮点击不了，应该是句柄不对了
             self.deprint("开始点击管理题库")
             time.sleep(3)
-            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[1]')  # 点击管理题库的按钮
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[1]/a')  # 点击管理题库的按钮
             self.deprint("点击管理题库按钮成功")
         except:
             try:
                 # self.driver.switch_to.window(self.driver.window_handles[-1])  不要加这句话，在进入问卷的时候一句切换过句柄，再次切换回导致按钮点击不了，应该是句柄不对了
                 self.deprint("开始点击管理题库")
                 time.sleep(3)
-                self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[1]')  # 点击管理题库的按钮
+                self.wait_is_visible('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[1]/a')  # 点击管理题库的按钮
                 self.deprint("点击管理题库按钮成功")
             except:
                 self.deprint("点击管理题库按钮失败")
@@ -38,13 +38,13 @@ class QuestionnaireListPage(BasePage):
         try:
             self.deprint("开始点击新建问卷")
             time.sleep(2)
-            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[2]') #点击新建问卷的按钮
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[2]/a') #点击新建问卷的按钮
             self.deprint("点击新建问卷按钮成功")
         except:
             try:
                 self.deprint("开始点击新建问卷")
                 time.sleep(2)
-                self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div[4]/a[2]') #点击新建问卷的按钮
+                self.wait_is_visible('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[2]/a') #点击新建问卷的按钮
                 self.deprint("点击新建问卷按钮成功")
             except:
                 self.deprint("点击新建问卷按钮失败")
