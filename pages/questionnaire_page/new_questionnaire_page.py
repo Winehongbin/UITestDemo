@@ -37,7 +37,7 @@ class  NewQuestionnairePage(BasePage):
         # self.driver.find_element_click('css','body > div:nth-child(7) > div.ranges > div > button.applyBtn.btn.btn-small.btn-sm.btn-info')
         # self.driver.implicitly_wait(30)
         # self.driver.find_element_click('css','body > div.g-container-box > div.m-container.ng-scope > div.m-form-btn.form-btn-border.ng-scope > a')  # 点击结束时间
-        self.scrollbar('bottle')
+        self.scrollbar('bottom')
         self.find_element_click('css','body > div.g-container-box > div.m-container.ng-scope > div.m-form-btn.form-btn-border.ng-scope > a')   #点击保存，进入编辑题目
         self.driver.implicitly_wait(30)
 
