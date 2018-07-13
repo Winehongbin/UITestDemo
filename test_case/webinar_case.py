@@ -100,6 +100,7 @@ class Webinar_Case(BaseUnit):
         o.webinar_list()
         o.choose_meeting()
         time.sleep(3)
+
         interact = InteractionSetting(dr)
         interact.interaction_setting()
         time.sleep(2)
