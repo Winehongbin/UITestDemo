@@ -95,7 +95,7 @@ class Webcast_Setting(BasePage):
             self.wait_is_visible('x', guestbtn2)
             self.wait_is_visible('x', guestbtn3)
             self.wait_is_visible('x', guestbtn4)
-            self.deprint("从嘉宾库添加2个嘉宾信息成功")
+            self.deprint("从嘉宾库添加3个嘉宾信息成功")
 
     # 添加会议日程
     def add_agenda(self):
@@ -120,7 +120,7 @@ class Webcast_Setting(BasePage):
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/ul/li[2]/a')
         # 点击确定
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a')
-        self.deprint("添加2个会议日程成功")
+        self.deprint("添加会议日程成功")
 
 if __name__ == '__main__':
     dr = brower()
