@@ -17,7 +17,7 @@ from pages.webinar_pages.base_page import Webinar_Webcast
 t = BasePage(object)
 
 class Webinar_Case(BaseUnit):
-    """线上会测试用例（创建并取消会议，创建发布并取消会议，设置嘉宾日程及会议标签，设置抽奖，进入直播专题页）"""
+    """线上会测试用例（创建并取消会议，创建发布并取消会议，设置嘉宾日程及会议标签，设置问卷和抽奖，进入直播专题页）"""
 
     def test_001_webinar_create_cancel(self):
         """创建并取消会议"""
@@ -88,7 +88,7 @@ class Webinar_Case(BaseUnit):
         t.deprint("用例3执行完成")
 
     def test_004_meeting_addquesluckydraw(self):
-        """设置抽奖"""
+        """设置问卷和抽奖"""
         t.deprint("开始执行添加问卷和抽奖的直播会议的用例4")
         dr = brower()
         o = LoginPage(dr)
@@ -103,12 +103,12 @@ class Webinar_Case(BaseUnit):
         interact = InteractionSetting(dr)
         interact.interaction_setting()
         time.sleep(2)
-        # interact.create_questionnar()
-        # newquestion = NewQuestionnairePage(dr)
-        # newquestion.creat_new_questionnaire()
-        # newquestion.edit_questionnaire_subject()
-        # interact.click_refresh()
-        # time.sleep(2)
+        interact.create_questionnar()
+        newquestion = NewQuestionnairePage(dr)
+        newquestion.creat_new_questionnaire()
+        newquestion.edit_questionnaire_subject()
+        interact.click_refresh()
+        time.sleep(2)
         interact.create_luckydraw()
         # wbr = Webinar_Create(dr)
         # wbr.cancel_meeting()
