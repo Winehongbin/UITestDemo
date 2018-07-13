@@ -39,27 +39,33 @@ class  NewQuestionnairePage(BasePage):
         # self.driver.find_element_click('css','body > div.g-container-box > div.m-container.ng-scope > div.m-form-btn.form-btn-border.ng-scope > a')  # 点击结束时间
         # self.scrollbar('bottom')
         self.scrollbar('bottom')
-        self.find_element_click('css','body > div.g-container-box > div.m-container.ng-scope > div.m-form-btn.form-btn-border.ng-scope > a')   #点击保存，进入编辑题目
+        self.find_element_click('x','/html/body/div[1]/div[2]/main/div/div/div[2]/div/p/a')   #点击保存，进入编辑题目
+        time.sleep(1)
+        self.find_element_click('x','//*[@id="alertCommon"]/div/div/div[3]/button')  #点击确定按钮
         self.driver.implicitly_wait(30)
 
     #编辑问卷题目
     def edit_questionnaire_subject(self):
         try:
             self.deprint('编辑问卷题目')
-            self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[1]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
-            self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/ng-form/p/input')  # 点击保存问卷
-            self.driver.implicitly_wait(30)
-            self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/input')  # 点击完成按钮
+            self.find_element_click('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
+            self.find_element_click('x', '/html/body/div[1]/div[2]/main/div/div/div[2]/div/div/div[2]/ng-form/p/input')  # 点击保存问卷
+            time.sleep(1)
+            self.find_element_click('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击完成按钮
+            time.sleep(1)
+            self.find_element_click('x','/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  #点击完成按钮
             self.driver.implicitly_wait(60)
             self.deprint('创建常规问卷完成')
         except:
             try:
                 self.deprint('编辑问卷题目')
+                self.find_element_click('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
                 self.find_element_click('x',
-                                        '/html/body/div[1]/div[2]/div[1]/div[1]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
-                self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/ng-form/p/input')  # 点击保存问卷
-                self.driver.implicitly_wait(30)
-                self.find_element_click('x', '/html/body/div[1]/div[2]/div[1]/div[2]/input')  # 点击完成按钮
+                                        '/html/body/div[1]/div[2]/main/div/div/div[2]/div/div/div[2]/ng-form/p/input')  # 点击保存问卷
+                time.sleep(1)
+                self.find_element_click('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击完成按钮
+                time.sleep(1)
+                self.find_element_click('x', '/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  # 点击完成按钮
                 self.driver.implicitly_wait(60)
                 self.deprint('创建常规问卷完成')
             except:
