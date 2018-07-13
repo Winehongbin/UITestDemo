@@ -8,8 +8,7 @@ from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
-
-class FieldAction(BasePage):
+class MemberAction(BasePage):
     def new_custom_mail_field(self):
         time.sleep(1)
         self.element_click("id","_settingFelid")#点击属性/字段设置
@@ -150,6 +149,59 @@ class FieldAction(BasePage):
         # 切换到新的窗口
         handles = browser.window_handles
         browser.switch_to_window(handles[-1])
+    def search_contact(self):
+        time.sleep(1)
+        self.element_click("id","_userList")#点击联系人列表
+        self.deprint(u"点击联系人列表")
+        self.element_value_input("x","/html/body/div[2]/div[2]/div[2]/div[1]/input","auto_test@test.com")#搜索框输入邮箱
+        self.deprint(u"搜索框内输入邮箱：auto_test@test.com")
+        self.element_click("x","/html/body/div[2]/div[2]/div[2]/div[1]/div/i")#点击搜索按钮
+        self.deprint(u"点击搜索按钮")
+        try:
+            try:
+                self.element_click("x","//*[@id='userContent']/tbody/tr/td[1]/div[2]/a")#点击第一个人的联系人ID
+            except:
+                time.sleep(5)
+                self.element_click("x", "//*[@id='userContent']/tbody/tr/td[1]/div[2]/a")  # 点击第一个人的联系人ID
+        except:
+            self.deprint(u"联系人搜索时间过长，程序无法运行")
+        self.deprint(u"点击联系人列表的，第一个人的联系人ID")
+    def basis_tag(self):
+        time.sleep(5)
+        self.deprint(u"进入联系人最终页")
+        iframe1 = self.driver.find_element_by_xpath('/html/body/div[2]/div[4]/iframe')
+        self.driver.switch_to.frame(iframe1)
+        self.element_click("x","//*[@id='tagshow']/dl[10]/dd/a[1]/i")#点击添加标签
+        self.deprint(u"点击添加标签按钮")
+        self.wait_is_visible("x","//*[@id='addTag_9']/div[1]/label[1]")#移除标签
+        self.deprint(u"移除标签：自动化测试1")
+        time.sleep(2)
+        self.element_click("x","//*[@id='addTag_9']/div[1]/label[1]")#添加标签
+        self.deprint(u"添加标签：自动化测试1")
+        self.element_click("x","/html/body/div[1]/div/div[1]/div[1]/a")#关闭浮层
+        self.driver.switch_to.default_content()#从iframe切换回主页
+        self.deprint(u"关闭联系人最终页")
+        self.element_click("x","//*[@id='userContent']/tbody/tr/td[1]/div[2]/a")
+        self.deprint(u"点击第一个联系人ID")
+        iframe2 = self.driver.find_element_by_xpath('/html/body/div[2]/div[4]/iframe')
+        self.driver.switch_to.frame(iframe2)
+        time.sleep(3)
+        self.element_click("x","/html/body/div[1]/div/div[1]/div[2]/div/div[2]/div[3]/ul/li[3]/a")#点击标签详情
+        self.deprint(u"点击标签详情")
+        shezhi1 = self.find_element_text("x","//*[@id='tag-detail']/div/table/tbody/tr[1]/td[2]")#获取添加基本标签的设置方式
+        self.deprint(u"获取添加基本标签的设置方式")
+        shezhi2 = self.find_element_text("x", "//*[@id='tag-detail']/div/table/tbody/tr[2]/td[2]")#获取删除基本标签的设置方式
+        self.deprint(u"获取删除基本标签的设置方式")
+        name1 = self.find_element_text("x", "//*[@id='tag-detail']/div/table/tbody/tr[1]/td[5]")  # 获取添加基本标签的标签属性名称
+        self.deprint(u"获取添加基本标签的标签属性名称")
+        name2 = self.find_element_text("x", "//*[@id='tag-detail']/div/table/tbody/tr[2]/td[5]")  # 获取删除基本标签的标签属性名称
+        self.deprint(u"获取删除基本标签的标签属性名称")
+        tag_name1 = self.find_element_text("x","//*[@id='tag-detail']/div/table/tbody/tr[1]/td[7]")#获取新增标签的标签名字
+        self.deprint(u"获取新增标签的标签名字")
+        tag_name2 = self.find_element_text("x","//*[@id='tag-detail']/div/table/tbody/tr[2]/td[6]")#获取移除标签的标签名字
+        self.deprint(u"获取移除标签的标签名字")
+        return name1,name2,shezhi1,shezhi2,tag_name1,tag_name2
+
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
@@ -157,6 +209,7 @@ if __name__ == '__main__':
     o = ChoosePage(dr)
     time.sleep(3)
     o.click_menu_bt('16')
-    o = FieldAction(dr)
-    o.edit_form(u"自动化测试专用",u"手机",u"姓名")
+    o = MemberAction(dr)
+    o.search_contact()
+    o.basis_tag()
     # o.new_custom_list_field(u"省市")

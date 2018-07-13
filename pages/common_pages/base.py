@@ -307,29 +307,31 @@ class BasePage(object):
             time.sleep(1)  # 遍历一次就休息1秒
             try:
                 if method == "x":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_xpath(location)
                 elif method == "class":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_class_name(location)
                 elif method == "id":
                     element = self.driver.find_element_by_id(location)
                 elif method == "name":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_name(location)
                 elif method == "link":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_link_text(location)
                 elif method == "tag":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_tag_name(location)
                 elif method == "Plink":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_partial_link_text(location)
                 elif method == "css":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_css_selector(location)
             except:
+                print "没找到"
+                print text
                 time.sleep(0.5)  # 遍历一次就休息0.5秒
                 continue
             if element != None :
@@ -337,9 +339,9 @@ class BasePage(object):
                 # print element.get_attribute('ng-hide')
                 # if element.get_attribute('ng-hide')==True:
                 element.click()
+                print "点击了"
                 isFind = True
                 break
-
         if isFind != True:
             # print "没找到元素:"+location
             val =u'查找元素:' + location +u'超时:' +text
@@ -359,27 +361,28 @@ class BasePage(object):
             element = None
             try:
                 if method == "x":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_xpath(location)
                 if method == "class":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_class_name(location)
                 if method == "id":
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_id(location)
                 if method == "name":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_name(location)
                 if method == "link":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_link_text(location)
                 if method == "tag":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_tag_name(location)
                 if method == "Plink":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_partial_link_text(location)
                 if method == "css":
-                    self.driver.implicitly_wait(3)
+                    self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_css_selector(location)
             except:
                 time.sleep(0.5)  # 遍历一次就休息0.5秒
