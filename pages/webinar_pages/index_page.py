@@ -44,12 +44,11 @@ class Webinar_IndexPage(BasePage):
     def choose_meeting(self):
         self.deprint('选择一场直播中的会议')
         time.sleep(3)
-        st1 = self.find_element_text('x','/html/body/div[1]/div[2]/div/section/ul/li[1]/div/div[2]/p[1]/span[2]')
-        self.deprint(st1)
         for i in range(1,5):
             status1 = self.find_element_text('x','/html/body/div[1]/div[2]/div/section/ul/li['+str(i)+']/div/div[2]/p[1]/span[2]')
             self.deprint(status1)
             if status1 == u'直播中' :
+                wtitle = self.find_element_text('x', '/html/body/div[1]/div[2]/div/section/ul/li[' + str(i) + ']/div/div[2]/p[1]/span[1]')
                 self.wait_is_visible('x','/html/body/div[1]/div[2]/div/section/ul/li['+str(i)+']/div/a')
                 self.deprint('进入直播中的会议的详情页面')
                 break
@@ -57,6 +56,7 @@ class Webinar_IndexPage(BasePage):
                 continue
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.driver.implicitly_wait(10)
+        return wtitle
 
 if __name__ == '__main__':
     dr = brower()
