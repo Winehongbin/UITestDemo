@@ -80,9 +80,7 @@ class SendEmailModel():
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'abc@sinobasedm.com'  # 发件人
-        # receiver=('lily_liu@sinobasedm.com')
-        receiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com','lilian_chang@sinobasedm.com')#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
-        # areceiver=('lily_liu@sinobasedm.com')
+        receiver = ('394522655@qq.com','1946898935@qq.com','manco_wang@sinobasedm.com','belle_hu@sinobasedm.com','wine_chen@sinobasedm.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com','lilian_chang@sinobasedm.com','jason_liang@sinobasedm.com','manco_wang@sinobasedm.com')
         areceiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com','lilian_chang@sinobasedm.com')
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
