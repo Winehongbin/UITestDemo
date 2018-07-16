@@ -25,6 +25,7 @@ class Webinar_IndexPage(BasePage):
     # 进入直播会议列表页面
     def webinar_list(self):
         self.deprint("进入直播会议列表页面")
+        time.sleep(2)
         # 点击直播菜单
         self.wait_is_visible('x','//*[@id="collapse2"]/li[1]/a')
 

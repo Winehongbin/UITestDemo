@@ -127,10 +127,10 @@ class Webinar_Case(BaseUnit):
         time.sleep(5)
         o = Webinar_IndexPage(dr)
         o.webinar_list()
-        o.choose_meeting()
+        vtitle = o.choose_meeting()
         time.sleep(3)
         index = Webinar_Webcast(dr)
-        index.into_webcast()
+        index.into_webcast(vtitle)
         index.quit()
         t.deprint('用例5执行完成')
 
