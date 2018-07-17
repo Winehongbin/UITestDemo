@@ -18,9 +18,6 @@ import time
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 
-
-
-
 class Creat_media(BasePage):
     #创建图文素材用例
     def creat_media(self):
@@ -123,6 +120,21 @@ class Creat_media(BasePage):
             self.wait_is_visible('x', '//*[@id="dialogBox"]/div/div/div[3]/button[1]')
         # self.deprint(u'图文素材删除用例执行完毕')
         self.deprint("图文素材删除用例执行完毕")
+    def enter_vote(self):
+        try:
+            self.deprint("开始进入投票页面")
+            self.wait_is_visible('x', '//*[@id="ul-nav-6"]/li[7]/a')
+            self.deprint("进入投票成功")
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+        except:
+            try:
+                self.deprint("开始进入投票页面")
+                self.wait_is_visible('x', '//*[@id="ul-nav-6"]/li[7]/a')
+                self.deprint("进入投票成功")
+                self.driver.switch_to.window(self.driver.window_handles[-1])
+            except:
+                self.deprint("进入投票模块失败")
+
 
 
 
@@ -136,5 +148,5 @@ if __name__ == '__main__':
     test=Creat_media(driver)
     # title=test.test()
     # test = Creat_media(driver)
-    title = test.creat_media()
+    title = test.enter_vote()
     # test.delete_media()
