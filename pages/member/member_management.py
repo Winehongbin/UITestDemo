@@ -149,11 +149,11 @@ class MemberAction(BasePage):
         # 切换到新的窗口
         handles = browser.window_handles
         browser.switch_to_window(handles[-1])
-    def search_contact(self):
+    def search_contact(self,keyword):
         time.sleep(1)
         self.element_click("id","_userList")#点击联系人列表
         self.deprint(u"点击联系人列表")
-        self.element_value_input("x","/html/body/div[2]/div[2]/div[2]/div[1]/input","auto_test@test.com")#搜索框输入邮箱
+        self.element_value_input("x","/html/body/div[2]/div[2]/div[2]/div[1]/input",keyword)#搜索框输入邮箱
         self.deprint(u"搜索框内输入邮箱：auto_test@test.com")
         self.element_click("x","/html/body/div[2]/div[2]/div[2]/div[1]/div/i")#点击搜索按钮
         self.deprint(u"点击搜索按钮")
@@ -166,7 +166,7 @@ class MemberAction(BasePage):
         except:
             self.deprint(u"联系人搜索时间过长，程序无法运行")
         self.deprint(u"点击联系人列表的，第一个人的联系人ID")
-    def basis_tag(self):
+    def basic_tag(self):
         time.sleep(5)
         self.deprint(u"进入联系人最终页")
         iframe1 = self.driver.find_element_by_xpath('/html/body/div[2]/div[4]/iframe')
