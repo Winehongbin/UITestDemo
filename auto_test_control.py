@@ -78,6 +78,7 @@ class ConrollerShow():
         api_jk1=self.Def_List(Api_Case_Group1)
         for api1 in api_jk1:
             suite.addTest(Api_Case_Group1(api1))
+
         # 接口2
         api_jk2 = self.Def_List(Api_Case_Group2)
         for api2 in api_jk2:
