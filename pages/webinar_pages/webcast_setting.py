@@ -22,18 +22,14 @@ class Webcast_Setting(BasePage):
 
         # 点击基本信息的编辑按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/h2/a')
-        self.scrollbar('700')
-        # 设置会议为审核后观看
-        time.sleep(2)
-        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[10]/div[1]/div[2]/label')
+        #self.scrollbar('700')
+        # # 设置会议为审核后观看
+        # time.sleep(2)
+        # self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[10]/div[1]/div[2]/label')
         # 添加会议标签
         self.scrollbar('1300')
-        # x = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[2]')
-        # print x
         time.sleep(2)
         self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[2]')
-        # y = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[3]/div[1]/span[3]')
-        # print y
         time.sleep(2)
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[3]/div[1]/span[3]')
         # 获取标签名称
@@ -51,12 +47,12 @@ class Webcast_Setting(BasePage):
         else:
             self.deprint('标签添加失败')
 
-        # 验证观看限制
-        vwatch = self.find_element_text('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[7]/span[2]')
-        if vwatch == u"审核后观看":
-            self.deprint("观看限制为审核后观看设置成功")
-        else:
-            self.deprint("观看限制为审核后观看设置失败")
+        # # 验证观看限制
+        # vwatch = self.find_element_text('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[7]/span[2]')
+        # if vwatch == u"审核后观看":
+        #     self.deprint("观看限制为审核后观看设置成功")
+        # else:
+        #     self.deprint("观看限制为审核后观看设置失败")
 
     def add_guest(self,guestnum):
 
@@ -95,7 +91,7 @@ class Webcast_Setting(BasePage):
             self.wait_is_visible('x', guestbtn2)
             self.wait_is_visible('x', guestbtn3)
             self.wait_is_visible('x', guestbtn4)
-            self.deprint("从嘉宾库添加2个嘉宾信息成功")
+            self.deprint("从嘉宾库添加3个嘉宾信息成功")
 
     # 添加会议日程
     def add_agenda(self):
@@ -120,7 +116,7 @@ class Webcast_Setting(BasePage):
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/ul/li[2]/a')
         # 点击确定
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a')
-        self.deprint("添加2个会议日程成功")
+        self.deprint("添加会议日程成功")
 
 if __name__ == '__main__':
     dr = brower()

@@ -15,6 +15,7 @@ from pages.common_pages.driver import brower
 from pages.wechat.create_material import Creat_media
 from common.common_function.mysql import DatabaseOperation
 from pages.common_pages.base import BasePage
+from pages.vote_pages.vote_page import Create_vote
 
 
 class Wechat_Test(unittest.TestCase):
@@ -71,9 +72,17 @@ class Wechat_Test(unittest.TestCase):
         self.cur.execute(insertSql)
         self.conn.commit()
 
+    def test_003_createVote(self):
+        """创建微信实例下的投票"""
+        changetoVote=Creat_media(self.driver)
+        changetoVote.enter_vote()
+        test=Create_vote(self.driver)
+        test.new_vote()
+        test.setItems()
+
 if __name__ == "__main__":
     suit=unittest.TestSuite()
-    suit.addTest(Wechat_Test("test_001_createMedia"))
-    suit.addTest(Wechat_Test("test_002_deleteMedia"))
+    suit.addTest(Wechat_Test("test_003_createVote"))
+    # suit.addTest(Wechat_Test("test_002_deleteMedia"))
     runner = unittest.TextTestRunner()
     runner.run(suit)

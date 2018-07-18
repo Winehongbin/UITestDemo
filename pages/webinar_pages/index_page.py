@@ -25,6 +25,7 @@ class Webinar_IndexPage(BasePage):
     # 进入直播会议列表页面
     def webinar_list(self):
         self.deprint("进入直播会议列表页面")
+        time.sleep(2)
         # 点击直播菜单
         self.wait_is_visible('x','//*[@id="collapse2"]/li[1]/a')
 
@@ -42,11 +43,21 @@ class Webinar_IndexPage(BasePage):
 
     # 选择直播会议
     def choose_meeting(self):
-        self.deprint('选择第一场直播会议')
+        self.deprint('选择一场直播中的会议')
         time.sleep(3)
-        self.wait_is_visible('x','/html/body/div[1]/div[2]/div/section/ul/li[1]/div/a')
+        for i in range(1,5):
+            status1 = self.find_element_text('x','/html/body/div[1]/div[2]/div/section/ul/li['+str(i)+']/div/div[2]/p[1]/span[2]')
+            self.deprint(status1)
+            if status1 == u'直播中' :
+                wtitle = self.find_element_text('x', '/html/body/div[1]/div[2]/div/section/ul/li[' + str(i) + ']/div/div[2]/p[1]/span[1]')
+                self.wait_is_visible('x','/html/body/div[1]/div[2]/div/section/ul/li['+str(i)+']/div/a')
+                self.deprint('进入直播中的会议的详情页面')
+                break
+            else:
+                continue
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.driver.implicitly_wait(10)
+        return wtitle
 
 if __name__ == '__main__':
     dr = brower()
@@ -57,7 +68,9 @@ if __name__ == '__main__':
     o.click_menu_bt('8')
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
-    o.index_webinar()
+    o.webinar_list()
+    o.choose_meeting()
+    o.quit()
 
 
 
