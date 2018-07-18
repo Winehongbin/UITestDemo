@@ -57,6 +57,8 @@ class AllReport(BasePage):
         # myfile=os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\report\Smarket3.0_TestReport.html"
         # myfile_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))+"\\report\\reportlog\ "
         myfile_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog\ "
+        # 自动化的报告地址，使用时解注
+        # myfile_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "/report/reportlog/"
         now = self.printime()
         # print myfile_path
         myfile = myfile_path + now + " Smarket3.0_TestReport.html"
