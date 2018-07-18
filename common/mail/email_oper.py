@@ -179,4 +179,4 @@ if __name__ == '__main__':
     P = SendEmailModel()
     content = "test_001_loginoffline;test_002_createoffline"
     # content = "test_003_offline"
-    P.postreport_only("总时间",content)
+    P.postreport_only("总时间",content) 
