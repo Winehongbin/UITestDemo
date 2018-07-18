@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import requests
+import requests,os
 from pages.api import apicommon
 
 """
@@ -26,7 +26,7 @@ class ApiRequestsThree():
     def weChat_getConfig(self):
         url = "http://s2-api.smarket.net.cn/weChat/getConfig"
 
-        payload = "{\r\n    \"weChatId\": 40450,\r\n    \"jsApiList\": [\r\n      \"stopRecord\",\r\n      \"onVoiceRecordEnd\",\r\n      \"uploadVoice\",\r\n      \"startRecord\"\r\n    ],\r\n    \"url\": \"http://uao.so/907bb3d9ec\",\r\n    \"onDebug\": false\r\n  }"
+        payload = "{\r\n    \"weChatId\": 43879,\r\n    \"jsApiList\": [\r\n      \"stopRecord\",\r\n      \"onVoiceRecordEnd\",\r\n      \"uploadVoice\",\r\n      \"startRecord\"\r\n    ],\r\n    \"url\": \"http://uao.so/907bb3d9ec\",\r\n    \"onDebug\": false\r\n  }"
         headers = {
             'Content-Type': "application/json",
             'Cache-Control': "no-cache",
@@ -311,8 +311,11 @@ class ApiRequestsThree():
     #文章资料下载
     def file_downloadWithEmail(self):
         url = "http://s2-api.smarket.net.cn/file/downloadWithEmail"
-
-        payload = "{\r\n    \"articleId\":\"228325\",\r\n    \"openId\":\"\",\r\n    \"globalUserId\":\"e7b0306b56427af5f140adb2a40ee915\",\r\n    \"fileList\":[\r\n        \"1057377\"\r\n    ],\r\n    \"email\":\"782123179@qq.com\",\r\n    \"forEmailTemp\":0,\r\n    \"referenceUrl\":\"https://f.smarket.net.cn/s/template/27bfd3aaa163a0b75e40770732dbbaa3/html/info.html?articleId=228325&configId=246947\",\r\n    \"moduleType\":26,\r\n    \"instanceId\":\"0\",\r\n    \"extra\":{\r\n        \"tenantId\":\"1116\",\r\n        \"instanceId\":\"0\",\r\n        \"memberId\":0,\r\n        \"moduleId\":\"0\",\r\n        \"openId\":\"\",\r\n        \"weChatId\":0,\r\n        \"objInstanceId\":0\r\n    },\r\n    \"browseInfo\":{\r\n        \"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36\",\r\n        \"browser\":\"Chrome\",\r\n        \"version\":\"67.0.3396.79\",\r\n        \"os\":\"Windows\",\r\n        \"equipment\":\"电脑端\",\r\n        \"resolution\":\"1280X720\",\r\n        \"referenceUrl\":\"https://f.smarket.net.cn/s/template/f619f723e83dccccc76a0d20c664b69a/html/list.html?articleCategoryId=102161&configId=246876&pageTitle=%E6%96%87%E7%AB%A0%E9%A2%98%E7%9B%AE__%E6%9C%AC%E5%9C%B0%E6%96%87%E7%AB%A0_%E6%96%87%E7%AB%A0%E7%AE%A1%E7%90%86__Smarket%E6%99%BA%E8%90%A5\",\r\n        \"referenceTitle\":\"\",\r\n        \"sess\": \"0fb9b885c79495ed8640d6d823952ba8\"\r\n    }\r\n}\r\n"
+        base_dir = os.path.join(os.path.dirname(__file__), 'tokenfornt.md')
+        with open(base_dir, 'r') as f:
+            Sessionfront=f.read()
+            # 0fb9b885c79495ed8640d6d823952ba8
+        payload = "{\r\n    \"articleId\":\"228325\",\r\n    \"openId\":\"\",\r\n    \"globalUserId\":\"e7b0306b56427af5f140adb2a40ee915\",\r\n    \"fileList\":[\r\n        \"1057377\"\r\n    ],\r\n    \"email\":\"782123179@qq.com\",\r\n    \"forEmailTemp\":0,\r\n    \"referenceUrl\":\"https://f.smarket.net.cn/s/template/27bfd3aaa163a0b75e40770732dbbaa3/html/info.html?articleId=228325&configId=246947\",\r\n    \"moduleType\":26,\r\n    \"instanceId\":\"0\",\r\n    \"extra\":{\r\n        \"tenantId\":\"1116\",\r\n        \"instanceId\":\"0\",\r\n        \"memberId\":0,\r\n        \"moduleId\":\"0\",\r\n        \"openId\":\"\",\r\n        \"weChatId\":0,\r\n        \"objInstanceId\":0\r\n    },\r\n    \"browseInfo\":{\r\n        \"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36\",\r\n        \"browser\":\"Chrome\",\r\n        \"version\":\"67.0.3396.79\",\r\n        \"os\":\"Windows\",\r\n        \"equipment\":\"电脑端\",\r\n        \"resolution\":\"1280X720\",\r\n        \"referenceUrl\":\"https://f.smarket.net.cn/s/template/f619f723e83dccccc76a0d20c664b69a/html/list.html?articleCategoryId=102161&configId=246876&pageTitle=%E6%96%87%E7%AB%A0%E9%A2%98%E7%9B%AE__%E6%9C%AC%E5%9C%B0%E6%96%87%E7%AB%A0_%E6%96%87%E7%AB%A0%E7%AE%A1%E7%90%86__Smarket%E6%99%BA%E8%90%A5\",\r\n        \"referenceTitle\":\"\",\r\n        \"sess\": \""+Sessionfront+"\"\r\n    }\r\n}\r\n"
         headers = {
             'Content-Type': "application/json",
             'Cache-Control': "no-cache",
@@ -463,12 +466,12 @@ if __name__ == "__main__":
     # o.article_getLikeStatus()
     # o.article_like()
     # o.article_shareRecord()
-    # o.file_downloadWithEmail()
+    o.file_downloadWithEmail()
     # o.article_getListByIds()
     # o.article_getTrees()
     # o.contact_bindMember()
 
-    o.edm_sendEmail()
+    # o.edm_sendEmail()
     #o.file_getList()
 
 
