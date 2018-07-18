@@ -80,10 +80,8 @@ class SendEmailModel():
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'abc@sinobasedm.com'  # 发件人
-        # receiver=('1946898935@qq.com')
-        receiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
-        # areceiver=('1946898935@qq.com')
-        areceiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')
+        receiver = ('394522655@qq.com','1946898935@qq.com','lily_liu@sinobasedm.com','manco_wang@sinobasedm.com','belle_hu@sinobasedm.com','wine_chen@sinobasedm.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com','lilian_chang@sinobasedm.com','jason_liang@sinobasedm.com','manco_wang@sinobasedm.com')
+        areceiver = ('394522655@qq.com','1946898935@qq.com','lily_liu@sinobasedm.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com','lilian_chang@sinobasedm.com')
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'abc@sinobasedm.com'  # 进入邮箱的账户名
@@ -119,6 +117,9 @@ class SendEmailModel():
         字符串引号外加r可以不转义
         """
         result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog" #report存放文件夹的路径
+        # 自动化脚本需解注：
+
+    # result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "/report/reportlog"  # report存放文件夹的路径
         # print result_dir
         lists = os.listdir(result_dir)  #os.listdir(path):返回指定路径下的文件和文件夹列表;
         """
@@ -130,6 +131,9 @@ class SendEmailModel():
         但是lambda fn这些的用法 不会，有熟练经验的大神可以补充，以便分享
         """
         lists.sort(key=lambda fn: os.path.getmtime(result_dir+"\\"+fn))
+        # 自动化脚本需解注
+
+    # lists.sort(key=lambda fn: os.path.getmtime(result_dir + "/" + fn))
         #list.sort([func]):该方法没有返回值，但会对列表的对象进行排序,func 可选参数, 如果指定该参数会使用该参数的方法进行排序。
         #sort按key的关键字进行升序排序，lambda的入参fn为lists列表的元素，获取文件的最后修改时间，所以最终以文件时间从小到大排序
         print(('最新的文件为： ' + lists[-1]))

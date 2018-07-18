@@ -13,20 +13,19 @@ class QuestionBankManagement(BasePage):
     def create_question(self):
         try:
             self.deprint('开始创建试题')
-            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
-            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/button')  # 点击创建试题
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[1]/div[1]/ul/li[1]/a')  # 点击默认题库
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[2]/div/div[6]/button')  # 点击创建试题
             time.sleep(1)
             self.deprint('点击创建试题成功')
-            self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div[3]/div/input',
+            self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div/div[3]/div/input',
                                     "What is your favorite sport?")  # 输入试题内容
-            self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
             self.find_element_input("x", '//*[@id="input_Radio0"]', 'badminton')  # 输入第一个选项
-            self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+            self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div/div[4]/div/div[2]/a[1]')  # 点击添加选项
             self.find_element_input("x", '//*[@id="input_Radio1"]', 'table tennis')  # 输入第二个选项
 
-            self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+            self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div/div[4]/div/div[2]/a[1]')  # 点击添加选项
             self.find_element_input("x", '//*[@id="input_Radio2"]', 'rope skipping')  # 输入第三个选项
-            self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+            self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div/div[4]/div/div[2]/a[1]')  # 点击添加选项
             self.find_element_input('x', '//*[@id="input_Radio3"]', 'basketball')  # 输入第四个选项
             time.sleep(1)
 
@@ -36,27 +35,30 @@ class QuestionBankManagement(BasePage):
             self.find_element_click('x', '//*[@id="examDialog"]/div/div/div[3]/button[1]')  # 点击确定按钮
             time.sleep(1)
             actual_result = self.find_element_text('x',
-                                                   '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')
+                                                   '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[3]/div[2]/table/tbody[2]/tr/td[3]')
             self.deprint('创建试题"' + actual_result.encode("utf-8") + '"完成')
             return actual_result
         except:
             try:
                 self.deprint('开始创建试题')
-                self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
                 self.wait_is_visible('x',
-                                     '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/button')  # 点击创建试题
+                                     '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[1]/div[1]/ul/li[1]/a')  # 点击默认题库
+                self.wait_is_visible('x',
+                                     '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[2]/div/div[6]/button')  # 点击创建试题
                 time.sleep(1)
                 self.deprint('点击创建试题成功')
-                self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div[3]/div/input',
+                self.find_element_input("x", '//*[@id="examDialog"]/div/div/div[2]/div/div[3]/div/input',
                                         "What is your favorite sport?")  # 输入试题内容
-                self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
                 self.find_element_input("x", '//*[@id="input_Radio0"]', 'badminton')  # 输入第一个选项
-                self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+                self.find_element_click("x",
+                                        '//*[@id="examDialog"]/div/div/div[2]/div/div[4]/div/div[2]/a[1]')  # 点击添加选项
                 self.find_element_input("x", '//*[@id="input_Radio1"]', 'table tennis')  # 输入第二个选项
 
-                self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+                self.find_element_click("x",
+                                        '//*[@id="examDialog"]/div/div/div[2]/div/div[4]/div/div[2]/a[1]')  # 点击添加选项
                 self.find_element_input("x", '//*[@id="input_Radio2"]', 'rope skipping')  # 输入第三个选项
-                self.find_element_click("x", '//*[@id="examDialog"]/div/div/div[2]/div[4]/div/div/a[1]')  # 点击添加选项
+                self.find_element_click("x",
+                                        '//*[@id="examDialog"]/div/div/div[2]/div/div[4]/div/div[2]/a[1]')  # 点击添加选项
                 self.find_element_input('x', '//*[@id="input_Radio3"]', 'basketball')  # 输入第四个选项
                 time.sleep(1)
 
@@ -66,7 +68,7 @@ class QuestionBankManagement(BasePage):
                 self.find_element_click('x', '//*[@id="examDialog"]/div/div/div[3]/button[1]')  # 点击确定按钮
                 time.sleep(1)
                 actual_result = self.find_element_text('x',
-                                                       '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')
+                                                       '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[3]/div[2]/table/tbody[2]/tr/td[3]')
                 self.deprint('创建试题"' + actual_result.encode("utf-8") + '"完成')
                 return actual_result
             except:
@@ -80,21 +82,19 @@ class QuestionBankManagement(BasePage):
             self.deprint('删除试题')
             #        self.dominant_wait('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
             time.sleep(1)
-            firstQuestion = self.find_element_text('x',
-                                                   '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')  # 获取第一个试题的标题
-            totalNum = self.find_element_text('x',
-                                              '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div/span[2]')
-
+            str1 = self.find_element_text('x','/html/body/div[1]/div[2]/main/div/div[2]/div[2]/nav/div/span[2]')
+            totalNum=str1.split("共")[1].split("条")[0]
             self.find_element_click('x',
-                                    '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/a')  # 点击试题后面的“更多”按钮
+                                    '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[3]/div[2]/table/tbody[2]/tr/td[5]/span/a')  # 点击试题后面的“更多”按钮
             self.find_element_click('x',
-                                    '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/ul/li[2]/a')  # 点击删除按钮
+                                    '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[3]/div[2]/table/tbody[2]/tr/td[5]/span/ul/li[2]/a')  # 点击删除按钮
             time.sleep(1)
-            self.find_element_click('x', '/html/body/div[1]/div[2]/div[4]/div/div/div[3]/button[1]')  # 点击确定按钮
+            self.find_element_click('x', '//*[@id="deleteExmAlert"]/div/div/div[3]/button[2]')  # 点击继续按钮
             time.sleep(1)
 
-            if int(totalNum) == (int(self.find_element_text('x',
-                                                            '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div/span[2]')) + 1):
+            str2=self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/nav/div/span[2]')
+            afterDeleteTotalNum=str2.split("共")[1].split("条")[0]
+            if int(totalNum) == (int(afterDeleteTotalNum) + 1):
                 self.deprint('试题删除成功')
             else:
                 self.deprint('试题删除失败')
@@ -104,20 +104,20 @@ class QuestionBankManagement(BasePage):
                 #        self.dominant_wait('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
                 time.sleep(1)
                 firstQuestion = self.find_element_text('x',
-                                                       '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/div/p[1]')  # 获取第一个试题的标题
-                totalNum = self.find_element_text('x',
-                                                  '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div/span[2]')
-
+                                                       '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[3]/div[2]/table/tbody[2]/tr/td[3]')  # 获取第一个试题的标题
+                str1 = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/nav/div/span[2]')
+                totalNum = str1.split("共")[1].split("条")[0]
                 self.find_element_click('x',
-                                        '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/a')  # 点击试题后面的“更多”按钮
+                                        '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[3]/div[2]/table/tbody[2]/tr/td[5]/span/a')  # 点击试题后面的“更多”按钮
                 self.find_element_click('x',
-                                        '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/ul/li[1]/header/div[7]/div/ul/li[2]/a')  # 点击删除按钮
+                                        '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/div[3]/div[2]/table/tbody[2]/tr/td[5]/span/ul/li[2]/a')  # 点击删除按钮
                 time.sleep(1)
-                self.find_element_click('x', '/html/body/div[1]/div[2]/div[4]/div/div/div[3]/button[1]')  # 点击确定按钮
+                self.find_element_click('x', '//*[@id="deleteExmAlert"]/div/div/div[3]/button[2]')  # 点击继续按钮
                 time.sleep(1)
 
-                if int(totalNum) == (int(self.find_element_text('x',
-                                                                '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div/div/span[2]')) + 1):
+                str2 = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[2]/div[2]/nav/div/span[2]')
+                afterDeleteTotalNum = str2.split("共")[1].split("条")[0]
+                if int(totalNum) == (int(afterDeleteTotalNum) + 1):
                     self.deprint('试题删除成功')
                 else:
                     self.deprint('试题删除失败')
