@@ -33,7 +33,6 @@ class SendEmailModel():
         msgRoot = MIMEMultipart()
         msgRoot['From'] = Header("李鸿飞", 'utf-8')
         msgRoot['To'] =  Header("每一位项目相关人员", 'utf-8')
-        
         subject = 'Python SMTP 邮件自动化测试'
         msgRoot['Subject'] = Header(subject, 'utf-8')
 
