@@ -19,7 +19,6 @@ class SendEmailModel():
         # from email_oper.mime.text import MIMEText
         from email.mime.text import MIMEText  #//导入MIMEText类
         # from email_oper.header import Header
-
         sender = 'gavin_li@sinobasedm.com'                      #发件人
         receiver = ['huoyan109@126.com','huoyan108@126.com']   #收件人
         subject = "Smarket3.0自动化测试测试邮件"          #邮件主题
