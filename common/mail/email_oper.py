@@ -19,7 +19,6 @@ class SendEmailModel():
         # from email_oper.mime.text import MIMEText
         from email.mime.text import MIMEText  #//导入MIMEText类
         # from email_oper.header import Header
-
         sender = 'gavin_li@sinobasedm.com'                      #发件人
         receiver = ['huoyan109@126.com','huoyan108@126.com']   #收件人
         subject = "Smarket3.0自动化测试测试邮件"          #邮件主题
@@ -33,7 +32,6 @@ class SendEmailModel():
         msgRoot = MIMEMultipart()
         msgRoot['From'] = Header("李鸿飞", 'utf-8')
         msgRoot['To'] =  Header("每一位项目相关人员", 'utf-8')
-        
         subject = 'Python SMTP 邮件自动化测试'
         msgRoot['Subject'] = Header(subject, 'utf-8')
 
@@ -81,9 +79,14 @@ class SendEmailModel():
         from email.header import Header
         sender = 'abc@sinobasedm.com'  # 发件人
         # receiver=('1946898935@qq.com')
-        receiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
-        # areceiver=('1946898935@qq.com')
-        areceiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')
+        nowtime=datetime.now().strftime('%H')
+        if nowtime>="04" and nowtime<="08":
+            receiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','lizzy_li@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
+            # areceiver=('1946898935@qq.com')
+            areceiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','lizzy_li@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')
+        else:
+            receiver=('1946898935@qq.com','cara_gao@sinobasedm.com')
+            areceiver=('1946898935@qq.com','cara_gao@sinobasedm.com')
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'abc@sinobasedm.com'  # 进入邮箱的账户名
@@ -172,8 +175,8 @@ class SendEmailModel():
 
 
 if __name__ == '__main__':
+
     P = SendEmailModel()
     content = "test_001_loginoffline;test_002_createoffline"
-    # content = "test_003_offline"
+    content = "test_003_offline"
     P.postreport_only("总时间",content)
-    #123
