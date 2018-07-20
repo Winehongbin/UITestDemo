@@ -51,20 +51,20 @@ class Member_Test(unittest.TestCase):
         test = MemberAction(self.driver)
         test.del_field(u"自定义邮箱身份标识")
         test.del_field(u"自定义列表字段")
-    def test_005_contact_basic_tag(self):
-        """ 添加删除联系人基本标签 """
-        test = MemberAction(self.driver)
-        test.search_contact("auto_test@test.com")
-        actual_result1,actual_result2,actual_result3,actual_result4,actual_result5,actual_result6  = test.basic_tag()
-        print  actual_result1,actual_result2,actual_result3,actual_result4,actual_result5,actual_result6
-        expect_result = [u"人工设置",u"人工设置",u"新增自动化测试专用标签",u"新增自动化测试专用标签",u"自动化测试1",u"自动化测试1"]
-        print expect_result[0]
-        self.assertDictContainsSubset(u"人工设置",actual_result1,u"基本信息标签添加数据记录有误")
-        self.assertDictContainsSubset(expect_result[1], actual_result2, u"基本信息标签添加数据记录有误")
-        self.assertDictContainsSubset(expect_result[2], actual_result3, u"基本信息标签添加数据记录有误")
-        self.assertDictContainsSubset(expect_result[3], actual_result4, u"基本信息标签添加数据记录有误")
-        self.assertDictContainsSubset(expect_result[4], actual_result5, u"基本信息标签添加数据记录有误")
-        self.assertDictContainsSubset(expect_result[5], actual_result6, u"基本信息标签添加数据记录有误")
+    # def test_005_contact_basic_tag(self):
+    #     """ 添加删除联系人基本标签 """
+    #     test = MemberAction(self.driver)
+    #     test.search_contact("auto_test@test.com")
+    #     actual_result1,actual_result2,actual_result3,actual_result4,actual_result5,actual_result6  = test.basic_tag()
+    #     print  actual_result1,actual_result2,actual_result3,actual_result4,actual_result5,actual_result6
+    #     expect_result = [u"人工设置",u"人工设置",u"新增自动化测试专用标签",u"新增自动化测试专用标签",u"自动化测试1",u"自动化测试1"]
+    #     print expect_result[0]
+    #     self.assertDictContainsSubset(u"人工设置",actual_result1,u"基本信息标签添加数据记录有误")
+    #     self.assertDictContainsSubset(expect_result[1], actual_result2, u"基本信息标签添加数据记录有误")
+    #     self.assertDictContainsSubset(expect_result[2], actual_result3, u"基本信息标签添加数据记录有误")
+    #     self.assertDictContainsSubset(expect_result[3], actual_result4, u"基本信息标签添加数据记录有误")
+    #     self.assertDictContainsSubset(expect_result[4], actual_result5, u"基本信息标签添加数据记录有误")
+    #     self.assertDictContainsSubset(expect_result[5], actual_result6, u"基本信息标签添加数据记录有误")
 if __name__ == "__main__":
     suit=unittest.TestSuite()
     suit.addTest(Member_Test("test_005_contact_basic_tag"))

@@ -22,6 +22,7 @@ from test_case.api_case_group1 import Api_Case_Group1
 from test_case.api_case_group2 import Api_Case_Group2
 from test_case.api_case_group3 import Api_Case_Group3
 from test_case.api_case_group4 import Api_Case_Group4
+
 class ConrollerShow():
 
 
@@ -78,6 +79,7 @@ class ConrollerShow():
         api_jk1=self.Def_List(Api_Case_Group1)
         for api1 in api_jk1:
             suite.addTest(Api_Case_Group1(api1))
+
         # 接口2
         api_jk2 = self.Def_List(Api_Case_Group2)
         for api2 in api_jk2:
@@ -90,7 +92,7 @@ class ConrollerShow():
         api_jk4 = self.Def_List(Api_Case_Group4)
         for api4 in api_jk4:
             suite.addTest(Api_Case_Group4(api4))
-
+        #测试
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
         AddSuite.onlyneed_suite(suite)    #onlyneed_suite(suite) ：指定suit的report
@@ -106,9 +108,9 @@ class ConrollerShow():
 if __name__ == '__main__':
     A = ConrollerShow()
     A.SupportTool_Control()
-
-
-    # for host, browserType in config.getconfig().items():
+    # 这是在dev分支上写的代码
+# 测试--刘雅的冲突测试
+    # for host, browserType in config.getconfig().items():哥哥哥
     #     print(host)
     #     print(browserType)
     #     driver.setRomteDriver(host, browserType)

@@ -9,7 +9,7 @@ import time
 import os
 
 def run():
-    suit=unittest.TestSuite()
+    suit=unittest.TestSuite(规划规范和对方过后2333顶顶顶顶)
     # 定义测试文件的查找路径
     test_dir= "D:\SmarketAutoTest\\test_case"
     # 定义discover获取文件路径下的所有test用例
