@@ -81,7 +81,7 @@ class SendEmailModel():
         # receiver=('1946898935@qq.com')
 
         nowtime = datetime.now().strftime('%H')
-        if int(nowtime) >= "04" and nowtime <= "08":
+        if nowtime >= "04" and nowtime <= "08":
             receiver = ('394522655@qq.com', 'eddy_men@sinobasedm.com', 'paul_ma@sinobasedm.com', 'master_ma@sinobasedm.com',
                         'kim_liu@sinobasedm.com', 'manco_wang@sinobasedm.com', 'jajason_liang@sinobasedm.com',
                         '1946898935@qq.com', 'cara_gao@sinobasedm.com', 'lizzy_li@sinobasedm.com',
