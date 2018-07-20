@@ -92,7 +92,7 @@ class ConrollerShow():
         api_jk4 = self.Def_List(Api_Case_Group4)
         for api4 in api_jk4:
             suite.addTest(Api_Case_Group4(api4))
-
+        #测试
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
         AddSuite.onlyneed_suite(suite)    #onlyneed_suite(suite) ：指定suit的report
