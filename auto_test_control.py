@@ -109,8 +109,8 @@ if __name__ == '__main__':
     A = ConrollerShow()
     A.SupportTool_Control()
     # 这是在dev分支上写的代码
-# 测试ss
-    # for host, browserType in config.getconfig().items():
+# 测试ss急急急
+    # for host, browserType in config.getconfig().items():摇一摇
     #     print(host)
     #     print(browserType)
     #     driver.setRomteDriver(host, browserType)
