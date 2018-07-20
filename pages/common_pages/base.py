@@ -330,7 +330,7 @@ class BasePage(object):
                     self.driver.implicitly_wait(30)
                     element = self.driver.find_element_by_css_selector(location)
             except:
-                print "没找到"
+                # print "没找到"
                 print text
                 time.sleep(0.5)  # 遍历一次就休息0.5秒
                 continue
