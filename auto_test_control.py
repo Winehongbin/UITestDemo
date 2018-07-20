@@ -109,7 +109,7 @@ if __name__ == '__main__':
     A = ConrollerShow()
     A.SupportTool_Control()
     # 这是在dev分支上写的代码
-# 测试的的
+# 测试ss
     # for host, browserType in config.getconfig().items():
     #     print(host)
     #     print(browserType)
