@@ -339,7 +339,6 @@ class BasePage(object):
                 # print element.get_attribute('ng-hide')
                 # if element.get_attribute('ng-hide')==True:
                 element.click()
-                print "点击了"
                 isFind = True
                 break
         if isFind != True:
