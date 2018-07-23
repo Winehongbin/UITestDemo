@@ -72,18 +72,18 @@ class Wechat_Test(unittest.TestCase):
         # self.cur.execute(insertSql)
         # self.conn.commit()
 
-    def test_003_createVote(self):
-        """创建微信实例下的投票、浏览投票、提交投票"""
-        changetoVote=Creat_media(self.driver)
-        changetoVote.enter_vote()
-        time.sleep(3)
-        test=Create_vote(self.driver)
-        test.new_vote()
-        time.sleep(3)
-        test.setItems()
-        actual_result=test.browse_vote()
-        expected_result = u'提交成功！'
-        self.assertEqual(actual_result,expected_result,msg='failed')
+    # def test_003_createVote(self):
+    #     """创建微信实例下的投票、浏览投票、提交投票"""
+    #     changetoVote=Creat_media(self.driver)
+    #     changetoVote.enter_vote()
+    #     time.sleep(3)
+    #     test=Create_vote(self.driver)
+    #     test.new_vote()
+    #     time.sleep(3)
+    #     test.setItems()
+    #     actual_result=test.browse_vote()
+    #     expected_result = u'提交成功！'
+    #     self.assertEqual(actual_result,expected_result,msg='failed')
 
 if __name__ == "__main__":
     suit=unittest.TestSuite()
