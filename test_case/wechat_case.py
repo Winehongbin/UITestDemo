@@ -20,7 +20,7 @@ from pages.vote_pages.vote_page import Create_vote
 
 class Wechat_Test(unittest.TestCase):
 
-    """微信测试用例（创建图文素材、删除图文素材）"""
+    """微信测试用例（创建图文素材、删除图文素材、创建微信实例下投票并浏览提交投票）"""
 
     def setUp(self):
         self.driver= brower()
@@ -28,11 +28,11 @@ class Wechat_Test(unittest.TestCase):
         login.login()
         choose = ChoosePage(self.driver)
         choose.click_menu_bt('1')
-        self.conn,self.cur=DatabaseOperation().openconnect()
+        # self.conn,self.cur=DatabaseOperation().openconnect()  #创建数据库连接
 
     def tearDown(self):
         self.driver.quit()
-        self.conn.close()
+        # self.conn.close() #关闭数据库连接
     # 创建图文素材用例
     def test_001_createMedia(self):
 
@@ -49,10 +49,10 @@ class Wechat_Test(unittest.TestCase):
         # self.assertEqual(actual_result,expected_result,msg="failed")
         endTime=BasePage(self.driver).nowtime() #记录用例执行完成时间
         # print "用例开始完成时间：" + endTime
-        insertSql = "INSERT into caselog VALUES ('创建图文素材','微信','%s','%s','%s')"  % (startTime,endTime,result)
-        # print insertSql
-        self.cur.execute(insertSql)
-        self.conn.commit()
+        # insertSql = "INSERT into caselog VALUES ('创建图文素材','微信','%s','%s','%s')"  % (startTime,endTime,result)  #执行结果插入数据库
+        # # print insertSql
+        # self.cur.execute(insertSql)
+        # self.conn.commit()
 
     def test_002_deleteMedia(self):
         """测试删除图文素材"""
@@ -67,10 +67,10 @@ class Wechat_Test(unittest.TestCase):
         except:
             result='failed' #设置用例执行结果为failed
             endTime = BasePage(self.driver).nowtime()  # 记录用例执行完成时间
-        insertSql = "INSERT into caselog VALUES ('删除图文素材','微信','%s','%s','%s')" % (startTime, endTime, result) #将用例执行结果插入数据库
-        # print insertSql
-        self.cur.execute(insertSql)
-        self.conn.commit()
+        # insertSql = "INSERT into caselog VALUES ('删除图文素材','微信','%s','%s','%s')" % (startTime, endTime, result) #将用例执行结果插入数据库
+        # # print insertSql
+        # self.cur.execute(insertSql)
+        # self.conn.commit()
 
     def test_003_createVote(self):
         """创建微信实例下的投票、浏览投票、提交投票"""

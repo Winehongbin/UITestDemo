@@ -25,6 +25,11 @@ class Create_vote(BasePage):
         self.wait_is_visible('x','/html/body/div[1]/div[2]/main/div/div/div/div[2]/div/button') #点击保存按钮
         self.wait_is_visible('x','//*[@id="alertCommon"]/div/div/div[3]/button') #点击确定弹窗
     def setItems(self):
+        #找不到元素的问题还没有解决。。。
+        # target = self.driver.find_element_by_xpath('//*[@id="left-menu"]/ul/li[2]/ul/li[1]')
+        # self.driver.execute_script("arguments[0].scrollIntoView();", target)
+        # time.sleep(3)
+        self.wait_is_visible('x','//*[@id="left-menu"]/ul/li[1]/strong/span')
         self.wait_is_visible('x','//*[@id="left-menu"]/ul/li[2]/ul/li[1]/a') #选择单选题
         self.element_value_input('x', '//question-items/div[1]/div/text-field/div[1]/div[1]/div[1]/input', u'你的爱好？') #输入题目标题
         self.wait_is_visible('link',u'添加选项')
@@ -40,8 +45,8 @@ class Create_vote(BasePage):
         text=self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/main/div/div/div[1]/div[2]/div[2]/div[2]/span') #找到投票获取链接元素
         url1=text.get_attribute('innerText') #获取链接内容，链接内容后携带了【获取链接】部分文本
         url2=url1[0:28]      #截取文本，去掉【获取链接】
-        # print "截取前的链接地址："+ url1
-        # print "投票链接地址为："+url2
+        print "截取前的链接地址："+ url1
+        print "投票链接地址为："+url2
         js = 'window.open("' + url2 + '")'  #新开创建打开投票链接地址
         self.driver.execute_script(js)
         self.driver.switch_to.window(self.driver.window_handles[-1])  #切换到新开的窗口
