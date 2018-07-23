@@ -29,7 +29,7 @@ class Create_vote(BasePage):
         # target = self.driver.find_element_by_xpath('//*[@id="left-menu"]/ul/li[2]/ul/li[1]')
         # self.driver.execute_script("arguments[0].scrollIntoView();", target)
         # time.sleep(3)
-        self.wait_is_visible('x','//*[@id="left-menu"]/ul/li[1]/strong/span')
+        self.wait_is_visible('x','//*[@id="left-menu"]/ul/li[1]/strong/span') #点击用户信息字段小三角收起
         self.wait_is_visible('x','//*[@id="left-menu"]/ul/li[2]/ul/li[1]/a') #选择单选题
         self.element_value_input('x', '//question-items/div[1]/div/text-field/div[1]/div[1]/div[1]/input', u'你的爱好？') #输入题目标题
         self.wait_is_visible('link',u'添加选项')
