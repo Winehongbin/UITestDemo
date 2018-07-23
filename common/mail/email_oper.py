@@ -69,7 +69,6 @@ class SendEmailModel():
 
     #邮件内容的设置
     def postreport_only(self,PerformTime,content):
-    # def postreport_only(self):
 
         import smtplib
         content_str=str(content)
@@ -78,8 +77,6 @@ class SendEmailModel():
         from email.mime.application import MIMEApplication
         from email.header import Header
         sender = 'abc@sinobasedm.com'  # 发件人
-        # receiver=('1946898935@qq.com')
-
         nowtime = datetime.now().strftime('%H')
         if nowtime >= "04" and nowtime <= "08":
             receiver = ('394522655@qq.com', 'eddy_men@sinobasedm.com', 'paul_ma@sinobasedm.com', 'master_ma@sinobasedm.com',
@@ -88,8 +85,7 @@ class SendEmailModel():
                         'gavin_li@sinobasedm.com', 'vivian_shi@sinobasedm.com', '1511274870@qq.com',
                         'andy_yang@sinobasedm.com', 'lisa_xing@sinobasedm.com', 'belle_hu@sinobasedm.com',
                         'wine_chen@sinobasedm.com', 'nina_xiao@sinobasedm.com',
-                        'merry_you@sinobasedm.com')  # ,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
-            # areceiver=('1946898935@qq.com')
+                        'merry_you@sinobasedm.com')
             areceiver = ('394522655@qq.com', '1946898935@qq.com', 'cara_gao@sinobasedm.com', 'Willie_wang@sinobasedm.com',
                          'kevin_liu@sinobasedm.com', 'lizzy_li@sinobasedm.com', 'gavin_li@sinobasedm.com',
                          'vivian_shi@sinobasedm.com', '1511274870@qq.com', 'andy_yang@sinobasedm.com',
@@ -97,19 +93,6 @@ class SendEmailModel():
         else:
             receiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com')
             areceiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com')
-
-
-
-
-
-        # nowtime=datetime.now().strftime('%H')
-        # if nowtime>="04" and nowtime<="08":
-        #     receiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','lizzy_li@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')#,'jason_liang@sinobasedm.com','manco_wang@sinobasedm.com']
-        #     # areceiver=('1946898935@qq.com')
-        #     areceiver = ('394522655@qq.com','1946898935@qq.com','cara_gao@sinobasedm.com','lizzy_li@sinobasedm.com','gavin_li@sinobasedm.com','vivian_shi@sinobasedm.com','1511274870@qq.com','andy_yang@sinobasedm.com','lisa_xing@sinobasedm.com','nina_xiao@sinobasedm.com','merry_you@sinobasedm.com')
-        # else:
-        #     receiver=('1946898935@qq.com','cara_gao@sinobasedm.com')
-        #     areceiver=('1946898935@qq.com','cara_gao@sinobasedm.com')
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'abc@sinobasedm.com'  # 进入邮箱的账户名
@@ -117,7 +100,6 @@ class SendEmailModel():
         msgRoot = MIMEMultipart()
         msgRoot['From'] = Header("自动化测试平台", 'utf-8')
         msgRoot['To'] = Header("每一位项目相关人员", 'utf-8')
-
         msgRoot['Cc'] = areceiver
         msgRoot['Subject'] = Header(subject, 'utf-8') #Subject为邮件主题
 
@@ -145,7 +127,6 @@ class SendEmailModel():
         字符串引号外加r可以不转义
         """
         result_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + "\\report\\reportlog" #report存放文件夹的路径
-        # print result_dir
         lists = os.listdir(result_dir)  #os.listdir(path):返回指定路径下的文件和文件夹列表;
         """
         重新按时间对目录下的文件进行排序,
@@ -177,7 +158,6 @@ class SendEmailModel():
         msgRoot['From'] = sender
 
         msgRoot['To'] = ','.join(receiver)#实现抄送
-        # msgRoot['Cc'] = areceiver
         att = MIMEApplication(open(fileHTML, 'rb').read())
         att.add_header('Content-Disposition', 'attachment', filename=lists[-1])
         msgRoot.attach(att)
