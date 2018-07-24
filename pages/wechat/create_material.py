@@ -123,6 +123,8 @@ class Creat_media(BasePage):
     def enter_vote(self):
         try:
             self.deprint("开始进入投票页面")
+            # 先点击小三角，再去寻找元素
+            self.wait_is_visible('x','//*[@id="accordion"]/div[2]/h2/span[3]')
             self.wait_is_visible('x', '//*[@id="ul-nav-6"]/li[7]/a')
             self.deprint("进入投票成功")
             self.driver.switch_to.window(self.driver.window_handles[-1])
