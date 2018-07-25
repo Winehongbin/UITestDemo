@@ -56,9 +56,9 @@ class ConrollerShow():
             suite.addTest(Questionnaire(questtionnaire_tmp))
         #
         # # 文章管理
-        # article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
-        # for article_tmp in article_test:
-        #     suite.addTest(Article(article_tmp))
+        article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
+        for article_tmp in article_test:
+            suite.addTest(Article(article_tmp))
 
         #线上会
         webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
@@ -76,22 +76,22 @@ class ConrollerShow():
              suite.addTest(Edm_Test(edm_tmp))
              print suite
         # 接口1
-        api_jk1=self.Def_List(Api_Case_Group1)
-        for api1 in api_jk1:
-            suite.addTest(Api_Case_Group1(api1))
-
-        # 接口2
-        api_jk2 = self.Def_List(Api_Case_Group2)
-        for api2 in api_jk2:
-             suite.addTest(Api_Case_Group2(api2))
-        # 接口3
-        api_jk3 = self.Def_List(Api_Case_Group3)
-        for api3 in api_jk3:
-            suite.addTest(Api_Case_Group3(api3))
-        # 接口4
-        api_jk4 = self.Def_List(Api_Case_Group4)
-        for api4 in api_jk4:
-            suite.addTest(Api_Case_Group4(api4))
+        # api_jk1=self.Def_List(Api_Case_Group1)
+        # for api1 in api_jk1:
+        #     suite.addTest(Api_Case_Group1(api1))
+        #
+        # # 接口2
+        # api_jk2 = self.Def_List(Api_Case_Group2)
+        # for api2 in api_jk2:
+        #      suite.addTest(Api_Case_Group2(api2))
+        # # 接口3
+        # api_jk3 = self.Def_List(Api_Case_Group3)
+        # for api3 in api_jk3:
+        #     suite.addTest(Api_Case_Group3(api3))
+        # # 接口4
+        # api_jk4 = self.Def_List(Api_Case_Group4)
+        # for api4 in api_jk4:
+        #     suite.addTest(Api_Case_Group4(api4))
         #测试
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
