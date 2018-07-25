@@ -49,7 +49,9 @@ class Create_vote(BasePage):
         print "投票链接地址为："+url2
         js = 'window.open("' + url2 + '")'  #新开创建打开投票链接地址
         self.driver.execute_script(js)
+        time.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])  #切换到新开的窗口
+        time.sleep(3)
         self.wait_is_visible('x','//*[@id="questionContainer"]/div[1]/div/div/ul/li[1]/label') #选择投票选项
         self.wait_is_visible('x','//*[@id="questionContainer"]/div[2]/input') #提交投票
         time.sleep(2)
