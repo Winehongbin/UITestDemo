@@ -28,11 +28,9 @@ class Webinar_Case(BaseUnit):
         o = ChoosePage(dr)
         o.click_menu_bt('8')
         time.sleep(5)
-        # gguestnum = Get_Guestnum(dr)
-        # guestnum = int(gguestnum.get_num())
         o = Webinar_IndexPage(dr)
         time.sleep(3)
-        o.index_webinar()
+        o.index_webinar() # 进入线上会首页
         o.index_create()
         wbr = Webinar_Create(dr)
         wbr.create_meeting()
