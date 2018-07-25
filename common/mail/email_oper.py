@@ -91,8 +91,8 @@ class SendEmailModel():
                          'vivian_shi@sinobasedm.com', '1511274870@qq.com', 'andy_yang@sinobasedm.com','xin_liu@sinobasedm.com','smile_geng@sinobasedm.com',
                          'lisa_xing@sinobasedm.com', 'nina_xiao@sinobasedm.com', 'merry_you@sinobasedm.com')
         else:
-            receiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com')
-            areceiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com')
+            receiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
+            areceiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'abc@sinobasedm.com'  # 进入邮箱的账户名
