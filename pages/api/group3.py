@@ -26,7 +26,7 @@ class ApiRequestsThree():
     def weChat_getConfig(self):
         url = "http://s2-api.smarket.net.cn/weChat/getConfig"
 
-        payload = "{\r\n    \"weChatId\": 43879,\r\n    \"jsApiList\": [\r\n      \"stopRecord\",\r\n      \"onVoiceRecordEnd\",\r\n      \"uploadVoice\",\r\n      \"startRecord\"\r\n    ],\r\n    \"url\": \"http://uao.so/907bb3d9ec\",\r\n    \"onDebug\": false\r\n  }"
+        payload = "{\r\n    \"weChatId\": 36535,\r\n    \"jsApiList\": [\r\n      \"stopRecord\",\r\n      \"onVoiceRecordEnd\",\r\n      \"uploadVoice\",\r\n      \"startRecord\"\r\n    ],\r\n    \"url\": \"http://uao.so/907bb3d9ec\",\r\n    \"onDebug\": false\r\n  }"
         headers = {
             'Content-Type': "application/json",
             'Cache-Control': "no-cache",

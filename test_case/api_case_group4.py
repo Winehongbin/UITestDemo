@@ -27,7 +27,7 @@ from pages.api import apicommon
 
 
 class Api_Case_Group4(unittest.TestCase):
-    """ 接口自动化一组测试用例 """
+    """ 接口自动化四组测试用例 """
 
     def setUp(self):
         if apicommon.all_login() == 1:
