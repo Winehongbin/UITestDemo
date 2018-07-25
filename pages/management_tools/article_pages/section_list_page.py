@@ -110,7 +110,8 @@ class SectionListPage(BasePage):
     def open_detail_data(self):
         try:
             time.sleep(3)
-            self.find_element_click('x','/html/body/div[1]/div[1]/div[2]/div[5]/table/tbody/tr[1]/td[5]/div/div/a')  # 点击第一行栏目的更多按钮
+            self.wait_is_visible('x','/html/body/div[1]/div[1]/div[2]/div[5]/table/tbody/tr[1]/td[5]/div/div/a')  # 点击第一行栏目的更多按钮
+            time.sleep(1)
             self.wait_is_visible('x','/html/body/div[1]/div[1]/div[2]/div[5]/table/tbody/tr[1]/td[5]/div/div/ul/li[3]/a')  # 点击数据明细按钮
             self.deprint("打开数据明细页面成功")
             browseNum=self.find_element_text('x','/html/body/div[1]/div[1]/div[3]/div/div[3]/div[1]/div/div/span[1]')  #抓取浏览量
