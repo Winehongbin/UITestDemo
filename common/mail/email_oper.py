@@ -85,11 +85,11 @@ class SendEmailModel():
                         'gavin_li@sinobasedm.com', 'vivian_shi@sinobasedm.com', '1511274870@qq.com',
                         'andy_yang@sinobasedm.com', 'lisa_xing@sinobasedm.com', 'belle_hu@sinobasedm.com',
                         'wine_chen@sinobasedm.com', 'nina_xiao@sinobasedm.com','xin_liu@sinobasedm.com','smile_geng@sinobasedm.com',
-                        'merry_you@sinobasedm.com')
+                        'merry_you@sinobasedm.com','aimee_wang@sinobasedm.com')
             areceiver = ('394522655@qq.com', '1946898935@qq.com', 'cara_gao@sinobasedm.com', 'Willie_wang@sinobasedm.com',
                          'kevin_liu@sinobasedm.com', 'lizzy_li@sinobasedm.com', 'gavin_li@sinobasedm.com',
                          'vivian_shi@sinobasedm.com', '1511274870@qq.com', 'andy_yang@sinobasedm.com','xin_liu@sinobasedm.com','smile_geng@sinobasedm.com',
-                         'lisa_xing@sinobasedm.com', 'nina_xiao@sinobasedm.com', 'merry_you@sinobasedm.com')
+                         'lisa_xing@sinobasedm.com', 'nina_xiao@sinobasedm.com', 'merry_you@sinobasedm.com','aimee_wang@sinobasedm.com')
         else:
             receiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
             areceiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
