@@ -34,19 +34,25 @@ class Edm_Test(unittest.TestCase):
     def test_001_createEdmTask(self):
 
         """创建全局邮件任务"""
-        startTime=BasePage(self.driver).nowtime() #记录用例开始执行的时间
+        # startTime=BasePage(self.driver).nowtime() #记录用例开始执行的时间
         # print "用例开始执行时间："+startTime
-        test=Edm_Sms(self.driver)
-        try:
-            test.createEdm("邀请函")
-            result='success'
-        except:
-            result='failed'
-        endTime = BasePage(self.driver).nowtime()  # 记录用例执行完成时间
-        insertSql = "INSERT into caselog VALUES ('创建邮件任务','邮件','%s','%s','%s')" % (startTime, endTime, result)
-        self.cur.execute(insertSql)
-        self.conn.commit()
+        test = Edm_Sms(self.driver)
+        actual_result = test.createEdm("邀请函")
+        expected_result = u'邮件创建成功'
+        self.assertEqual(actual_result, expected_result, msg="failed")
+        # object.quit()
+        # base.deprint("创建线下会页面用例执行完成")
+        # try:
+        #     test.createEdm("邀请函")
+        #     result='success'
+        #
+        # except:
+        #     result='failed'
 
+        # endTime = BasePage(self.driver).nowtime()  # 记录用例执行完成时间
+        # insertSql = "INSERT into caselog VALUES ('创建邮件任务','邮件','%s','%s','%s')" % (startTime, endTime, result)
+        # self.cur.execute(insertSql)
+        # self.conn.commit()
     def test_002_editEdm(self):
 
         """编辑邮件任务并导入收件人"""

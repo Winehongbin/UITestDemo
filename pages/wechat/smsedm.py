@@ -11,26 +11,32 @@ from pages.common_pages.driver import brower
 import os
 
 class Edm_Sms(BasePage):
+
     def createEdm(self,type):
         self.deprint("开始执行邮件任务创建用例")
-        self.wait_is_visible('x','/html/body/div[3]/div[2]/div[1]/h2/div/button')
-        self.element_value_input('x','//*[@id="createTask"]/div/div/div[2]/form/div[1]/div/div/input',u'自动化创建' + self.nowtime())
-        self.element_value_input('x','//*[@id="createTask"]/div/div/div[2]/form/div[2]/div/div/input',u'自动化邮件标题')
-        self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div[3]/div/div/button')
+        self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/button') #点击新建任务
+        self.element_value_input('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[1]/div/input',u'自动化创建' + self.nowtime())#输入任务名称
+        self.element_value_input('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[2]/div/input',u'自动化邮件标题')#输入邮件标题
+        self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[3]/div/div/button/span[2]')#点击任务分类
         if type=="邀请函":
-            self.wait_is_visible('x', '//*[@id="createTask"]/div/div/div[2]/form/div[3]/div/div/ul/li[2]/a')
+            self.wait_is_visible('x', '//*[@id="createTask"]/div/div/div[2]/form/div/div[3]/div/div/ul/li[2]')
         if type=="感谢函":
-            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div[3]/div/div/ul/li[3]/a')
+            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[3]/div/div/ul/li[3]')
         if type=="通知函":
-            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div[3]/div/div/ul/li[4]/a')
+            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[3]/div/div/ul/li[4]')
         if type=="报名确认函":
-            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div[3]/div/div/ul/li[5]/a')
+            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[3]/div/div/ul/li[5]')
         if type=="审核通过通知函":
-            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div[3]/div/div/ul/li[6]/a')
+            self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[3]/div/div/ul/li[6]')
         time.sleep(3)
-        self.driver.find_element_by_xpath('//*[@id="createTask"]/div/div/div[2]/form/div[5]/div/input').clear()
-        self.element_value_input('x','//*[@id="createTask"]/div/div/div[2]/form/div[5]/div/input',u'自动化测试组')
-        self.wait_is_visible('x','//*[@id="createTask"]/div/div/div[3]/button')
+        self.driver.find_element_by_xpath('//*[@id="createTask"]/div/div/div[2]/form/div/div[5]/div/input').clear()#清空发件人显示名称
+        self.element_value_input('x','//*[@id="createTask"]/div/div/div[2]/form/div/div[5]/div/input',u'自动化测试组')#填写发件人显示名称
+        try:
+            self.wait_is_visible('x', '//*[@id="createTask"]/div/div/div[3]/button[2]')  # 点击确定按钮
+            return u'邮件创建成功'
+        except:
+            return u'邮件创建失败'
+
     def editEdm(self):
         self.deprint("开始执行邮件任务编辑用例")
         self.element_value_input('x','/html/body/div[3]/div[2]/div[2]/div[4]/input',u'自动化创建')
