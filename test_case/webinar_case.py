@@ -34,9 +34,10 @@ class Webinar_Case(BaseUnit):
         o.index_create() # 点击首页的创建会议按钮
         wbr = Webinar_Create(dr)
         wbr.create_meeting() # 创建线上会直播会议
-        wbr.cancel_meeting() # 取消此会议
+        actual_result = wbr.cancel_meeting() # 取消此会议
+        self.assertEqual(actual_result,u'会议取消成功',msg='failed')
         o.quit()
-        t.deprint("用例1执行完成")
+        # t.deprint("用例1执行完成")
 
     def test_002_webinar_publish_cancel(self):
         """创建发布并取消会议"""
@@ -53,10 +54,12 @@ class Webinar_Case(BaseUnit):
         o.list_create() # 点击线上会直播列表的创建会议按钮
         wbr = Webinar_Create(dr)
         wbr.create_meeting() # 创建直播会议
-        wbr.publish_meeting() # 发布本会议
-        wbr.cancel_meeting() # 取消本会议
+        actual_result = wbr.publish_meeting() # 发布本会议
+        self.assertEqual(actual_result,u'会议发布成功',  msg='failed')
+        actual_result1 = wbr.cancel_meeting() # 取消本会议
+        self.assertEqual( actual_result1,u'会议取消成功', msg='failed')
         o.quit()
-        t.deprint("用例2执行完成")
+        # t.deprint("用例2执行完成")
 
     def test_003_meeting_addtag(self):
         """设置嘉宾日程及会议标签"""
@@ -79,11 +82,13 @@ class Webinar_Case(BaseUnit):
         wbr_seting = Webcast_Setting(dr)
         wbr_seting.into_baseinfo() # 进入会议详情的基础设置页面
         wbr_seting.edit_baseinfo() # 编辑会议的基本信息
-        wbr_seting.add_guest(guestnum) # 添加会议嘉宾
-        time.sleep(2)
-        wbr_seting.add_agenda() # 添加会议日程
+        actual_result1 = wbr_seting.add_guest(guestnum) # 添加会议嘉宾
+        # self.assertEqual('嘉宾信息成功',actual_result1,msg='failed')
+        # time.sleep(2)
+        actual_result2 = wbr_seting.add_agenda() # 添加会议日程
+        self.assertEqual(actual_result2,u'会议日程添加成功',msg='failed')
         wbr_seting.quit()
-        t.deprint("用例3执行完成")
+        # t.deprint("用例3执行完成")
 
     # def test_004_meeting_addquesluckydraw(self):
     #     """设置问卷和抽奖"""
@@ -128,9 +133,10 @@ class Webinar_Case(BaseUnit):
         vtitle = o.choose_meeting() # 获取一场直播中会议的会议标题
         time.sleep(3)
         index = Webinar_Webcast(dr)
-        index.into_webcast(vtitle) # 进入直播会议会场，并验证会议标题
+        actual_result1 = index.into_webcast(vtitle) # 进入直播会议会场，并验证会议标题
+        self.assertEqual(actual_result1,u'进入直播会场成功',msg='failed')
         index.quit()
-        t.deprint('用例5执行完成')
+        # t.deprint('用例5执行完成')
 
 
 
@@ -142,7 +148,12 @@ if __name__ == '__main__':
     # time.sleep(3)
     # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
     # time.sleep(3)
-    suite.addTest(Webinar_Case("test_003_meeting_addtag"))
+    suite.addTest(Webinar_Case("test_001_webinar_create_cancel"))
+    # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
+    #
+    # suite.addTest(Webinar_Case("test_003_meeting_addtag"))
+    #
+    # suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
     # suite.addTest(Webinar_Case("test_004_meeting_addquesluckydraw"))
     # suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
     runner = unittest.TextTestRunner()

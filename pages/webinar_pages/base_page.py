@@ -29,8 +29,10 @@ class Webinar_Webcast(BasePage):
         # 判断进入的会场是否是打开的直播会议
         if vtitle == title :
             self.deprint('进入直播会场成功')
+            return u'进入直播会场成功'
         else:
             self.deprint('进入直播会场失败')
+            return u'进入直播会场失败'
 
 
 if __name__ == '__main__':

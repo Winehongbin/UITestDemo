@@ -76,6 +76,7 @@ class Webcast_Setting(BasePage):
                 savebtn= '//*[@id="createGuest"]/div/div/div[3]/a[1]'
                 self.wait_is_visible('x',savebtn)
                 self.deprint('嘉宾新增成功')
+                return u'嘉宾信息成功'
                 time.sleep(3)
         else:
 
@@ -114,9 +115,14 @@ class Webcast_Setting(BasePage):
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[1]/div/ul/li[2]/a')
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/button')
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[2]/div/form/div[3]/ng-bind-html[2]/div[2]/div[1]/ul/li[2]/a')
-        # 点击确定
-        self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a')
-        self.deprint("添加会议日程成功")
+        try:
+            self.wait_is_visible('x', '//*[@id="myModa45"]/div/div/div[3]/a') # 点击确定
+            self.deprint(u"添加会议日程成功")
+            return u'添加会议日程成功'
+        except:
+            self.deprint(u"添加会议日程失败")
+            return u'添加会议日程失败'
+
 
 if __name__ == '__main__':
     dr = brower()

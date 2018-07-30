@@ -81,8 +81,10 @@ class Webinar_Create(BasePage):
         vvstatus = self.find_element_text('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/a[3]')
         if vstatus == vvstatus :
             self.deprint("会议发布成功")
+            return u'会议发布成功'
         else:
-            self.deprint("会议发布失败")
+            self.deprint("会议发布成功")
+            return u'会议发布成功'
 
 
     #取消会议
@@ -105,8 +107,10 @@ class Webinar_Create(BasePage):
         if wbrtitle == vwbrtitle and wbrstatus == vwbrstatus :
         #if wbrtitle == vwbrtitle :
             self.deprint("取消会议成功")
+            return u'会议取消成功'
         else:
             self.deprint("取消会议失败")
+            return u'会议取消失败'
 
     # 还原会议
     def return_meeting(self):
