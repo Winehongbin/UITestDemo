@@ -86,7 +86,7 @@ class Webinar_Case(BaseUnit):
         # self.assertEqual('嘉宾信息成功',actual_result1,msg='failed')
         # time.sleep(2)
         actual_result2 = wbr_seting.add_agenda() # 添加会议日程
-        self.assertEqual(actual_result2,u'会议日程添加成功',msg='failed')
+        self.assertEqual(actual_result2,u'添加会议日程成功',msg='failed')
         wbr_seting.quit()
         # t.deprint("用例3执行完成")
 
