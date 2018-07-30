@@ -14,6 +14,8 @@ class InteractionSetting(BasePage):
     def interaction_setting(self):
         self.deprint("点击互动设置")
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[1]/ul/li[2]/ul/li[2]/a')
+        current_handles=self.driver.current_window_handle
+        return current_handles
 
 
     # 创建问卷
@@ -24,18 +26,20 @@ class InteractionSetting(BasePage):
         self.deprint("跳转到问卷创建页面")
 
     # 点击问卷的刷新按钮
-    def click_refresh(self):
+    def click_refresh(self,current_habdles):
         # self.driver.switch_to.window(self.driver.window_handles[2])
-
-
         try:
-            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/nav/a[2]')
-            print 33
-            self.driver.switch_to.window(self.driver.window_handles[-1])
-            self.wait_is_visible('x', '//*[@id="collapse2"]/li[2]/a')
-            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div/div/div/a')
-            time.sleep(3)
-            self.deprint('问卷创建成功，且设置为默认问卷')
+            all_handles=self.driver.window_handles
+            for i in all_handles:
+                if i ==current_habdles:
+                    self.driver.switch_to.window(i)
+                    self.driver.refresh()
+                    self.wait_is_visible('x', '//*[@id="collapse2"]/li[2]/a')
+                    self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div/div/div/a')
+                    self.wait_is_visible('x', '//*[@id="collapse2"]/li[2]/a')
+                    self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div/div/div/a')
+                    time.sleep(3)
+                    self.deprint('问卷创建成功，且设置为默认问卷')
         except:
             try:
                 self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div[1]/div/a[2]')
@@ -65,8 +69,11 @@ class InteractionSetting(BasePage):
         # 点击确定按钮
         self.wait_is_visible('x','//*[@id="myModa45"]/div/div/div[3]/a[1]')
         time.sleep(5)
+        target = self.driver.find_element_by_xpath("/html/body/div[1]/div[2]/div[2]/div/div[4]/div[2]/div/table/tbody/tr[1]/td[1]")
+        self.driver.execute_script("arguments[0].scrollIntoView();", target)
         vluckydrawname1 = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[2]/div/table/tbody/tr[1]/td[1]')
         vluckydrawname2 = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[2]/div/table/tbody/tr[2]/td[1]')
+
         if vluckydrawname1 == u'一等奖'and vluckydrawname2 == u'二等奖':
             self.deprint('抽奖添加成功')
             return "抽奖添加成功"

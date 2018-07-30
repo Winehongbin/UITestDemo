@@ -64,7 +64,7 @@ class SectionListPage(BasePage):
             except:
                 self.deprint("删除栏目失败")
 
-    #浏览栏目
+    #浏览栏目--文章管理用例1使用
     def browse_section(self):
         try:
             self.deprint("开始浏览栏目")
@@ -75,13 +75,18 @@ class SectionListPage(BasePage):
             wap_url=self.find_element_AttributeText('x','//*[@id="copyArticleCategoryLinkWindow"]/div/div/div[2]/div/div/input',"value")  #得到浏览地址
             self.find_element_click('x','//*[@id="copyArticleCategoryLinkWindow"]/div/div/div[3]/a[2]')  #点击复制按钮
             self.deprint("复制栏目链接成功")
+            current_handle=self.driver.current_window_handle
+            all_handles=self.driver.window_handles
             url=wap_url.encode('unicode-escape').decode('string_escape')
             newwindow = 'window.open("'+url+'")'
             self.driver.execute_script(newwindow)
             self.deprint("完成浏览栏目")
             time.sleep(3)
             #self.driver.close()
-            self.driver.switch_to_window(self.driver.window_handles[1])
+            for handle in all_handles:
+                if handle==current_handle:
+                    self.driver.switch_to_window(handle)
+            # self.driver.switch_to_window(self.driver.window_handles[1])
         except:
             try:
                 self.deprint("开始浏览栏目")
@@ -96,13 +101,18 @@ class SectionListPage(BasePage):
                                                           "value")  # 得到浏览地址
                 self.find_element_click('x', '//*[@id="copyArticleCategoryLinkWindow"]/div/div/div[3]/a[2]')  # 点击复制按钮
                 self.deprint("复制栏目链接成功")
+                current_handle = self.driver.current_window_handle
+                all_handles = self.driver.window_handles
                 url = wap_url.encode('unicode-escape').decode('string_escape')
                 newwindow = 'window.open("' + url + '")'
                 self.driver.execute_script(newwindow)
                 self.deprint("完成浏览栏目")
                 time.sleep(3)
                 # self.driver.close()
-                self.driver.switch_to_window(self.driver.window_handles[1])
+                for handle in all_handles:
+                    if handle == current_handle:
+                        self.driver.switch_to_window(handle)
+                # self.driver.switch_to_window(self.driver.window_handles[1])
             except:
                 self.deprint("浏览栏目失败")
 
