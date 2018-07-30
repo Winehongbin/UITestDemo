@@ -53,23 +53,23 @@ class Edm_Test(unittest.TestCase):
         # insertSql = "INSERT into caselog VALUES ('创建邮件任务','邮件','%s','%s','%s')" % (startTime, endTime, result)
         # self.cur.execute(insertSql)
         # self.conn.commit()
-    def test_002_editEdm(self):
-
-        """编辑邮件任务并导入收件人"""
-        startTime = BasePage(self.driver).nowtime()  # 记录用例开始执行的时间
-        # print "用例开始执行时间："+startTime
-        test = Edm_Sms(self.driver)
-        try:
-            test.editEdm()
-            time.sleep(3)
-            test.export()
-            result = 'success'
-        except:
-            result = 'failed'
-        endTime = BasePage(self.driver).nowtime()  # 记录用例执行完成时间
-        insertSql = "INSERT into caselog VALUES ('编辑邮件内容并导入收件人','邮件','%s','%s','%s')" % (startTime, endTime, result)
-        self.cur.execute(insertSql)
-        self.conn.commit()
+    # def test_002_editEdm(self):
+    #
+    #     """编辑邮件任务并导入收件人"""
+    #     startTime = BasePage(self.driver).nowtime()  # 记录用例开始执行的时间
+    #     # print "用例开始执行时间："+startTime
+    #     test = Edm_Sms(self.driver)
+    #     try:
+    #         test.editEdm()
+    #         time.sleep(3)
+    #         test.export()
+    #         result = 'success'
+    #     except:
+    #         result = 'failed'
+    #     endTime = BasePage(self.driver).nowtime()  # 记录用例执行完成时间
+    #     insertSql = "INSERT into caselog VALUES ('编辑邮件内容并导入收件人','邮件','%s','%s','%s')" % (startTime, endTime, result)
+    #     self.cur.execute(insertSql)
+    #     self.conn.commit()
 
 if __name__ == "__main__":
     suit=unittest.TestSuite()
