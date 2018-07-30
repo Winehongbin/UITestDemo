@@ -49,28 +49,28 @@ class ConrollerShow():
         wechat_test = self.Def_List(Wechat_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for wechat_tmp in wechat_test:
             suite.addTest(Wechat_Test(wechat_tmp))
-
-        #问卷
+        #
+        # #问卷
         questtionnaire_test = self.Def_List(Questionnaire)  # Def_List 获取指定单元测试中，测试函数列表
         for questtionnaire_tmp in questtionnaire_test:
             suite.addTest(Questionnaire(questtionnaire_tmp))
+        # #
+        # # # 文章管理
+        article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
+        for article_tmp in article_test:
+            suite.addTest(Article(article_tmp))
         #
-        # # 文章管理
-        # article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
-        # for article_tmp in article_test:
-        #     suite.addTest(Article(article_tmp))
-
-        #线上会
+        # #线上会
         webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
         for webinar_tmp in webinar_test:
              suite.addTest(Webinar_Case(webinar_tmp))
-
-        # #客户管理
+        #
+        # # #客户管理
         member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for member_tmp in member_test:
             suite.addTest(Member_Test(member_tmp))
-
-        # # 邮件管理
+        #
+        # # # 邮件管理
         edm_test = self.Def_List(Edm_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for edm_tmp in edm_test:
              suite.addTest(Edm_Test(edm_tmp))

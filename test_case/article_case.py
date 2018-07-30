@@ -28,7 +28,9 @@ class Article(unittest.TestCase):
         object.browse_section()
         actual_result = object.open_detail_data()
         expected_result = (u'1',u'1')
-        self.assertEqual(actual_result, expected_result, msg="failed")  #验证浏览量和浏览人数
+        # 对元祖进行断言
+        self.assertTupleEqual(actual_result,expected_result,"fail")
+        # self.assertEqual(actual_result, expected_result, msg="failed")  #验证浏览量和浏览人数
         object.deprint("浏览量和浏览人数验证通过")
         object.delete_section()
 

@@ -115,9 +115,7 @@ class SectionListPage(BasePage):
             self.wait_is_visible('x','/html/body/div[1]/div[1]/div[2]/div[5]/table/tbody/tr[1]/td[5]/div/div/ul/li[3]/a')  # 点击数据明细按钮
             self.deprint("打开数据明细页面成功")
             browseNum=self.find_element_text('x','/html/body/div[1]/div[1]/div[3]/div/div[3]/div[1]/div/div/span[1]')  #抓取浏览量
-            print browseNum
             browseSum=self.find_element_text('x','/html/body/div[1]/div[1]/div[3]/div/div[3]/div[2]/div/div/span[1]')  #抓取浏览人数
-            print browseSum
             self.find_element_click('x','/html/body/div[1]/div[1]/div[1]/nav/a[2]')  #返回栏目列表
             return browseNum,browseSum
         except:

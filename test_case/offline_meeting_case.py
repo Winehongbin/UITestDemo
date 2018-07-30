@@ -51,7 +51,6 @@ class Offline_Meeting_Test(BaseUnit):
         actual_result = object.create_neww_offline()
         expected_result = u'线下会创建成功'
         self.assertEqual(actual_result, expected_result, msg="failed")
-        object.quit()
         base.deprint("创建线下会页面用例执行完成")
 
 
@@ -68,8 +67,9 @@ class Offline_Meeting_Test(BaseUnit):
          o = IndexPage(dr)
          o.click_linelist('2')
          o = InteractionAndCancle(dr)
-         o.interaction_and_cancle('1')
-         o.quit()
+         acture_result=o.interaction_and_cancle('1')
+         excepet_result="已添加互动环节"
+         self.assertEqual(acture_result,excepet_result,"failed")
          base.deprint( "添加线下会互动环节添加用例完成")
 
     def test_003_createoffline(self):
@@ -87,7 +87,6 @@ class Offline_Meeting_Test(BaseUnit):
          actual_result = object.interaction_and_cancle('2')
          expected_result = u'取消会议成功'
          self.assertEqual(actual_result, expected_result, msg="failed")
-         o.quit()
          base.deprint("删除线下会用例完成")
 
 
@@ -98,7 +97,7 @@ if __name__ == "__main__":
     StartTime = time.time()
     suite = unittest.TestSuite()
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
-    suite.addTest(Offline_Meeting_Test("test_002_createoffline"))
+    suite.addTest(Offline_Meeting_Test("test_002_interaction"))
 
 
 

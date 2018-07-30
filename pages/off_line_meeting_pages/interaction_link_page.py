@@ -25,26 +25,32 @@ class InteractionAndCancle(BasePage):
         self.wait_is_visible('x', css_path)
         if but_pos == '1':
             time.sleep(5)
-            if self.driver.find_element_by_css_selector("#modulecheckbox6").is_selected():  #如果“互动环节”已经被选择
-                self.driver.implicitly_wait(30)
-                time.sleep(2)
-                self.wait_is_visible('css','#setFiled > div > div > div.modal-footer > input')  #已经被选择，点击确定按钮
-                self.driver.implicitly_wait(30)
-                time.sleep(5)
-                self.deprint("已添加互动环节")
-            else:
-                self.wait_is_visible('x','//*[@id="setFiled"]/div/div/div[2]/div[4]/div[7]/label') #选择互动环节
-                self.driver.implicitly_wait(30)
-                time.sleep(5)
-                self.element_click('css','#setFiled > div > div > div.modal-footer > input') #点击确定按钮
-                self.deprint("添加互动环节成功")
+            try:
+                if self.driver.find_element_by_css_selector("#modulecheckbox6").is_selected():  #如果“互动环节”已经被选择
+                    self.driver.implicitly_wait(30)
+                    time.sleep(2)
+                    self.wait_is_visible('css','#setFiled > div > div > div.modal-footer > input')  #已经被选择，点击确定按钮
+                    self.driver.implicitly_wait(30)
+                    time.sleep(5)
+                    self.deprint("已添加互动环节")
+                else:
+                    self.wait_is_visible('x','//*[@id="setFiled"]/div/div/div[2]/div[4]/div[7]/label') #选择互动环节
+                    self.driver.implicitly_wait(30)
+                    time.sleep(5)
+                    self.element_click('css','#setFiled > div > div > div.modal-footer > input') #点击确定按钮
+                    self.deprint("添加互动环节成功")
+                return "已添加互动环节"
+            except:
+                return "fail"
+
         if but_pos == '2':   #如果是2，就是点击取消会议
             handleNow = self.driver.current_window_handle  # 获得当前窗口
             self.driver.switch_to_window(handleNow)
             time.sleep(3)
             self.wait_is_visible('x','//*[@id="commonAlertWindow"]/div/div/div[3]/button')  #点击取消会议页面确定按钮
-            return u'取消会议成功'
             self.deprint("点击取消会议按钮")
+            return u'取消会议成功'
+
         # self.close()
 if __name__ == "__main__":
     dr = brower()

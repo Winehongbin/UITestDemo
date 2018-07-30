@@ -88,6 +88,7 @@ class  NewQuestionnairePage(BasePage):
 
     #编辑问卷题目
     def edit_questionnaire_subject(self):
+        text=""
         try:
             self.deprint('编辑问卷题目')
             self.find_element_click('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
@@ -98,6 +99,7 @@ class  NewQuestionnairePage(BasePage):
             self.find_element_click('x','/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  #点击完成按钮
             self.driver.implicitly_wait(60)
             self.deprint('创建常规问卷完成')
+            text="创建常规问卷完成"
         except:
             try:
                 self.deprint('编辑问卷题目')
@@ -110,8 +112,13 @@ class  NewQuestionnairePage(BasePage):
                 self.find_element_click('x', '/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  # 点击完成按钮
                 self.driver.implicitly_wait(60)
                 self.deprint('创建常规问卷完成')
+                text="创建常规问卷完成"
             except:
                 self.deprint("用例执行失败")
+                text="用例执行失败"
+        finally:
+                return text
+
 
 
 

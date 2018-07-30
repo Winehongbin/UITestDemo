@@ -43,7 +43,10 @@ class Questionnaire(unittest.TestCase):
         object = QuestionnaireListPage(self.driver)
         object.open_questionBank()
         object = QuestionBankManagement(self.driver)
-        object.delete_question()
+        acture_result=object.delete_question()
+        except_result="试题删除成功"
+        self.assertEqual(acture_result,except_result,"fail")
+
 
     def test_003_create_questionnaire(self):
          """创建常规问卷"""
@@ -53,12 +56,15 @@ class Questionnaire(unittest.TestCase):
          object=NewQuestionnairePage(self.driver)
          object.creat_new_questionnaire()
          time.sleep(5)
-         object.edit_questionnaire_subject()
+         acture_result=object.edit_questionnaire_subject()
+         except_result="创建常规问卷完成"
+         self.assertEqual(acture_result,except_result,"fail")
+
 
 if __name__ == '__main__':
     suit = unittest.TestSuite()
-    suit.addTest(Questionnaire("test_001_create_question"))
     suit.addTest(Questionnaire("test_002_delete_question"))
-    suit.addTest(Questionnaire("test_003_create_questionnaire"))
+    # suit.addTest(Questionnaire("test_002_delete_question"))
+    # suit.addTest(Questionnaire("test_003_create_questionnaire"))
     runner = unittest.TextTestRunner()
     runner.run(suit)

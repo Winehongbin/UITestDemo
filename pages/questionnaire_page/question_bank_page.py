@@ -78,6 +78,8 @@ class QuestionBankManagement(BasePage):
 
     #删除试题
     def delete_question(self):
+        global text
+        text=""
         try:
             self.deprint('删除试题')
             #        self.dominant_wait('x', '/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/ul/li[1]/a')  # 点击默认题库
@@ -96,8 +98,11 @@ class QuestionBankManagement(BasePage):
             afterDeleteTotalNum=str2.split("共")[1].split("条")[0]
             if int(totalNum) == (int(afterDeleteTotalNum) + 1):
                 self.deprint('试题删除成功')
+                text="试题删除成功"
             else:
                 self.deprint('试题删除失败')
+                text="试题删除失败"
+            return text
         except:
             try:
                 self.deprint('删除试题')
@@ -119,10 +124,15 @@ class QuestionBankManagement(BasePage):
                 afterDeleteTotalNum = str2.split("共")[1].split("条")[0]
                 if int(totalNum) == (int(afterDeleteTotalNum) + 1):
                     self.deprint('试题删除成功')
+                    text="试题删除成功"
                 else:
                     self.deprint('试题删除失败')
+                    text="试题删除失败"
+                return text
             except:
                 self.deprint("用例执行失败")
+                text="用例执行失败"
+                return text
 
 
 
