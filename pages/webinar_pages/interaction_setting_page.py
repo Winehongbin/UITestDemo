@@ -25,10 +25,15 @@ class InteractionSetting(BasePage):
 
     # 点击问卷的刷新按钮
     def click_refresh(self):
-        self.driver.switch_to.window(self.driver.window_handles[2])
+        # self.driver.switch_to.window(self.driver.window_handles[2])
+
+
         try:
-            self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div[1]/div/a[2]')
-            self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div/div/div/a')
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[1]/nav/a[2]')
+            print 33
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            self.wait_is_visible('x', '//*[@id="collapse2"]/li[2]/a')
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div/div/div/a')
             time.sleep(3)
             self.deprint('问卷创建成功，且设置为默认问卷')
         except:
@@ -64,8 +69,10 @@ class InteractionSetting(BasePage):
         vluckydrawname2 = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[4]/div[2]/div/table/tbody/tr[2]/td[1]')
         if vluckydrawname1 == u'一等奖'and vluckydrawname2 == u'二等奖':
             self.deprint('抽奖添加成功')
+            return "抽奖添加成功"
         else:
             self.deprint('抽奖添加失败')
+            return "抽奖添加失败"
 
 
 
