@@ -86,7 +86,8 @@ class Webinar_Case(BaseUnit):
         # self.assertEqual('嘉宾信息成功',actual_result1,msg='failed')
         # time.sleep(2)
         actual_result2 = wbr_seting.add_agenda() # 添加会议日程
-        self.assertEqual(actual_result2,u'添加会议日程成功',msg='failed')
+        print actual_result2
+        self.assertEqual(actual_result2,u'会议日程添加成功',msg='failed')
         wbr_seting.quit()
         # t.deprint("用例3执行完成")
 
@@ -105,13 +106,13 @@ class Webinar_Case(BaseUnit):
         time.sleep(3)
 
         interact = InteractionSetting(dr)
-        interact.interaction_setting()
+        current_handle=interact.interaction_setting()
         time.sleep(2)
         interact.create_questionnar()
         newquestion = NewQuestionnairePage(dr)
         newquestion.creat_new_questionnaire()
         newquestion.edit_questionnaire_subject()
-        interact.click_refresh()
+        interact.click_refresh(current_handle)
         time.sleep(2)
         acture_result=interact.create_luckydraw()
         except_result="抽奖添加成功"
@@ -150,7 +151,7 @@ if __name__ == '__main__':
     # time.sleep(3)
     # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
     # time.sleep(3)
-    suite.addTest(Webinar_Case("test_001_webinar_create_cancel"))
+    suite.addTest(Webinar_Case("test_003_meeting_addtag"))
     # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
     #
     # suite.addTest(Webinar_Case("test_003_meeting_addtag"))
