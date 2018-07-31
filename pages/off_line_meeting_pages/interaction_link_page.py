@@ -47,11 +47,15 @@ class InteractionAndCancle(BasePage):
             handleNow = self.driver.current_window_handle  # 获得当前窗口
             self.driver.switch_to_window(handleNow)
             time.sleep(3)
-            self.wait_is_visible('x','//*[@id="commonAlertWindow"]/div/div/div[3]/button')  #点击取消会议页面确定按钮
-            self.deprint("点击取消会议按钮")
-            return u'取消会议成功'
+            try:
+                self.wait_is_visible('x','//*[@id="commonAlertWindow"]/div/div/div[3]/button')  #点击取消会议页面确定按钮
+                self.deprint("点击取消会议按钮")
+                return u'取消会议成功'
+            except:
+                return u'取消会议失败'
 
-        # self.close()
+
+            # self.close()
 if __name__ == "__main__":
     dr = brower()
     o = LoginPage(dr)
@@ -61,4 +65,4 @@ if __name__ == "__main__":
     o = IndexPage(dr)
     o.click_linelist('2')
     o = InteractionAndCancle(dr)
-    o.interaction_and_cancle('2')
+    o.interaction_and_cancle('1')
