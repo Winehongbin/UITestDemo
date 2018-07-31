@@ -68,22 +68,17 @@ class Webinar_Case(BaseUnit):
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
-        time.sleep(3)
         o.click_menu_bt('8')
-        o = Webinar_IndexPage(dr)
-        time.sleep(3)
-        o.webinar_list()
-        o.choose_meeting()
+        time.sleep(5)
         gguestnum = Get_Guestnum(dr)
-        # gguestnum.get_num
         guestnum = int(gguestnum.get_num()) # 获取嘉宾管理的嘉宾个数
-        # o = Webinar_IndexPage(dr)
-        # o.webinar_list() # 进入直播会议列表
-        # wbr = Webinar_Create(dr)
-        # wbr.return_meeting() # 进入直播会议回收站还原会议
-        # o.webinar_list() # 进入直播会议列表
-        # time.sleep(3)
-        # o.choose_meeting() # 选择一场直播中的会议
+        o = Webinar_IndexPage(dr)
+        o.webinar_list() # 进入直播会议列表
+        wbr = Webinar_Create(dr)
+        wbr.return_meeting() # 进入直播会议回收站还原会议
+        o.webinar_list() # 进入直播会议列表
+        time.sleep(3)
+        o.choose_meeting() # 选择一场直播中的会议
         wbr_seting = Webcast_Setting(dr)
         wbr_seting.into_baseinfo() # 进入会议详情的基础设置页面
         wbr_seting.edit_baseinfo() # 编辑会议的基本信息
