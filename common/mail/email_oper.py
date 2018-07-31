@@ -78,21 +78,23 @@ class SendEmailModel():
         from email.header import Header
         sender = 'abc@sinobasedm.com'  # 发件人
         nowtime = datetime.now().strftime('%H')
-        if nowtime >= "04" and nowtime <= "08":
-            receiver = ('394522655@qq.com', 'eddy_men@sinobasedm.com', 'paul_ma@sinobasedm.com', 'master_ma@sinobasedm.com',
-                        'kim_liu@sinobasedm.com', 'manco_wang@sinobasedm.com', 'jason_liang@sinobasedm.com',
-                        '1946898935@qq.com', 'cara_gao@sinobasedm.com', 'lizzy_li@sinobasedm.com',
-                        'gavin_li@sinobasedm.com', 'vivian_shi@sinobasedm.com', '1511274870@qq.com',
-                        'andy_yang@sinobasedm.com', 'lisa_xing@sinobasedm.com', 'belle_hu@sinobasedm.com',
-                        'wine_chen@sinobasedm.com', 'nina_xiao@sinobasedm.com','xin_liu@sinobasedm.com','smile_geng@sinobasedm.com',
-                        'merry_you@sinobasedm.com','aimee_wang@sinobasedm.com')
-            areceiver = ('394522655@qq.com', '1946898935@qq.com', 'cara_gao@sinobasedm.com', 'Willie_wang@sinobasedm.com',
-                         'kevin_liu@sinobasedm.com', 'lizzy_li@sinobasedm.com', 'gavin_li@sinobasedm.com',
-                         'vivian_shi@sinobasedm.com', '1511274870@qq.com', 'andy_yang@sinobasedm.com','xin_liu@sinobasedm.com','smile_geng@sinobasedm.com',
-                         'lisa_xing@sinobasedm.com', 'nina_xiao@sinobasedm.com', 'merry_you@sinobasedm.com','aimee_wang@sinobasedm.com')
-        else:
-            receiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
-            areceiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
+        # if nowtime >= "04" and nowtime <= "08":
+        #     receiver = ('394522655@qq.com', 'eddy_men@sinobasedm.com', 'paul_ma@sinobasedm.com', 'master_ma@sinobasedm.com',
+        #                 'kim_liu@sinobasedm.com', 'manco_wang@sinobasedm.com', 'jason_liang@sinobasedm.com',
+        #                 '1946898935@qq.com', 'cara_gao@sinobasedm.com', 'lizzy_li@sinobasedm.com',
+        #                 'gavin_li@sinobasedm.com', 'vivian_shi@sinobasedm.com', '1511274870@qq.com',
+        #                 'andy_yang@sinobasedm.com', 'lisa_xing@sinobasedm.com', 'belle_hu@sinobasedm.com',
+        #                 'wine_chen@sinobasedm.com', 'nina_xiao@sinobasedm.com','xin_liu@sinobasedm.com','smile_geng@sinobasedm.com',
+        #                 'merry_you@sinobasedm.com','aimee_wang@sinobasedm.com')
+        #     areceiver = ('394522655@qq.com', '1946898935@qq.com', 'cara_gao@sinobasedm.com', 'Willie_wang@sinobasedm.com',
+        #                  'kevin_liu@sinobasedm.com', 'lizzy_li@sinobasedm.com', 'gavin_li@sinobasedm.com',
+        #                  'vivian_shi@sinobasedm.com', '1511274870@qq.com', 'andy_yang@sinobasedm.com','xin_liu@sinobasedm.com','smile_geng@sinobasedm.com',
+        #                  'lisa_xing@sinobasedm.com', 'nina_xiao@sinobasedm.com', 'merry_you@sinobasedm.com','aimee_wang@sinobasedm.com')
+        # else:
+        #     receiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
+        #     areceiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
+        receiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com', 'lily_liu@sinobasedm.com')
+        areceiver = ('1946898935@qq.com', 'cara_gao@sinobasedm.com','lily_liu@sinobasedm.com')
         subject = "Smarket3.0自动化平台测试邮件"  # 邮件主题
         smtpserver = 'smtp.exmail.qq.com'  # 不同的邮件，有不同端口
         username = 'abc@sinobasedm.com'  # 进入邮箱的账户名

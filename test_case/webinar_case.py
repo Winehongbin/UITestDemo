@@ -61,35 +61,35 @@ class Webinar_Case(BaseUnit):
         o.quit()
         # t.deprint("用例2执行完成")
 
-    def test_003_meeting_addtag(self):
-        """设置嘉宾日程及会议标签"""
-        t.deprint("开始执行添加嘉宾和日程及会议标签的直播会议的用例3")
-        dr = brower()
-        o = LoginPage(dr)
-        o.login()
-        o = ChoosePage(dr)
-        o.click_menu_bt('8')
-        time.sleep(5)
-        gguestnum = Get_Guestnum(dr)
-        guestnum = int(gguestnum.get_num()) # 获取嘉宾管理的嘉宾个数
-        o = Webinar_IndexPage(dr)
-        o.webinar_list() # 进入直播会议列表
-        wbr = Webinar_Create(dr)
-        wbr.return_meeting() # 进入直播会议回收站还原会议
-        o.webinar_list() # 进入直播会议列表
-        time.sleep(3)
-        o.choose_meeting() # 选择一场直播中的会议
-        wbr_seting = Webcast_Setting(dr)
-        wbr_seting.into_baseinfo() # 进入会议详情的基础设置页面
-        wbr_seting.edit_baseinfo() # 编辑会议的基本信息
-        actual_result1 = wbr_seting.add_guest(guestnum) # 添加会议嘉宾
-        # self.assertEqual('嘉宾信息成功',actual_result1,msg='failed')
-        # time.sleep(2)
-        actual_result2 = wbr_seting.add_agenda() # 添加会议日程
-        print actual_result2
-        self.assertEqual(actual_result2,u'会议日程添加成功',msg='failed')
-        wbr_seting.quit()
-        # t.deprint("用例3执行完成")
+    # def test_003_meeting_addtag(self):
+    #     """设置嘉宾日程及会议标签"""
+    #     t.deprint("开始执行添加嘉宾和日程及会议标签的直播会议的用例3")
+    #     dr = brower()
+    #     o = LoginPage(dr)
+    #     o.login()
+    #     o = ChoosePage(dr)
+    #     o.click_menu_bt('8')
+    #     time.sleep(5)
+    #     gguestnum = Get_Guestnum(dr)
+    #     guestnum = int(gguestnum.get_num()) # 获取嘉宾管理的嘉宾个数
+    #     o = Webinar_IndexPage(dr)
+    #     o.webinar_list() # 进入直播会议列表
+    #     wbr = Webinar_Create(dr)
+    #     wbr.return_meeting() # 进入直播会议回收站还原会议
+    #     o.webinar_list() # 进入直播会议列表
+    #     time.sleep(3)
+    #     o.choose_meeting() # 选择一场直播中的会议
+    #     wbr_seting = Webcast_Setting(dr)
+    #     wbr_seting.into_baseinfo() # 进入会议详情的基础设置页面
+    #     wbr_seting.edit_baseinfo() # 编辑会议的基本信息
+    #     actual_result1 = wbr_seting.add_guest(guestnum) # 添加会议嘉宾
+    #     # self.assertEqual('嘉宾信息成功',actual_result1,msg='failed')
+    #     # time.sleep(2)
+    #     actual_result2 = wbr_seting.add_agenda() # 添加会议日程
+    #     print actual_result2
+    #     self.assertEqual(actual_result2,u'会议日程添加成功',msg='failed')
+    #     wbr_seting.quit()
+    #     # t.deprint("用例3执行完成")
 
     def test_004_meeting_addquesluckydraw(self):
         """设置问卷和抽奖"""
@@ -140,6 +140,7 @@ class Webinar_Case(BaseUnit):
         self.assertEqual(actual_result1,u'进入直播会场成功',msg='failed')
         index.quit()
         # t.deprint('用例5执行完成')
+
 
 
 
