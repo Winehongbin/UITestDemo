@@ -31,11 +31,11 @@ class Member_Test(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
     #创建图文素材用例
-    def test_001_new_custom_mail_field(self):
-        test = MemberAction(self.driver)
-        actual_result = test.new_custom_mail_field()
-        expected_result = u'自定义字段创建成功'
-        self.assertEqual(actual_result, expected_result, msg="failed")
+    # def test_001_new_custom_mail_field(self):
+    #     test = MemberAction(self.driver)
+    #     actual_result = test.new_custom_mail_field()
+    #     expected_result = u'自定义字段创建成功'
+    #     self.assertEqual(actual_result, expected_result, msg="failed")
         # """ 新建自定义身份标识字段"""
         # try:
         #     test=MemberAction(self.driver)
