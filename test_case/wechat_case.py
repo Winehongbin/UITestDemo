@@ -98,8 +98,8 @@ class Wechat_Test(unittest.TestCase):
 
 if __name__ == "__main__":
     suit=unittest.TestSuite()
-    suit.addTest(Wechat_Test("test_001_createMedia"))
-    suit.addTest(Wechat_Test("test_002_deleteMedia"))
+    # suit.addTest(Wechat_Test("test_001_createMedia"))
+    # suit.addTest(Wechat_Test("test_002_deleteMedia"))
     suit.addTest(Wechat_Test("test_003_createVote"))
     # suit.addTest(Wechat_Test("test_002_deleteMedia"))
     runner = unittest.TextTestRunner()

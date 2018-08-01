@@ -91,6 +91,7 @@ class  NewQuestionnairePage(BasePage):
         text=""
         try:
             self.deprint('编辑问卷题目')
+            time.sleep(3)
             self.find_element_click('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
             self.find_element_click('x', '/html/body/div[1]/div[2]/main/div/div/div[2]/div/div/div[2]/ng-form/p/input')  # 点击保存问卷
             time.sleep(1)
@@ -103,6 +104,7 @@ class  NewQuestionnairePage(BasePage):
         except:
             try:
                 self.deprint('编辑问卷题目')
+
                 self.find_element_click('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
                 self.find_element_click('x',
                                         '/html/body/div[1]/div[2]/main/div/div/div[2]/div/div/div[2]/ng-form/p/input')  # 点击保存问卷

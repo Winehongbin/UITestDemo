@@ -63,7 +63,7 @@ class Questionnaire(unittest.TestCase):
 
 if __name__ == '__main__':
     suit = unittest.TestSuite()
-    suit.addTest(Questionnaire("test_002_delete_question"))
+    suit.addTest(Questionnaire("test_003_create_questionnaire"))
     # suit.addTest(Questionnaire("test_002_delete_question"))
     # suit.addTest(Questionnaire("test_003_create_questionnaire"))
     runner = unittest.TextTestRunner()
