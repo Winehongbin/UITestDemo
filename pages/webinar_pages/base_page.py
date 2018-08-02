@@ -16,15 +16,15 @@ class Webinar_Webcast(BasePage):
         # 点击登录报名按钮
         self.wait_is_visible('x','/html/body/div[3]/div/div[3]')
         time.sleep(8)
-        self.element_value_input('x','//*[@id="con_one_1"]/div[1]/input','18032890720')
+        self.element_value_input('x','//*[@id="con_one_1"]/div[1]/input','15960167982')
         self.element_value_input('x','//*[@id="con_one_1"]/div[3]/input','123123')
         self.wait_is_visible('x','//*[@id="con_one_1"]/input')
         time.sleep(3)
-        self.scrollbar('bottom')
+        # self.scrollbar('bottom')
         self.wait_is_visible('x','//*[@id="body-box"]/div[1]/div/div[2]/div[2]/input')
         self.deprint('进入直播会场')
         time.sleep(10)
-        vtitle = self.find_element_text('x','//*[@id="mCSB_1_container"]/div[1]/div[2]/div[1]')
+        vtitle = self.wait_is_visible('x','//*[@id="mCSB_1_container"]/div[1]/div[2]/div[1]')
         time.sleep(5)
         # 判断进入的会场是否是打开的直播会议
         if vtitle == title :

@@ -150,15 +150,15 @@ if __name__ == '__main__':
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
     suite.addTest(Webinar_Case("test_001_webinar_create_cancel"))
     # time.sleep(3)
-    # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
-    # # time.sleep(3)
-    # suite.addTest(Webinar_Case("test_003_meeting_addtag"))
+    suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
+    # time.sleep(3)
+    suite.addTest(Webinar_Case("test_003_meeting_addtag"))
     # # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
     # #
     # # suite.addTest(Webinar_Case("test_003_meeting_addtag"))
     # #
     # # suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
-    # suite.addTest(Webinar_Case("test_004_meeting_addquesluckydraw"))
-    # suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
+    suite.addTest(Webinar_Case("test_004_meeting_addquesluckydraw"))
+    suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
     runner = unittest.TextTestRunner()
     runner.run(suite)
