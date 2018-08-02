@@ -26,7 +26,7 @@ class ApiRequestsThree():
     def weChat_getConfig(self):
         url = "http://s2-api.smarket.net.cn/weChat/getConfig"
 
-        payload = "{\r\n    \"weChatId\": 36535,\r\n    \"jsApiList\": [\r\n      \"stopRecord\",\r\n      \"onVoiceRecordEnd\",\r\n      \"uploadVoice\",\r\n      \"startRecord\"\r\n    ],\r\n    \"url\": \"http://uao.so/907bb3d9ec\",\r\n    \"onDebug\": false\r\n  }"
+        payload = "{\r\n    \"weChatId\": 45830,\r\n    \"jsApiList\": [\r\n      \"stopRecord\",\r\n      \"onVoiceRecordEnd\",\r\n      \"uploadVoice\",\r\n      \"startRecord\"\r\n    ],\r\n    \"url\": \"http://uao.so/907bb3d9ec\",\r\n    \"onDebug\": false\r\n  }"
         headers = {
             'Content-Type': "application/json",
             'Cache-Control': "no-cache",
@@ -446,7 +446,7 @@ if __name__ == "__main__":
     apicommon.all_login()
     o = ApiRequestsThree()
     # o.template_template_getConfig()
-    # o.weChat_getConfig()
+    o.weChat_getConfig()
     # o.weChat_getAppId()
     # o.file_getList_016()
     # o.article_getListByProject()
@@ -466,7 +466,7 @@ if __name__ == "__main__":
     # o.article_getLikeStatus()
     # o.article_like()
     # o.article_shareRecord()
-    o.file_downloadWithEmail()
+    # o.file_downloadWithEmail()
     # o.article_getListByIds()
     # o.article_getTrees()
     # o.contact_bindMember()

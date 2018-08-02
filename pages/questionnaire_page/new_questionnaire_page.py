@@ -91,13 +91,13 @@ class  NewQuestionnairePage(BasePage):
         text=""
         try:
             self.deprint('编辑问卷题目')
-            time.sleep(3)
-            self.find_element_click('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
-            self.find_element_click('x', '/html/body/div[1]/div[2]/main/div/div/div[2]/div/div/div[2]/ng-form/p/input')  # 点击保存问卷
+            time.sleep(6)
+            self.wait_is_visible('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
+            self.wait_is_visible('x', '/html/body/div[1]/div[2]/main/div/div/div[2]/div/div/div[2]/ng-form/p/input')  # 点击保存问卷
             time.sleep(1)
-            self.find_element_click('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击完成按钮
+            self.wait_is_visible('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击完成按钮
             time.sleep(1)
-            self.find_element_click('x','/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  #点击完成按钮
+            self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  #点击完成按钮
             self.driver.implicitly_wait(60)
             self.deprint('创建常规问卷完成')
             text="创建常规问卷完成"
@@ -105,13 +105,13 @@ class  NewQuestionnairePage(BasePage):
             try:
                 self.deprint('编辑问卷题目')
 
-                self.find_element_click('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
-                self.find_element_click('x',
+                self.wait_is_visible('x', '//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')  # 点击用户信息一 中的姓名
+                self.wait_is_visible('x',
                                         '/html/body/div[1]/div[2]/main/div/div/div[2]/div/div/div[2]/ng-form/p/input')  # 点击保存问卷
                 time.sleep(1)
-                self.find_element_click('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击完成按钮
+                self.wait_is_visible('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击完成按钮
                 time.sleep(1)
-                self.find_element_click('x', '/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  # 点击完成按钮
+                self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div/div[3]/input')  # 点击完成按钮
                 self.driver.implicitly_wait(60)
                 self.deprint('创建常规问卷完成')
                 text="创建常规问卷完成"
