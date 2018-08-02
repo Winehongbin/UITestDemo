@@ -48,16 +48,23 @@ class MemberAction(BasePage):
         # self.element_click("id","_settingFelid")#点击属性/字段设置
         self.wait_is_visible("id","_settingFelid")#点击属性/字段设置
         # self.element_click("css","#con-basefield > div.m-tit-bar > div > div > button")#点击新增字段
+        time.sleep(1)
         self.wait_is_visible("css","#con-basefield > div.m-tit-bar > div > div > button")#点击新增字段
         self.deprint(u"点击新增字段")
+        time.sleep(1)
         self.element_value_input("x",'//*[@id="setFieldModal"]/div/div/div[2]/form/div[1]/div/input',u"自定义列表字段")#输入字段中文名称
         self.deprint(u"输入字段中文名称：自定义列表字段")
+        time.sleep(1)
         self.element_value_input("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[2]/div/input",u"zidingyiList")#输入字段英文名称
         self.deprint( u"输入字段中文名称：zidingyiList")
+        time.sleep(1)
         self.element_click("x", "//*[@id='setFieldModal']/div/div/div[2]/form/div[3]/div/div/button")#选择字段类型
+        time.sleep(1)
         self.element_click("x", "//*[@id='setFieldModal']/div/div/div[2]/form/div[3]/div/div/ul/li[3]/a")#选择列表字段
         self.deprint(u"字段类型选择：列表字段")
+        time.sleep(1)
         self.element_click("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[5]/div[2]/div[1]/div/button")#选择点击字典表
+        time.sleep(1)
         try:
             for num in range(1,10000):#循环获取字典表名称
                 text = self.find_element_text("x","//*[@id='setFieldModal']/div/div/div[2]/form/div[5]/div[2]/div[1]/div/ul/li["+ str(num) +"]/a")#选取字典表对应的字段
@@ -70,6 +77,7 @@ class MemberAction(BasePage):
         self.deprint(u"字典表选择"+ dic_name)
         try:
             self.element_click("x", "//*[@id='setFieldModal']/div/div/div[3]/button")  # 点击保存，保存创建的字段
+            time.sleep(1)
             self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转
             time.sleep(2)
             self.element_click("x", "//*[@id='commonDialogWindow']/div/div/div[3]/button[1]")  # 点击确认保存

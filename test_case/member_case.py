@@ -27,7 +27,7 @@ class Member_Test(unittest.TestCase):
         login.login()
         choose = ChoosePage(self.driver)
         time.sleep(2)
-        choose.click_menu_bt('16')
+        choose.click_menu_bt('17')
     def tearDown(self):
         self.driver.quit()
     #创建图文素材用例

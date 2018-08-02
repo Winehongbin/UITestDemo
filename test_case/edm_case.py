@@ -24,7 +24,7 @@ class Edm_Test(unittest.TestCase):
         login = LoginPage(self.driver)
         login.login()
         choose = ChoosePage(self.driver)
-        choose.click_menu_bt('19')
+        choose.click_menu_bt('20')
         self.conn,self.cur=DatabaseOperation().openconnect()
 
     def tearDown(self):

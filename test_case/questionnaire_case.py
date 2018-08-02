@@ -22,7 +22,7 @@ class Questionnaire(unittest.TestCase):
         object.login()
 
         object = ChoosePage(self.driver)
-        object.click_menu_bt('11')
+        object.click_menu_bt('12')
 
     def tearDown(self):
         self.driver.quit()
