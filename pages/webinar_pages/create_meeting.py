@@ -30,7 +30,7 @@ class Webinar_Create(BasePage):
                 break
 
     # 首页创建线上会
-    def create_meeting(self):
+    def create_meeting(self,flag):
         self.deprint("开始创建线上会")
         titlet = self.nowtime()
         wrtitle = u'自动化创建测试会议' + str(titlet)
@@ -41,12 +41,23 @@ class Webinar_Create(BasePage):
         # self.element_value_input('id','title',wrtitle)
         # 主办方
         self.element_value_input('x', '//*[@id="sponser"]', u'校')
+
         #选择注册表单
         self.nameofform(u"新建注册表单(9)")
+
+
         #self.element_value_input('x','/html/body/p',u'会议简介信息')
-        #选择数据权限（下拉类型的字段）
-        self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/button')
-        self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/ul/li[2]/a')
+        if flag=="1":
+            #     此时说明使用的s2
+            #选择数据权限（下拉类型的字段）
+            self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/button')
+            self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/ul/li[2]/a')
+        else:
+        #     说明此时为uat
+        # 此时应用场景选择:网络峰会
+            self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/button')
+        #     选择网络峰会
+            self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/ul/li[3]/a')
         #点击保存按钮
         self.element_click('x','//*[@id="save"]')
 
@@ -60,15 +71,18 @@ class Webinar_Create(BasePage):
 
         #获取下一个窗口句柄，跳转到会议详情页面
         self.driver.switch_to.window(self.driver.window_handles[-1])
+        current_handle=self.driver.current_window_handle
         self.driver.implicitly_wait(10)
         time.sleep(5)
-        vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[1]/span')
-
-        #判断会议标题是否一致
-        if wrtitle == vwrtitle:
-            self.deprint("创建会议成功"),
+        if flag=="1":
+            vwrtitle =  self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/ul/li[1]/span')
+            #判断会议标题是否一致
+            if wrtitle == vwrtitle:
+                self.deprint("创建会议成功"),
+            else:
+                self.deprint("创建会议失败")
         else:
-            self.deprint("创建会议失败")
+            return current_handle
 
     #发布会议
     def publish_meeting(self):
@@ -120,7 +134,11 @@ class Webinar_Create(BasePage):
         # 点击还原按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div/div[1]/section/ul/li[1]/div/button')
         time.sleep(5)
-
+    def enter_meenting(self):
+        # 点击进入会场按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[1]/div[1]/div[2]/div[1]/a[3]')
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        time.sleep(1)
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)

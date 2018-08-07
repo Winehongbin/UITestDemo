@@ -53,8 +53,9 @@ class QuestionnaireListPage(BasePage):
 
 
 if __name__ == '__main__':
-        self.driver = brower()
-        object = LoginPage(self.driver)
-        object.login()
-        object = ChoosePage(self.driver)
-        object.click_menu_bt('11')
+    pass
+        # self.driver = brower()
+        # object = LoginPage(self.driver)
+        # object.login()
+        # object = ChoosePage(self.driver)
+        # object.click_menu_bt('11')

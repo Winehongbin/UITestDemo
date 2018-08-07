@@ -18,11 +18,12 @@ from test_case.article_case import Article
 from test_case.webinar_case import Webinar_Case
 from test_case.member_case import Member_Test
 from test_case.edm_case import Edm_Test
+from test_case.ady_case import ADY
 from test_case.api_case_group1 import Api_Case_Group1
 from test_case.api_case_group2 import Api_Case_Group2
 from test_case.api_case_group3 import Api_Case_Group3
 from test_case.api_case_group4 import Api_Case_Group4
-
+from pages.common_pages.ConfigUrl import ConfigUrl
 class ConrollerShow():
 
 
@@ -44,18 +45,18 @@ class ConrollerShow():
         offline_test = self.Def_List(Offline_Meeting_Test)   #Def_List 获取指定单元测试中，测试函数列表
         for offline_tmp in offline_test:
             suite.addTest(Offline_Meeting_Test(offline_tmp))   #addTest()的方法，测试套件中添加测试用例,可以加载不同类里面的不同测试函数
-
-        #微信
+        # #
+        # #微信
         wechat_test = self.Def_List(Wechat_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for wechat_tmp in wechat_test:
             suite.addTest(Wechat_Test(wechat_tmp))
-        #
-        # #问卷
+        # #
+        # # #问卷
         questtionnaire_test = self.Def_List(Questionnaire)  # Def_List 获取指定单元测试中，测试函数列表
         for questtionnaire_tmp in questtionnaire_test:
             suite.addTest(Questionnaire(questtionnaire_tmp))
-        # #
-        # # # 文章管理
+        # # #
+        # # # # 文章管理
         article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
         for article_tmp in article_test:
             suite.addTest(Article(article_tmp))
@@ -69,12 +70,17 @@ class ConrollerShow():
         member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for member_tmp in member_test:
             suite.addTest(Member_Test(member_tmp))
-        #
-        # # # 邮件管理
+        # #
+        # # # # 邮件管理
         edm_test = self.Def_List(Edm_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for edm_tmp in edm_test:
              suite.addTest(Edm_Test(edm_tmp))
-             print suite
+        #      print suite
+        # # # # uat奥点云测试
+        # ady_test = self.Def_List(ADY)  # Def_List 获取指定单元测试中，测试函数列表
+        # for ady_tmp in ady_test:
+        #     suite.addTest(ADY(ady_tmp))
+        #     print suite
         # 接口1
         api_jk1=self.Def_List(Api_Case_Group1)
         for api1 in api_jk1:
@@ -106,8 +112,10 @@ class ConrollerShow():
 
 
 if __name__ == '__main__':
-    A = ConrollerShow()
-    A.SupportTool_Control()
+
+        # 此时说明为s2
+        A = ConrollerShow()
+        A.SupportTool_Control()
     # 这是在dev分支上写的代码
 # 测试--刘雅的冲突测试
     # for host, browserType in config.getconfig().items():哥哥哥

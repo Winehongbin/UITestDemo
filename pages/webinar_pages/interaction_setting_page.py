@@ -4,7 +4,7 @@ from pages.webinar_pages.index_page import Webinar_IndexPage
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.driver import brower
 from pages.common_pages.choose_page import ChoosePage
-import time
+import time,os
 from pages.webinar_pages.create_meeting import Webinar_Create
 from pages.questionnaire_page.new_questionnaire_page import NewQuestionnairePage
 
@@ -24,7 +24,13 @@ class InteractionSetting(BasePage):
         time.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.deprint("跳转到问卷创建页面")
-
+    def refresh_meeting(self,current_habdles):
+        # 进入到会议详情页面并刷新当前页面
+        all_handles = self.driver.window_handles
+        for i in all_handles:
+            if i == current_habdles:
+                self.driver.switch_to.window(i)
+                self.driver.refresh()
     # 点击问卷的刷新按钮
     def click_refresh(self,current_habdles):
         # self.driver.switch_to.window(self.driver.window_handles[2])
@@ -48,7 +54,10 @@ class InteractionSetting(BasePage):
                 self.deprint('问卷创建成功，且设置为默认问卷')
             except:
                 self.deprint('问卷创建失败')
-
+    def Close_AndRefresh(self):
+        # 关闭并刷新当前页面
+        self.driver.close()
+        self.driver.refresh()
     # 添加抽奖信息
     def create_luckydraw(self):
         self.deprint('添加抽奖信息')
@@ -80,9 +89,51 @@ class InteractionSetting(BasePage):
         else:
             self.deprint('抽奖添加失败')
             return "抽奖添加失败"
-
-
-
+    def create_vote(self):
+        # 点击新建投票按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[3]/div[1]/div/a[1]')
+        # 跳转到新开的窗口中
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        time.sleep(1)
+        # 输入标题
+        self.find_element_input('x','//*[@id="pollTitle"]','自动化测试'+self.nowtime())
+        # 点击设置时间后面的时间控件按钮
+        self.wait_is_visible('x','//*[@id="txtTime"]')
+        # 点击确定按钮
+        self.wait_is_visible('x','/html/body/div[5]/div[3]/div/button[1]')
+        # 拖动滚动条到最下面
+        self.scrollbar("bottom")
+        # 点击保存按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/main/div/div/div/div[2]/div/button')
+        # 对于弹出的提示框点击确定按钮
+        self.wait_is_visible('x','//*[@id="alertCommon"]/div/div/div[3]/button')
+    def Edit_vote(self):
+        time.sleep(1)
+        # 点击添加姓名选项
+        self.wait_is_visible('x','//*[@id="left-menu"]/ul/li[1]/ul/li[1]/a')
+        # 点击保存按钮
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div/div[2]/div/div/div[2]/div/button')
+        # 针对弹出的对话框点击确定按钮
+        self.wait_is_visible('x','//*[@id="alertCommon"]/div/div/div[3]/button')
+        # 关闭当前投票页面
+        self.close()
+    def Add_File(self):
+        # 点击添加文件按钮
+        self.scrollbar("bottom")
+        self.deprint("开始点击添加文件按钮")
+        self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[5]/div[1]/div/a[1]')
+        # 切换到新开的窗口中
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        time.sleep(1)
+        # 点击上传文件按钮
+        self.wait_is_visible('x','/html/body/div/div[1]/div[2]/div[4]/div[2]/div/button[1]')
+        # 开始上传图片
+        cur_path = os.path.abspath(os.path.dirname(__file__))
+        root_path = os.path.split(cur_path)[0]
+        # print root_path
+        os.system(root_path + "/upload.exe")
+        # 关闭当前页面
+        self.close()
 if __name__ == '__main__':
 
     dr = brower()

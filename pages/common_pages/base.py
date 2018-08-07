@@ -31,8 +31,17 @@ class BasePage(object):
         self.url = self.base_url + url
         self.driver.get(self.url)
         self.driver.implicitly_wait(self.timeout)
+    def _open_uat(self,url):
+    #     此方法用于uat的登陆
+        url="https://uat-tenant.smarket.net.cn"
+        self.url=url
+        self.driver.get(self.url)
+        self.driver.implicitly_wait(self.timeout)
     def open(self):
         self._open(self.url)
+    def open_uat(self):
+         # 此方法用于uat的登陆
+        self._open_uat(self.url)
     #退出浏览器
     def quit(self):
         self.driver.quit()

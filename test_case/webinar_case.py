@@ -33,7 +33,7 @@ class Webinar_Case(BaseUnit):
         o.index_webinar() # 进入线上会首页
         o.index_create() # 点击首页的创建会议按钮
         wbr = Webinar_Create(dr)
-        wbr.create_meeting() # 创建线上会直播会议
+        wbr.create_meeting("1") # 创建线上会直播会议
         actual_result = wbr.cancel_meeting() # 取消此会议
         self.assertEqual(actual_result,u'会议取消成功',msg='failed')
         o.quit()
@@ -53,7 +53,7 @@ class Webinar_Case(BaseUnit):
         o.webinar_list() # 进入线上会直播会议列表
         o.list_create() # 点击线上会直播列表的创建会议按钮
         wbr = Webinar_Create(dr)
-        wbr.create_meeting() # 创建直播会议
+        wbr.create_meeting("1") # 创建直播会议
         actual_result = wbr.publish_meeting() # 发布本会议
         self.assertEqual(actual_result,u'会议发布成功',  msg='failed')
         actual_result1 = wbr.cancel_meeting() # 取消本会议

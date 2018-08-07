@@ -11,10 +11,11 @@ import sys
 reload(sys)  #在解释器里修改的编码只能保证当次有效，在重启解释器后，会发现，编码又被重置为默认的ascii了
 sys.setdefaultencoding('utf8')
 import os
+
 curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
-from pages.off_line_meeting_pages.interaction_link_page import InteractionAndCancle
+# from pages.off_line_meeting_pages.interaction_link_page import InteractionAndCancle
 import time
 import unittest
 from pages.common_pages.base import BasePage
@@ -55,49 +56,102 @@ class Offline_Meeting_Test(BaseUnit):
 
 
 
-    def test_002_interaction(self):
-         """ 添加互动环节"""
-
-         base.deprint("开始执行登录，并进入添加线下会互动环节用例")
-         dr = self.driver
-         o = LoginPage(dr)
-         o.login()
-         o = ChoosePage(dr)
-         o.click_menu_bt('10')
-         o = IndexPage(dr)
-         o.click_linelist('2')
-         o = InteractionAndCancle(dr)
-         acture_result=o.interaction_and_cancle('1')
-         excepet_result="已添加互动环节"
-         # self.assertEqual(acture_result,excepet_result,"failed")
-         base.deprint( "添加线下会互动环节添加用例完成")
-
-    def test_003_createoffline(self):
-         """ 测试删除线下会 """
-
-         base.deprint("开始执行登录，并进入删除线下会用例")
-         dr = self.driver
-         o = LoginPage(dr)
-         o.login()
-         o = ChoosePage(dr)
-         o.click_menu_bt('10')
-         o = IndexPage(dr)
-         o.click_linelist('2')
-         object = InteractionAndCancle(dr)
-         actual_result = object.interaction_and_cancle('2')
-         expected_result = u'取消会议成功'
-         self.assertEqual(actual_result, expected_result, msg="failed")
-         base.deprint("删除线下会用例完成")
-
-
-
+    # def test_002_interaction(self):
+    #      """ 添加互动环节"""
+    #
+    #      base.deprint("开始执行登录，并进入添加线下会互动环节用例")
+    #      dr = self.driver
+    #      o = LoginPage(dr)
+    #      o.login()
+    #      o = ChoosePage(dr)
+    #      o.click_menu_bt('10')
+    #      o = IndexPage(dr)
+    #      o.click_linelist('2')
+    #      o = InteractionAndCancle(dr)
+    #      acture_result=o.interaction_and_cancle('1')
+    #      excepet_result="已添加互动环节"
+    #      # self.assertEqual(acture_result,excepet_result,"failed")
+    #      base.deprint( "添加线下会互动环节添加用例完成")
+    #
+    # def test_003_createoffline(self):
+    #      """ 测试删除线下会 """
+    #
+    #      base.deprint("开始执行登录，并进入删除线下会用例")
+    #      dr = self.driver
+    #      o = LoginPage(dr)
+    #      o.login()
+    #      o = ChoosePage(dr)
+    #      o.click_menu_bt('10')
+    #      o = IndexPage(dr)
+    #      o.click_linelist('2')
+    #      object = InteractionAndCancle(dr)
+    #      actual_result = object.interaction_and_cancle('2')
+    #      expected_result = u'取消会议成功'
+    #      self.assertEqual(actual_result, expected_result, msg="failed")
+    #      base.deprint("删除线下会用例完成")
+    # def test_004_offlineone(self):
+    #     """ 线下会建会、互动主流程one"""
+    #     base.deprint("开始执行登陆操作")
+    #     dr=self.driver
+    #     o=LoginPage(dr)
+    #     o.login()
+    #     base.deprint("开始执行选择线下会操作")
+    #     o = ChoosePage(dr)
+    #     SYHandle=o.click_menu_bt('10')
+    #     base.deprint("开始执行选择会议列表操作")
+    #     indexp = IndexPage(dr)
+    #     indexp.click_offlinelist()
+    #     base.deprint("开始点击创建新会议按钮")
+    #     indexp.click_newofline()
+    #     base.deprint("开始创建会议")
+    #     indexp.create_newoffline()
+    #     base.deprint("4、进入会议详情编辑会议并设置标签")
+    #     current_handle=indexp.click_editbutton()
+    #     base.deprint("5、进入报名表单将表单状态更改为开始报名")
+    #     indexp.click_BMBD()
+    #     base.deprint("PC端进入专题站点击立即报名登录并提交报名")
+    #     indexp.click_PCAndBM()
+    #     base.deprint("切换到参会人员handle处")
+    #     text,currnet_handle1=indexp.switch_handle(current_handle,SYHandle)
+    #     # 验证线下会模块联系人以及线下会模块联系人详情显示进入专题站、报名标签触发记录
+    #     excepet_result="1"
+    #     acture_result="success"
+    #     # if text!="成功":
+    #     #      # 此时说明添加用户不成功
+    #     #      acture_result="添加用户不成功"
+    #
+    #     # 此时继续执行下面的流程，最终判断哪里出了问题
+    #     base.deprint("线下会模块联系人详情显示进入专题站、报名标签触发记录")
+    #     text=indexp.Model_Detail(SYHandle)
+    #     # if text!="成功":
+    #     #  # 此时说明报名人员详情互动记录显示进入专题站、登录、浏览表单、提交表单、报名互动 不成功
+    #     #  acture_result = "报名互动不成功"
+    #     base.deprint("开始新建问卷")
+    #     indexp.New_Quest(currnet_handle1)
+    #     base.deprint("获取当前页面的pc连接地址并打开")
+    #     current_handle2 = indexp.Get_PCLink()
+    #     base.deprint("开始设置领奖点")
+    #     indexp.Set_Award(current_handle)
+    #     # indexp.SubMitQuest()
+    #
+    #     base.deprint("进入问卷问答页面，点击提交按钮")
+    #     indexp.Sub_Quest(current_handle2)
+    #     base.deprint("查看领奖点中增加一人")
+    #     text=indexp.Add_One(current_handle)
+    #     self.assertEqual(acture_result,excepet_result,"fail")
+    # # def test_005_test(self):
+    # #     print "yaya"
 if __name__ == "__main__":
     #全部用例按照数字顺序测试
     #unittest.main()
+
+
+
+
     StartTime = time.time()
     suite = unittest.TestSuite()
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
-    suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
+    suite.addTest(Offline_Meeting_Test("test_0005"))
     # suite.addTest(Offline_Meeting_Test("test_002_interaction"))
     # suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
 

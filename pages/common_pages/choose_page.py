@@ -21,19 +21,19 @@ class ChoosePage(BasePage):
         css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")" #把按钮位置设为参数获取
         if button_pos =='1':
             self.deprint("开始进入微信")
-        if button_pos =='8':
+        if button_pos =='9':
             self.deprint("开始进入线上会")
-        if button_pos == '9':
+        if button_pos == '10':
             self.deprint("开始进入线下会")
         if button_pos == '11':
             self.deprint("开始进入问卷")
-        if button_pos == '16':
+        if button_pos == '17':
             self.deprint("开始进入客户管理")
         if button_pos == '21':
             self.deprint("开始进入文章管理")
         self.wait_is_visible('css',css_path)
         self.driver.switch_to.window(self.driver.window_handles[-1]) # 获取下一个窗口句柄，跳转
-
+        return handleNow
 if __name__ == '__main__':
     dr = brower()
     o = LoginPage(dr)
