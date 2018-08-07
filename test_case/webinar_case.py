@@ -26,7 +26,7 @@ class Webinar_Case(BaseUnit):
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
-        o.click_menu_bt('8')
+        o.click_menu_bt('10')
         time.sleep(5)
         o = Webinar_IndexPage(dr)
         time.sleep(3)
@@ -46,7 +46,7 @@ class Webinar_Case(BaseUnit):
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
-        o.click_menu_bt('8')
+        o.click_menu_bt('9')
         time.sleep(5)
         o = Webinar_IndexPage(dr)
         time.sleep(3)
@@ -68,7 +68,7 @@ class Webinar_Case(BaseUnit):
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
-        o.click_menu_bt('8')
+        o.click_menu_bt('9')
         time.sleep(5)
         gguestnum = Get_Guestnum(dr)
         guestnum = int(gguestnum.get_num()) # 获取嘉宾管理的嘉宾个数
@@ -98,7 +98,7 @@ class Webinar_Case(BaseUnit):
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
-        o.click_menu_bt('8')
+        o.click_menu_bt('9')
         time.sleep(5)
         o = Webinar_IndexPage(dr)
         o.webinar_list()
@@ -129,7 +129,7 @@ class Webinar_Case(BaseUnit):
         o = LoginPage(dr)
         o.login()
         o = ChoosePage(dr)
-        o.click_menu_bt('8')
+        o.click_menu_bt('9')
         time.sleep(5)
         o = Webinar_IndexPage(dr)
         o.webinar_list() # 进入直播会议的列表
@@ -153,11 +153,11 @@ if __name__ == '__main__':
     suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
     # time.sleep(3)
     suite.addTest(Webinar_Case("test_003_meeting_addtag"))
-    # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
-    #
-    # suite.addTest(Webinar_Case("test_003_meeting_addtag"))
-    #
-    # suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
+    # # suite.addTest(Webinar_Case("test_002_webinar_publish_cancel"))
+    # #
+    # # suite.addTest(Webinar_Case("test_003_meeting_addtag"))
+    # #
+    # # suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
     suite.addTest(Webinar_Case("test_004_meeting_addquesluckydraw"))
     suite.addTest(Webinar_Case("test_005_meeting_indexpage"))
     runner = unittest.TextTestRunner()

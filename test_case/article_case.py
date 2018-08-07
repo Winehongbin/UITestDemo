@@ -15,7 +15,7 @@ class Article(unittest.TestCase):
         object.login()
 
         object = ChoosePage(self.driver)
-        object.click_menu_bt('21')
+        object.click_menu_bt('22')
 
     def tearDown(self):
         self.driver.quit()

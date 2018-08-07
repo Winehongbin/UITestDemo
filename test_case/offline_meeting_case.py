@@ -44,7 +44,7 @@ class Offline_Meeting_Test(BaseUnit):
         object = LoginPage(dr)
         object.login()
         object = ChoosePage(dr)
-        object.click_menu_bt('9')
+        object.click_menu_bt('10')
         object = IndexPage(dr)
         object.click_createunderline()
         object = NewMeetingPage(dr)
@@ -63,7 +63,7 @@ class Offline_Meeting_Test(BaseUnit):
          o = LoginPage(dr)
          o.login()
          o = ChoosePage(dr)
-         o.click_menu_bt('9')
+         o.click_menu_bt('10')
          o = IndexPage(dr)
          o.click_linelist('2')
          o = InteractionAndCancle(dr)
@@ -80,7 +80,7 @@ class Offline_Meeting_Test(BaseUnit):
          o = LoginPage(dr)
          o.login()
          o = ChoosePage(dr)
-         o.click_menu_bt('9')
+         o.click_menu_bt('10')
          o = IndexPage(dr)
          o.click_linelist('2')
          object = InteractionAndCancle(dr)
@@ -97,8 +97,9 @@ if __name__ == "__main__":
     StartTime = time.time()
     suite = unittest.TestSuite()
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
-    suite.addTest(Offline_Meeting_Test("test_002_interaction"))
-
+    suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
+    # suite.addTest(Offline_Meeting_Test("test_002_interaction"))
+    # suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
 
 
     #执行单元测试，生成报告
@@ -112,4 +113,4 @@ if __name__ == "__main__":
 
     # SendEmail = email.SendEmailModel()
     SendEmail = email_oper.SendEmailModel()
-    #SendEmail.postreport_only(PerformTime,content)
+    SendEmail.postreport_only(PerformTime,content)

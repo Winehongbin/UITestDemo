@@ -75,9 +75,9 @@ class NewMeetingPage(BasePage):
 
         for num in range(1, 100):  #遍历选项，选中form_name 因为遍历100遍，及100个下表元素。如果没有正确选中，很有可能找不到元素，报错。
             ele = '//*[@id="createSeminarScroller"]/form/div[8]/div[2]/div/ul/li[' + str(num) + ']/a'
-            #print ele
+            # print "ele:",ele
             all_form_name = self.find_element_text("x", ele)  # 获各个注册单名称
-            # print all_form_name
+            # print "all_form_name:",all_form_name
             if all_form_name == form_name:  # 判断对应注册单的名称，点击选择
                 self.element_click("x", ele)
                 break

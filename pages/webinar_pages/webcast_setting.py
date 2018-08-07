@@ -27,21 +27,22 @@ class Webcast_Setting(BasePage):
         # time.sleep(2)
         # self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[10]/div[1]/div[2]/label')
         # 添加会议标签
-        self.scrollbar('1300')
-        time.sleep(2)
+        self.scrollbar('bottom')
+        time.sleep(5)
         self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[2]')
-        time.sleep(2)
+        time.sleep(5)
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[3]/div[1]/span[3]')
         # 获取标签名称
-        tagname = self.find_element_text('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[1]/span')
+        time.sleep(5)
+        tagname = self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[20]/div[1]/div/div/div[1]/span')
         self.scrollbar('bottom')
-        time.sleep(2)
+        time.sleep(5)
         # 点击保存按钮
         self.wait_is_visible('x','/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div[21]/button')
         time.sleep(3)
         self.scrollbar('top')
         # 获取选中以后标签的名称，并验证是否一致
-        vtagname = self.find_element_text('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div/div/span')
+        vtagname = self.wait_is_visible('x', '/html/body/div[1]/div[2]/div[2]/div/div[2]/div/div/div/div/span')
         if tagname == vtagname:
             self.deprint('标签添加成功')
         else:
