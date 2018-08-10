@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import xlrd
+# import xlrd
 class ConfigUrl():
     def BaseUrl(self):
         #  如果是s2系统，，x,y请输入，2，0
