@@ -30,7 +30,7 @@ class Edm_offline(BasePage):
         self.wait_is_visible('x', '//*[@id="message-con"]/div[4]/div[2]/a[2]')  # 点击报名确认的创建新任务图标
         self.driver.switch_to.window(self.driver.window_handles[2])  # 获取下一个窗口句柄，跳转到邮件任务详情页面
         self.deprint('进入到邮件任务详情页面')
-        time.sleep(3)
+        time.sleep(6)
         text = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[2]/span')  # 拿到邮件分类名称
         if text == '审核通过通知函':
             self.deprint('线下会实例邮件创建成功')
