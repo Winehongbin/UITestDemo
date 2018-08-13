@@ -63,7 +63,7 @@ class AllReport(BasePage):
         # print myfile_path
         myfile = myfile_path + now + " Smarket3.0_TestReport.html"
         # print myfile
-        #myfile="..\ReportAndEmail\Smarket3.0_TestReport.html"
+        #myfile="..\ReportAndEmail\Smarket3.0_TestReport. html"
 
         """
           声明报告
