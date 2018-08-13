@@ -6,6 +6,7 @@ from pages.common_pages.driver import brower
 from pages.off_line_meeting_pages.index_page import IndexPage
 from pages.off_line_meeting_pages.interaction_manage_page import InteractionPageManage
 # from pages.off_line_meeting_pages.interaction_link_page import Interaction_Line
+import time
 
 class IndexDetailsOfMeeting(BasePage):
 
@@ -17,6 +18,28 @@ class IndexDetailsOfMeeting(BasePage):
         self.wait_is_visible('x','/html/body/div[2]/div[2]/ul[2]/li[6]')
         self.driver.implicitly_wait(30)
         self.deprint("进入互动环节页面")
+
+        # 点击会议详情列表页面的列表按钮#20180807
+
+    def click_indexname(self, button_num):
+        x_path = "/html/body/div[2]/div[2]/ul[2]/li[" + str(button_num) + "]/a"  # 把按钮位置设为参数获取
+        print type(x_path)
+        if button_num == '11':
+            self.deprint("进入邮件任务页面")
+        if button_num == '12':
+            self.deprint("进入短信任务页面")
+        if button_num == '4':
+            self.deprint("进入报名表单页面")
+
+        # self.scrollbar("bottom")
+        # # 下面的两句是将鼠标拖动到指定元素可见为止
+        # target = self.driver.find_element_by_xpath(x_path)
+
+        # self.driver.execute_script("arguments[0].scrollIntoView();", target)  # 拖动到可见的元素去
+        time.sleep(5)
+        self.scrollbar("200")
+        time.sleep(5)
+        self.wait_is_visible('x', x_path)
 
 
 if __name__ == '__main__':

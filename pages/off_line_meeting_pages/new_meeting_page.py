@@ -18,34 +18,45 @@ class NewMeetingPage(BasePage):
     # 创建一场会议
     def create_neww_offline(self):
         self.deprint("开始创建线下会")
-        time_now = int(time.time()) # 获取当前时间
-        time_local = time.localtime(time_now) # 转换成localtime
-        dt = time.strftime("%Y-%m-%d %H:%M:%S", time_local)   #strftime：转换成新的时间格式(2016-05-09 18:59:20)
+        time_now = int(time.time())  # 获取当前时间
+        time_local = time.localtime(time_now)  # 转换成localtime
+        dt = time.strftime("%Y-%m-%d %H:%M:%S", time_local)  # strftime：转换成新的时间格式(2016-05-09 18:59:20)
         # self.driver.find_element_by_id("seminarName").send_keys(u"自动化测试" + dt)
-        self.element_value_input('id',"seminarName",u"自动化测试" + dt)
+        self.element_value_input('id', "seminarName", u"自动化测试" + dt)
 
-        self.driver.find_element_by_id("seminarTime").click()         # “会议时间”字段
+        self.driver.find_element_by_id("seminarTime").click()  # “会议时间”字段
         handleNow = self.driver.current_window_handle
         self.driver.switch_to_window(handleNow)
-        self.driver.find_element_by_name('daterangepicker_start').send_keys('2016-08-24')   #“会议时间”开始时间
-        self.driver.find_element_by_name('daterangepicker_end').send_keys('2016-08-24')  #“会议时间”结束时间
-        self.element_click('id','seminarTime')
-        self.element_click('x','/html/body/div[4]/div[3]/div/button[1]')
-        self.element_click('css','#createSeminarScroller > form > div:nth-child(5) > div > div > div:nth-child(1) > button')  # “地区”字段,点击
-        self.element_click('css','#createSeminarScroller > form > div:nth-child(5) > div > div > div.dropdown.r-select.select-ssmd.open > ul > li.ng-scope > a')
+        self.driver.find_element_by_name('daterangepicker_start').send_keys('2016-08-24')  # “会议时间”开始时间
+        self.driver.find_element_by_name('daterangepicker_end').send_keys('2016-08-24')  # “会议时间”结束时间
+        self.element_click('id', 'seminarTime')
+        self.element_click('x', '/html/body/div[4]/div[3]/div/button[1]')
+        self.element_click('css',
+                           '#createSeminarScroller > form > div:nth-child(5) > div > div > div:nth-child(1) > button')  # “地区”字段,点击
+        self.element_click('css',
+                           '#createSeminarScroller > form > div:nth-child(5) > div > div > div.dropdown.r-select.select-ssmd.open > ul > li.ng-scope > a')
         self.driver.implicitly_wait(30)
-        self.element_value_input('css','#createSeminarScroller > form > div:nth-child(6) > div > input',u'北京')  # "会议地点" 字段
+        self.element_value_input('css', '#createSeminarScroller > form > div:nth-child(6) > div > input',
+                                 u'北京')  # "会议地点" 字段
         self.nameofform(u"新建注册表单(9)")
         self.driver.implicitly_wait(30)
-        self.element_click('css','#createSeminarScroller > form > div:nth-child(10) > div.col-md-2 > div > button > span') # 选择不启用启用微信公众号
+        self.element_click('css',
+                           '#createSeminarScroller > form > div:nth-child(10) > div.col-md-2 > div > button > span')  # 选择不启用启用微信公众号
         self.driver.implicitly_wait(10)
-        self.element_click('css','#createSeminarScroller > form > div:nth-child(10) > div.col-md-2 > div > ul > li:nth-child(1) > a')
+        self.element_click('css',
+                           '#createSeminarScroller > form > div:nth-child(10) > div.col-md-2 > div > ul > li:nth-child(1) > a')
         self.driver.implicitly_wait(10)
+        iframe = self.driver.find_element_by_xpath('//*[@id="ueditor_0"]')  # 定位会议简介的iframe#20180808
+        self.driver.switch_to.frame(iframe)  # 切换iframe到会议简介输入窗口#20180808
+        self.deprint("iframe切换成功")  # 20180808
+        self.wait_is_visible('x', '/html/body')  # 20180808
+        self.element_value_input('x', '/html/body', u'线下会实例邮件会议')  # 输入会议简介#20180808
+        self.driver.switch_to.default_content()  # 从邮件内容输入的iframe窗口切换回主文档#20180808
+        self.deprint("从iframe切回主文档成功")  # 20180808
         self.openOrClose(3)  # 开启会议嘉宾
         self.openOrClose(9)  # 开启互动环节
         self.openOrClose(10)  # 开启大屏管理
         self.openOrClose(11)  # 开启权限管理
-
 
         try:
             target = self.driver.find_element_by_xpath('//*[@id="createSeminar"]/div/div/div[2]/div[2]/ul/li[15]')
@@ -58,7 +69,7 @@ class NewMeetingPage(BasePage):
             self.openOrClose(14)  # 开启短信任务
             self.openOrClose(15)  # 开启素材库
 
-        self.element_click('css','#createSeminar > div > div > div.modal-footer > button')         # 点击“创建”按钮
+        self.element_click('css', '#createSeminar > div > div > div.modal-footer > button')  # 点击“创建”按钮
         self.driver.implicitly_wait(30)
         self.deprint("线下会创建成功")
         return u'线下会创建成功'

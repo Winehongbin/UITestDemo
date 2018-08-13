@@ -21,17 +21,17 @@ class Edm_offline(BasePage):
     def createofflineEdm(self):
         self.deprint('开始执行创建线下会实例邮件任务')
         time.sleep(5)
-        self.element_click('x','/html/body/div[2]/div[2]/ul[2]/li[4]/a/strong')#点击左侧的报名表单按钮
-        self.element_click('x','//*[@id="g-right"]/div/div[1]/div[2]/table/tbody/tr/td[9]/a[3]')#点击编辑图标
+        self.element_click('x', '/html/body/div[2]/div[2]/ul[2]/li[4]/a/strong')  # 点击左侧的报名表单按钮
+        self.element_click('x', '//*[@id="g-right"]/div/div[1]/div[2]/table/tbody/tr/td[9]/a[3]')  # 点击编辑图标
         self.deprint('打开编辑报名表单窗口')
         time.sleep(2)
-        self.element_click('x','//*[@id="newSignForm"]/div/div/div[2]/ul/li[2]/a')#点击消息通知标签
+        self.element_click('x', '//*[@id="newSignForm"]/div/div/div[2]/ul/li[2]/a')  # 点击消息通知标签
         time.sleep(2)
-        self.wait_is_visible('x','//*[@id="message-con"]/div[4]/div[2]/a[2]')#点击报名确认的创建新任务图标
+        self.wait_is_visible('x', '//*[@id="message-con"]/div[4]/div[2]/a[2]')  # 点击报名确认的创建新任务图标
         self.driver.switch_to.window(self.driver.window_handles[2])  # 获取下一个窗口句柄，跳转到邮件任务详情页面
         self.deprint('进入到邮件任务详情页面')
         time.sleep(3)
-        text = self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[2]/div/div[2]/span')#拿到邮件分类名称
+        text = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[2]/span')  # 拿到邮件分类名称
         if text == '审核通过通知函':
             self.deprint('线下会实例邮件创建成功')
         else:
@@ -40,10 +40,10 @@ class Edm_offline(BasePage):
         self.driver.switch_to.window(self.driver.window_handles[1])  # 获取上一个窗口句柄，跳转到报名名单页面
         self.deprint('进入到编辑报名表单窗口')
         time.sleep(1)
-        self.element_click('x','//*[@id="message-con"]/div[4]/div[2]/a[1]')#点击报名确认的刷新图标
-        self.element_click('x','//*[@id="message-con"]/div[4]/div[1]/div/button')#选择邮件任务
-        self.element_click('x','//*[@id="message-con"]/div[4]/div[1]/div/ul/li[2]/a')#选择刚才建的邮件任务
-        self.element_click('x','//*[@id="newSignForm"]/div/div/div[3]/button')#点击保存按钮
+        self.element_click('x', '//*[@id="message-con"]/div[4]/div[2]/a[1]')  # 点击报名确认的刷新图标
+        self.element_click('x', '//*[@id="message-con"]/div[4]/div[1]/div/button')  # 选择邮件任务
+        self.element_click('x', '//*[@id="message-con"]/div[4]/div[1]/div/ul/li[2]/a')  # 选择刚才建的邮件任务
+        self.element_click('x', '//*[@id="newSignForm"]/div/div/div[3]/button')  # 点击保存按钮
         self.deprint('线下会与实例邮件关联完成')
 
     # 将报名表单开启报名
