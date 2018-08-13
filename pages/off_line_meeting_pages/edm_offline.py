@@ -28,7 +28,8 @@ class Edm_offline(BasePage):
         self.element_click('x', '//*[@id="newSignForm"]/div/div/div[2]/ul/li[2]/a')  # 点击消息通知标签
         time.sleep(2)
         self.wait_is_visible('x', '//*[@id="message-con"]/div[4]/div[2]/a[2]')  # 点击报名确认的创建新任务图标
-        self.driver.switch_to.window(self.driver.window_handles[2])  # 获取下一个窗口句柄，跳转到邮件任务详情页面
+        # self.driver.switch_to.window(self.driver.window_handles[2])  # 获取下一个窗口句柄，跳转到邮件任务详情页面
+        self.driver.switch_to.window(self.driver.window_handles[-1])  # 切换到新开的窗口
         self.deprint('进入到邮件任务详情页面')
         time.sleep(6)
         text = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[2]/span')  # 拿到邮件分类名称
@@ -93,13 +94,13 @@ if __name__ == '__main__':
         # a.createEdm('邀请函')
         S = Edm_offline(dr)
         S.createofflineEdm()
-        S.startsigning()
-
-
-        o = TableLogin(dr)  #调用登录
-        o.create_login()#
-        o.register_edm()
-        # o.signupoffline()  #
-
-        s = Edm_offline(dr)
-        s.viewofflineEdm()#查看邮件任务
+        # S.startsigning()
+        #
+        #
+        # o = TableLogin(dr)  #调用登录
+        # o.create_login()#
+        # o.register_edm()
+        #
+        #
+        # s = Edm_offline(dr)
+        # s.viewofflineEdm()#查看邮件任务
