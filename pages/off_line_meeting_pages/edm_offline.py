@@ -38,7 +38,8 @@ class Edm_offline(BasePage):
         else:
             self.deprint('线下会实例邮件创建失败')
         self.driver.close()
-        self.driver.switch_to.window(self.driver.window_handles[1])  # 获取上一个窗口句柄，跳转到报名名单页面
+        # self.driver.switch_to.window(self.driver.window_handles[1])  # 获取上一个窗口句柄，跳转到报名名单页面
+        self.driver.switch_to.window(self.driver.window_handles[-1])  # 切换到新开的窗口
         self.deprint('进入到编辑报名表单窗口')
         time.sleep(1)
         self.element_click('x', '//*[@id="message-con"]/div[4]/div[2]/a[1]')  # 点击报名确认的刷新图标
