@@ -5,7 +5,7 @@ from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
 from pages.off_line_meeting_pages.index_page import IndexPage
 from pages.off_line_meeting_pages.new_meeting_page import NewMeetingPage
-from pages.edm_pages.tablelogin_page import TableLogin
+from pages.management_tools.mail_pages.tablelogin_page import TableLogin
 from pages.webinar_pages.index_page import Webinar_IndexPage
 from pages.off_line_meeting_pages.index_details_meeting import IndexDetailsOfMeeting
 import time

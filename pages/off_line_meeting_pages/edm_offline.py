@@ -10,7 +10,7 @@ from pages.webinar_pages.index_page import Webinar_IndexPage
 from pages.off_line_meeting_pages.index_details_meeting import IndexDetailsOfMeeting
 # from pages.edm_pages.edm_global import Edm_Global
 import time
-from pages.edm_pages.tablelogin_page import TableLogin
+from pages.management_tools.mail_pages.tablelogin_page import TableLogin
 #线下会实例邮件用例：创建一场线下会--创建实例邮件任务--报名线下会--查看邮件任务
 
 

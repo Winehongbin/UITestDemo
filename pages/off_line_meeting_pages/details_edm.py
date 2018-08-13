@@ -10,7 +10,7 @@ from pages.webinar_pages.index_page import Webinar_IndexPage
 from pages.off_line_meeting_pages.index_details_meeting import IndexDetailsOfMeeting
 from pages.off_line_meeting_pages.edm_offline import Edm_offline
 import time
-from pages.edm_pages.tablelogin_page import TableLogin
+from pages.management_tools.mail_pages.tablelogin_page import TableLogin
 import os
 
 class Details_Edm(BasePage):
