@@ -17,7 +17,7 @@ class Details_Edm(BasePage):
 
 
     def details_edm_count(self):
-        self.driver.switch_to.window(self.driver.window_handles[3])  # 获取下一个窗口句柄，跳转到邮件任务详情页面
+        self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面
         num = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')  # 获取收件人总数
         # 对获取的收件人总数进行如下判断
         if int(num) == 1:
