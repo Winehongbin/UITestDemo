@@ -138,8 +138,11 @@ if __name__ == '__main__':
     S=Edm_Sms(dr)
     S.createEdm(type)
     S.list_edm()
-    e = Details_Edm(dr)
-    e.export_edm()
+    S.editMail()
+    S.export()
+    S.immeSendMail()
+    #e = Details_Edm(dr)
+    #e.export_edm()
 
     # S.editEdm()
     # S.export()
