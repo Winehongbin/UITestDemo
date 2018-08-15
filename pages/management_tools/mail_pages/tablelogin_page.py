@@ -21,13 +21,14 @@ class TableLogin(BasePage):
         self.element_value_input('x', '//*[@id="con_one_1"]/div[1]/input', '13403211459')  # 在登录页面输入手机号
         self.element_value_input('x', '//*[@id="con_one_1"]/div[3]/input', '111111')  # 在登录页面输入密码
         time.sleep(3)
+        self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
         self.element_click('x', '//*[@id="con_one_1"]/input')  # 点击登录按钮
         self.deprint('登录成功')
         mailError = self.driver.find_element_by_xpath('//*[@id="con_one_1"]/div[6]').text
         if mailError:
             print "出现问题： ", self.deprint()
             return False
-            # 注册
+
 
     #线下会实例的注册页面
     def register_edm(self):  # 20180808

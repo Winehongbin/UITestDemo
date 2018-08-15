@@ -3,7 +3,6 @@
 Created on 2018-05-10
 @author: 尤梅枝
 '''
-from selenium import webdriver
 from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
 import time
@@ -40,7 +39,7 @@ class Edm_Sms(BasePage):
             return u'邮件创建失败'
 
     def list_edm(self):#20180809
-        time.sleep(4)
+        time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
         self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[2]/a') #点击第一个邮件任务#20180809
 
@@ -139,13 +138,10 @@ if __name__ == '__main__':
     S=Edm_Sms(dr)
     S.createEdm(type)
     S.list_edm()
-    #e = Details_Edm(dr)
-    S.editMail()
-    S.export()
-    S.immeSendMail()
-    #e.export_edm()
+    e = Details_Edm(dr)
+    e.export_edm()
 
     # S.editEdm()
-    #S.export()
+    # S.export()
 
 

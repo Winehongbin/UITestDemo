@@ -69,13 +69,10 @@ if __name__ == '__main__':
         S = Edm_offline(dr)
         S.createofflineEdm()
         S.startsigning()
-
-
         o = TableLogin(dr)  #调用登录
         o.create_login()#
         o.register_edm()
         # o.signupoffline()  #
-
         s = Edm_offline(dr)
         s.viewofflineEdm()#查看邮件任务
 
