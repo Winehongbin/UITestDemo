@@ -63,11 +63,14 @@ class Edm_offline(BasePage):
     def viewofflineEdm(self):
         self.deprint('开始执行线下会查看邮件任务')
         time.sleep(3)
-        self.driver.switch_to.window(self.driver.window_handles[1])#获取上一个窗口句柄，跳转到线下会会议页面
+
+        # self.driver.switch_to.window(self.driver.window_handles[1])#获取上一个窗口句柄，跳转到线下会会议页面
+        self.driver.switch_to.window(self.driver.window_handles[-1])#获取上一个窗口句柄，跳转到线下会会议页面
+
         self.scrollbar("200")
         time.sleep(3)
         self.element_click('x','/html/body/div[2]/div[2]/ul[2]/li[11]/a/strong')#点击左侧的邮件任务菜单
-        self.driver.switch_to.window(self.driver.window_handles[2])  # 获取下一个窗口句柄，跳转到邮件管理页面
+        # self.driver.switch_to.window(self.driver.window_handles[2])  # 获取下一个窗口句柄，跳转到邮件管理页面
         time.sleep(2)
         self.deprint('进入到邮件管理页面')
         # 点击邮件任务列表的任务名称链接
