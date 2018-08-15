@@ -12,6 +12,8 @@ import os
 from pages.off_line_meeting_pages.details_edm import Details_Edm
 
 class Edm_Sms(BasePage):
+    global count
+    count=0
 
     def createEdm(self,type):
         self.deprint("开始执行邮件任务创建用例")
@@ -87,6 +89,9 @@ class Edm_Sms(BasePage):
         time.sleep(2)
         self.deprint("开始导入收件人")
         time.sleep(10)
+        acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]')
+        count=int(acount)
+        print count
         # self.driver.quit()
 
     def editMail(self):
@@ -113,7 +118,7 @@ class Edm_Sms(BasePage):
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
         self.deprint("进入发送任务管理")
-        time.sleep(7)
+        time.sleep(8)
         iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
         self.driver.switch_to_frame(iframe)
         self.wait_is_visible('x', '/html/body/div[1]/section/div/div[1]/div[2]/button[2]')  # 点击启动发送按钮]
@@ -122,6 +127,38 @@ class Edm_Sms(BasePage):
         self.wait_is_visible('x', '//*[@id="TaskSend"]/div/div/div[3]/button[2]')  # 点击确定按钮
         time.sleep(5)
         self.wait_is_visible('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击确定按钮
+
+
+    def viewReceipt(self):
+        time.sleep(5)
+        self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
+        acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]')
+        count=int(acount)
+        print u'收件人'+acount
+        s=0
+        # 15分钟内每间隔30秒刷新下清册
+        for num in range(1,300):
+            self.driver.refresh()
+            time.sleep(3)
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
+            self.deprint("进入发送任务管理")
+            iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
+            self.driver.switch_to_frame(iframe)
+            time.sleep(5)
+            for n in range(0,count):
+                ele = '//*[@id="static-table"]/tbody/tr['+str(n+1)+']/td[6]'
+                print ele
+                sendresult = self.find_element_text("x", ele)  # 获发送结果
+                print u'发送结果'+sendresult
+                if sendresult== '成功':
+                    s=s+1
+            print u'结果数'+str(s)
+            if s ==count:
+                self.deprint("邮件发送成功")
+                break
+            else:
+                time.sleep(30)
 
 
 
@@ -141,6 +178,7 @@ if __name__ == '__main__':
     S.editMail()
     S.export()
     S.immeSendMail()
+    S.viewReceipt()
     #e = Details_Edm(dr)
     #e.export_edm()
 
