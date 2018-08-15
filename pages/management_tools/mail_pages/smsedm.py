@@ -39,6 +39,7 @@ class Edm_Sms(BasePage):
             return u'邮件创建失败'
 
     def list_edm(self):#20180809
+        time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
         self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[2]/a') #点击第一个邮件任务#20180809
 
