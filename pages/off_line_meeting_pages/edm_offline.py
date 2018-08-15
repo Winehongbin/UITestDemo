@@ -74,6 +74,8 @@ class Edm_offline(BasePage):
         time.sleep(2)
         self.deprint('进入到邮件管理页面')
         # 点击邮件任务列表的任务名称链接
+        self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
+        time.sleep(2)
         self.element_click('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[2]/a')
 
 
