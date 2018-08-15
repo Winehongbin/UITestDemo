@@ -16,6 +16,7 @@ from pages.management_tools.mail_pages.tablelogin_page import TableLogin
 from pages.off_line_meeting_pages.index_page import IndexPage
 from pages.off_line_meeting_pages.index_details_meeting import IndexDetailsOfMeeting
 from pages.off_line_meeting_pages.new_meeting_page import NewMeetingPage
+from pages.management_tools.mail_pages.smsedm import Edm_Sms
 import time
 
 class Edm_Test(unittest.TestCase):
@@ -89,7 +90,9 @@ class Edm_Test(unittest.TestCase):
         S.editMail()
         S.export()
         S.immeSendMail()
-        S.viewReceipt()
+        actual_result = S.viewReceipt()
+        expected_result = u'邮件发送成功'
+        self.assertEqual(actual_result, expected_result, msg="failed")
         # e = Details_Edm(dr)
         # e.export_edm()
 
@@ -122,7 +125,9 @@ class Edm_Test(unittest.TestCase):
         s = Edm_offline(dr)
         s.viewofflineEdm()  # 查看邮件任务
         e = Details_Edm(dr)
-        e.details_edm_count()
+        actual_result = e.details_edm_count()
+        expected_result = u'线下会实例邮件任务执行成功'
+        self.assertEqual(actual_result, expected_result, msg="failed")
 if __name__ == "__main__":
     suit=unittest.TestSuite()
     # suit.addTest(Edm_Test("test_001_createEdmTask"))
