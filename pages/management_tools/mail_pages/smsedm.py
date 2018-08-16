@@ -93,9 +93,9 @@ class Edm_Sms(BasePage):
         time.sleep(2)
         self.deprint("开始导入收件人")
         time.sleep(5)
-        acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]')
-        time.sleep(10)
-        count=int(acount)
+        #acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]')
+        #time.sleep(10)
+        #count=int(acount)
         # self.driver.quit()
 
     def editMail(self):
@@ -134,8 +134,10 @@ class Edm_Sms(BasePage):
 
     def viewReceipt(self):
         time.sleep(5)
-        self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
-        acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]')
+        self.driver.refresh()
+        #self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
+        acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')
+        self.deprint(u'收件人个数1'+acount)
         count=int(acount)
         s=0 #邮件返回回执数
         # 15分钟内每间隔30秒刷新下清册
@@ -159,7 +161,7 @@ class Edm_Sms(BasePage):
                 return u'邮件发送成功'
                 break
             else:
-                time.sleep(30)
+                time.sleep(10)
 
 
 
