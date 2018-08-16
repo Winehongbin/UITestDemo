@@ -96,7 +96,7 @@ class Edm_Sms(BasePage):
     def editMail(self):
         self.deprint("开始执行邮件任务编辑用例")
         time.sleep(3)
-        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.switch_to.window()
         self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div/div[7]/div[1]/div[2]/ul/li[3]/a')  # 点击编辑按钮
         self.deprint("点击编辑按钮成功")
         iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
@@ -117,7 +117,7 @@ class Edm_Sms(BasePage):
         time.sleep(5)
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
         self.deprint("进入发送任务管理")
-        time.sleep(20)
+        time.sleep(20)self.driver.window_handles[-1]
         iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
         self.driver.switch_to_frame(iframe)
         self.wait_is_visible('x', '/html/body/div[1]/section/div/div[1]/div[2]/button[2]')  # 点击启动发送按钮]
