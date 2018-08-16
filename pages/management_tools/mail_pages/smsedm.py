@@ -96,13 +96,13 @@ class Edm_Sms(BasePage):
     def editMail(self):
         self.deprint("开始执行邮件任务编辑用例")
         time.sleep(3)
-        self.driver.switch_to.window()
+        self.driver.switch_to.window(self.driver.window_handles[-1])
         self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div/div[7]/div[1]/div[2]/ul/li[3]/a')  # 点击编辑按钮
         self.deprint("点击编辑按钮成功")
         iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
         self.driver.switch_to_frame(iframe)
         ifr = self.driver.find_element_by_xpath('//*[@id="ueditor_0"]')
-        self.driver.switch_to.frame(ifr)  # 切换iframe到邮件内容输入窗口
+        self.driver.switch_to.frame(ifr)  # 切换ifraself.driver.window_handles[-1]me到邮件内容输入窗口
         self.deprint("iframe切换成功")
         self.wait_is_visible('x', '/html/body')
         self.element_value_input('x', '/html/body', u'自动化测试编辑的内容')  # 输入邮件内容
@@ -117,9 +117,10 @@ class Edm_Sms(BasePage):
         time.sleep(5)
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
         self.deprint("进入发送任务管理")
-        time.sleep(20)self.driver.window_handles[-1]
+        time.sleep(30)
         iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
         self.driver.switch_to_frame(iframe)
+        time.sleep(5)
         self.wait_is_visible('x', '/html/body/div[1]/section/div/div[1]/div[2]/button[2]')  # 点击启动发送按钮]
         self.deprint("启动发送")
         self.wait_is_visible('x', '//*[@id="TaskSend"]/div/div/div[2]/div[2]/label/ins')  # 选中立即执行发送按钮
