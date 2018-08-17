@@ -122,12 +122,12 @@ if __name__ == '__main__':
     object.click_menu_bt('22')
     q=SectionListPage(dr)
 
-    # q.choose_firstsection()
-    # q.create_button_article()
-    # q.create_article()
+    q.choose_firstsection()
+    q.create_button_article()
+    q.create_article()
 
 
-    q.new_section()
+    # q.new_section()
     # q.choose_more()
     # object.browse_section()
     # object.open_detail_data()
