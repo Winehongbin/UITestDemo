@@ -200,7 +200,7 @@ if __name__ == '__main__':
     S=Edm_Sms(dr)
     S.createEdm(type)
     S.list_edm()
-    S.editMail()
+    #S.editMail()
     S.export()
     #S.immeSendMail()
     #S.viewReceipt()
