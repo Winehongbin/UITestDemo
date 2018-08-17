@@ -116,7 +116,8 @@ class Edm_Sms(BasePage):
 
     def immeSendMail(self):
         time.sleep(10)
-        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.refresh()
+        #self.driver.switch_to.window(self.driver.window_handles[-1])
         #element = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]")
         element = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[1]/div[3]/div[2]")
         if element != None:
@@ -185,7 +186,7 @@ if __name__ == '__main__':
     S.createEdm(type)
     S.list_edm()
     S.editMail()
-    #S.export()
+    S.export()
     S.immeSendMail()
     S.viewReceipt()
 
