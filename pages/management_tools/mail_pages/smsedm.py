@@ -88,6 +88,7 @@ class Edm_Sms(BasePage):
         #zh_path = eval(repr(sp_path+con_path).replace('\\', '\\\\'))
         self.deprint(u"上传的文件地址："+zh_path )
         os.system(zh_path)
+        time.sleep(13)
         scwb = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[1]/input')
         self.deprint("收件人上传成功"+scwb)
         self.scrollbar("bottom")
