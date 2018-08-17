@@ -81,7 +81,6 @@ class Edm_Sms(BasePage):
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[2]/button')
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[2]/button')
         cur_path = os.path.abspath(os.path.dirname(__file__))
-        #con_path = "\\common\\fileconfig\\file\\export.exe"
         con_path = "\common\\fileconfig\\file\export.exe"
         sp_path=os.path.split(os.path.split(os.path.split(cur_path)[0])[0])[0]
         zh_path = sp_path + con_path
@@ -89,9 +88,8 @@ class Edm_Sms(BasePage):
         self.deprint(u"上传的文件地址："+zh_path )
         os.system(zh_path)
         time.sleep(20)
-        fname = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[1]/input')
+        fname = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[3]/div')
         self.deprint(u"上传的文件名称：" + fname)
-
         scwb = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[1]/input')
         self.deprint("收件人上传成功"+scwb)
         self.scrollbar("bottom")
