@@ -15,7 +15,7 @@ import os
 curPath = os.path.abspath(os.path.dirname(__file__)) #os.path.basename(path):返回所给路径path的最底层路径名或者是文件名；
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
-# from pages.off_line_meeting_pages.interaction_link_page import InteractionAndCancle
+from pages.off_line_meeting_pages.interaction_link_page import InteractionAndCancle
 import time
 import unittest
 from pages.common_pages.base import BasePage
@@ -152,9 +152,11 @@ if __name__ == "__main__":
     StartTime = time.time()
     suite = unittest.TestSuite()
     # 指定单个单元测试（ 需要配置运行方式才能走main函数，参考https://www.cnblogs.com/youreyebows/p/7867508.html）
-    suite.addTest(Offline_Meeting_Test("test_0005"))
-    # suite.addTest(Offline_Meeting_Test("test_002_interaction"))
-    # suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
+    #suite.addTest(Offline_Meeting_Test("test_0005"))
+
+    suite.addTest(Offline_Meeting_Test("test_001_loginoffline"))
+    suite.addTest(Offline_Meeting_Test("test_002_interaction"))
+    suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
 
 
     #执行单元测试，生成报告
