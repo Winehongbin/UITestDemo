@@ -34,18 +34,7 @@ class SectionListPage(BasePage):
             self.find_element_click('x','//*[@id="alertCommon"]/div/div/div[3]/button[2]')  #点击确定按钮
             self.deprint("删除栏目成功")
         except:
-            try:
-                self.deprint("开始点击删除栏目")
-                time.sleep(3)
-                self.find_element_click('x',
-                                     '/html/body/div[1]/div[1]/div[2]/div[5]/table/tbody/tr[1]/td[5]/div/div/a')  # 点击第一行栏目的更多按钮
-                self.find_element_click('x',
-                                     '/html/body/div[1]/div[1]/div[2]/div[5]/table/tbody/tr[1]/td[5]/div/div/ul/li[5]/a')  # 点击删除按钮
-                time.sleep(1)
-                self.find_element_click('x', '//*[@id="alertCommon"]/div/div/div[3]/button[2]')  # 点击确定按钮
-                self.deprint("删除栏目成功")
-            except:
-                self.deprint("删除栏目失败")
+            self.deprint("删除栏目失败")
 
 
     #打开数据明细
