@@ -93,7 +93,7 @@ class Edm_Sms(BasePage):
         self.deprint("收件人上传成功"+scwb)
         self.scrollbar("bottom")
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[3]/button')
-        time.sleep(15)
+        time.sleep(20)
         self.deprint("开始导入收件人")
         self.driver.refresh()
         acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')
