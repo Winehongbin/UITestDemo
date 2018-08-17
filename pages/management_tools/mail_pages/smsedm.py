@@ -91,7 +91,7 @@ class Edm_Sms(BasePage):
         self.scrollbar("bottom")
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[3]/button')
         self.deprint("开始导入收件人")
-        time.sleep(13)
+        time.sleep(15)
         self.driver.refresh()
         acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')
         self.deprint(u'收件人个数1'+acount)
