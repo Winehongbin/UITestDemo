@@ -186,7 +186,7 @@ if __name__ == '__main__':
     S.createEdm(type)
     S.list_edm()
     S.editMail()
-    S.export()
+    #S.export()
     S.immeSendMail()
     S.viewReceipt()
 
