@@ -91,7 +91,7 @@ class Edm_Sms(BasePage):
         self.scrollbar("bottom")
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[3]/button')
         self.deprint("开始导入收件人")
-        time.sleep(5)
+        time.sleep(13)
         self.driver.refresh()
         acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')
         self.deprint(u'收件人个数1'+acount)
@@ -100,7 +100,7 @@ class Edm_Sms(BasePage):
         #time.sleep(10)
         #count=int(acount)
         # self.driver.quit()
-
+    # 点击编辑，进行编辑邮件内容#20180817
     def editMail(self):
         self.deprint("开始执行邮件任务编辑用例")
         time.sleep(3)
@@ -118,7 +118,7 @@ class Edm_Sms(BasePage):
         self.deprint("从iframe切回主文档成功")
         self.scrollbar("bottom")
         self.wait_is_visible('x', '/html/body/div[1]/div[1]/form/div[7]/div/input')  # 点击保存按钮
-
+    # 点击启动发送，进行立即发送邮件#20180817
     def immeSendMail(self):
         time.sleep(10)
         self.driver.refresh()
@@ -151,7 +151,7 @@ class Edm_Sms(BasePage):
         time.sleep(5)
         self.wait_is_visible('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击确定按钮
 
-
+    #刷新页面查看回执#20180817
     def viewReceipt(self):
         time.sleep(5)
         self.driver.refresh()
