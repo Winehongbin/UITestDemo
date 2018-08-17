@@ -76,22 +76,24 @@ class Edm_Sms(BasePage):
 
     # 点击导入收件人#20180809
     def export(self):
-        time.sleep(5)
+        time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[2]/button')
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[2]/button')
         cur_path = os.path.abspath(os.path.dirname(__file__))
-        con_path = "\\common\\fileconfig\\file\\export.exe"
+        #con_path = "\\common\\fileconfig\\file\\export.exe"
+        con_path = "\common\\fileconfig\\file\export.exe"
         sp_path=os.path.split(os.path.split(os.path.split(cur_path)[0])[0])[0]
-        zh_path = eval(repr(sp_path+con_path).replace('\\', '\\\\'))
+        zh_path = sp_path + con_path
+        #zh_path = eval(repr(sp_path+con_path).replace('\\', '\\\\'))
         self.deprint(u"上传的文件地址："+zh_path )
         os.system(zh_path)
         scwb = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[1]/input')
         self.deprint("收件人上传成功"+scwb)
         self.scrollbar("bottom")
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[3]/button')
-        self.deprint("开始导入收件人")
         time.sleep(15)
+        self.deprint("开始导入收件人")
         self.driver.refresh()
         acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')
         self.deprint(u'收件人个数1'+acount)
@@ -141,7 +143,7 @@ class Edm_Sms(BasePage):
             element.click()
         else:
             self.driver.refresh()
-            self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
+            #self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
             self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[2]/a')  # 点击第一个邮件任务#20180809
             self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
             self.wait_is_visible('x', '/html/body/div[1]/section/div/div[1]/div[2]/button[2]')  # 点击启动发送按钮]
