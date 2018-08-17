@@ -35,6 +35,7 @@ class Article(unittest.TestCase):
         o.browse_section()
         o = SectionListPage(dr)
         actual_result = o.open_detail_data()
+        print actual_result
         expected_result = (u'1',u'1')
         # 对元祖进行断言
         self.assertTupleEqual(actual_result,expected_result,"fail")

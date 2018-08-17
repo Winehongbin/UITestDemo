@@ -401,7 +401,7 @@ class BasePage(object):
                 isFind = True
                 break
         if isFind != True:
-            print "没找到元素"
+            return "没找到元素"
 
     #滚动条
     def scrollbar(self,value):
