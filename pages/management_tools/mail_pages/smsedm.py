@@ -44,6 +44,7 @@ class Edm_Sms(BasePage):
     def list_edm(self):#20180809
         time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
+        print self.driver.window_handles[-1]
         self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[2]/a') #点击第一个邮件任务#20180809
 
     #编辑邮件#20180809
@@ -78,13 +79,15 @@ class Edm_Sms(BasePage):
     def export(self):
         time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
+        print self.driver.window_handles[-1]
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[2]/button')
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[2]/button')
+        time.sleep(5)
         cur_path = os.path.abspath(os.path.dirname(__file__))
         con_path = "\common\\fileconfig\\file\export.exe"
         sp_path=os.path.split(os.path.split(os.path.split(cur_path)[0])[0])[0]
         zh_path = sp_path + con_path
-        #zh_path = eval(repr(sp_path+con_path).replace('\\', '\\\\'))
+        zh_path = eval(repr(sp_path+con_path).replace('\\', '\\\\'))
         self.deprint(u"上传的文件地址："+zh_path )
         os.system(zh_path)
         time.sleep(20)
@@ -96,7 +99,7 @@ class Edm_Sms(BasePage):
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[3]/button')
         time.sleep(20)
         self.deprint("开始导入收件人")
-        self.driver.refresh()
+        #self.driver.refresh()
         acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')
         self.deprint(u'收件人个数1'+acount)
         return u'邮件发送成功'
