@@ -56,39 +56,39 @@ class Offline_Meeting_Test(BaseUnit):
 
 
 
-    # def test_002_interaction(self):
-    #      """ 添加互动环节"""
-    #
-    #      base.deprint("开始执行登录，并进入添加线下会互动环节用例")
-    #      dr = self.driver
-    #      o = LoginPage(dr)
-    #      o.login()
-    #      o = ChoosePage(dr)
-    #      o.click_menu_bt('10')
-    #      o = IndexPage(dr)
-    #      o.click_linelist('2')
-    #      o = InteractionAndCancle(dr)
-    #      acture_result=o.interaction_and_cancle('1')
-    #      excepet_result="已添加互动环节"
-    #      # self.assertEqual(acture_result,excepet_result,"failed")
-    #      base.deprint( "添加线下会互动环节添加用例完成")
+    def test_002_interaction(self):
+         """ 添加互动环节"""
 
-    # def test_003_createoffline(self):
-    #      """ 测试删除线下会 """
-    #
-    #      base.deprint("开始执行登录，并进入删除线下会用例")
-    #      dr = self.driver
-    #      o = LoginPage(dr)
-    #      o.login()
-    #      o = ChoosePage(dr)
-    #      o.click_menu_bt('10')
-    #      o = IndexPage(dr)
-    #      o.click_linelist('2')
-    #      object = InteractionAndCancle(dr)
-    #      actual_result = object.interaction_and_cancle('2')
-    #      expected_result = u'取消会议成功'
-    #      self.assertEqual(actual_result, expected_result, msg="failed")
-    #      base.deprint("删除线下会用例完成")
+         base.deprint("开始执行登录，并进入添加线下会互动环节用例")
+         dr = self.driver
+         o = LoginPage(dr)
+         o.login()
+         o = ChoosePage(dr)
+         o.click_menu_bt('10')
+         o = IndexPage(dr)
+         o.click_linelist('2')
+         o = InteractionAndCancle(dr)
+         acture_result=o.interaction_and_cancle('1')
+         excepet_result="已添加互动环节"
+         # self.assertEqual(acture_result,excepet_result,"failed")
+         base.deprint( "添加线下会互动环节添加用例完成")
+
+    def test_003_createoffline(self):
+         """ 测试删除线下会 """
+
+         base.deprint("开始执行登录，并进入删除线下会用例")
+         dr = self.driver
+         o = LoginPage(dr)
+         o.login()
+         o = ChoosePage(dr)
+         o.click_menu_bt('10')
+         o = IndexPage(dr)
+         o.click_linelist('2')
+         object = InteractionAndCancle(dr)
+         actual_result = object.interaction_and_cancle('2')
+         expected_result = u'取消会议成功'
+         self.assertEqual(actual_result, expected_result, msg="failed")
+         base.deprint("删除线下会用例完成")
 
     # def test_004_offlineone(self):
     #     """ 线下会建会、互动主流程one"""
@@ -155,8 +155,8 @@ if __name__ == "__main__":
     #suite.addTest(Offline_Meeting_Test("test_0005"))
 
     suite.addTest(Offline_Meeting_Test("test_001_loginoffline"))
-    #suite.addTest(Offline_Meeting_Test("test_002_interaction"))
-    #suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
+    suite.addTest(Offline_Meeting_Test("test_002_interaction"))
+    suite.addTest(Offline_Meeting_Test("test_003_createoffline"))
 
 
     #执行单元测试，生成报告
