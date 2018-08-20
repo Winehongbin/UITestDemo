@@ -17,7 +17,7 @@ from pages.off_line_meeting_pages.index_page import IndexPage
 from pages.off_line_meeting_pages.index_details_meeting import IndexDetailsOfMeeting
 from pages.off_line_meeting_pages.new_meeting_page import NewMeetingPage
 from pages.management_tools.mail_pages.smsedm import Edm_Sms
-from pages.management_tools.mail_pages.timingsmsedm import Timing_Edm_Sms
+#from pages.management_tools.mail_pages.timingsmsedm import Timing_Edm_Sms
 import time
 
 class Edm_Test(unittest.TestCase):
