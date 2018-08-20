@@ -41,63 +41,63 @@ class ConrollerShow():
         StartTime = time.time()       #time()：返回当前时间的时间戳（1970纪元后经过的浮点秒数），需要import time
         suite = unittest.TestSuite()     #创建一个测试集合
 
-        # #线下会
-        # offline_test = self.Def_List(Offline_Meeting_Test)   #Def_List 获取指定单元测试中，测试函数列表
-        # for offline_tmp in offline_test:
-        #     suite.addTest(Offline_Meeting_Test(offline_tmp))   #addTest()的方法，测试套件中添加测试用例,可以加载不同类里面的不同测试函数
-        # # #
-        # # #微信
-        # wechat_test = self.Def_List(Wechat_Test)  # Def_List 获取指定单元测试中，测试函数列表
-        # for wechat_tmp in wechat_test:
-        #     suite.addTest(Wechat_Test(wechat_tmp))
-        # # #
-        # # # #问卷
-        # questtionnaire_test = self.Def_List(Questionnaire)  # Def_List 获取指定单元测试中，测试函数列表
-        # for questtionnaire_tmp in questtionnaire_test:
-        #     suite.addTest(Questionnaire(questtionnaire_tmp))
-        # # #
-        # # # # 文章管理
+        #线下会
+        offline_test = self.Def_List(Offline_Meeting_Test)   #Def_List 获取指定单元测试中，测试函数列表
+        for offline_tmp in offline_test:
+            suite.addTest(Offline_Meeting_Test(offline_tmp))   #addTest()的方法，测试套件中添加测试用例,可以加载不同类里面的不同测试函数
+        # #
+        # #微信
+        wechat_test = self.Def_List(Wechat_Test)  # Def_List 获取指定单元测试中，测试函数列表
+        for wechat_tmp in wechat_test:
+            suite.addTest(Wechat_Test(wechat_tmp))
+        # #
+        # # #问卷
+        questtionnaire_test = self.Def_List(Questionnaire)  # Def_List 获取指定单元测试中，测试函数列表
+        for questtionnaire_tmp in questtionnaire_test:
+            suite.addTest(Questionnaire(questtionnaire_tmp))
+        # #
+        # # # 文章管理
         article_test = self.Def_List(Article)  # Def_List 获取指定单元测试中，测试函数列表
         for article_tmp in article_test:
             suite.addTest(Article(article_tmp))
-        #
-        # # #线上会
-        # # webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
-        # # for webinar_tmp in webinar_test:
-        # #      suite.addTest(Webinar_Case(webinar_tmp))
+
+        #线上会
+        webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
+        for webinar_tmp in webinar_test:
+             suite.addTest(Webinar_Case(webinar_tmp))
+
+        # #客户管理
+        member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
+        for member_tmp in member_test:
+            suite.addTest(Member_Test(member_tmp))
         # #
-        # # # #客户管理
-        # member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
-        # for member_tmp in member_test:
-        #     suite.addTest(Member_Test(member_tmp))
-        # # #
-        # # # # 邮件管理
+        # # # 邮件管理
         edm_test = self.Def_List(Edm_Test)  # Def_List 获取指定单元测试中，测试函数列表
         for edm_tmp in edm_test:
              suite.addTest(Edm_Test(edm_tmp))
-        #      print suite
-        # # # # # uat奥点云测试
-        # # ady_test = self.Def_List(ADY)  # Def_List 获取指定单元测试中，测试函数列表
-        # # for ady_tmp in ady_test:
-        # #     suite.addTest(ADY(ady_tmp))
-        # #     print suite
-        # # 接口1
-        # api_jk1=self.Def_List(Api_Case_Group1)
-        # for api1 in api_jk1:
-        #     suite.addTest(Api_Case_Group1(api1))
-        #
-        # # 接口2
-        # api_jk2 = self.Def_List(Api_Case_Group2)
-        # for api2 in api_jk2:
-        #      suite.addTest(Api_Case_Group2(api2))
-        # # 接口3
-        # api_jk3 = self.Def_List(Api_Case_Group3)
-        # for api3 in api_jk3:
-        #     suite.addTest(Api_Case_Group3(api3))
-        # # 接口4
-        # api_jk4 = self.Def_List(Api_Case_Group4)
-        # for api4 in api_jk4:
-        #     suite.addTest(Api_Case_Group4(api4))
+             print suite
+        # # # # uat奥点云测试
+        # ady_test = self.Def_List(ADY)  # Def_List 获取指定单元测试中，测试函数列表
+        # for ady_tmp in ady_test:
+        #     suite.addTest(ADY(ady_tmp))
+        #     print suite
+        # 接口1
+        api_jk1=self.Def_List(Api_Case_Group1)
+        for api1 in api_jk1:
+            suite.addTest(Api_Case_Group1(api1))
+
+        # 接口2
+        api_jk2 = self.Def_List(Api_Case_Group2)
+        for api2 in api_jk2:
+             suite.addTest(Api_Case_Group2(api2))
+        # 接口3
+        api_jk3 = self.Def_List(Api_Case_Group3)
+        for api3 in api_jk3:
+            suite.addTest(Api_Case_Group3(api3))
+        # 接口4
+        api_jk4 = self.Def_List(Api_Case_Group4)
+        for api4 in api_jk4:
+            suite.addTest(Api_Case_Group4(api4))
         #测试
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
