@@ -130,26 +130,26 @@ class Edm_Test(unittest.TestCase):
         expected_result = u'线下会实例邮件任务执行成功'
         self.assertEqual(actual_result, expected_result, msg="failed")
 
-    def test_004_timingEditEdm(self):
-        """全局定时发送邮件"""
-        #1、全局新建邮件任务---2、导入收件人---3、发送（测试邮件，任务管理中点击“立即发送”，启动发送按钮进行定时发送）---4、查看回执
-        dr = brower()
-        o = LoginPage(dr)
-        o.login()
-        o = ChoosePage(dr)
-        time.sleep(3)
-        o.click_menu_bt('20')
-        type = "邀请函"
-        S = Timing_Edm_Sms(dr)
-        S.createEdm(type)
-        S.list_edm()
-        S.editMail()
-        S.export()
-        S.timingSend()
-        S.viewReceipt()
-        actual_result = S.viewReceipt()
-        expected_result = u'邮件发送成功'
-        self.assertEqual(actual_result, expected_result, msg="failed")
+    # def test_004_timingEditEdm(self):
+    #     """全局定时发送邮件"""
+    #     #1、全局新建邮件任务---2、导入收件人---3、发送（测试邮件，任务管理中点击“立即发送”，启动发送按钮进行定时发送）---4、查看回执
+    #     dr = brower()
+    #     o = LoginPage(dr)
+    #     o.login()
+    #     o = ChoosePage(dr)
+    #     time.sleep(3)
+    #     o.click_menu_bt('20')
+    #     type = "邀请函"
+    #     S = Timing_Edm_Sms(dr)
+    #     S.createEdm(type)
+    #     S.list_edm()
+    #     S.editMail()
+    #     S.export()
+    #     S.timingSend()
+    #     S.viewReceipt()
+    #     actual_result = S.viewReceipt()
+    #     expected_result = u'邮件发送成功'
+    #     self.assertEqual(actual_result, expected_result, msg="failed")
         # e = Details_Edm(dr)
         # e.export_edm()
 
