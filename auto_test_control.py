@@ -101,10 +101,10 @@ class ConrollerShow():
             suite.addTest(Api_Case_Group4(api4))
 
         # # # 所有应用主界面测试
-        choose_test = self.Def_List(Choose_Page_Case)  # Def_List 获取指定单元测试中，测试函数列表
-        for choose_tmp in choose_test:
-             suite.addTest(Choose_Page_Case(choose_tmp))
-             print suite
+        # choose_test = self.Def_List(Choose_Page_Case)  # Def_List 获取指定单元测试中，测试函数列表
+        # for choose_tmp in choose_test:
+        #      suite.addTest(Choose_Page_Case(choose_tmp))
+        #      print suite
         #测试
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
