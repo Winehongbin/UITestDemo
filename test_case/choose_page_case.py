@@ -22,7 +22,7 @@ class Choose_Page_Case(unittest.TestCase):
         # self.conn,self.cur=DatabaseOperation().openconnect()
 
     def tearDown(self):
-        print u"结束时的句柄"+self.driver.window_handles[-1]
+        print u"结束时的句柄"+self.driver.window_handles
         self.driver.quit()
         #self.conn.close()
     # 进入应用界面
@@ -30,7 +30,7 @@ class Choose_Page_Case(unittest.TestCase):
         time.sleep(5)
         test = ChoosePageTest(self.driver)
         actual_dict=test.cyclic_test_app(1)
-        print u"循环结束时"+self.driver.window_handles[-1]
+        print u"循环结束时"+self.driver.window_handles
         # expected_dict = {'微信':1,'场景':1,'DSP投放':1,'SEM助手':1,'图聚智能':1,'数据监测工具':1,'智能分析':1,
         #                  '数据看板':1,'线上会':1,'线下会':1,'表单管理':1,'问卷':1,'抽奖':1,'投票':1,
         #                  '微讨论':1,'产品管理':1,'客户管理':1,'文件管理':1,'供应商管理':1,'邮件管理':1,'短信管理':1,
