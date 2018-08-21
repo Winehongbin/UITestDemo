@@ -14,7 +14,9 @@ class ChoosePageTest(BasePage):
 
     #测试每个app是否正常进入主页面
     def click_menu_bt(self, button_pos):
-        print u"开始循环时句柄"+self.driver.window_handles
+        winHandles = self.driver.window_handles
+        for handle in winHandles:
+            print u"开始循环时句柄" + handle
         time.sleep(3)
         # handleNow = self.driver.current_window_handle # 获得当前窗口
         # self.driver.switch_to_window(handleNow)
