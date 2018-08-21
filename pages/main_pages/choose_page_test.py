@@ -12,8 +12,9 @@ from selenium.common.exceptions import NoSuchElementException
 
 class ChoosePageTest(BasePage):
 
+    #测试每个app是否正常进入主页面
     def click_menu_bt(self, button_pos):
-
+        print self.driver.window_handles[-1]
         time.sleep(3)
         # handleNow = self.driver.current_window_handle # 获得当前窗口
         # self.driver.switch_to_window(handleNow)
@@ -73,15 +74,8 @@ class ChoosePageTest(BasePage):
                     self.close()
                     return int(0)
             #数据监测工具有问题，页面不能访问
-            elif button_pos == 6:
-                elem = self.find_element_text('x', '//*[@id="mainRight"]/div[2]/div[1]/div[1]/span')
-                self.deprint(u"测试应用：" + elem.replace(' ',''))
-                if elem.replace(' ','') == '历史数据统计':
-                    self.close()
-                    return int(1)
-                else:
-                    self.close()
-                    return int(0)
+            # elif button_pos == 6:
+
             elif button_pos == 7:
                 elem = self.find_element_text('x', '//*[@id="mainRight"]/div[2]/div[1]/div[1]/span')
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -92,9 +86,10 @@ class ChoosePageTest(BasePage):
                     self.close()
                     return int(0)
             elif button_pos == 8:
-                elem = self.find_element_text('x', '//*[@id="side-menu"]/li[1]/div[1]/a/span')
+                time.sleep(15)
+                elem = self.find_element_text('x', '/html/head/title')
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
-                if elem.replace(' ','') == '营销驾驶舱':
+                if elem.replace(' ','') == '线下会':
                     self.close()
                     return int(1)
                 else:
@@ -271,7 +266,10 @@ class ChoosePageTest(BasePage):
         actual_result = 2
         actual_dict = {}
         for n in range(1, num+1, 1):
-            actual_result=self.click_menu_bt(n)
+            if n == 6 or n == 8:
+                continue
+            else :
+                actual_result=self.click_menu_bt(n)
             time.sleep(3)
             if actual_result == 0 or actual_result == 1:
                 if n == 1:
@@ -326,7 +324,7 @@ class ChoosePageTest(BasePage):
                     actual_dict['模块管理'] = actual_result;
                 elif n == 26:
                     actual_dict['字典表管理'] = actual_result;
-                continue
+                # continue
         return  actual_dict
 
 
