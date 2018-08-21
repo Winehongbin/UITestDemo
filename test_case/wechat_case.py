@@ -88,35 +88,35 @@ class Wechat_Test(unittest.TestCase):
         expected_result = u'提交成功！'
         self.assertEqual(actual_result,expected_result,msg='failed')
     # 丽楠添加
-    # def test_004_synMaterials(self):
-    #     """同步微信素材"""
-    #     syn = Syn_materials(self.driver)
-    #     actual_result = syn.syn_materials()
-    #     expected_result = u'同步微信素材成功'
-    #     if actual_result == expected_result:
-    #         result = 'success'
-    #     else:
-    #         result = 'failed'
-    #
-    # def test_005_createGroupsend(self):
-    #     """定时群发消息"""
-    #     groupsend = Create_groupsend(self.driver)
-    #     actual_result = groupsend.create_groupsend()
-    #     expected_result = u'定时群发消息成功'
-    #     if actual_result == expected_result:
-    #         result = 'success'
-    #     else:
-    #         result = 'failed'
-    #
-    # def test_006_createChannelqrcode(self):
-    #     """新增渠道二维码"""
-    #     createchannel = Create_channelqrcode(self.driver)
-    #     actual_result = createchannel.create_channelqrcode(self.driver)
-    #     expected_result = u'新增渠道二维码成功'
-    #     if actual_result == expected_result:
-    #         result = 'success'
-    #     else:
-    #         result = 'failed'
+    def test_004_synMaterials(self):
+        """同步微信素材"""
+        syn = Syn_materials(self.driver)
+        actual_result = syn.syn_materials()
+        expected_result = u'同步微信素材成功'
+        if actual_result == expected_result:
+            result = 'success'
+        else:
+            result = 'failed'
+
+    def test_005_createGroupsend(self):
+        """定时群发消息"""
+        groupsend = Create_groupsend(self.driver)
+        actual_result = groupsend.create_groupsend()
+        expected_result = u'定时群发消息成功'
+        if actual_result == expected_result:
+            result = 'success'
+        else:
+            result = 'failed'
+
+    def test_006_createChannelqrcode(self):
+        """新增渠道二维码"""
+        createchannel = Create_channelqrcode(self.driver)
+        actual_result = createchannel.create_channelqrcode(self.driver)
+        expected_result = u'新增渠道二维码成功'
+        if actual_result == expected_result:
+            result = 'success'
+        else:
+            result = 'failed'
 
 
 if __name__ == "__main__":
