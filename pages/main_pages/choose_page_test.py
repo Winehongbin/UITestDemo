@@ -19,6 +19,7 @@ class ChoosePageTest(BasePage):
             print u"开始循环时句柄" + handle
         time.sleep(3)
         handleNow = self.driver.current_window_handle # 获得当前窗口
+        print u"当前句柄" + handleNow
         self.driver.switch_to_window(handleNow)
         # self.driver.switch_to.window(self.driver.window_handles[-1])
         self.driver.implicitly_wait(30)
