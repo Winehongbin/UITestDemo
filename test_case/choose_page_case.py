@@ -32,7 +32,7 @@ class Choose_Page_Case(unittest.TestCase):
     def test_001_intoApp(self):
         time.sleep(5)
         test = ChoosePageTest(self.driver)
-        actual_dict=test.cyclic_test_app(1)
+        actual_dict=test.cyclic_test_app(5)
         # print u"循环结束时"+self.driver.window_handles
         winHandles = self.driver.window_handles
         for handle in winHandles:
@@ -46,7 +46,7 @@ class Choose_Page_Case(unittest.TestCase):
         #                  '线上会':1,'线下会':1,'表单管理':1,'问卷':1,'抽奖':1,'投票':1,
         #                  '微讨论':1,'产品管理':1,'客户管理':1,'文件管理':1,'供应商管理':1,'邮件管理':1,'短信管理':1,
         #                  '文章管理':1,'成员管理':1,'角色管理':1,'模块管理':1,'字典表管理':1}
-        expected_dict = {'微信':1}
+        expected_dict = {'微信':1,'场景':1,'DSP投放':1,'SEM助手':1,'图聚智能':1}
         failapp=''
         for key, value in actual_dict.items():
             print('{key}:{value}'.format(key=key, value=value))
