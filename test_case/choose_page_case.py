@@ -26,7 +26,7 @@ class Choose_Page_Case(unittest.TestCase):
         winHandles = self.driver.window_handles
         for handle in winHandles:
             print u"结束时的句柄" + handle
-        self.driver.quit()
+        # self.driver.quit()
         #self.conn.close()
     # 进入应用界面
     def test_001_intoApp(self):
