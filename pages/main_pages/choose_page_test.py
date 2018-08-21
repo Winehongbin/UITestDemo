@@ -25,7 +25,7 @@ class ChoosePageTest(BasePage):
         css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")" #把按钮位置设为参数获取
         self.wait_is_visible('css',css_path)
         time.sleep(3)
-        self.driver.switch_to.window(self.driver.window_handles[-1])
+        # self.driver.switch_to.window(self.driver.window_handles[-1])
         flag = 0
         try:
             if button_pos == 1:
@@ -36,12 +36,12 @@ class ChoosePageTest(BasePage):
                 if elem == '数据统计':
                     # 访问成功
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     # 访问失败
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 2:
                 elem = self.find_element_text('x', '//*[@id="main"]/div[3]/div[3]/h2/a')
