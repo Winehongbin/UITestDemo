@@ -29,6 +29,7 @@ class ChoosePageTest(BasePage):
         flag = 0
         try:
             if button_pos == 1:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[4]/div[1]')
                 #elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[2]/div[1]')
                 time.sleep(3)
