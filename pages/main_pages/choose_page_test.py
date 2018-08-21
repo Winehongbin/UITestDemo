@@ -30,21 +30,21 @@ class ChoosePageTest(BasePage):
         try:
             if button_pos == 1:
                 print self.driver.window_handles[-1]
-                # self.driver.switch_to.window(self.driver.window_handles[-1])
-                # elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[4]/div[1]')
-                # #elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[2]/div[1]')
-                # time.sleep(3)
-                # self.deprint(u"测试应用：" + elem)
-                # if elem == '数据统计':
-                #     # 访问成功
-                #     flag = 1
-                #     # self.close()
-                #     # return int(1)
-                # else:
-                #     # 访问失败
-                #     flag = 0
-                #     # self.close()
-                #     # return int(0)
+                self.driver.switch_to.window(self.driver.window_handles[-1])
+                elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[4]/div[1]')
+                #elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[2]/div[1]')
+                time.sleep(3)
+                self.deprint(u"测试应用：" + elem)
+                if elem == '数据统计':
+                    # 访问成功
+                    flag = 1
+                    # self.close()
+                    # return int(1)
+                else:
+                    # 访问失败
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 2:
                 elem = self.find_element_text('x', '//*[@id="main"]/div[3]/div[3]/h2/a')
                 time.sleep(3)
