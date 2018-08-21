@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
+import time
 
 from pages.common_pages.driver import brower
 from pages.common_pages.login_page import LoginPage
@@ -26,7 +27,7 @@ class Choose_Page_Case(unittest.TestCase):
         #self.conn.close()
     # 进入应用界面
     def test_001_intoApp(self):
-
+        time.sleep(5)
         test = ChoosePageTest(self.driver)
         actual_dict=test.cyclic_test_app(26)
         print self.driver.window_handles[-1]
