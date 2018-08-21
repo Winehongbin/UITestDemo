@@ -335,7 +335,7 @@ class ChoosePageTest(BasePage):
                     flag = 0
                     # self.close()
                     # return int(0)
-            self.close()
+            # self.close()
             return flag
         except NoSuchElementException:
             self.close()
