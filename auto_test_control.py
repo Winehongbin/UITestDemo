@@ -117,12 +117,6 @@ class ConrollerShow():
         SendEmail = email_oper.SendEmailModel()  #实例化SendEmailModel类
         SendEmail.postreport_only(PerformTime,str(content)) #调用SendEmailModel类中postreport_only方法
 
-        # # # 所有应用主界面测试
-        choose_test = self.Def_List(Choose_Page_Case)  # Def_List 获取指定单元测试中，测试函数列表
-        for choose_tmp in choose_test:
-             suite.addTest(Choose_Page_Case(choose_tmp))
-             print suite
-
 if __name__ == '__main__':
 
         # 此时说明为s2
