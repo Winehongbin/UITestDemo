@@ -24,6 +24,7 @@ from test_case.api_case_group2 import Api_Case_Group2
 from test_case.api_case_group3 import Api_Case_Group3
 from test_case.api_case_group4 import Api_Case_Group4
 from pages.common_pages.ConfigUrl import ConfigUrl
+from test_case.choose_page_case import Choose_Page_Case
 class ConrollerShow():
 
 
@@ -98,6 +99,12 @@ class ConrollerShow():
         api_jk4 = self.Def_List(Api_Case_Group4)
         for api4 in api_jk4:
             suite.addTest(Api_Case_Group4(api4))
+
+        # # # 所有应用主界面测试
+        choose_test = self.Def_List(Choose_Page_Case)  # Def_List 获取指定单元测试中，测试函数列表
+        for choose_tmp in choose_test:
+             suite.addTest(Choose_Page_Case(choose_tmp))
+             print suite
         #测试
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
@@ -110,6 +117,11 @@ class ConrollerShow():
         SendEmail = email_oper.SendEmailModel()  #实例化SendEmailModel类
         SendEmail.postreport_only(PerformTime,str(content)) #调用SendEmailModel类中postreport_only方法
 
+        # # # 所有应用主界面测试
+        choose_test = self.Def_List(Choose_Page_Case)  # Def_List 获取指定单元测试中，测试函数列表
+        for choose_tmp in choose_test:
+             suite.addTest(Choose_Page_Case(choose_tmp))
+             print suite
 
 if __name__ == '__main__':
 
