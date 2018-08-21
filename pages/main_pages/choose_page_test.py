@@ -38,12 +38,12 @@ class ChoosePageTest(BasePage):
                 if elem == '数据统计':
                     # 访问成功
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     # 访问失败
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 2:
                 elem = self.find_element_text('x', '//*[@id="main"]/div[3]/div[3]/h2/a')
