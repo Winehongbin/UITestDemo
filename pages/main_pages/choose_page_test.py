@@ -22,241 +22,319 @@ class ChoosePageTest(BasePage):
         self.driver.implicitly_wait(30)
         css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")" #把按钮位置设为参数获取
         self.wait_is_visible('css',css_path)
-        time.sleep(10)
+        time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])
+        flag = 0
         try:
             if button_pos == 1:
                 elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[4]/div[1]')
                 #elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[2]/div[1]')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem)
                 if elem == '数据统计':
                     # 访问成功
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
                     # 访问失败
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 2:
                 elem = self.find_element_text('x', '//*[@id="main"]/div[3]/div[3]/h2/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem)
                 if elem == '创建场景':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 3:
                 elem = self.find_element_text('x', '/html/body/div/form/div/div[2]/button')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '登录':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 4:
                 elem = self.find_element_text('x', '/html/body/main/div/div/div/div/div[2]/div/div[2]/span')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '还没注册九枝兰?':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 5:
                 elem = self.find_element_text('x', '/html/body/div[2]/div/div[1]/div/ul/li/a/span')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '展位管理':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             #数据监测工具有问题，页面不能访问
             # elif button_pos == 6:
 
             elif button_pos == 7:
                 elem = self.find_element_text('x', '//*[@id="mainRight"]/div[2]/div[1]/div[1]/span')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '历史数据统计':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 8:
                 time.sleep(15)
                 elem = self.find_element_text('x', '/html/head/title')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '线下会':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 9:
                 elem = self.find_element_text('x', '//*[@id="collapse5"]/li[3]/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '数据权限设置':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 10:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/ul/li[7]/h2/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '签到应用下载':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 11:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/main/div[1]/div[1]/div[2]/button')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建表单':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 12:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[2]/a/span')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建问卷':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 13:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建抽奖':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 14:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/button/span')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建投票':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 15:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/button')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建论坛':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 16:
                 elem = self.find_element_text('x', '/html/body/section/div[1]/header/div/botton')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '添加新产品线':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 17:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/div[2]/div/button')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '查看其他用户':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 18:
                 elem = self.find_element_text('x', '/html/body/div/div[1]/div[2]/div[4]/div[2]/div/button[1]')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '上传文件':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 19:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '创建新供应商':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 20:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/button')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建任务':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 21:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[1]')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '短信列表':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 22:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[3]/div[2]/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建栏目':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 23:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '创建新用户':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 24:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新增全局角色':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 25:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/h2')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
                 if elem.replace(' ', '') == '模块管理':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
             elif button_pos == 26:
                 elem = self.find_element_text('x', '//*[@id="g-right"]/div/div[1]/h2')
+                time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
                 if elem.replace(' ', '') == '全局字典表管理':
-                    self.close()
-                    return int(1)
+                    flag = 1
+                    # self.close()
+                    # return int(1)
                 else:
-                    self.close()
-                    return int(0)
+                    flag = 0
+                    # self.close()
+                    # return int(0)
+            self.close()
+            return flag
         except NoSuchElementException:
             self.close()
             return int(0)
