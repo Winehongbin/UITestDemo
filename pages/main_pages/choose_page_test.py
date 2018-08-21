@@ -266,7 +266,7 @@ class ChoosePageTest(BasePage):
         actual_result = 2
         actual_dict = {}
         for n in range(1, num+1, 1):
-            if n == 6 or n == 8:
+            if n == 6 or n == 7 or n == 8:
                 continue
             else :
                 actual_result=self.click_menu_bt(n)
