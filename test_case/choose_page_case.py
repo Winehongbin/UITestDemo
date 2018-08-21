@@ -22,7 +22,10 @@ class Choose_Page_Case(unittest.TestCase):
         # self.conn,self.cur=DatabaseOperation().openconnect()
 
     def tearDown(self):
-        print u"结束时的句柄"+self.driver.window_handles
+        # print u"结束时的句柄"+self.driver.window_handles
+        winHandles = self.driver.window_handles
+        for handle in winHandles:
+            print u"结束时的句柄" + handle
         self.driver.quit()
         #self.conn.close()
     # 进入应用界面
