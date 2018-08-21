@@ -23,26 +23,27 @@ class Article(unittest.TestCase):
 
     def test_001_create_section(self):
         """创建浏览删除栏目"""
-
+        ##创建栏目---设置标签---浏览文章、分享栏目---查看数据统计---查看对应联系人互动及标签触发
         o = SectionListPage(self.driver)
-        # o.new_section()
-        o.choose_more()
+        # o.new_section() #新建个栏目
+        o.choose_more()    #点击“查看”按钮旁边的更多功能
         p = BrowsePage(self.driver)
-        p.browse_section()
+        p.browse_section()  # 浏览栏目
         time.sleep(3)
         o = SectionListPage(self.driver)
         '''gm20180820
         dickname = o.open_detail_data()
         expect_result ={'name1:' : u"1" , 'name2:': u"1"}
-
         #self.assertDictEqual(expect_result, dickname, u"浏览量和浏览人数验证不通过")#验证浏览量和浏览人数
         '''
-        a,b = o.open_detail_data()
+        a,b = o.open_detail_data()  ##打开详情页面
         self.assertTrue(a >=0, "error")
         self.assertTrue(b >= 0, "error")
+
+
     # def test_002_create_article(self):
     #     """创建浏览分享评论文章"""
-    #     #创建栏目---设置标签---浏览文章、分享栏目，评论---查看数据统计---查看对应联系人互动及标签触发
+    #     #创建文章---设置标签---浏览文章、分享栏目，评论---查看数据统计---查看对应联系人互动及标签触发
     #     q = SectionListPage(self.driver)
     #     q.choose_firstsection()
     #     q.create_button_article()
