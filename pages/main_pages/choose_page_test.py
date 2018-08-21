@@ -14,11 +14,11 @@ class ChoosePageTest(BasePage):
 
     #测试每个app是否正常进入主页面
     def click_menu_bt(self, button_pos):
-        print self.driver.window_handles[-1]
+        print self.driver.window_handles[0]
         time.sleep(3)
         # handleNow = self.driver.current_window_handle # 获得当前窗口
         # self.driver.switch_to_window(handleNow)
-        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.driver.switch_to.window(self.driver.window_handles[0])
         self.driver.implicitly_wait(30)
         css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")" #把按钮位置设为参数获取
         self.wait_is_visible('css',css_path)
