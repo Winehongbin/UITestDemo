@@ -105,7 +105,6 @@ class ConrollerShow():
         for choose_tmp in choose_test:
              suite.addTest(Choose_Page_Case(choose_tmp))
              print suite
-
         #测试
         #创建测试报告
         AddSuite = report.AllReport()   #AddSuite = report.AllReport() :实例化AllReport类
