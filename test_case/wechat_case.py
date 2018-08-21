@@ -98,15 +98,15 @@ class Wechat_Test(unittest.TestCase):
         else:
             result = 'failed'
 
-    def test_005_createGroupsend(self):
-        """定时群发消息"""
-        groupsend = Create_groupsend(self.driver)
-        actual_result = groupsend.create_groupsend()
-        expected_result = u'定时群发消息成功'
-        if actual_result == expected_result:
-            result = 'success'
-        else:
-            result = 'failed'
+    # def test_005_createGroupsend(self):
+    #     """定时群发消息"""
+    #     groupsend = Create_groupsend(self.driver)
+    #     actual_result = groupsend.create_groupsend()
+    #     expected_result = u'定时群发消息成功'
+    #     if actual_result == expected_result:
+    #         result = 'success'
+    #     else:
+    #         result = 'failed'
 
     def test_006_createChannelqrcode(self):
         """新增渠道二维码"""
@@ -123,7 +123,7 @@ if __name__ == "__main__":
     suit=unittest.TestSuite()
     # suit.addTest(Wechat_Test("test_004_synMaterials"))
     # suit.addTest(Wechat_Test("test_005_createGroupsend"))
-    suit.addTest(Wechat_Test("test_005_createGroupsend"))
+    # suit.addTest(Wechat_Test("test_005_createGroupsend"))
     # suit.addTest(Wechat_Test("test_002_deleteMedia"))
     runner = unittest.TextTestRunner()
     runner.run(suit)
