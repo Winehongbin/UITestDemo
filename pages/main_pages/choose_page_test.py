@@ -46,52 +46,56 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 2:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '//*[@id="main"]/div[3]/div[3]/h2/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem)
                 if elem == '创建场景':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 3:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div/form/div/div[2]/button')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '登录':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 4:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/main/div/div/div/div/div[2]/div/div[2]/span')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '还没注册九枝兰?':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 5:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div/div[1]/div/ul/li/a/span')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '展位管理':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             #数据监测工具有问题，页面不能访问
             # elif button_pos == 6:
