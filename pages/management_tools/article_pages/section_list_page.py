@@ -5,6 +5,7 @@ from pages.common_pages.base import BasePage
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
+# from pages.management_tools.article_pages.browse_page import BrowsePage
 
 
 class SectionListPage(BasePage):
@@ -40,6 +41,7 @@ class SectionListPage(BasePage):
 
             # 打开数据明细
 
+    #打开详情页面
     def open_detail_data(self):
         try:
             time.sleep(3)
@@ -61,9 +63,8 @@ class SectionListPage(BasePage):
             print type(browseSum1), type(browseNum1)
             print  browseSum1, browseSum1
 
-
-            dickname = {'name1:': browseNum1, 'name2:': browseSum1}
-            return dickname
+            #gm20180820
+            return browseNum1,browseSum1
         except:
             self.deprint("数据明细页面打开失败")
 
@@ -114,20 +115,22 @@ class SectionListPage(BasePage):
         timeArray = time.localtime(now)
         otherStyleTime = time.strftime("%Y--%m--%d %H:%M:%S", timeArray)
         self.element_value_input('x', '//*[@id="articleTitle"]', u'文章' + otherStyleTime)
-        # self.element_click('x', '/html/body/div[1]/div[1]/div[2]/div[2]/div[1]/div[3]/div[6]/div/label[1]')
+        self.element_value_input('x','/html/body',u'测试')#填写正文内容
         self.element_click('x','/html/body/div[1]/div[1]/div[2]/div[2]/div[1]/div[3]/div[4]/div/label[1]/span')# 点击“分享设置”的“允许”
         self.scrollbar("100")
+        iframe = self.driver.find_element_by_xpath('//*[@id="ueditor_0"]')
+        self.driver.switch_to_frame(iframe)
+        self.element_value_input('x', '/html/body', u'测试')  # 填写正文内容
         time.sleep(2)
+        self.driver.switch_to.default_content()  # 从正文内容输入的iframe窗口切换回主文档
         self.wait_is_visible('x',
                              '/html/body/div[1]/div[1]/div[2]/div[2]/div[2]/div[3]/div/div/div/div/div[2]')  # 点击便签输入框，进行打标签
         self.wait_is_visible('x',
                              '/html/body/div[1]/div[1]/div[2]/div[2]/div[2]/div[3]/div/div/div/div/div[3]/div[1]/span[1]')  # 选择“1”的标签
         self.scrollbar("bottom")
-        self.wait_is_visible('x', '/html/body/div[1]/div[1]/div[2]/div[1]/div[4]/div')  # 点击保存按钮
-        self.wait_is_visible('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击弹出弹框的“确定”按钮“
+        self.wait_is_visible('x', '/html/body/div[1]/div[1]/div[3]/div')  # 点击保存按钮
         time.sleep(2)
-
-
+        self.wait_is_visible('x', '//*[@id="alertCommon"]/div/div/div[3]/button')  # 点击弹出弹框的“确定”按钮“
 
 
 
@@ -139,10 +142,12 @@ if __name__ == '__main__':
     object = ChoosePage(dr)
     object.click_menu_bt('22')
     q=SectionListPage(dr)
-
     q.choose_firstsection()
     q.create_button_article()
     q.create_article()
+    q.choose_more()
+
+
 
 
     # q.new_section()
