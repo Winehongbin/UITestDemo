@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
-
+from selenium.common.exceptions import NoSuchWindowException
 
 class ChoosePageTest(BasePage):
 
@@ -108,11 +108,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '历史数据统计':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 8:
                 time.sleep(15)
@@ -121,11 +121,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '线下会':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 9:
                 elem = self.find_element_text('x', '//*[@id="collapse5"]/li[3]/a')
@@ -133,11 +133,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '数据权限设置':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 10:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/ul/li[7]/h2/a')
@@ -145,11 +145,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '签到应用下载':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 11:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/main/div[1]/div[1]/div[2]/button')
@@ -157,11 +157,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建表单':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 12:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[2]/a/span')
@@ -169,11 +169,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建问卷':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 13:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
@@ -181,11 +181,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建抽奖':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 14:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/button/span')
@@ -193,11 +193,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建投票':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 15:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/button')
@@ -205,11 +205,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建论坛':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 16:
                 elem = self.find_element_text('x', '/html/body/section/div[1]/header/div/botton')
@@ -217,11 +217,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '添加新产品线':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 17:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/div[2]/div/button')
@@ -229,11 +229,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '查看其他用户':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 18:
                 elem = self.find_element_text('x', '/html/body/div/div[1]/div[2]/div[4]/div[2]/div/button[1]')
@@ -241,11 +241,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '上传文件':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 19:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
@@ -253,11 +253,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '创建新供应商':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 20:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/button')
@@ -265,11 +265,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建任务':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 21:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[1]')
@@ -277,11 +277,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '短信列表':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 22:
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[3]/div[2]/a')
@@ -289,11 +289,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建栏目':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 23:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
@@ -301,11 +301,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '创建新用户':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 24:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
@@ -313,11 +313,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新增全局角色':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 25:
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/h2')
@@ -325,11 +325,11 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
                 if elem.replace(' ', '') == '模块管理':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             elif button_pos == 26:
                 elem = self.find_element_text('x', '//*[@id="g-right"]/div/div[1]/h2')
@@ -337,17 +337,21 @@ class ChoosePageTest(BasePage):
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
                 if elem.replace(' ', '') == '全局字典表管理':
                     flag = 1
-                    # self.close()
+                    self.close()
                     # return int(1)
                 else:
                     flag = 0
-                    # self.close()
+                    self.close()
                     # return int(0)
             # self.close()
             return flag
         except NoSuchElementException:
             self.close()
             return int(0)
+        except NoSuchWindowException:
+            self.close()
+            return int(0)
+
 
     #循环遍历每个应用
     def cyclic_test_app(self,num):
