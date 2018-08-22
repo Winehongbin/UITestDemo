@@ -103,6 +103,7 @@ class ChoosePageTest(BasePage):
             # elif button_pos == 6:
 
             elif button_pos == 7:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '//*[@id="mainRight"]/div[2]/div[1]/div[1]/span')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -115,6 +116,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 8:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 time.sleep(15)
                 elem = self.find_element_text('x', '/html/head/title')
                 time.sleep(3)
@@ -128,6 +130,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 9:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '//*[@id="collapse5"]/li[3]/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -140,6 +143,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 10:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/ul/li[7]/h2/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -152,6 +156,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 11:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/main/div[1]/div[1]/div[2]/button')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -164,6 +169,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 12:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[2]/a/span')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -176,6 +182,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 13:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -188,6 +195,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 14:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/button/span')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -200,6 +208,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 15:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/button')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -212,6 +221,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 16:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/section/div[1]/header/div/botton')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -224,6 +234,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 17:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/div[2]/div/button')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -236,6 +247,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 18:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div/div[1]/div[2]/div[4]/div[2]/div/button[1]')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -248,6 +260,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 19:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -260,6 +273,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 20:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/button')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -272,6 +286,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 21:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[1]')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -284,6 +299,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 22:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[3]/div[2]/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -296,6 +312,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 23:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -308,6 +325,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 24:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -320,6 +338,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 25:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/h2')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
@@ -332,6 +351,7 @@ class ChoosePageTest(BasePage):
                     self.close()
                     # return int(0)
             elif button_pos == 26:
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '//*[@id="g-right"]/div/div[1]/h2')
                 time.sleep(3)
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
@@ -357,8 +377,10 @@ class ChoosePageTest(BasePage):
     def cyclic_test_app(self,num):
         actual_result = 2
         actual_dict = {}
-        for n in range(1, num+1, 1):
+        n = 1
+        while n < num:
             if n == 6 or n == 7 or n == 8:
+                n = n + 1
                 continue
             else :
                 actual_result=self.click_menu_bt(n)
@@ -417,6 +439,7 @@ class ChoosePageTest(BasePage):
                 elif n == 26:
                     actual_dict['字典表管理'] = actual_result;
                 # continue
+            n = n + 1
         return  actual_dict
 
 
