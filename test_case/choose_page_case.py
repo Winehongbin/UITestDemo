@@ -37,15 +37,15 @@ class Choose_Page_Case(unittest.TestCase):
         winHandles = self.driver.window_handles
         for handle in winHandles:
             print u"循环结束时" + handle
-        # expected_dict = {'微信':1,'场景':1,'DSP投放':1,'SEM助手':1,'图聚智能':1,'数据监测工具':1,'智能分析':1,
-        #                  '数据看板':1,'线上会':1,'线下会':1,'表单管理':1,'问卷':1,'抽奖':1,'投票':1,
-        #                  '微讨论':1,'产品管理':1,'客户管理':1,'文件管理':1,'供应商管理':1,'邮件管理':1,'短信管理':1,
-        #                  '文章管理':1,'成员管理':1,'角色管理':1,'模块管理':1,'字典表管理':1}
-        #缺少“数据监测工具”和“数据看板”和“智能分析”
-        expected_dict = {'微信':1,'场景':1,'DSP投放':1,'SEM助手':1,'图聚智能':1,
-                         '线上会':1,'线下会':1,'表单管理':1,'问卷':1,'抽奖':1,'投票':1,
+        expected_dict = {'微信':1,'场景':1,'DSP投放':1,'SEM助手':1,'图聚智能':1,'数据监测工具':1,'智能分析':1,
+                         '数据看板':1,'线上会':1,'线下会':1,'表单管理':1,'问卷':1,'抽奖':1,'投票':1,
                          '微讨论':1,'产品管理':1,'客户管理':1,'文件管理':1,'供应商管理':1,'邮件管理':1,'短信管理':1,
                          '文章管理':1,'成员管理':1,'角色管理':1,'模块管理':1,'字典表管理':1}
+        #缺少“数据监测工具”和“数据看板”和“智能分析”
+        # expected_dict = {'微信':1,'场景':1,'DSP投放':1,'SEM助手':1,'图聚智能':1,
+        #                  '线上会':1,'线下会':1,'表单管理':1,'问卷':1,'抽奖':1,'投票':1,
+        #                  '微讨论':1,'产品管理':1,'客户管理':1,'文件管理':1,'供应商管理':1,'邮件管理':1,'短信管理':1,
+        #                  '文章管理':1,'成员管理':1,'角色管理':1,'模块管理':1,'字典表管理':1}
         # expected_dict = {'微信':1,'场景':1,'DSP投放':1,'SEM助手':1,'图聚智能':1,'线上会':1}
         failapp=''
         for key, value in actual_dict.items():
@@ -55,7 +55,7 @@ class Choose_Page_Case(unittest.TestCase):
         length=len(failapp)
         print(u"失败的应用："+failapp[0:length-1] )
 
-        self.assertDictEqual(actual_dict, expected_dict, msg="choose page failed")
+        self.assertDictEqual(actual_dict,expected_dict, msg="choose page failed")
         # object.quit()
         # base.deprint("创建线下会页面用例执行完成")
         # try:
