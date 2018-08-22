@@ -29,7 +29,7 @@ class Choose_Page_Case(unittest.TestCase):
         time.sleep(5)
         test = ChoosePageTest(self.driver)
         try:
-            actual_dict=test.cyclic_test_app(27)
+            actual_dict=test.cyclic_test_app(6)
         except NoSuchWindowException:
             self.driver.quit()
         print actual_dict
@@ -51,8 +51,8 @@ class Choose_Page_Case(unittest.TestCase):
         #                  '文章管理':1,'成员管理':1,'角色管理':1,'模块管理':1,'字典表管理':1}
         # expected_dict = {'wx':1,'cj':1,'DSPtf':1,'SEMzs':1,'tjzn':1,'sjjcgj':1,'znfx':1,
         #                  'sjkb':1,'xsh':1,'xxh':1}
-        # expected_dict = {'wx':1,'cj':1,'DSPtf':1,'SEMzs':1,'tjzn':1,'xsh':1,'xxh':1,'bdgl':1,'wj':1,'cj':1,'tp':1,'wtl':1,'cpgl':1,'khgl':1,'wjgl':1,'gysgl':1,'yjgl':1,'dxgl':1,'wzgl':1,'cygl':1,'jsgl':1}
-        expected_dict = {'wx': 1, 'cj': 1, 'DSPtf': 1, 'SEMzs': 1, 'tjzn': 1, 'xsh': 1, 'xxh': 1, 'bdgl': 1, 'wj': 1,'cj':1,'tp':1,'wtl':1,'cpgl':1,'khgl':1,'wjgl':1,'gysgl':1,'yjgl':1,'dxgl':1,'wzgl':1,'cygl':1,'jsgl':1,'mkgl':1,'zdbgl':1}
+        expected_dict = {'wx':1,'cj':1,'DSPtf':1,'SEMzs':1,'tjzn':1}
+        # expected_dict = {'wx': 1, 'cj': 1, 'DSPtf': 1, 'SEMzs': 1, 'tjzn': 1, 'xsh': 1, 'xxh': 1, 'bdgl': 1, 'wj': 1,'cj':1,'tp':1,'wtl':1,'cpgl':1,'khgl':1,'wjgl':1,'gysgl':1,'yjgl':1,'dxgl':1,'wzgl':1,'cygl':1,'jsgl':1,'mkgl':1,'zdbgl':1}
         print expected_dict
         # failapp=''
         # for key, value in actual_dict.items():
