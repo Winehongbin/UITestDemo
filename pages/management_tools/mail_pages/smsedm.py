@@ -127,7 +127,7 @@ class Edm_Sms(BasePage):
         self.driver.refresh()
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
         self.deprint("进入发送任务管理")
-        time.sleep(10)
+        time.sleep(20)
         iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
         self.driver.switch_to_frame(iframe)
         time.sleep(5)
