@@ -75,25 +75,25 @@ class Edm_Test(unittest.TestCase):
     #     insertSql = "INSERT into caselog VALUES ('编辑邮件内容并导入收件人','邮件','%s','%s','%s')" % (startTime, endTime, result)
     #     self.cur.execute(insertSql)
     #     self.conn.commit()
-    # def test_002_editEdm(self):
-    #     """全局发送邮件"""
-    #     #1、全局新建邮件任务---2、导入收件人---3、发送（测试邮件，任务管理中点击“立即发送”，启动发送按钮进行定时发送）---4、查看回执
-    #     dr = brower()
-    #     o = LoginPage(dr)
-    #     o.login()
-    #     o = ChoosePage(dr)
-    #     time.sleep(3)
-    #     o.click_menu_bt('20')
-    #     type = "邀请函"
-    #     S = Edm_Sms(dr)
-    #     S.createEdm(type)
-    #     S.list_edm()
-    #     S.editMail()
-    #     S.export()
-    #     S.immeSendMail()
-    #     actual_result = S.viewReceipt()
-    #     expected_result = u'邮件发送成功'
-    #     self.assertEqual(actual_result, expected_result, msg="failed")
+    def test_002_editEdm(self):
+        """全局发送邮件"""
+        #1、全局新建邮件任务---2、导入收件人---3、发送（测试邮件，任务管理中点击“立即发送”，启动发送按钮进行定时发送）---4、查看回执
+        dr = brower()
+        o = LoginPage(dr)
+        o.login()
+        o = ChoosePage(dr)
+        time.sleep(3)
+        o.click_menu_bt('20')
+        type = "邀请函"
+        S = Edm_Sms(dr)
+        S.createEdm(type)
+        S.list_edm()
+        S.editMail()
+        S.export()
+        S.immeSendMail()
+        actual_result = S.viewReceipt()
+        expected_result = u'邮件发送成功'
+        self.assertEqual(actual_result, expected_result, msg="failed")
         # e = Details_Edm(dr)
         # e.export_edm()
 
@@ -158,8 +158,8 @@ class Edm_Test(unittest.TestCase):
 
 if __name__ == "__main__":
     suit=unittest.TestSuite()
-    # suit.addTest(Edm_Test("test_001_createEdmTask"))
-    #suit.addTest(Edm_Test("test_002_editEdm"))
+    suit.addTest(Edm_Test("test_001_createEdmTask"))
+    suit.addTest(Edm_Test("test_002_editEdm"))
     suit.addTest(Edm_Test("test_003_offline_edm"))
     runner = unittest.TextTestRunner()
     runner.run(suit)
