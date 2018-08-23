@@ -432,7 +432,7 @@ class ChoosePageTest(BasePage):
         n = 1
         while n < num:
             #数据监测工具、智能分析、数据看板、客户管理、文件管理页面加载有问题，暂跳过，待研究原因
-            if n == 6 or n == 7 or n == 8 or n == 17 :
+            if n == 6 or n == 7 or n == 8 :
                 n = n + 1
                 continue
             else :
