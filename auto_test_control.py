@@ -63,9 +63,9 @@ class ConrollerShow():
             suite.addTest(Article(article_tmp))
 
         #线上会
-        # webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
-        # for webinar_tmp in webinar_test:
-        #      suite.addTest(Webinar_Case(webinar_tmp))
+        webinar_test = self.Def_List(Webinar_Case)  # Def_List 获取指定单元测试中，测试函数列表
+        for webinar_tmp in webinar_test:
+             suite.addTest(Webinar_Case(webinar_tmp))
 
         # #客户管理
         member_test = self.Def_List(Member_Test)  # Def_List 获取指定单元测试中，测试函数列表
