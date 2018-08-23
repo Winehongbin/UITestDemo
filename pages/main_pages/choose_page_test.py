@@ -427,7 +427,7 @@ class ChoosePageTest(BasePage):
         actual_dict = {}
         n = 1
         while n < num:
-            if n == 6 or n == 7 or n == 8:
+            if n == 6 or n == 7 or n == 8 or n == 17 or n == 18:
                 n = n + 1
                 continue
             else :
