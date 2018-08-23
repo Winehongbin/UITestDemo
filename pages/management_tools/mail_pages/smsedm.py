@@ -90,9 +90,9 @@ class Edm_Sms(BasePage):
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[2]/button')  #点上传文件按钮
         time.sleep(10)
         os.system(zh_path)
-        time.sleep(20)
-        # fname = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[3]/div')  #上传成功后，“文件中包含数据条，每行数据包含个有效字段”显示验证上传成功
-        # self.deprint(u"上传的文件：" + fname)
+        time.sleep(30)
+        fname = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[3]/div')  #上传成功后，“文件中包含数据条，每行数据包含个有效字段”显示验证上传成功
+        self.deprint(u"上传的文件：" + fname)
         self.deprint("收件人上传成功")
         # self.scrollbar("bottom")
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[3]/button')  #点开始导入按钮导入文件
