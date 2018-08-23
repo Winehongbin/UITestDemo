@@ -78,18 +78,20 @@ class Edm_Sms(BasePage):
     def export(self):
         time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
-        self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[2]/button')
-        self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[2]/button')
-        time.sleep(5)
+        self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[2]/button')  #点导入收件人按钮
+        #获取上传文件路径
         cur_path = os.path.abspath(os.path.dirname(__file__))
         con_path = "\common\\fileconfig\\file\export.exe"
         sp_path=os.path.split(os.path.split(os.path.split(cur_path)[0])[0])[0]
         zh_path = sp_path + con_path
         zh_path = eval(repr(sp_path+con_path).replace('\\', '\\\\'))
         self.deprint(u"上传的文件地址："+zh_path )
-        os.system(zh_path)
+
+        self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[2]/button')  #点上传文件按钮
         time.sleep(10)
-        fname = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[3]/div')
+        os.system(zh_path)
+        time.sleep(20)
+        fname = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[3]/div')  #上传成功后，“文件中包含数据条，每行数据包含个有效字段”显示验证上传成功
         self.deprint(u"上传的文件：" + fname)
         self.deprint("收件人上传成功")
         # self.scrollbar("bottom")
