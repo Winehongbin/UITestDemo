@@ -45,7 +45,7 @@ class ChoosePageTest(BasePage):
                 #获取应用页面的数据统计元素
                 elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[4]/div[1]')
                 #elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[2]/div[1]')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem)
                 if elem == '数据统计':
                     # 访问成功
@@ -62,7 +62,7 @@ class ChoosePageTest(BasePage):
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 # 获取应用页面的创建场景元素
                 elem = self.find_element_text('x', '//*[@id="main"]/div[3]/div[3]/h2/a')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem)
                 if elem == '创建场景':
                     # flag = 1
@@ -77,7 +77,7 @@ class ChoosePageTest(BasePage):
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 # 获取应用页面的登陆按钮元素
                 elem = self.find_element_text('x', '/html/body/div/form/div/div[2]/button')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '登录':
                     # flag = 1
@@ -92,7 +92,7 @@ class ChoosePageTest(BasePage):
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 # 获取应用页面的还没注册九枝兰?元素
                 elem = self.find_element_text('x', '/html/body/main/div/div/div/div/div[2]/div/div[2]/span')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '还没注册九枝兰?':
                     # flag = 1
@@ -107,7 +107,7 @@ class ChoosePageTest(BasePage):
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 # 获取应用页面的展位管理元素
                 elem = self.find_element_text('x', '/html/body/div[2]/div/div[1]/div/ul/li/a/span')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '展位管理':
                     # flag = 1
@@ -123,21 +123,23 @@ class ChoosePageTest(BasePage):
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 # 获取应用页面的回到首页元素
                 elem = self.find_element_text('x', '/html/body/div/a')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '回到首页':
                     # flag = 1
+                    time.sleep(2)
                     self.close()
                     return int(1)
                 else:
                     # flag = 0
+                    time.sleep(2)
                     self.close()
                     return int(0)
             elif button_pos == 7:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '//*[@id="mainRight"]/div[2]/div[1]/div[1]/span')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '历史数据统计':
                     # flag = 1
@@ -151,7 +153,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/head/title')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '线下会':
                     # flag = 1
@@ -165,7 +167,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '//*[@id="collapse5"]/li[3]/a')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '数据权限设置':
                     # flag = 1
@@ -179,7 +181,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/ul/li[7]/h2/a')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '签到应用下载':
                     # flag = 1
@@ -193,7 +195,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[1]/main/div[1]/div[1]/div[2]/button')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建表单':
                     # flag = 1
@@ -207,7 +209,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/div[2]/a/span')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建问卷':
                     # flag = 1
@@ -221,7 +223,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建抽奖':
                     # flag = 1
@@ -235,7 +237,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[2]/main/div/div[1]/div/div[2]/div/button/span')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建投票':
                     # flag = 1
@@ -249,7 +251,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[1]/div[2]/button')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建论坛':
                     # flag = 1
@@ -263,7 +265,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/section/div[1]/header/div/botton')
-                time.sleep(8)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '添加新产品线':
                     # flag = 1
@@ -277,7 +279,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/div[2]/div/button')
-                time.sleep(3)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '查看其他用户':
                     # flag = 1
@@ -291,7 +293,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div/div[1]/div[2]/div[4]/div[2]/div/button[1]')
-                time.sleep(3)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '上传文件':
                     # flag = 1
@@ -305,7 +307,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
-                time.sleep(3)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '创建新供应商':
                     # flag = 1
@@ -319,7 +321,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div[1]/div[2]/button')
-                time.sleep(3)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建任务':
                     # flag = 1
@@ -333,7 +335,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[3]/div[1]/div[1]')
-                time.sleep(3)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '短信列表':
                     # flag = 1
@@ -347,7 +349,7 @@ class ChoosePageTest(BasePage):
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 elem = self.find_element_text('x', '/html/body/div[1]/div[1]/div[2]/div[3]/div[2]/a')
-                time.sleep(3)
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新建栏目':
                     # flag = 1
@@ -360,9 +362,8 @@ class ChoosePageTest(BasePage):
             elif button_pos == 23:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
-                time.sleep(5)
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/a')
-
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '创建新用户':
                     # flag = 1
@@ -375,9 +376,8 @@ class ChoosePageTest(BasePage):
             elif button_pos == 24:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
-                time.sleep(5)
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[2]/a')
-
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
                 if elem.replace(' ','') == '新增全局角色':
                     # flag = 1
@@ -390,9 +390,8 @@ class ChoosePageTest(BasePage):
             elif button_pos == 25:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
-                time.sleep(5)
                 elem = self.find_element_text('x', '/html/body/div[2]/div[2]/div[1]/h2')
-
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
                 if elem.replace(' ', '') == '模块管理':
                     # flag = 1
@@ -405,9 +404,8 @@ class ChoosePageTest(BasePage):
             elif button_pos == 26:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
-                time.sleep(5)
                 elem = self.find_element_text('x', '//*[@id="g-right"]/div/div[1]/h2')
-
+                time.sleep(10)
                 self.deprint(u"测试应用：" + elem.replace(' ', ''))
                 if elem.replace(' ', '') == '全局字典表管理':
                     # flag = 1
