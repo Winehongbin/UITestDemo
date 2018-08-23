@@ -8,7 +8,7 @@ sys.path.append(rootPath)
 from pages.common_pages.login_page import LoginPage
 from pages.common_pages.choose_page import ChoosePage
 from pages.common_pages.driver import brower
-from pages.wechat.smsedm import Edm_Sms
+# from pages.wechat.smsedm import Edm_Sms
 # from common.common_function.mysql import DatabaseOperation
 from pages.off_line_meeting_pages.details_edm import Details_Edm
 from pages.off_line_meeting_pages.edm_offline import Edm_offline
