@@ -41,26 +41,25 @@ class Webinar_Create(BasePage):
         # self.element_value_input('id','title',wrtitle)
         # 主办方
         self.element_value_input('x', '//*[@id="sponser"]', u'校')
-
         #选择注册表单
         self.nameofform(u"新建注册表单(9)")
-
-
         #self.element_value_input('x','/html/body/p',u'会议简介信息')
         if flag=="1":
             #     此时说明使用的s2
             #选择数据权限（下拉类型的字段）
-            self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/button')
-            self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/ul/li[2]/a')
+            # self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[8]/div[1]/div/div/div/button')#点击应用场景的下拉按钮
+            self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/button/span')#点击应用场景的下拉按钮
+            self.element_click('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/ul/li[2]/a')#选线上研讨会
         else:
-        #     说明此时为uat
+        #说明此时为uat
         # 此时应用场景选择:网络峰会
-            self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/button')
-        #     选择网络峰会
-            self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/ul/li[3]/a')
+            self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/button')#点击应用场景的
+            self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[7]/div[1]/div/div/div/ul/li[3]/a') # 选择网络峰会
+
+        self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[10]/div[1]/div/div/div/button/span')#点击行业的下拉小三角
+        self.wait_is_visible('x','//*[@id="webinarModal"]/div[1]/div/div[2]/div[2]/div[10]/div[1]/div/div/div/ul/li[1]/a')#点击制造业选项
         #点击保存按钮
         self.element_click('x','//*[@id="save"]')
-
         #保存会议后，判断去设置按钮是否显示，显示后，点击去设置
         element = WebDriverWait(self.driver,10,0.5).until(EC.presence_of_all_elements_located((By.XPATH,'//*[@id="webinarModal"]/div[1]/div/div[3]/a')))
         if element == 1 :
@@ -68,7 +67,6 @@ class Webinar_Create(BasePage):
         else:
             time.sleep(20)
             self.wait_is_visible('x', '//*[@id="webinarModal"]/div[1]/div/div[3]/a')
-
         #获取下一个窗口句柄，跳转到会议详情页面
         self.driver.switch_to.window(self.driver.window_handles[-1])
         current_handle=self.driver.current_window_handle
@@ -99,7 +97,6 @@ class Webinar_Create(BasePage):
         else:
             self.deprint("会议发布成功")
             return u'会议发布成功'
-
 
     #取消会议
     def cancel_meeting(self):
@@ -145,15 +142,15 @@ if __name__ == '__main__':
     o.login()
     o = ChoosePage(dr)
     time.sleep(3)
-    o.click_menu_bt('8')
+    o.click_menu_bt('9')
     o =  Webinar_IndexPage(dr)
     time.sleep(3)
     o.index_webinar()
     o.index_create()
     wbr = Webinar_Create(dr)
-    wbr.create_meeting()
+    wbr.create_meeting("1")
     # wbr.publish_meeting()
-    wbr.cancel_meeting()
+    # wbr.cancel_meeting()
 
 
 
