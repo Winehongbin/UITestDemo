@@ -73,10 +73,10 @@ class ConrollerShow():
         #     suite.addTest(Member_Test(member_tmp))
         # # #
         # # # # 邮件管理
-        # edm_test = self.Def_List(Edm_Test)  # Def_List 获取指定单元测试中，测试函数列表
-        # for edm_tmp in edm_test:
-        #      suite.addTest(Edm_Test(edm_tmp))
-        #      print suite
+        edm_test = self.Def_List(Edm_Test)  # Def_List 获取指定单元测试中，测试函数列表
+        for edm_tmp in edm_test:
+             suite.addTest(Edm_Test(edm_tmp))
+             print suite
         # # # # uat奥点云测试
         # ady_test = self.Def_List(ADY)  # Def_List 获取指定单元测试中，测试函数列表
         # for ady_tmp in ady_test:
