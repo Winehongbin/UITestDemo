@@ -23,6 +23,7 @@ class Create_vote(BasePage):
         self.wait_is_visible('x','//*[@class="tags"]/div[3]/div/span[1]') #选择标签
         self.scrollbar('bottom')
         self.wait_is_visible('x','/html/body/div[1]/div[2]/main/div/div/div/div[2]/div/button') #点击保存按钮
+        time.sleep(2)
         self.wait_is_visible('x','//*[@id="alertCommon"]/div/div/div[3]/button') #点击确定弹窗
     def setItems(self):
         #找不到元素的问题还没有解决。。。
