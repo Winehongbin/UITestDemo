@@ -44,7 +44,6 @@ class Edm_Sms(BasePage):
     def list_edm(self):#20180809
         time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
-        print self.driver.window_handles[-1]
         self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[2]/a') #点击第一个邮件任务#20180809
 
     #编辑邮件#20180809
@@ -79,7 +78,6 @@ class Edm_Sms(BasePage):
     def export(self):
         time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
-        print self.driver.window_handles[-1]
         self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[2]/button')
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[2]/button')
         time.sleep(5)
@@ -90,23 +88,18 @@ class Edm_Sms(BasePage):
         zh_path = eval(repr(sp_path+con_path).replace('\\', '\\\\'))
         self.deprint(u"上传的文件地址："+zh_path )
         os.system(zh_path)
-        time.sleep(60)
+        time.sleep(10)
         fname = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[3]/div')
-        self.deprint(u"上传的文件名称：" + fname)
-        scwb = self.find_element_text('x', '//*[@id="importAddressee"]/div/div/div[2]/div/div[2]/div[1]/input')
-        self.deprint("收件人上传成功"+scwb)
-        self.scrollbar("bottom")
+        self.deprint(u"上传的文件：" + fname)
+        self.deprint("收件人上传成功")
+        # self.scrollbar("bottom")
         self.wait_is_visible('x', '//*[@id="importAddressee"]/div/div/div[3]/button')
-        time.sleep(20)
+        time.sleep(10)
         self.deprint("开始导入收件人")
         #self.driver.refresh()
         acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]/a')
         self.deprint(u'收件人个数1'+acount)
-        return u'邮件发送成功'
-        #acount=self.find_element_text('x','/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[3]/div[1]/div[1]')
-        #time.sleep(10)
-        #count=int(acount)
-        # self.driver.quit()
+
     # 点击编辑，进行编辑邮件内容#20180817
     def editMail(self):
         self.deprint("开始执行邮件任务编辑用例")
@@ -125,21 +118,14 @@ class Edm_Sms(BasePage):
         self.deprint("从iframe切回主文档成功")
         self.scrollbar("bottom")
         self.wait_is_visible('x', '/html/body/div[1]/div[1]/form/div[7]/div/input')  # 点击保存按钮
+
     # 点击启动发送，进行立即发送邮件#20180817
     def immeSendMail(self):
         time.sleep(10)
         self.driver.refresh()
-        #self.driver.switch_to.window(self.driver.window_handles[-1])
-        #element = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]")
-        element = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[1]/div[1]/ul/li[1]/div[3]/div[2]")
-        if element != None:
-            element.click()
-        else:
-            self.driver.switch_to.window(self.driver.window_handles[-1])  # 获取下一个窗口句柄，跳转到邮件任务详情页面#20180809
-            self.wait_is_visible('x','/html/body/div[1]/div[3]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[2]/a')  # 点击第一个邮件任务#20180809
-            self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
+        self.wait_is_visible('x', '/html/body/div[1]/div[3]/div[1]/div[2]/div/div[1]/div[2]/span[3]')  # 进入发送任务管理
         self.deprint("进入发送任务管理")
-        time.sleep(30)
+        time.sleep(10)
         iframe = self.driver.find_element_by_xpath("/html/body/div[1]/div[3]/div[8]/iframe")
         self.driver.switch_to_frame(iframe)
         time.sleep(5)
@@ -205,10 +191,10 @@ if __name__ == '__main__':
     S=Edm_Sms(dr)
     S.createEdm(type)
     S.list_edm()
-    #S.editMail()
+    S.editMail()
     S.export()
-    #S.immeSendMail()
-    #S.viewReceipt()
+    S.immeSendMail()
+    S.viewReceipt()
 
 
 

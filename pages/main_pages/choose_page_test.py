@@ -28,7 +28,7 @@ class ChoosePageTest(BasePage):
         self.driver.maximize_window()
         try:
             css_path = "#sortContainer > a:nth-child(" + str(button_pos) + ")"  # 把按钮位置设为参数获取
-            self.wait_is_visible('css', css_path)
+            self.wait_is_visible('css', css_path)  #点击应用按钮
         except TimeoutException:
             self.driver.switch_to.window(self.driver.window_handles[-1])
             self.close()
@@ -42,6 +42,7 @@ class ChoosePageTest(BasePage):
             if button_pos == 1:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
+                #获取应用页面的数据统计元素
                 elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[4]/div[1]')
                 #elem = self.find_element_text('x', '//*[@id="g-right"]/section/div/div[2]/div[1]')
                 time.sleep(8)
@@ -59,6 +60,7 @@ class ChoosePageTest(BasePage):
             elif button_pos == 2:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
+                # 获取应用页面的创建场景元素
                 elem = self.find_element_text('x', '//*[@id="main"]/div[3]/div[3]/h2/a')
                 time.sleep(8)
                 self.deprint(u"测试应用：" + elem)
@@ -73,6 +75,7 @@ class ChoosePageTest(BasePage):
             elif button_pos == 3:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
+                # 获取应用页面的登陆按钮元素
                 elem = self.find_element_text('x', '/html/body/div/form/div/div[2]/button')
                 time.sleep(8)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -87,6 +90,7 @@ class ChoosePageTest(BasePage):
             elif button_pos == 4:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
+                # 获取应用页面的还没注册九枝兰?元素
                 elem = self.find_element_text('x', '/html/body/main/div/div/div/div/div[2]/div/div[2]/span')
                 time.sleep(8)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -101,6 +105,7 @@ class ChoosePageTest(BasePage):
             elif button_pos == 5:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
+                # 获取应用页面的展位管理元素
                 elem = self.find_element_text('x', '/html/body/div[2]/div/div[1]/div/ul/li/a/span')
                 time.sleep(8)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -116,6 +121,7 @@ class ChoosePageTest(BasePage):
             elif button_pos == 6:
                 print self.driver.window_handles[-1]
                 self.driver.switch_to.window(self.driver.window_handles[-1])
+                # 获取应用页面的回到首页元素
                 elem = self.find_element_text('x', '/html/body/div/a')
                 time.sleep(8)
                 self.deprint(u"测试应用：" + elem.replace(' ',''))
@@ -427,6 +433,7 @@ class ChoosePageTest(BasePage):
         actual_dict = {}
         n = 1
         while n < num:
+            #数据监测工具、智能分析、数据看板、客户管理、文件管理页面加载有问题，暂跳过，待研究原因
             if n == 6 or n == 7 or n == 8 or n == 17 or n == 18:
                 n = n + 1
                 continue
@@ -434,6 +441,7 @@ class ChoosePageTest(BasePage):
                 actual_result=self.click_menu_bt(n)
             time.sleep(3)
             # actual_result = self.click_menu_bt(n)
+            #将进入应用界面的结果记录下来返回
             if actual_result == 0 or actual_result == 1:
                 if n == 1:
                     actual_dict['wx'] = actual_result
